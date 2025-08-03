@@ -11,7 +11,73 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // --- 1. GESTION DE L'ÉTAT (LES DONNÉES DU JEU) ---
         const defaultState = {
-            character: {money: 100.00},
+            character: {
+                money: 100.00,
+                stats: [
+                    { id: 1, name: "Force", value: 70 },
+                    { id: 2, name: "Endurance", value: 75 },
+                    { id: 3, name: "Charisme", value: 50 },
+                    { id: 4, name: "Connaissances", value: 30 },
+                    { id: 5, name: "Combat", value: 45 },
+                    { id: 6, name: "Perception", value: 60 },
+                    { id: 7, name: "Persuasion", value: 70 },
+                    { id: 8, name: "Survie", value: 35 },
+                    { id: 9, name: "Agilité", value: 50 },
+                    { id: 10, name: "Discrétion", value: 65 },
+                    { id: 11, name: "Dextérité", value: 40 },
+
+                ],
+                skills: [
+                    { id: 101, name: "Résilience", value: 85 },
+                    { id: 102, name: "Débrouillardise", value: 60 },
+                    { id: 103, name: "Jeu de banjo", value: 70 },
+                    { id: 104, name: "Attaque sournoise", value: 70 },
+                    { id: 105, name: "Fuite", value: 65 },
+                    { id: 106, name: "Tir au revolver", value: 25 },
+                    { id: 107, name: "Tir au fusil", value: 20 },
+                    { id: 108, name: "Poker", value: 30 },
+                    { id: 109, name: "Lecture", value: 10 },
+                    { id: 110, name: "Equitation", value: 15 },
+
+                ],
+                banjoMelodies: [
+                    { id: 201, name: "Hard Times Come Again No More", description: "Triste et lent"}
+                ],
+                strengths: [ 
+                    { id: 301, text: "Résilience"},
+                    { id: 302, text: "Loyauté"},
+                    { id: 303, text: "Droiture"},
+                    { id: 304, text: "Rêveur"},
+                 ],
+                weaknesses: [ 
+                    { id: 401, text: "Manque de confiance" },
+                    { id: 402, text: "Ignorant" },
+                    { id: 403, text: "Méfiant" },
+                    { id: 404, text: "Rancunier"},
+                ],
+                inventory: {
+                    firearms: [
+                        { id: 501, name: "Remington Army New Model 1863", img: "images/remington_new_model.png" }
+                    ],
+                    clothing: [
+                        { id: 601, name: "Chapeau Cattleman", img: "images/cattleman_hat.jpg" }
+                    ],
+                    companions: [
+                        { id: 701, name: "Pilgrim, cheval Morgan", img: "images/morgan_horse.jpg" }
+                    ],
+                    general: [
+                        { id: 801, text: "Vêtements neufs et robustes" },
+                        { id: 802, text: "Bottes de marche neuves" },
+                        { id: 803, text: "Gilet et vêtement de froid" },
+                        { id: 804, text: "Couverture de voyage"},
+                        { id: 805, text: "Kits de cuisine et d'entretien"},
+                        { id: 806, text: "Couteau de chasse et petit couteau"},
+                        { id: 807, text: "Banjo dans son étui"},
+                        { id: 808, text: "Munitions .44 et .50"},
+                        { id: 809, text: "Pierre d'ombre"}
+                    ]
+                }
+            },
             npcs: [
                 { id: 1, name: "Abigail Carter", description: "Une fermière tenace et bienveillante.", status: "ami", faitsMarquants: "M'a donné des provisions gratuitement."},
                 { id: 2, name: "Silas 'Le Corbeau'", description: "Un bandit de grand chemin rusé et dangereux.", status: "ennemi", faitsMarquants: "A tenté de me voler près d'une auberge."}
@@ -148,6 +214,185 @@ document.addEventListener('DOMContentLoaded', () => {
             reader.readAsText(file);
         });
 
+        function renderCharacterSheet() {
+        if (!gameState.character) return;
+        renderEditableList('stats', 'Statistique', false);
+        renderEditableList('skills', 'Compétence', false);
+        renderEditableList('banjoMelodies', 'Mélodie', true);
+        renderEditableList('strengths', 'Point Fort', false, true); // le dernier 'true' est pour le champ 'text'
+        renderEditableList('weaknesses', 'Point Faible', false, true);
+        renderInventory();
+        }
+
+       function renderEditableList(key, placeholder, hasDescription = false, isTextOnly = false) {
+            const containerId = `${key.replace('.', '-')}-container`;
+            const container = document.getElementById(containerId);
+            if (!container) {
+                console.error(`Erreur : Le conteneur #${containerId} est introuvable.`);
+                return;
+            }
+
+            const path = key.split('.');
+            const data = path.reduce((obj, prop) => (obj ? obj[prop] : undefined), gameState.character) || [];
+
+            if (!Array.isArray(data)) {
+                console.error(`Erreur critique : Les données pour la clé "${key}" ne sont pas un tableau.`, data);
+                container.innerHTML = `<p style="color: red;">Erreur de données pour cette section.</p>`;
+                return;
+            }
+
+            container.innerHTML = '';
+            data.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'editable-list-item';
+                
+                let itemHTML = `<span class="item-name">${item.name || item.text}</span>`;
+                if (item.value !== undefined) {
+                    itemHTML += `<input type="number" value="${item.value}" onchange="updateCharacterItemValue('${key}', ${item.id}, this.value)">`;
+                }
+                if (item.description) {
+                    itemHTML += `<span>- <i>${item.description}</i></span>`;
+                }
+                itemHTML += `<button class="delete-item-btn" onclick="deleteCharacterItem('${key}', ${item.id})">&times;</button>`;
+                
+                itemDiv.innerHTML = itemHTML;
+                container.appendChild(itemDiv);
+            });
+
+            // La logique pour afficher le bouton "Ajouter"
+            const addFormContainerId = `add-${key.replace('.', '-')}-form-container`;
+            const addFormContainer = document.getElementById(addFormContainerId);
+            if (addFormContainer) {
+                addFormContainer.innerHTML = `<button class="action-button" style="font-size: 0.8em; padding: 5px 10px;" onclick="showAddItemForm('${key}', '${placeholder}', ${hasDescription}, ${isTextOnly})">+ Ajouter</button>`;
+            }
+        }
+
+        function renderInventory() {
+            if (!gameState.character.inventory) return;
+            renderInventoryCategory('firearms', 'Arme à feu');
+            renderInventoryCategory('clothing', 'Vêtement/Accessoire');
+            renderInventoryCategory('companions', 'Compagnon');
+            renderEditableList('inventory.general', 'Objet', false, true);
+        }
+
+        function renderInventoryCategory(category, placeholder) {
+            const container = document.getElementById(`inventory-${category}-container`);
+            container.innerHTML = '';
+            const data = gameState.character.inventory[category] || [];
+
+            data.forEach(item => {
+                const slot = document.createElement('div');
+                slot.className = 'inventory-item-slot';
+                slot.innerHTML = `
+                    <img src="${item.img || 'https://i.imgur.com/b6f8f5B.png'}" alt="${item.name}">
+                    <span class="item-name">${item.name}</span>
+                    <button class="delete-item-btn" onclick="deleteCharacterItem('inventory.${category}', ${item.id})">&times;</button>
+                `;
+                container.appendChild(slot);
+            });
+
+            const addSlot = document.createElement('div');
+            addSlot.className = 'inventory-item-slot';
+            addSlot.style.cursor = 'pointer';
+            // Maintenant, la variable 'placeholder' est bien définie et sera transmise
+            addSlot.onclick = () => showAddItemForm(`inventory.${category}`, placeholder, false, false, true);
+            addSlot.innerHTML = `<span style="font-size: 3em; color: var(--border-color);">+</span>`;
+            container.appendChild(addSlot);
+
+            // On ajoute le conteneur pour le formulaire d'ajout
+            const addFormContainer = document.getElementById(`add-inventory-${category}-form-container`);
+            if(addFormContainer) addFormContainer.innerHTML = '';
+        }
+
+        window.showAddItemForm = (key, placeholder, hasDescription, isTextOnly, hasImage) => {
+            const addFormContainerId = `add-${key.replace('.', '-')}-form-container`;
+            const container = document.getElementById(addFormContainerId);
+            
+            let formHTML = `<div class="add-item-form">`;
+            const inputId = `new-item-name-${key.replace('.', '-')}`;
+            const valueId = `new-item-value-${key.replace('.', '-')}`;
+            const descId = `new-item-desc-${key.replace('.', '-')}`;
+            const imgId = `new-item-img-${key.replace('.', '-')}`;
+
+            formHTML += `<input type="text" id="${inputId}" placeholder="${placeholder}">`;
+            
+            if (hasDescription) {
+                formHTML += `<input type="text" id="${descId}" placeholder="Description">`;
+            } else if (hasImage) {
+                formHTML += `<input type="text" id="${imgId}" placeholder="URL de l'image (optionnel)">`;
+            } else if (!isTextOnly) {
+                formHTML += `<input type="number" id="${valueId}" placeholder="Valeur" style="width: 80px;">`;
+            }
+            
+            formHTML += `<button class="action-button" onclick="handleAddItem('${key}', ${hasDescription}, ${isTextOnly}, ${hasImage})">✔</button>`;
+            formHTML += `</div>`;
+            container.innerHTML = formHTML;
+        };
+
+        window.handleAddItem = (key, hasDescription, isTextOnly, hasImage) => {
+            const inputId = `new-item-name-${key.replace('.', '-')}`;
+            const nameInput = document.getElementById(inputId);
+            const name = nameInput.value.trim();
+
+            if (!name) {
+                alert("Le nom ne peut pas être vide.");
+                return;
+            }
+
+            const newItem = { id: Date.now() };
+
+            if (hasDescription) {
+                newItem.name = name;
+                newItem.description = document.getElementById(`new-item-desc-${key.replace('.', '-')}`).value;
+            } else if (hasImage) {
+                newItem.name = name;
+                newItem.img = document.getElementById(`new-item-img-${key.replace('.', '-')}`).value;
+            } else if (isTextOnly) {
+                newItem.text = name;
+            } else { // C'est une stat ou une compétence
+                newItem.name = name;
+                const value = document.getElementById(`new-item-value-${key.replace('.', '-')}`).value;
+                newItem.value = parseInt(value, 10) || 0;
+            }
+            
+            let list;
+            if (key.startsWith('inventory.')) {
+                const category = key.split('.')[1];
+                list = gameState.character.inventory[category];
+            } else {
+                list = gameState.character[key];
+            }
+            
+            list.push(newItem);
+            saveGameData();
+            renderCharacterSheet(); // On rafraîchit toute la fiche
+        };
+
+        window.updateCharacterItemValue = (key, id, newValue) => {
+            const item = gameState.character[key].find(i => i.id === id);
+            if (item) {
+                item.value = parseInt(newValue, 10);
+                saveGameData();
+            }
+        };
+
+        window.deleteCharacterItem = (key, id) => {
+            let list;
+            if (key.startsWith('inventory.')) {
+                const category = key.split('.')[1];
+                list = gameState.character.inventory[category];
+            } else {
+                list = gameState.character[key];
+            }
+
+            const index = list.findIndex(i => i.id === id);
+            if (index > -1) {
+                list.splice(index, 1);
+                saveGameData();
+                renderCharacterSheet(); // On rafraîchit toute la fiche
+            }
+        };
+
         function renderNpcs() {
             const npcContainer = document.getElementById('npc-container');
             npcContainer.innerHTML = '';
@@ -263,6 +508,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         
         function renderAll() {
+            renderCharacterSheet();
             renderNpcs();
             renderThreads();
             renderJournal();

@@ -370,6 +370,94 @@ textarea { resize: vertical; min-height: 80px; }
 .inventory-list { list-style: none; padding: 0; margin: 0; }
 .inventory-list li { padding: 5px 0; border-bottom: 1px dashed var(--border-color); }
 .inventory-list li:last-child { border-bottom: none; }
+.editable-list-container { margin-bottom: 20px; }
+.editable-list-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 0;
+    border-bottom: 1px dashed var(--border-color);
+}
+.editable-list-item input[type="number"] {
+    width: 60px; /* Largeur fixe et réduite */
+    flex-grow: 0; /* Empêche l'étirement */
+    flex-shrink: 0; /* Empêche le rétrécissement */
+    text-align: right;
+    border: 1px solid transparent;
+    background-color: transparent;
+    padding: 2px 4px;
+}
+.editable-list-item input[type="number"]:focus {
+    border-color: var(--border-color);
+    background-color: white;
+}
+.editable-list-item .item-name {
+    flex-grow: 1;
+}
+.delete-item-btn {
+    background: none; border: none;
+    color: #aaa; /* Couleur grise discrète */
+    cursor: pointer;
+    font-size: 1em; /* Taille réduite */
+    font-weight: normal; /* Moins gras */
+    padding: 0 5px;
+    transition: color 0.2s;
+}
+.delete-item-btn:hover {
+    color: var(--delete-color); /* Devient rouge au survol */
+}
+
+.add-item-form { display: flex; gap: 10px; margin-top: 10px; }
+.add-item-form input { flex-grow: 1; }
+.add-item-form button { padding: 5px 10px; }
+
+/* NOUVEAU : Style pour l'inventaire "Jeu Vidéo" */
+.inventory-category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); /* Taille min réduite */
+    gap: 10px;
+}
+/* MODIFIÉ : La taille des slots d'inventaire est réduite */
+.inventory-item-slot {
+    position: relative;
+    width: 90px; /* Taille réduite */
+    height: 90px; /* Taille réduite */
+    background-color: var(--paper-color);
+    border: 2px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    box-sizing: border-box;
+}
+.inventory-item-slot img {
+    width: 100%;
+    height: 55%; /* Proportion ajustée */
+    object-fit: contain;
+}
+.inventory-item-slot .item-name {
+    font-size: 0.6em;
+    text-align: center;
+    margin-top: 5px;
+    height: 40%;
+    /* LIGNES À AJOUTER CI-DESSOUS */
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+.inventory-item-slot .delete-item-btn {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: var(--delete-color);
+    color: white;
+    border-radius: 50%;
+    width: 20px; /* Taille du bouton réduite */
+    height: 20px; /* Taille du bouton réduite */
+    font-size: 0.9em;
+    line-height: 20px;
+    padding: 0;
+}
 
 /* --- Style pour le journal --- */
 .journal-entry { 
@@ -721,3 +809,4 @@ font-family: 'Merriweather', serif;
     font-size: 30px; /* MODIFIÉ : Police beaucoup plus grande */
     font-style: italic;
 }
+

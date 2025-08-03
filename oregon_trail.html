@@ -42,126 +42,74 @@
         </nav>
 
         <main>
-            <section id="character" class="content-section">
+            <section id="character" class="content-section active">
                 <div class="character-sheet">
                     <div class="char-left-col">
                         <div class="char-portrait" title="Edward 'Eddy' Dunbar"></div>
                         <div class="char-panel">
                             <h3>Identité</h3>
-                            <div class="char-info-grid">
-                                <span>Nom</span><span>Edward 'Eddy' Dunbar</span>
-                                <span>Âge</span><span>18 ans</span>
-                                <span>Origine</span><span>Harrisburg, Pennsylvanie</span>
-                                <span>Profession</span><span>Fugitif, Musicien</span>
+                            <p>Garçon de 18 ans venant de Harrisburg, Pennsylvanie.<br>Né en 1649.
+                            </p>
                             </div>
-                        </div>
-                        <div class="char-panel">
-                            <h3>Objectif</h3>
-                            <p>Atteindre l'Oregon pour y trouver liberté et indépendance. Enquêter sur ses parents biologiques en chemin.</p>
-                        </div>
-                        <div class="char-panel">
-                            <h3>Caractères</h3>
-                            <h4>Points forts</h4>
-                            <ul>
-                                <li>Résilience</li>
-                                <li>Loyauté</li>
-                                <li>Droiture</li>
-                                <li>Rêveur</li>
-                            </ul>
-                            <h4>Points faibles</h4>
-                            <ul>
-                                <li>Manque de confiance</li>
-                                <li>Ignorant</li>
-                                <li>Méfiant</li>
-                                <li>Rancunier</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="char-right-col">
                         <div class="char-panel">
                             <h3>Histoire</h3>
-                            <p>Orphelin recueilli par une famille maltraitante, Eddy a grandi dans la rudesse et la résilience, trouvant son seul réconfort dans un banjo volé. Rêvant d'une vie meilleure, il s'est enfui pour rejoindre l'Oregon, ne laissant derrière lui que son nom d'adoption qu'il méprise, et emportant avec lui son instrument et l'espoir de découvrir la vérité sur ses véritables parents.</p>
+                            <p>Edward 'Eddy' Dunbar, 18 ans. Il vit dans la ville de Harrisburg, Pennsylvanie en 1868. 18 ans plus tôt, ses parents, des immigrés écossais ont eu un enfant mais leur vie en Pennsylvanie était rude. Ils ne parvenaient pas à rassembler suffisamment d'argent pour vivre convenablement. Le père travaillait dans les champs et s'est épuisé au point qu'il a fini par développer une maladie. <br> La mère s'en est occupé mais il a fini par mourir. La mère s'est retrouvée seule avec l'enfant de quelques mois. Elle a préféré mettre fin à ses jours plutôt que d'affronter l'existence qui lui était promise.<br>Edward s'est donc retrouvé seul dans une petite maison. Il a été retrouvé et recueilli dans un orphelinat dans laquelle la vie était rude. Il devait se montrer fort et intimidant pour se faire respecter et obtenir de quoi survivre parmi les autres enfants. Il s'est construit une carapace de résilience. <br>Plus tard, il a été accueilli par une famille, les Dunbar vers l'age de 10 ans. Les Dunbar sont une famille maltraitante. Le père Eugene Dunbar est alcoolique et violent la mère Regina Dunbar est maltraitante. Ils ont adopté Eddy pour le faire travailler de force. D'abord dans les champs pour les aider puis par pur plaisir malsain pour lui faire accomplir n'importe quelle tache physique, fastidieuse et penible dans le but de l'épuiser. 
+<br>Eddy trouvait refuge dans la musique. Il a reussi à récupérer un banjo qu'il cachait précieusemment pour pouvoir en jouer et s'échapper de son quotidien. Pendant ces moments d'évasion, Eddy revait de lointain. Il revait d'indépendance et de liberté. Il a entendu parler d'un endroit où tout cela serait possible : l'Oregon. C'est là qu'il veut vivre.<br>
+Eddy n'a pas supporté cette situation et il a pris la fuite de la maison des Dunbar un jour de juillet 1868. Il est parti sans rien si ce n'est son banjo qu'il tient en bandoulière dans un étui. Il veut rejoindre son rêve d'Oregon mais il est à pied. Edward a un souhait profond aussi : effacer son nom de famille de Dunbar et retrouver son nom de naissance. Il souhaite mener l'enquete sur ses parents pendant sa route en Pennsylvanie.<br>Nous commencons l'histoire juste à l'extérieur de Harrisburg, à bout de souffle après avoir pris la fuite, Edward se dirige vers la ville directement à l'ouest en suivant la ligne de train : Lewistown.</p>
                         </div>
                         <div class="char-panel">
+                            <h3>Points Forts</h3>
+                            <div id="strengths-container"></div>
+                            <div id="add-strengths-form-container"></div>
+                        </div>
+                        <div class="char-panel">
+                            <h3>Points Faibles</h3>
+                            <div id="weaknesses-container"></div>
+                            <div id="add-weaknesses-form-container"></div>
+                        </div>
+                    </div>
+                    <div class="char-right-col">
+                        <div class="char-panel">
                             <h3>Statistiques</h3>
-                            <div class="stats-grid">
-                                <div>Force</div><div class="stat-value">70</div>
-                                <div>Endurance</div><div class="stat-value">75</div>
-                                <div>Charisme</div><div class="stat-value">45</div>
-                                <div>Connaissances</div><div class="stat-value">30</div>
-                                <div>Combat au corps à corps</div><div class="stat-value">45</div>
-                                <div>Perception</div><div class="stat-value">60</div>
-                                <div>Intimidation</div><div class="stat-value">65</div>
-                                <div>Survie</div><div class="stat-value">30</div>
-                                <div>Agilité</div><div class="stat-value">50</div>
-                                <div>Discrétion</div><div class="stat-value">65</div>
-                                <div>Dextérité</div><div class="stat-value">40</div>
-                            </div>
+                            <div id="stats-container"></div>
+                            <div id="add-stats-form-container"></div>
                         </div>
                         <div class="char-panel">
                             <h3>Compétences</h3>
-                            <div class="skills-grid">
-                                <div>Résilience</div><div class="skill-value">85</div>
-                                <div>Débrouillardise</div><div class="skill-value">60</div>
-                                <div>Jeu de banjo</div><div class="skill-value">70</div>
-                                <div>Attaque sournoise</div><div class="skill-value">70</div>
-                                <div>Fuite</div><div class="skill-value">65</div>
-                                <div>Tir au revolver</div><div class="skill-value">25</div>
-                                <div>Tir au fusil</div><div class="skill-value">20</div>
-                                <div>Poker</div><div class="skill-value">30</div>
-                                <div>Lecture</div><div class="skill-value">10</div>
-                                <div>Equitation</div><div class="skill-value">15</div>
-                                <div>Fureur du survivant</div><div class="skill-value">50</div>
-                            </div>
+                            <div id="skills-container"></div>
+                            <div id="add-skills-form-container"></div>
                         </div>
-                         <div class="char-panel">
+                        <div class="char-panel">
+                            <h3>Mélodies de Banjo</h3>
+                            <div id="banjoMelodies-container"></div>
+                            <div id="add-banjoMelodies-form-container"></div>
+                        </div>
+                        <div class="char-panel">
                             <h3>Inventaire</h3>
-                            
                             <div class="money-panel">
                                 <span>Monnaie :</span>
                                 <div class="money-input-wrapper">
                                     <span>$</span>
-                                        <input type="number" id="character-money" value="100.00" step="0.01">
-                                    </div>
-                                    <button id="save-money-button" title="Sauvegarder la somme">✔</button>
+                                    <input type="number" id="character-money" value="100.00" step="0.01">
                                 </div>
-
-                                <h4>Équipement clé</h4>
-                                <div class="key-inventory-grid">
-                                    <div class="inventory-item-card">
-                                        <img src="images/cattleman_hat.jpg" alt="Chapeau Cattleman">
-                                        <span>Chapeau Cattleman</span>
-                                    </div>
-                                    <div class="inventory-item-card">
-                                        <img src="images/remington_new_model.png" alt="Remington New Model Army 1863">
-                                        <span>Remington Army New Model 1863</span>
-                                    </div>
-                                    <div class="inventory-item-card">
-                                        <img src="images/fusil_sharps.jpg" alt="Carabine Sharps">
-                                        <span>Carabine Sharps</span>
-                                    </div>
-                                    <div class="inventory-item-card">
-                                        <img src="images/morgan_horse.jpg" alt="Monture">
-                                        <span>Pilgrim, cheval Morgan, baie foncée</span>
-                                    </div>
-                                </div>
-
-                                <h4>Équipement divers</h4>
-                                <ul class="inventory-list">
-                                    <li>Vêtements neufs et robustes</li>
-                                    <li>Bottes de marche neuves</li>
-                                    <li>Ceinture, bretelles, bandana noir</li>
-                                    <li>Gilet en cuir, veste en laine</li>
-                                    <li>Couverture de voyage</li>
-                                    <li>Kit de cuisine (canteen, gobelet...)</li>
-                                    <li>Kit d'entretien pour armes</li>
-                                    <li>Couteau de chasse</li>
-                                    <li>Banjo dans un étui en peau</li>
-                                    <li>Munitions .44 et .50</li>
-                                    <li>Pierre d'ombre (artefact mystérieux)</li>
-                                </ul>
+                                <button id="save-money-button" title="Sauvegarder la somme">✔</button>
                             </div>
+                            <h4>Armes à feu</h4>
+                            <div id="inventory-firearms-container" class="inventory-category-grid"></div>
+                            <div id="add-inventory-firearms-form-container"></div>
+                            
+                            <h4>Vêtements</h4>
+                            <div id="inventory-clothing-container" class="inventory-category-grid"></div>
+                            <div id="add-inventory-clothing-form-container"></div>
+
+                            <h4>Compagnons</h4>
+                            <div id="inventory-companions-container" class="inventory-category-grid"></div>
+                            <div id="add-inventory-companions-form-container"></div>
+                            
+                            <h4>Équipement divers</h4>
+                            <div id="inventory-general-container"></div>
+                            <div id="add-inventory-general-form-container"></div>
+                        </div>
                     </div>
                 </div>
             </section>
