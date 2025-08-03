@@ -1,0 +1,723 @@
+/* --- Import de polices pour le style d'époque --- */
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Merriweather:wght@400;700&display=swap');
+@font-face {
+    font-family: 'HandWriting';
+    src: url('fonts/hand_writing.ttf');
+} 
+@font-face {
+    font-family: 'Religath';
+    src: url('fonts/religath.otf');
+}
+@font-face {
+    font-family: 'MadisonSauvage';
+    src: url('fonts/Madison Sauvage Script.otf');
+} 
+@font-face {
+    font-family: 'MrsSaintDelafield';
+    src: url('fonts/MrsSaintDelafield-Regular.ttf');
+} 
+
+
+/* --- Variables de couleurs --- */
+:root {
+    --paper-color: #fdf6e3; /* Couleur papier ancien */
+    --ink-color: #3a3a3a;      /* Couleur encre foncée, pas tout à fait noire */
+    --border-color: #d2c8b1; /* Couleur pour les bordures discrètes */
+    --accent-color: #8b4513;  /* Marron-Selle, pour les accents */
+    --highlight-color: #fbf1d1; /* Couleur de surlignage doux */
+    --delete-color: #a42a2a;
+}
+
+/* --- Style général du corps --- */
+body {
+    font-family: 'Lora', serif;
+    background-color: #e8e4d8;
+    color: var(--ink-color);
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+}
+
+/* --- Conteneur principal --- */
+.main-container {
+    max-width: 95vw; /* Légèrement élargi pour la nouvelle fiche */
+    margin: 0 auto;
+    background-color: var(--paper-color);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* --- En-tête de l'application --- */
+header {
+    text-align: center;
+    padding: 40px 20px;
+    border-bottom: 2px double var(--border-color);
+    background-image: url('images/background.png');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    z-index: 1;
+
+    /* NOUVEAU : On utilise Flexbox pour l'alignement */
+    display: flex;
+    justify-content: space-between; /* Pousse les éléments sur les côtés */
+    align-items: center;
+}
+
+/* NOUVEAU : Un conteneur vide à gauche pour bien centrer le titre */
+.header-left {
+    flex: 1;
+}
+.header-center {
+    flex: 2; /* Donne plus d'espace au titre */
+}
+/* NOUVEAU : Conteneur pour les actions à droite */
+.header-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Aligne les éléments à droite */
+    gap: 10px;
+}
+
+.header-actions {
+    margin-top: 0px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+.header-actions button {
+    font-family: 'Merriweather', serif;
+    display: flex; /* Pour centrer l'icône */
+    justify-content: center;
+    align-items: center;
+    width: 40px;  /* Taille carrée plus compacte */
+    height: 40px;
+    padding: 0;
+    background: none;
+    border: 1px solid var(--paper-color);
+    border-radius: 50%; /* Rend les boutons circulaires */
+    color: var(--paper-color);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.header-actions button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+/* NOUVEAU : Style pour les icônes SVG dans les boutons du header */
+.header-actions button svg {
+    width: 18px;
+    height: 18px;
+    fill: white;
+}
+
+/* NOUVEAU : Ajout d'un filtre sombre pour que le texte reste lisible */
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4); /* Filtre noir avec 40% d'opacité */
+    z-index: -1; /* Place le filtre entre l'image et le texte */
+}
+
+/* Assurez-vous que la couleur du texte de l'en-tête contraste bien */
+header h1, header p {
+    color: var(--paper-color); /* On utilise une couleur claire pour le texte */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8); /* Ajoute une ombre au texte pour la lisibilité */
+}
+
+header h1 {
+    font-family: 'Merriweather', serif;
+    font-weight: 700;
+    font-size: 2.5em;
+    color: #c29305;
+    margin: 0;
+}
+
+header p {
+    font-style: italic;
+    margin: 5px 0 0;
+    color: #e0dddd;
+}
+
+/* --- Barre de navigation --- */
+nav {
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+    border-bottom: 1px solid var(--border-color);
+}
+
+nav button {
+    font-family: 'Merriweather', serif;
+    background: none;
+    border: none;
+    padding: 15px 25px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: var(--accent-color);
+    transition: background-color 0.3s, color 0.3s;
+    border-bottom: 3px solid transparent;
+}
+
+nav button:hover {
+    background-color: var(--highlight-color);
+}
+
+nav button.active {
+    border-bottom: 3px solid var(--accent-color);
+    font-weight: bold;
+}
+
+/* --- Sections de contenu --- */
+.content-section {
+    padding: 25px 35px;
+    display: none; /* Cachées par défaut */
+}
+
+.content-section.active {
+    display: block; /* Affichée si active */
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 20px;
+}
+
+.section-header .button-group {
+    display: flex;
+    gap: 10px;
+}
+
+h2 {
+    font-family: 'Merriweather', serif;
+    font-size: 1.8em;
+    padding-bottom: 10px;
+    color: var(--accent-color);
+    margin: 0;
+}
+
+/* --- Styles pour les formulaires --- */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 15px;
+    align-items: center;
+}
+
+label {
+    font-weight: bold;
+    font-style: italic;
+}
+
+input[type="text"], input[type="number"], input[type="date"], textarea, select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    background-color: #fff;
+    font-family: 'Lora', serif;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+textarea { resize: vertical; min-height: 80px; }
+
+.button-group { display: flex; gap: 10px; }
+
+.action-button, .card-button {
+    font-family: 'Merriweather', serif;
+    padding: 10px 20px;
+    background-color: var(--accent-color);
+    color: var(--paper-color);
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+    text-align: center;
+}
+
+.action-button:hover { background-color: #6a340f; }
+
+/* --- Style pour les cartes (PNJ, Quêtes) --- */
+.card-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+.card {
+    background: var(--highlight-color);
+    border: 1px solid var(--border-color);
+    padding: 0; /* Le padding sera maintenant dans les sous-sections */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+}
+.card h3 { margin-top: 0; font-family: 'Merriweather', serif; }
+.card:hover .card-header {
+    background-color: var(--paper-color);
+}
+.card-header h3 {
+    margin: 0;
+    font-family: 'Merriweather', serif;
+}
+.card-header::after { /* Ajoute une flèche pour indiquer qu'on peut déplier */
+    content: '▼';
+    font-size: 0.8em;
+    color: var(--accent-color);
+    transition: transform 0.3s ease;
+}
+
+/* NOUVEAU : Style pour la partie détails (cachée par défaut) */
+.card-details {
+    display: none; /* Cachée par défaut */
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+.card-details p:first-child, .card-details div:first-child {
+    margin-top: 0;
+}
+.card-details p:last-child, .card-details div:last-child {
+    margin-bottom: 0;
+}
+.card-details ul { padding-left: 20px; margin-top: 10px; }
+
+/* NOUVEAU : Style pour le pied de page de la carte (boutons) */
+.card-footer {
+    padding: 10px 15px;
+    background-color: var(--paper-color);
+}
+
+/* NOUVEAU : Logique d'affichage quand la carte est dépliée */
+.card.is-expanded .card-details {
+    display: block;
+}
+.card.is-expanded .card-header {
+    border-bottom-style: dashed;
+}
+.card.is-expanded .card-header::after {
+    transform: rotate(180deg); /* La flèche pointe vers le haut */
+}
+.card-content { flex-grow: 1; }
+.status { font-style: italic; padding: 3px 8px; border-radius: 4px; display: inline-block; font-size: 0.9em; }
+.status-ami { background-color: #d4edda; color: #155724; }
+.status-ennemi { background-color: #f8d7da; color: #721c24; }
+.status-neutre { background-color: #e2e3e5; color: #383d41;}
+.status-en-cours { background-color: #fff3cd; color: #856404; }
+.status-reussie { background-color: #d1ecf1; color: #0c5460; }
+.status-echouee { background-color: #f5c6cb; color: #721c24; }
+.card-button {
+    display: flex; /* Pour centrer l'icône */
+    justify-content: center;
+    align-items: center;
+    background-color: var(--paper-color);
+    border: 1px solid var(--border-color);
+    color: var(--accent-color); /* La couleur du texte sera héritée par l'icône */
+    width: 32px;  /* Taille carrée */
+    height: 32px;
+    padding: 0; /* Plus besoin de padding de texte */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.card-button:hover {
+    background-color: var(--highlight-color);
+    border-color: var(--accent-color);
+}
+
+.delete-button {
+    color: var(--delete-color); /* Couleur rouge pour l'icône poubelle */
+}
+.delete-button:hover {
+    background-color: var(--delete-color);
+    color: var(--paper-color); /* L'icône devient blanche au survol */
+}
+
+/* NOUVEAU : Style pour les icônes SVG dans les boutons */
+.card-button svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor; /* L'icône prend la couleur du texte de son parent (le bouton) */
+}
+
+/* --- Styles pour la Fiche de Personnage "Épique" --- */
+.character-sheet { display: grid; grid-template-columns: 1fr 1.5fr; gap: 30px; }
+.char-left-col, .char-right-col { display: flex; flex-direction: column; gap: 20px; }
+.char-portrait {
+    width: 100%;
+    height: 300px;
+    background-color: var(--highlight-color);
+    border: 1px solid var(--border-color);
+    /* Remplacez l'URL par un lien vers une image de votre personnage */
+    background-image: url('images/character.png');
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.char-panel { background-color: var(--highlight-color); border: 1px solid var(--border-color); padding: 15px 20px; }
+.char-panel h3 { font-family: 'Merriweather', serif; color: var(--accent-color); border-bottom: 1px solid var(--border-color); padding-bottom: 8px; margin-top: 0; margin-bottom: 15px; font-size: 1.4em; }
+.char-panel p { margin-bottom: 0; }
+.char-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.char-info-grid span { display: block; }
+.char-info-grid span:first-child { font-weight: bold; font-style: italic; }
+.stats-grid, .skills-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 8px; }
+.stats-grid > div, .skills-grid > div { padding-bottom: 8px; border-bottom: 1px dashed var(--border-color); }
+.stats-grid > div:last-child, .skills-grid > div:last-child { border-bottom: none; }
+.stat-value, .skill-value { font-weight: bold; font-family: 'Merriweather', serif; text-align: right; }
+.inventory-list { list-style: none; padding: 0; margin: 0; }
+.inventory-list li { padding: 5px 0; border-bottom: 1px dashed var(--border-color); }
+.inventory-list li:last-child { border-bottom: none; }
+
+/* --- Style pour le journal --- */
+.journal-entry { 
+    border-bottom: 1px solid var(--border-color); 
+    padding: 20px 15px; /* Padding ajusté */
+    background-color: var(--paper-color); /* Fond de page pour chaque entrée */
+    margin-bottom: 15px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.journal-entry:last-child { border-bottom: 1px solid var(--border-color); }
+.journal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+.journal-date { 
+    font-weight: bold; 
+    font-size: 2em; 
+    font-family: 'Religath', serif; 
+    color: var(--accent-color); 
+    margin: 0;
+    border-bottom: 1px dashed var(--border-color);
+    padding-bottom: 5px;
+}
+
+/* NOUVEAU : Style pour le contenu du journal (police manuscrite) */
+.journal-content-display {
+    font-family: 'Pinyon Script', cursive; /* Application de la police manuscrite */
+    font-size: 1.5em; /* Taille de police plus grande pour la lisibilité */
+    color: #4a4033; /* Couleur d'encre un peu sépia */
+    line-height: 1.6;
+}
+.journal-content-display h1, .journal-content-display h2, .journal-content-display h3 {
+    font-family: 'Merriweather', serif;
+    color: var(--accent-color);
+}
+.journal-content-display ul, .journal-content-display ol {
+    padding-left: 25px;
+}
+
+
+/* --- Style pour la fenêtre modale --- */
+.modal-overlay { 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: rgba(0, 0, 0, 0.6); 
+    display: none; 
+    justify-content: center; 
+    align-items: center; 
+    z-index: 10000; 
+}
+.modal-overlay.active { display: flex; }
+.modal-content { 
+    background: var(--paper-color); 
+    padding: 55px; /* MODIFIÉ : Un peu plus d'aération */
+    border: 2px solid var(--accent-color); 
+    width: 90%; 
+    max-width: 1200px; /* MODIFIÉ : Fenêtre plus large */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3); 
+}
+.modal-header { display: flex; justify-content: space-between; align-items: center; }
+.modal-close-button { font-size: 2em; font-weight: bold; cursor: pointer; background: none; border: none; color: var(--ink-color); }
+.modal-form .form-grid { 
+    grid-template-columns: 150px 1fr; 
+    gap: 30px; /* MODIFIÉ : Plus d'espace entre les lignes */
+}
+/* NOUVEAU : Règle spécifique pour les textareas dans la modale */
+.modal-form textarea {
+    min-height: 140px; /* MODIFIÉ : Zones de texte plus hautes */
+}
+
+.dice-roller-button {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 60px;
+    height: 60px;
+    background-color: var(--accent-color);
+    color: var(--paper-color);
+    border-radius: 50%;
+    border: 2px solid var(--paper-color);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 999;
+    transition: transform 0.2s ease-in-out;
+}
+.dice-roller-button:hover {
+    transform: scale(1.1);
+}
+.dice-roller-button svg {
+    width: 32px;
+    height: 32px;
+    fill: var(--paper-color);
+}
+
+.dice-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    cursor: pointer;
+}
+.dice-overlay.show {
+    display: flex;
+}
+.dice-cube {
+    width: 150px;
+    height: 150px;
+    background-color: var(--paper-color);
+    border: 3px solid var(--accent-color);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4em;
+    font-family: 'Merriweather', serif;
+    color: var(--accent-color);
+    font-weight: bold;
+}
+.dice-cube.rolling {
+    animation: tumble 1s ease-out;
+}
+@keyframes tumble {
+    0% { transform: scale(0.5) rotate(0deg); }
+    50% { transform: scale(1.1) rotate(270deg); }
+    100% { transform: scale(1) rotate(360deg); }
+}
+
+.pdf-layout {
+    display: grid;
+    grid-template-columns: 250px 1fr; /* Une colonne pour la liste, le reste pour le viseur */
+    gap: 25px;
+    height: 75vh; /* Hauteur de 75% de la fenêtre visible */
+}
+
+.pdf-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pdf-list a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: var(--accent-color);
+    font-family: 'Merriweather', serif;
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.2s;
+}
+
+.pdf-list a:hover {
+    background-color: var(--highlight-color);
+}
+
+.pdf-viewer-container {
+    border: 1px solid var(--border-color);
+}
+
+#pdf-viewer {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+.status-allie { background-color: #cce5ff; color: #004085; }
+.status-ennemi-mineur { background-color: #f8d7da; color: #721c24; }
+.status-ennemi-majeur { background-color: #d9534f; color: #fff; }
+.status-mort { background-color: #6c757d; color: #fff; }
+
+.order-buttons { margin-left: auto; }
+.order-button { background: none; border: 1px solid var(--border-color); color: var(--accent-color); font-size: 1.2em; cursor: pointer; width: 30px; height: 30px; line-height: 1; }
+.order-button:hover { background-color: var(--border-color); }
+.order-button:disabled { color: #ccc; cursor: not-allowed; }
+
+.money-panel {
+display: flex;
+align-items: center;
+gap: 10px;
+background-color: var(--paper-color);
+padding: 10px;
+border: 1px solid var(--border-color);
+margin-bottom: 20px;
+font-size: 1.2em;
+font-family: 'Merriweather', serif;
+}
+.money-panel > span {
+    font-weight: bold;
+}
+.money-input-wrapper {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--ink-color);
+    flex-grow: 1;
+}
+#character-money {
+    border: none;
+    background: none;
+    font-family: 'Merriweather', serif;
+    font-size: 1em;
+    width: 100%;
+}
+/* Cache les flèches de l'input number */
+#character-money::-webkit-outer-spin-button,
+#character-money::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+#character-money[type=number] {
+    
+}
+
+#save-money-button {
+    background: none;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s, color 0.2s;
+}
+#save-money-button:hover {
+    background-color: var(--accent-color);
+    color: var(--paper-color);
+}
+#save-money-button.saved {
+    background-color: #28a745;
+    border-color: #28a745;
+    color: white;
+}
+
+
+/* Style pour la grille d'objets clés */
+.char-panel h4 {
+    font-family: 'Merriweather', serif;
+    color: var(--accent-color);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 5px;
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+.key-inventory-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 objets par ligne */
+    gap: 15px;
+    text-align: center;
+}
+.inventory-item-card {
+    background-color: var(--paper-color);
+    border: 1px solid var(--border-color);
+    padding: 10px;
+}
+.inventory-item-card img {
+    width: 100%;
+    height: 80px;
+    object-fit: contain; /* Assure que l'image ne soit pas déformée */
+    margin-bottom: 10px;
+}
+.inventory-item-card span {
+    font-size: 0.9em;
+    font-style: italic;
+}
+
+/* Style de la liste d'inventaire divers */
+.inventory-list {
+    font-size: 0.9em;
+}
+
+.tox-tinymce-aux {
+    z-index: 10001 !important;
+}
+
+.storage-usage {
+    display: inline-block;
+    margin-top: 0px;
+    padding: 5px 10px;
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 5px;
+    font-size: 0.8em;
+    font-style: italic;
+    text-shadow: none;
+}
+
+.map-container {
+    position: relative;
+    width: 100%;
+    border: 1px solid var(--border-color);
+}
+.map-image {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+.route-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.route-line {
+    fill: none;
+    stroke: var(--delete-color);
+    stroke-width: 10; /* MODIFIÉ : Trait beaucoup plus épais */
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    filter: drop-shadow(0 0 10px rgba(0,0,0,0.7)); /* Ombre plus prononcée */
+}
+
+.route-point {
+    stroke: var(--paper-color);
+    stroke-width: 5; /* MODIFIÉ : Contour plus épais */
+}
+
+.route-point.capital {
+    fill: #c9b037; /* Or */
+}
+.route-point.major-city {
+    fill: var(--accent-color);
+}
+.route-point.small-town {
+    fill: #6c757d; /* Gris */
+}
+
+.route-label {
+    font-family: 'Merriweather', serif;
+    fill: var(--ink-color);
+    paint-order: stroke;
+    stroke: var(--paper-color);
+    stroke-width: 8px; /* MODIFIÉ : Contour plus épais pour la lisibilité */
+}
+.route-label.capital {
+    font-size: 40px; /* MODIFIÉ : Police beaucoup plus grande */
+    font-weight: bold;
+}
+.route-label.major-city {
+    font-size: 35px; /* MODIFIÉ : Police beaucoup plus grande */
+}
+.route-label.small-town {
+    font-size: 30px; /* MODIFIÉ : Police beaucoup plus grande */
+    font-style: italic;
+}
