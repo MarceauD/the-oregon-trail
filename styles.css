@@ -393,8 +393,8 @@ textarea { resize: vertical; min-height: 80px; }
 
 /* NOUVEAU : Style pour le contenu du journal (police manuscrite) */
 .journal-content-display {
-    font-family: 'Pinyon Script', cursive; /* Application de la police manuscrite */
-    font-size: 1.5em; /* Taille de police plus grande pour la lisibilité */
+    font-family: 'Merriweather', cursive; /* Application de la police manuscrite */
+    font-size: 1em; /* Taille de police plus grande pour la lisibilité */
     color: #4a4033; /* Couleur d'encre un peu sépia */
     line-height: 1.6;
 }

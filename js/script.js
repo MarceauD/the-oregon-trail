@@ -282,7 +282,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 [list[index], list[index + 1]] = [list[index + 1], list[index]];
             }
 
-            saveState();
+            saveGameData();
             renderAll();
         }
 
