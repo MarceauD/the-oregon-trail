@@ -103,13 +103,13 @@ document.addEventListener('DOMContentLoaded', () => {
             ],
             // capital, major-city, small-town
             route: [
-                { city: "Harrisburg",  x: 3164, y: 1013, type: "major-city",     labelPosition: "top-right" },
-                { city: "Lewistown",   x: 3132, y: 997, type: "small-town",  labelPosition: "top" },
-                { city: "Mount Union", x: 3094, y: 1001, type: "small-town",  labelPosition: "bottom-right" },
-                { city: "",  x: 3084, y: 999, type: "small-town",  labelPosition: "top-right" },
-                { city: "Altoona",     x: 3068, y: 996, type: "small-town",  labelPosition: "top-left" },
-                { city: "Ebensburg",     x: 3038, y: 1020, type: "small-town",  labelPosition: "bottom" },
-                { city: "Johnstown",     x: 3020, y: 1026, type: "small-town",  labelPosition: "top-left" },
+                {id: 1, city: "Harrisburg",  x: 3164, y: 1013, type: "major-city",     labelPosition: "top-right" },
+                {id : 2, city: "Lewistown",   x: 3132, y: 997, type: "small-town",  labelPosition: "top" },
+                {id : 3, city: "Mount Union", x: 3094, y: 1001, type: "small-town",  labelPosition: "bottom-right" },
+                { id : 4,city: "",  x: 3084, y: 999, type: "small-town",  labelPosition: "top-right" },
+                { id : 5,city: "Altoona",     x: 3068, y: 996, type: "small-town",  labelPosition: "top-left" },
+                { id : 6,city: "Ebensburg",     x: 3038, y: 1020, type: "small-town",  labelPosition: "bottom" },
+                { id : 7,city: "Johnstown",     x: 3020, y: 1026, type: "small-town",  labelPosition: "top-left" },
             ]
         };
 
@@ -352,6 +352,47 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             
             await saveGameData();
+        });
+
+        //AJOUT D'UNE VILLE A LA ROUTE
+        const addCityForm = document.getElementById('add-city-form');
+
+        addCityForm.addEventListener('submit', async (event) => {
+            event.preventDefault(); // Empêche le rechargement de la page
+
+            // 1. Récupérer les valeurs du formulaire
+            const x = parseInt(document.getElementById('city-coord-x').value, 10);
+            const y = parseInt(document.getElementById('city-coord-y').value, 10);
+            const cityName = document.getElementById('city-name').value.trim();
+            const cityType = document.getElementById('city-type').value;
+            const labelPosition = document.getElementById('city-label-pos').value;
+
+            // 2. Valider les coordonnées
+            if (isNaN(x) || isNaN(y)) {
+                alert("Les coordonnées X et Y doivent être des nombres.");
+                return;
+            }
+
+            // 3. Créer le nouvel objet "ville"
+            const newCity = {
+                id: Date.now(), // ID unique basé sur l'heure actuelle
+                city: cityName,
+                x: x,
+                y: y,
+                type: cityType,
+                labelPosition: labelPosition
+            };
+
+            // 4. Ajouter à l'état du jeu et sauvegarder
+            if (!gameState.route) gameState.route = [];
+            gameState.route.push(newCity);
+            await saveGameData();
+
+            // 5. Redessiner la carte et vider le formulaire
+            renderRoute();
+            addCityForm.reset();
+            
+            console.log("Nouvelle ville ajoutée :", newCity);
         });
 
 

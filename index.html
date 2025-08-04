@@ -178,6 +178,47 @@ Eddy n'a pas supporté cette situation et il a pris la fuite de la maison des Du
                     <img src="images/usa_1866.jpg" alt="Carte des États-Unis, 1866" class="map-image">
                     <svg id="route-svg" class="route-overlay" viewBox="0 0 4000 2537"></svg>
                 </div>
+                <div class="add-city-panel">
+                    <h3>Ajouter une étape au trajet</h3>
+                    <form id="add-city-form" class="form-grid-map">
+                        <div>
+                            <label for="city-coord-x">Coordonnée X :</label>
+                            <input type="number" id="city-coord-x" required>
+                        </div>
+                        <div>
+                            <label for="city-coord-y">Coordonnée Y :</label>
+                            <input type="number" id="city-coord-y" required>
+                        </div>
+                        <div>
+                            <label for="city-name">Nom de la ville :</label>
+                            <input type="text" id="city-name" placeholder="(Optionnel)">
+                        </div>
+                        <div>
+                            <label for="city-type">Type :</label>
+                            <select id="city-type">
+                                <option value="major-city">Ville majeure</option>
+                                <option value="small-town">Petite ville</option>
+                                <option value="capital">Capitale</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="city-label-pos">Position du nom :</label>
+                            <select id="city-label-pos">
+                                <option value="bottom">En bas</option>
+                                <option value="top">En haut</option>
+                                <option value="right">À droite</option>
+                                <option value="left">À gauche</option>
+                                <option value="top-right">En haut à droite</option>
+                                <option value="top-left">En haut à gauche</option>
+                                <option value="bottom-right">En bas à droite</option>
+                                <option value="bottom-left">En bas à gauche</option>
+                            </select>
+                        </div>
+                        <div>
+                            <button type="submit" class="action-button">Ajouter le point</button>
+                        </div>
+                    </form>
+                </div>
             </section>
 
             <section id="tables" class="content-section">

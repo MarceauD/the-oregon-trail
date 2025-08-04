@@ -892,6 +892,29 @@ font-family: 'Merriweather', serif;
     max-width: 700px;
 }
 
+.add-city-panel {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px double var(--border-color);
+}
+.form-grid-map {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    align-items: end; /* Aligne les éléments sur la ligne de base */
+}
+.form-grid-map div {
+    display: flex;
+    flex-direction: column;
+}
+.form-grid-map label {
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+.form-grid-map button {
+    height: 40px; /* Aligne la hauteur avec les inputs */
+}
+
 @media (max-width: 768px) {
 
     /* On réduit les marges générales pour gagner de la place */
