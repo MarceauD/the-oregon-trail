@@ -132,11 +132,45 @@ Eddy n'a pas supporté cette situation et il a pris la fuite de la maison des Du
                 <div class="section-header">
                     <h2>Journal de Bord</h2>
                     <div class="button-group">
+                        <button class="action-button" id="open-quick-update-button">Mise à Jour Rapide</button>
+                        <button class="action-button" onclick="openQuickView('character')">Voir Fiche Perso</button>
+                        <button class="action-button" onclick="openQuickView('tables')">Voir Tables</button>
                         <button class="action-button" id="export-journal-button">Exporter</button>
                         <button class="action-button" id="add-journal-button">Nouvelle Entrée</button>
                     </div>
                 </div>
                 <div id="journal-content"></div>
+
+                <div id="quick-update-modal" class="quick-view-modal">
+                    <div id="quick-update-header" class="quick-view-header">
+                        <h3>Mise à Jour Rapide</h3>
+                        <button id="quick-update-close-button" class="quick-view-close-button">&times;</button>
+                    </div>
+                    <div class="quick-view-content">
+                        <div class="quick-update-columns">
+                            <div class="quick-update-column">
+                                <label for="quick-update-npc-select">Mettre à jour un PNJ :</label>
+                                <select id="quick-update-npc-select">
+                                    <option value="">-- Choisir un PNJ --</option>
+                                </select>
+                                <div id="quick-update-npc-form" class="quick-update-form">
+                                    <textarea id="quick-update-npc-textarea" placeholder="Ajouter un fait marquant..."></textarea>
+                                    <button class="action-button" onclick="handleQuickUpdate('npc')">Ajouter</button>
+                                </div>
+                            </div>
+                            <div class="quick-update-column">
+                                <label for="quick-update-thread-select">Mettre à jour un Thread :</label>
+                                <select id="quick-update-thread-select">
+                                    <option value="">-- Choisir un Thread --</option>
+                                </select>
+                                <div id="quick-update-thread-form" class="quick-update-form">
+                                    <textarea id="quick-update-thread-textarea" placeholder="Ajouter un événement..."></textarea>
+                                    <button class="action-button" onclick="handleQuickUpdate('thread')">Ajouter</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section id="map" class="content-section">
@@ -168,6 +202,15 @@ Eddy n'a pas supporté cette situation et il a pris la fuite de la maison des Du
                 </div>
             </section>
         </main>
+    </div>
+
+    <div id="quick-view-modal" class="quick-view-modal">
+        <div id="quick-view-header" class="quick-view-header">
+            <h3 id="quick-view-title"></h3>
+            <button id="quick-view-close-button" class="quick-view-close-button">&times;</button>
+        </div>
+        <div id="quick-view-content" class="quick-view-content">
+            </div>
     </div>
 
     <div id="modal-overlay" class="modal-overlay">

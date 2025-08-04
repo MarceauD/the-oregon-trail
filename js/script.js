@@ -142,6 +142,189 @@ document.addEventListener('DOMContentLoaded', () => {
         const moneyInput = document.getElementById('character-money');
         const saveMoneyButton = document.getElementById('save-money-button');
 
+
+        function makeDraggable(modalElement, headerElement) {
+            let isDragging = false;
+            let offsetX, offsetY;
+
+            headerElement.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                // Calcule le décalage entre le coin de la fenêtre et le clic de la souris
+                offsetX = e.clientX - modalElement.offsetLeft;
+                offsetY = e.clientY - modalElement.offsetTop;
+                
+                // Change le curseur pour indiquer le déplacement
+                headerElement.style.cursor = 'grabbing';
+                
+                // Empêche la sélection de texte pendant le glissement
+                e.preventDefault();
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+
+                let newTop = e.clientY - offsetY;
+                let newLeft = e.clientX - offsetX;
+
+                // Contrainte pour que la fenêtre ne sorte pas par le haut
+                if (newTop < 0) {
+                    newTop = 0;
+                }
+
+                modalElement.style.left = `${newLeft}px`;
+                modalElement.style.top = `${newTop}px`;
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+                headerElement.style.cursor = 'move';
+            });
+        }
+
+        // PANNEAU DE MISE A JOUR RAPIDE DES PNJ/THREADS DEPUIS JOURNAL
+        const quickUpdateModal = document.getElementById('quick-update-modal');
+        const quickUpdateHeader = document.getElementById('quick-update-header');
+        const openQuickUpdateBtn = document.getElementById('open-quick-update-button');
+        const closeQuickUpdateBtn = document.getElementById('quick-update-close-button');
+        const npcSelect = document.getElementById('quick-update-npc-select');
+        const threadSelect = document.getElementById('quick-update-thread-select');
+        const npcUpdateForm = document.getElementById('quick-update-npc-form');
+        const threadUpdateForm = document.getElementById('quick-update-thread-form');
+
+        openQuickUpdateBtn.addEventListener('click', () => {
+            populateQuickUpdateDropdowns();
+            quickUpdateModal.classList.add('active');
+        });
+
+        // Ferme la modale
+        closeQuickUpdateBtn.addEventListener('click', () => {
+            quickUpdateModal.classList.remove('active');
+        });
+
+        function populateQuickUpdateDropdowns() {
+            // PNJ
+            npcSelect.innerHTML = '<option value="">-- Choisir un PNJ --</option>'; // Vider et remettre l'option par défaut
+            gameState.npcs.forEach(npc => {
+                const option = document.createElement('option');
+                option.value = npc.id;
+                option.textContent = npc.name;
+                npcSelect.appendChild(option);
+            });
+
+            // Threads
+            threadSelect.innerHTML = '<option value="">-- Choisir un Thread --</option>';
+            gameState.threads.forEach(thread => {
+                const option = document.createElement('option');
+                option.value = thread.id;
+                option.textContent = thread.title;
+                threadSelect.appendChild(option);
+            });
+        }
+
+        // Affiche le formulaire correspondant quand on sélectionne un PNJ
+        npcSelect.addEventListener('change', () => {
+            if (npcSelect.value) {
+                npcUpdateForm.style.display = 'flex';
+            } else {
+                npcUpdateForm.style.display = 'none';
+            }
+        });
+
+        // Affiche le formulaire correspondant quand on sélectionne un Thread
+        threadSelect.addEventListener('change', () => {
+            if (threadSelect.value) {
+                threadUpdateForm.style.display = 'flex';
+            } else {
+                threadUpdateForm.style.display = 'none';
+            }
+        });
+
+        // Gère l'ajout de l'information quand on clique sur "Ajouter"
+        window.handleQuickUpdate = async function(type) {
+            let success = false;
+            if (type === 'npc') {
+                const npcId = parseInt(npcSelect.value, 10);
+                const npc = gameState.npcs.find(n => n.id === npcId);
+                const textarea = document.getElementById('quick-update-npc-textarea');
+                const newFact = textarea.value.trim();
+
+                if (npc && newFact) {
+                    // Ajoute le nouveau fait marquant avec un saut de ligne
+                    npc.faitsMarquants += (npc.faitsMarquants ? '\n' : '') + newFact;
+                    await saveGameData();
+                    textarea.value = ''; // Vide le champ
+                    npcUpdateForm.style.display = 'none'; // Cache le formulaire
+                    npcSelect.value = ''; // Réinitialise la liste
+                    alert(`Fait marquant ajouté à ${npc.name} !`);
+                    success = true;
+                }
+            } else if (type === 'thread') {
+                const threadId = parseInt(threadSelect.value, 10);
+                const thread = gameState.threads.find(t => t.id === threadId);
+                const textarea = document.getElementById('quick-update-thread-textarea');
+                const newEvent = textarea.value.trim();
+
+                if (thread && newEvent) {
+                    if (!thread.events) thread.events = []; // S'assure que le tableau existe
+                    thread.events.push(newEvent);
+                    await saveGameData();
+                    textarea.value = '';
+                    threadUpdateForm.style.display = 'none';
+                    threadSelect.value = '';
+                    alert(`Événement ajouté à ${thread.title} !`);
+                    success = true;
+                }
+            }
+
+            if (success) {
+                quickUpdateModal.classList.remove('active');
+            }
+        }
+
+        makeDraggable(quickUpdateModal, quickUpdateHeader);
+
+        // FENETRE MODALE DE VUE RAPIDE DEPUIS JOURNAL
+        const quickViewModal = document.getElementById('quick-view-modal');
+        const quickViewTitle = document.getElementById('quick-view-title');
+        const quickViewContent = document.getElementById('quick-view-content');
+        const quickViewCloseBtn = document.getElementById('quick-view-close-button');
+        
+        window.openQuickView = function(type) {
+            quickViewContent.innerHTML = ''; // On vide le contenu précédent
+
+            if (type === 'character') {
+                quickViewTitle.textContent = 'Fiche de Personnage';
+                // On clone le contenu de la fiche de personnage pour l'afficher
+                const characterSheetContent = document.getElementById('character').cloneNode(true);
+                characterSheetContent.classList.add('active');
+                quickViewContent.appendChild(characterSheetContent);
+            } else if (type === 'tables') {
+                quickViewTitle.textContent = 'Tables Aléatoires';
+                // On clone le contenu de l'onglet des tables
+                const tablesContent = document.getElementById('tables').cloneNode(true);
+                tablesContent.classList.add('active');
+                quickViewContent.appendChild(tablesContent);
+            }
+
+            quickViewModal.classList.add('active');
+        }
+
+        function closeQuickView() {
+            quickViewModal.classList.remove('active');
+            quickViewContent.innerHTML = '';
+        }
+
+        quickViewCloseBtn.addEventListener('click', closeQuickView);
+
+        // Rendre la fenêtre déplaçable (drag and drop)
+        const quickViewHeader = document.getElementById('quick-view-header');
+        makeDraggable(quickViewModal, quickViewHeader);
+
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+            quickViewHeader.style.cursor = 'move';
+        });
+
         // Initialiser la valeur au chargement de la page
         if (gameState.character && gameState.character.money !== undefined) {
             moneyInput.value = parseFloat(gameState.character.money).toFixed(2);
@@ -471,6 +654,7 @@ document.addEventListener('DOMContentLoaded', () => {
             renderThreads();
             renderJournal();
         }
+
 
         window.moveItem = async function(type, id, direction) {
             const list = gameState[type];
@@ -858,6 +1042,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('thread-container').addEventListener('click', handleCardToggle);
         
 
+        
         modalOverlay.addEventListener('click', (e) => { if (e.target === modalOverlay) { closeModal(); } });
 
         // --- LOGIQUE DU LANCEUR DE DÉ ---

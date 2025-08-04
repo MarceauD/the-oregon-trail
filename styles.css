@@ -147,6 +147,8 @@ header p {
 /* --- Barre de navigation --- */
 nav {
     display: flex;
+    position: relative; /* Nécessaire pour que z-index fonctionne */
+    z-index: 900;/* Permet aux boutons de passer à la ligne */
     justify-content: center;
     background-color: #fff;
     border-bottom: 1px solid var(--border-color);
@@ -808,5 +810,141 @@ font-family: 'Merriweather', serif;
 .route-label.small-town {
     font-size: 30px; /* MODIFIÉ : Police beaucoup plus grande */
     font-style: italic;
+}
+
+.quick-view-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 800px;
+    height: 80vh; /* 80% de la hauteur de la fenêtre */
+    background-color: var(--paper-color);
+    border: 2px solid var(--accent-color);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+    z-index: 10001; /* Au-dessus de tout, même de la modale principale */
+    display: none; /* Caché par défaut */
+    flex-direction: column;
+    z-index: 11000; /* La valeur la plus haute pour être toujours au-dessus */
+}
+.quick-view-modal.active {
+    display: flex;
+}
+.quick-view-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: var(--highlight-color);
+    border-bottom: 1px solid var(--border-color);
+    cursor: move; /* Permet de voir qu'on peut déplacer la fenêtre */
+}
+.quick-view-header h3 {
+    margin: 0;
+    font-family: 'Merriweather', serif;
+}
+.quick-view-close-button {
+    font-size: 1.5em;
+    font-weight: bold;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+.quick-view-content {
+    padding: 15px;
+    overflow-y: auto; /* Ajoute une barre de défilement si le contenu est trop grand */
+    flex-grow: 1;
+}
+
+.quick-update-panel {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px double var(--border-color);
+}
+.quick-update-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+.quick-update-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.quick-update-column label {
+    font-family: 'Merriweather', serif;
+    font-weight: bold;
+}
+.quick-update-form {
+    display: none; /* Caché par défaut */
+    flex-direction: column;
+    gap: 10px;
+}
+.quick-update-form textarea {
+    min-height: 100px;
+}
+.quick-update-form button {
+    align-self: flex-end; /* Aligne le bouton à droite */
+}
+#quick-update-modal {
+    height: auto; /* La hauteur s'adapte au contenu */
+    max-width: 700px;
+}
+
+@media (max-width: 768px) {
+
+    /* On réduit les marges générales pour gagner de la place */
+    body {
+        padding: 5px;
+    }
+    .content-section {
+        padding: 15px;
+    }
+
+    /* Le header devient plus compact */
+    header {
+        padding: 20px 10px;
+        flex-direction: column; /* Les éléments s'empilent verticalement */
+        gap: 15px;
+    }
+    .header-left, .header-right {
+        /* On retire les flex pour que les éléments se centrent naturellement */
+        flex: none; 
+    }
+
+    /* La barre de navigation s'adapte pour ne pas déborder */
+    nav {
+        flex-wrap: wrap; 
+        position: relative; /* Nécessaire pour que z-index fonctionne */
+        z-index: 900;/* Permet aux boutons de passer à la ligne */
+    }
+    nav button {
+        font-size: 0.9em;
+        padding: 12px 10px;
+    }
+
+    /* La fiche de personnage passe sur une seule colonne */
+    .character-sheet {
+        grid-template-columns: 1fr; /* Une seule colonne au lieu de deux */
+    }
+
+    /* Les cartes PNJ et Threads prennent toute la largeur */
+    .card-container {
+        grid-template-columns: 1fr; /* Une seule carte par ligne */
+    }
+    
+    /* La fenêtre modale prend plus de place sur l'écran */
+    .modal-content {
+        width: 95%;
+        padding: 20px;
+    }
+    .modal-form .form-grid {
+        grid-template-columns: 1fr; /* Les labels passent au-dessus des champs */
+    }
+    .modal-form label {
+        padding-top: 0;
+        margin-bottom: -10px; /* Réduit l'espace entre le label et son champ */
+    }
 }
 
