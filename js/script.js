@@ -1,13 +1,26 @@
 document.addEventListener('DOMContentLoaded', () => {
-            tinymce.init({
-                selector: '#journal-entry-text',
-                license_key: 'gpl',
-                plugins: 'lists link image table code help wordcount',
-                toolbar: 'undo redo | blocks | bold italic underline | bullist numlist | link image | alignleft aligncenter alignright | code',
-                language: 'fr_FR',
-                menubar: false,
-                content_style: `body { font-family: 'Lora', serif; font-size: 16px; line-height: 1.6; } img { max-width: 100%; height: auto; display: block; margin: 10px 0; }`
-            });
+        tinymce.init({
+            selector: '#journal-entry-text',
+            license_key: 'gpl',
+            plugins: 'lists link image table code help wordcount',
+            toolbar: 'undo redo | blocks | bold italic underline | bullist numlist | link image | alignleft aligncenter alignright | code',
+            language: 'fr_FR',
+            menubar: false,
+            content_style: `body { font-family: 'Lora', serif; font-size: 16px; line-height: 1.6; } img { max-width: 100%; height: auto; display: block; margin: 10px 0; }`
+        });
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCx9A30knmNxaOpm9XNTD7zLKSFop9cJFg",
+            authDomain: "the-oregon-trail-f6892.firebaseapp.com",
+            projectId: "the-oregon-trail-f6892",
+            storageBucket: "the-oregon-trail-f6892.firebasestorage.app",
+            messagingSenderId: "180682046262",
+            appId: "1:180682046262:web:bb6ce086568bae31e0d197"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        const saveDocRef = db.collection('saves').doc('mainSave');
 
         // --- 1. GESTION DE L'ÉTAT (LES DONNÉES DU JEU) ---
         const defaultState = {
@@ -105,14 +118,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 
 
         async function saveGameData() {
-            // On sauvegarde chaque "tiroir" de données séparément
-            await localforage.setItem('character', gameState.character);
-            await localforage.setItem('npcs', gameState.npcs);
-            await localforage.setItem('threads', gameState.threads);
-            await localforage.setItem('journal', gameState.journal);
-            await localforage.setItem('route', gameState.route);
-            console.log("Partie sauvegardée avec LocalForage !");
-            updateStorageUsageDisplay();
+            await saveDocRef.set(gameState);
+            console.log("Partie sauvegardée sur Firebase !");   
+        }
+
+        async function loadGameData() {
+            const doc = await saveDocRef.get();
+            if (doc.exists) {
+                console.log("Données chargées depuis Firebase.");
+                return doc.data();
+            } else {
+                console.log("Aucune sauvegarde Firebase trouvée.");
+                return null; // Aucune sauvegarde n'existe
+            }
         }
 
       
@@ -123,9 +141,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const journalContent = document.getElementById('journal-content');
         const moneyInput = document.getElementById('character-money');
         const saveMoneyButton = document.getElementById('save-money-button');
-        const exportButton = document.getElementById('export-save-button');
-        const importButton = document.getElementById('import-save-button');
-        const importFileInput = document.getElementById('import-file-input');
 
         // Initialiser la valeur au chargement de la page
         if (gameState.character && gameState.character.money !== undefined) {
@@ -152,76 +167,19 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 alert("Veuillez entrer une valeur numérique valide.");
             }
-        });
-
-        async function exportFullSave() {
-            console.log("Exportation de la sauvegarde...");
-            const saveData = {};
-            const keys = await localforage.keys();
             
-            for (const key of keys) {
-                saveData[key] = await localforage.getItem(key);
-            }
-
-            const saveDataString = JSON.stringify(saveData, null, 2);
-            const blob = new Blob([saveDataString], {type: 'application/json'});
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `sauvegarde_oregon_trail_${new Date().toISOString().slice(0, 10)}.json`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-        }
-
-        exportButton.addEventListener('click', exportFullSave);
-
-        importButton.addEventListener('click', () => {
-            if (confirm("Attention : Importer une sauvegarde écrasera votre partie actuelle sur cet ordinateur. Continuer ?")) {
-                importFileInput.click();
-            }
+            await saveGameData();
         });
 
-        importFileInput.addEventListener('change', (event) => {
-            const file = event.target.files[0];
-            if (!file) return;
-
-            const reader = new FileReader();
-            reader.onload = async (e) => {
-                try {
-                    const importedData = JSON.parse(e.target.result);
-                    // On vérifie que les données semblent valides
-                    if (importedData.character && importedData.npcs) {
-                        // On efface l'ancienne base de données
-                        await localforage.clear();
-                        // On importe les nouvelles données, clé par clé
-                        for (const key in importedData) {
-                            if (Object.hasOwnProperty.call(importedData, key)) {
-                                await localforage.setItem(key, importedData[key]);
-                            }
-                        }
-                        alert("Sauvegarde importée avec succès ! La page va maintenant se recharger.");
-                        location.reload(); // On recharge la page pour que tout soit mis à jour
-                    } else {
-                        alert("Erreur : Le fichier de sauvegarde semble invalide.");
-                    }
-                } catch (error) {
-                    console.error("Erreur lors de l'importation :", error);
-                    alert("Erreur : Le fichier est corrompu ou n'est pas un fichier de sauvegarde valide.");
-                }
-            };
-            reader.readAsText(file);
-        });
 
         function renderCharacterSheet() {
-        if (!gameState.character) return;
-        renderEditableList('stats', 'Statistique', false);
-        renderEditableList('skills', 'Compétence', false);
-        renderEditableList('banjoMelodies', 'Mélodie', true);
-        renderEditableList('strengths', 'Point Fort', false, true); // le dernier 'true' est pour le champ 'text'
-        renderEditableList('weaknesses', 'Point Faible', false, true);
-        renderInventory();
+            if (!gameState.character) return;
+            renderEditableList('stats', 'Statistique', false);
+            renderEditableList('skills', 'Compétence', false);
+            renderEditableList('banjoMelodies', 'Mélodie', true);
+            renderEditableList('strengths', 'Point Fort', false, true); // le dernier 'true' est pour le champ 'text'
+            renderEditableList('weaknesses', 'Point Faible', false, true);
+            renderInventory();
         }
 
        function renderEditableList(key, placeholder, hasDescription = false, isTextOnly = false) {
@@ -368,15 +326,15 @@ document.addEventListener('DOMContentLoaded', () => {
             renderCharacterSheet(); // On rafraîchit toute la fiche
         };
 
-        window.updateCharacterItemValue = (key, id, newValue) => {
+        window.updateCharacterItemValue = async (key, id, newValue) => {
             const item = gameState.character[key].find(i => i.id === id);
             if (item) {
                 item.value = parseInt(newValue, 10);
-                saveGameData();
+                await saveGameData();
             }
         };
 
-        window.deleteCharacterItem = (key, id) => {
+        window.deleteCharacterItem = async (key, id) => {
             let list;
             if (key.startsWith('inventory.')) {
                 const category = key.split('.')[1];
@@ -388,7 +346,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const index = list.findIndex(i => i.id === id);
             if (index > -1) {
                 list.splice(index, 1);
-                saveGameData();
+                await saveGameData();
                 renderCharacterSheet(); // On rafraîchit toute la fiche
             }
         };
@@ -514,7 +472,7 @@ document.addEventListener('DOMContentLoaded', () => {
             renderJournal();
         }
 
-        window.moveItem = function(type, id, direction) {
+        window.moveItem = async function(type, id, direction) {
             const list = gameState[type];
             const index = list.findIndex(item => item.id === id);
 
@@ -528,7 +486,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 [list[index], list[index + 1]] = [list[index + 1], list[index]];
             }
 
-            saveGameData();
+            await saveGameData();
             renderAll();
         }
 
@@ -746,10 +704,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (type === 'npc') { gameState.npcs = gameState.npcs.filter(npc => npc.id !== id); } 
                 else if (type === 'thread') { gameState.threads = gameState.threads.filter(thread => thread.id !== id); } 
                 else if (type === 'journal') { gameState.journal = gameState.journal.filter(j => j.id !== id); }
+                
                 await saveGameData();
                 renderAll();
             }
-        }
+        };
 
         function handleCardToggle(event) {
             const cardHeader = event.target.closest('.card-header');
@@ -931,70 +890,50 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         async function main() {
-            // On essaie de charger les données depuis LocalForage
-            let character = await localforage.getItem('character');
-            let npcs = await localforage.getItem('npcs');
-            let threads = await localforage.getItem('threads');
-            let journal = await localforage.getItem('journal');
-            let route = defaultState.route;
-
-            // Si les données n'existent pas dans LocalForage, on vérifie l'ancien localStorage
-            if (!character && !npcs) {
-                console.log("Aucune donnée LocalForage. Vérification du localStorage pour migration...");
-                const oldDataRaw = localStorage.getItem('oregonTrailSave');
-                if (oldDataRaw) {
-                    try {
-                        const oldData = JSON.parse(oldDataRaw);
-                        console.log("Anciennes données trouvées ! Migration en cours...");
-                        gameState = oldData;
-                        await saveGameData(); // On sauvegarde tout dans le nouveau système
-                        localStorage.removeItem('oregonTrailSave'); // On supprime l'ancienne sauvegarde
-                        alert("Migration des données réussie ! Votre jeu est maintenant sur le nouveau système de sauvegarde.");
-                    } catch (e) {
-                        console.error("Erreur lors de la migration", e);
-                        gameState = defaultState; // En cas d'erreur, on repart de zéro
-                        await saveGameData();
+           let data = await loadGameData();
+            // Si aucune donnée n'est sur Firebase, on vérifie l'ancien localforage pour la migration
+            if (!data) {
+                console.log("Vérification de localforage pour migration...");
+                const oldDataKeys = await localforage.keys();
+                if (oldDataKeys.length > 0) {
+                    alert("Anciennes données locales trouvées. Migration vers Firebase en cours...");
+                    const migratedData = {};
+                    for (const key of oldDataKeys) {
+                        migratedData[key] = await localforage.getItem(key);
                     }
+                    gameState = migratedData;
+                    await saveGameData(); // On envoie les données migrées sur Firebase
+                    await localforage.clear(); // On nettoie l'ancien stockage
+                    alert("Migration terminée ! Vos données sont maintenant synchronisées en ligne.");
+                    data = gameState;
                 } else {
                     // Si aucune sauvegarde n'existe nulle part, on utilise les données par défaut
                     console.log("Aucune sauvegarde trouvée. Initialisation avec les données par défaut.");
                     gameState = defaultState;
                     await saveGameData();
+                    data = gameState;
                 }
-            } else {
-                // Si les données existent, on les charge dans l'état du jeu
-                console.log("Données chargées depuis LocalForage.");
-                gameState.character = character || defaultState.character;
-                gameState.npcs = npcs || defaultState.npcs;
-                gameState.threads = threads || defaultState.threads;
-                gameState.journal = journal || defaultState.journal;
-                gameState.route = route || defaultState.route;
+            }
+            
+            // On remplit notre état de jeu avec les données chargées
+            gameState = data;
+            
+            // On s'assure que toutes les propriétés existent pour éviter les erreurs
+            for (const key in defaultState) {
+                if (!gameState[key]) {
+                    gameState[key] = defaultState[key];
+                }
             }
 
             // Le reste de l'initialisation de la page
-            if (gameState.character.money !== undefined) {
+            if (gameState.character && gameState.character.money !== undefined) {
                 moneyInput.value = parseFloat(gameState.character.money).toFixed(2);
             }
-
-            updateStorageUsageDisplay();
             renderAll();
             showSection('character');
         }
 
-        async function updateStorageUsageDisplay() {
-            const displayElement = document.getElementById('storage-usage-display');
-            const keys = await localforage.keys();
-            let totalBytes = 0;
-            for (const key of keys) {
-                const value = await localforage.getItem(key);
-                totalBytes += new Blob([JSON.stringify(value)]).size;
-            }
-            const sizeInKb = totalBytes / 1024;
-            const sizeInMb = sizeInKb / 1024;
-            displayElement.textContent = `${sizeInMb.toFixed(2)} Mo`;
-            displayElement.style.color = 'white';
-        }
-
+        
         // --- 5. INITIALISATION ---
         main();
     });
