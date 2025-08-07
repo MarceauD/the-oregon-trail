@@ -423,6 +423,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
+            const isGeneralInventory = (key === 'inventory.general');
             container.innerHTML = '';
             data.forEach(item => {
                 const itemDiv = document.createElement('div');
