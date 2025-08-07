@@ -307,6 +307,7 @@ textarea { resize: vertical; min-height: 80px; }
 /*Status NPC*/
 .status-amoureux { background-color: #e83e8c; color: #fff; }
 .status-ami-proche { background-color: #17a2b8; color: #fff; } /* Cyan */
+.status-ami { background-color: #6fa3aa; color: #fff; } /* Cyan */
 .status-allie { background-color: #cce5ff; color: #004085; } /* Bleu clair */
 .status-amical { background-color: #d4edda; color: #155724; } /* Vert clair */
 .status-connaissance { background-color: #e2e3e5; color: #383d41; } /* Gris clair */
