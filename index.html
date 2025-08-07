@@ -196,6 +196,7 @@ Eddy n'a pas supporté cette situation et il a pris la fuite de la maison des Du
                         <div>
                             <label for="city-type">Type :</label>
                             <select id="city-type">
+                                <option value="etape">Etape</option>
                                 <option value="major-city">Ville majeure</option>
                                 <option value="small-town">Petite ville</option>
                                 <option value="capital">Capitale</option>
@@ -269,12 +270,27 @@ Eddy n'a pas supporté cette situation et il a pris la fuite de la maison des Du
                 <input type="text" id="npc-name" required>
                 <label for="npc-status">Statut :</label>
                 <select id="npc-status">
-                    <option value="ami">Ami</option>
-                    <option value="allie">Allié</option>
-                    <option value="neutre">Neutre</option>
-                    <option value="ennemi-mineur">Ennemi mineur</option>
-                    <option value="ennemi-majeur">Ennemi majeur</option>
-                    <option value="mort">Mort</option>
+                    <optgroup label="Positif">
+                        <option value="amoureux">Amoureux / Amoureuse</option>
+                        <option value="ami-proche">Ami proche</option>
+                        <option value="ami">Ami</option>
+                        <option value="allie">Allié</option>
+                        <option value="amical">Amical</option>
+                    </optgroup>
+                    <optgroup label="Neutre">
+                        <option value="connaissance">Connaissance</option>
+                        <option value="suspect">Suspect</option>
+                    </optgroup>
+                    <optgroup label="Négatif">
+                        <option value="rival">Rival</option>
+                        <option value="hostile">Hostile</option>
+                        <option value="ennemi-mineur">Ennemi mineur</option>
+                        <option value="ennemi-majeur">Ennemi majeur</option>
+                    </optgroup>
+                    <optgroup label="Spécial">
+                        <option value="disparu">Disparu</option>
+                        <option value="mort">Mort</option>
+                    </optgroup>
                 </select>
                 <label for="npc-description">Description :</label>
                 <textarea id="npc-description"></textarea>
@@ -289,9 +305,13 @@ Eddy n'a pas supporté cette situation et il a pris la fuite de la maison des Du
                 <input type="text" id="thread-location">
                 <label for="thread-status">Statut :</label>
                 <select id="thread-status">
-                    <option value="en-cours">En cours</option>
-                    <option value="reussie">Réussie</option>
-                    <option value="echouee">Échouée</option>
+                    <option value="nouveau">Nouveau</option>
+                    <option value="actif">Actif</option>
+                    <option value="en-sommeil">En sommeil</option>
+                    <option value="bloque">Bloqué</option>
+                    <option value="reussi">Réussi</option>
+                    <option value="echoue">Échoué</option>
+                    <option value="abandonne">Abandonné</option>
                 </select>
                 <label for="thread-description">Description :</label>
                 <textarea id="thread-description"></textarea>

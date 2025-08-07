@@ -70,24 +70,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 ],
                 inventory: {
                     firearms: [
-                        { id: 501, name: "Remington Army New Model 1863", img: "images/remington_new_model.png" }
+                        { id: 501, name: "Remington Army New Model 1863", img: "images/remington_new_model.png",isAvailable: true }
                     ],
                     clothing: [
-                        { id: 601, name: "Chapeau Cattleman", img: "images/cattleman_hat.jpg" }
+                        { id: 601, name: "Chapeau Cattleman", img: "images/cattleman_hat.jpg",isAvailable: true }
                     ],
                     companions: [
-                        { id: 701, name: "Pilgrim, cheval Morgan", img: "images/morgan_horse.jpg" }
+                        { id: 701, name: "Pilgrim, cheval Morgan", img: "images/morgan_horse.jpg", isAvailable: true }
                     ],
                     general: [
-                        { id: 801, text: "Vêtements neufs et robustes" },
-                        { id: 802, text: "Bottes de marche neuves" },
-                        { id: 803, text: "Gilet et vêtement de froid" },
-                        { id: 804, text: "Couverture de voyage"},
-                        { id: 805, text: "Kits de cuisine et d'entretien"},
-                        { id: 806, text: "Couteau de chasse et petit couteau"},
-                        { id: 807, text: "Banjo dans son étui"},
-                        { id: 808, text: "Munitions .44 et .50"},
-                        { id: 809, text: "Pierre d'ombre"}
+                        { id: 801, text: "Vêtements neufs et robustes", isAvailable: true},
+                        { id: 802, text: "Bottes de marche neuves", isAvailable: true},
+                        { id: 803, text: "Gilet et vêtement de froid", isAvailable: true},
+                        { id: 804, text: "Couverture de voyage", isAvailable: true },
+                        { id: 805, text: "Kits de cuisine et d'entretien", isAvailable: true},
+                        { id: 806, text: "Couteau de chasse et petit couteau", isAvailable: true},
+                        { id: 807, text: "Banjo dans son étui", isAvailable: true},
+                        { id: 808, text: "Munitions .44 et .50", isAvailable: true},
+                        { id: 809, text: "Pierre d'ombre", isAvailable: true}
                     ]
                 }
             },
@@ -426,8 +426,8 @@ document.addEventListener('DOMContentLoaded', () => {
             container.innerHTML = '';
             data.forEach(item => {
                 const itemDiv = document.createElement('div');
-                itemDiv.className = 'editable-list-item';
-                
+                itemDiv.className = `editable-list-item ${isGeneralInventory && item.isAvailable === false ? 'is-unavailable' : ''}`;
+
                 let itemHTML = `<span class="item-name">${item.name || item.text}</span>`;
                 if (item.value !== undefined) {
                     itemHTML += `<input type="number" value="${item.value}" onchange="updateCharacterItemValue('${key}', ${item.id}, this.value)">`;
@@ -435,6 +435,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (item.description) {
                     itemHTML += `<span>- <i>${item.description}</i></span>`;
                 }
+
+                if (isGeneralInventory) {
+                    itemHTML += `
+                        <button class="card-button" onclick="toggleItemAvailability('${key}', ${item.id})" title="Rendre disponible/indisponible">
+                            <svg style="width:16px; height:16px; fill:currentColor;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 158.8 17.9 198.8 0 256s17.9 97.2 47.4 143.4C96.5 443.2 161.2 480 288 480s191.5-36.8 238.6-80.6C558.1 353.2 576 313.2 576 256s-17.9-97.2-47.4-143.4C434.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64s-64-28.7-64-64s28.7-64 64-64s64 28.7 64 64z"/></svg>
+                        </button>
+                    `;
+                }
+
                 itemHTML += `<button class="delete-item-btn" onclick="deleteCharacterItem('${key}', ${item.id})">&times;</button>`;
                 
                 itemDiv.innerHTML = itemHTML;
@@ -448,6 +457,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 addFormContainer.innerHTML = `<button class="action-button" style="font-size: 0.8em; padding: 5px 10px;" onclick="showAddItemForm('${key}', '${placeholder}', ${hasDescription}, ${isTextOnly})">+ Ajouter</button>`;
             }
         }
+
+        window.toggleItemAvailability = async function(key, id) {
+            let list;
+            if (key.startsWith('inventory.')) {
+                const category = key.split('.')[1];
+                list = gameState.character.inventory[category];
+            }
+            
+            const item = list.find(i => i.id === id);
+            if (item) {
+                // On inverse la valeur : true devient false, false devient true
+                // On gère le cas où la propriété n'existerait pas encore sur de vieux objets
+                item.isAvailable = !(item.isAvailable === true); 
+                await saveGameData();
+                renderCharacterSheet(); // On rafraîchit toute la fiche
+            }
+        };
 
         function renderInventory() {
             if (!gameState.character.inventory) return;
@@ -464,11 +490,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
             data.forEach(item => {
                 const slot = document.createElement('div');
-                slot.className = 'inventory-item-slot';
+                slot.className = `inventory-item-slot ${item.isAvailable === false ? 'is-unavailable' : ''}`;
+        
                 slot.innerHTML = `
                     <img src="${item.img || 'https://i.imgur.com/b6f8f5B.png'}" alt="${item.name}">
                     <span class="item-name">${item.name}</span>
                     <button class="delete-item-btn" onclick="deleteCharacterItem('inventory.${category}', ${item.id})">&times;</button>
+                    <button class="availability-toggle-btn" onclick="toggleItemAvailability('inventory.${category}', ${item.id})" title="Rendre disponible/indisponible">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 158.8 17.9 198.8 0 256s17.9 97.2 47.4 143.4C96.5 443.2 161.2 480 288 480s191.5-36.8 238.6-80.6C558.1 353.2 576 313.2 576 256s-17.9-97.2-47.4-143.4C434.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64s-64-28.7-64-64s28.7-64 64-64s64 28.7 64 64z"/></svg>
+                    </button>
                 `;
                 container.appendChild(slot);
             });
@@ -970,85 +1000,89 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Étape 3 : On dessine tous les points (cercles) par-dessus tout le reste
             route.forEach(point => {
-                const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-                circle.setAttribute('cx', point.x);
-                circle.setAttribute('cy', point.y);
-                circle.setAttribute('class', `route-point ${point.type}`);
-                
-                // CORRECTION : On définit l'attribut du rayon (r) ici, en JavaScript
-                let radius = 10; // Valeur par défaut pour major-city
-                switch(point.type) {
-                    case 'capital':
-                        radius = 15;
-                        break;
-                    case 'small-town':
-                        radius = 5;
-                        break;
-                }
-                circle.setAttribute('r', radius);
+                if (point.type !== 'etape') {
+                    const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                    circle.setAttribute('cx', point.x);
+                    circle.setAttribute('cy', point.y);
+                    circle.setAttribute('class', `route-point ${point.type}`);
+                    
+                    // CORRECTION : On définit l'attribut du rayon (r) ici, en JavaScript
+                    let radius = 10; // Valeur par défaut pour major-city
+                    switch(point.type) {
+                        case 'capital':
+                            radius = 15;
+                            break;
+                        case 'small-town':
+                            radius = 5;
+                            break;
+                    }
+                    circle.setAttribute('r', radius);
 
-                svg.appendChild(circle);
+                    svg.appendChild(circle);
+                }
             });
 
             route.forEach(point => {
-                const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-                
-                // CORRECTION : Logique avancée pour la position du texte
-                let xOffset = 0;
-                let yOffset = 0;
-                let textAnchor = 'start'; // Alignement du texte (start, middle, end)
-                const margin = 25; // Marge entre le point et le texte
+                if (point.type !== 'etape') {
+                    const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                    
+                    // CORRECTION : Logique avancée pour la position du texte
+                    let xOffset = 0;
+                    let yOffset = 0;
+                    let textAnchor = 'start'; // Alignement du texte (start, middle, end)
+                    const margin = 25; // Marge entre le point et le texte
 
-                switch(point.labelPosition) {
-                    case 'top':
-                        yOffset = -margin;
-                        textAnchor = 'middle';
-                        break;
-                    case 'top-right':
-                        xOffset = margin / 2;
-                        yOffset = -margin / 2;
-                        textAnchor = 'start';
-                        break;
-                    case 'right':
-                        xOffset = margin;
-                        yOffset = 5; // Centrage vertical approximatif
-                        textAnchor = 'start';
-                        break;
-                    case 'bottom-right':
-                        xOffset = margin / 2;
-                        yOffset = margin * 1.5;
-                        textAnchor = 'start';
-                        break;
-                    case 'bottom':
-                        yOffset = margin * 1.8;
-                        textAnchor = 'middle';
-                        break;
-                    case 'bottom-left':
-                        xOffset = -margin / 2;
-                        yOffset = margin * 1.5;
-                        textAnchor = 'end';
-                        break;
-                    case 'left':
-                        xOffset = -margin;
-                        yOffset = 5;
-                        textAnchor = 'end';
-                        break;
-                    case 'top-left':
-                        xOffset = -margin / 2;
-                        yOffset = -margin / 2;
-                        textAnchor = 'end';
-                        break;
-                    default: // Par défaut en bas
-                        yOffset = margin * 1.8;
-                        textAnchor = 'middle';
+                    switch(point.labelPosition) {
+                        case 'top':
+                            yOffset = -margin;
+                            textAnchor = 'middle';
+                            break;
+                        case 'top-right':
+                            xOffset = margin / 2;
+                            yOffset = -margin / 2;
+                            textAnchor = 'start';
+                            break;
+                        case 'right':
+                            xOffset = margin;
+                            yOffset = 5; // Centrage vertical approximatif
+                            textAnchor = 'start';
+                            break;
+                        case 'bottom-right':
+                            xOffset = margin / 2;
+                            yOffset = margin * 1.5;
+                            textAnchor = 'start';
+                            break;
+                        case 'bottom':
+                            yOffset = margin * 1.8;
+                            textAnchor = 'middle';
+                            break;
+                        case 'bottom-left':
+                            xOffset = -margin / 2;
+                            yOffset = margin * 1.5;
+                            textAnchor = 'end';
+                            break;
+                        case 'left':
+                            xOffset = -margin;
+                            yOffset = 5;
+                            textAnchor = 'end';
+                            break;
+                        case 'top-left':
+                            xOffset = -margin / 2;
+                            yOffset = -margin / 2;
+                            textAnchor = 'end';
+                            break;
+                        default: // Par défaut en bas
+                            yOffset = margin * 1.8;
+                            textAnchor = 'middle';
+                    }
+                    
+                    text.setAttribute('x', point.x + xOffset);
+                    text.setAttribute('y', point.y + yOffset);
+                    text.setAttribute('text-anchor', textAnchor);
+                    text.setAttribute('class', `route-label ${point.type}`);
+                    text.textContent = point.city;
+                    svg.appendChild(text);
                 }
-                
-                text.setAttribute('x', point.x + xOffset);
-                text.setAttribute('y', point.y + yOffset);
-                text.setAttribute('text-anchor', textAnchor);
-                text.setAttribute('class', `route-label ${point.type}`);
-                text.textContent = point.city;
-                svg.appendChild(text);
             });
         }
 

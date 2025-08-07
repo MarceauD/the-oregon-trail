@@ -304,12 +304,27 @@ textarea { resize: vertical; min-height: 80px; }
 }
 .card-content { flex-grow: 1; }
 .status { font-style: italic; padding: 3px 8px; border-radius: 4px; display: inline-block; font-size: 0.9em; }
-.status-ami { background-color: #d4edda; color: #155724; }
-.status-ennemi { background-color: #f8d7da; color: #721c24; }
-.status-neutre { background-color: #e2e3e5; color: #383d41;}
-.status-en-cours { background-color: #fff3cd; color: #856404; }
-.status-reussie { background-color: #d1ecf1; color: #0c5460; }
-.status-echouee { background-color: #f5c6cb; color: #721c24; }
+/*Status NPC*/
+.status-amoureux { background-color: #e83e8c; color: #fff; }
+.status-ami-proche { background-color: #17a2b8; color: #fff; } /* Cyan */
+.status-allie { background-color: #cce5ff; color: #004085; } /* Bleu clair */
+.status-amical { background-color: #d4edda; color: #155724; } /* Vert clair */
+.status-connaissance { background-color: #e2e3e5; color: #383d41; } /* Gris clair */
+.status-suspect { background-color: #fff3cd; color: #856404; } /* Jaune */
+.status-rival { background-color: #fd7e14; color: #fff; } /* Orange */
+.status-hostile { background-color: #f8d7da; color: #721c24; } /* Rouge clair */
+.status-ennemi-majeur { background-color: #dc3545; color: #fff; } /* Rouge vif */
+.status-disparu { background-color: #6f42c1; color: #fff; } /* Violet */
+.status-mort { background-color: #343a40; color: #fff; } /* Noir */
+
+/*Status threads*/
+.status-nouveau { background-color: #e2e3e5; color: #383d41; } /* Gris clair */
+.status-actif { background-color: #d4edda; color: #155724; } /* Vert */
+.status-en-sommeil { background-color: #fff3cd; color: #856404; } /* Jaune */
+.status-bloque { background-color: #f8d7da; color: #721c24; } /* Rouge clair */
+.status-reussi { background-color: #d1ecf1; color: #0c5460; } /* Bleu */
+.status-echoue { background-color: #343a40; color: #fff; } /* Noir */
+.status-abandonne { background-color: #6c757d; color: #fff; } /* Gris foncé */
 .card-button {
     display: flex; /* Pour centrer l'icône */
     justify-content: center;
@@ -412,6 +427,32 @@ textarea { resize: vertical; min-height: 80px; }
 .add-item-form { display: flex; gap: 10px; margin-top: 10px; }
 .add-item-form input { flex-grow: 1; }
 .add-item-form button { padding: 5px 10px; }
+
+.is-unavailable {
+    opacity: 0.5;
+    filter: grayscale(100%);
+    background-color: #e2e3e5 !important; /* Force un fond grisé */
+}
+
+/* NOUVEAU : Style pour le bouton de disponibilité */
+.availability-toggle-btn {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 24px;
+    height: 24px;
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 50%;
+    border: 1px solid white;
+    cursor: pointer;
+    padding: 3px;
+    box-sizing: border-box;
+}
+.availability-toggle-btn svg {
+    width: 100%;
+    height: 100%;
+    fill: white;
+}
 
 /* NOUVEAU : Style pour l'inventaire "Jeu Vidéo" */
 .inventory-category-grid {
