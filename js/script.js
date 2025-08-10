@@ -438,6 +438,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 let itemHTML = `
                     <span class="item-name" 
                         contenteditable="true" 
+                        spellcheck="false"
                         onblur="updateCharacterItemText('${key}', ${item.id}, '${propertyToEdit}', this.textContent)"
                         onkeydown="if(event.key==='Enter'){ this.blur(); event.preventDefault(); }">
                         ${textValue}
@@ -449,6 +450,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (item.description) {
                     itemHTML += `<span>- <i>
                         <span contenteditable="true"
+                            spellcheck="false"
                             onblur="updateCharacterItemText('${key}', ${item.id}, 'description', this.textContent)"
                             onkeydown="if(event.key==='Enter'){ this.blur(); event.preventDefault(); }">
                             ${item.description}
@@ -515,6 +517,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 slot.innerHTML = `
                     <img src="${item.img || 'https://i.imgur.com/b6f8f5B.png'}" alt="${item.name}">
                     <span class="item-name"
+                        spellcheck="false"
                         contenteditable="true"
                         onblur="updateCharacterItemText('inventory.${category}', ${item.id}, 'name', this.textContent)"
                         onkeydown="if(event.key==='Enter'){ this.blur(); event.preventDefault(); }">
