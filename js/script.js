@@ -406,9 +406,10 @@ document.addEventListener('DOMContentLoaded', () => {
             renderInventory();
         }
 
-       function renderEditableList(key, placeholder, hasDescription = false, isTextOnly = false) {
+        function renderEditableList(key, placeholder, hasDescription = false, isTextOnly = false) {
             const containerId = `${key.replace('.', '-')}-container`;
             const container = document.getElementById(containerId);
+            
             if (!container) {
                 console.error(`Erreur : Le conteneur #${containerId} est introuvable.`);
                 return;
@@ -425,16 +426,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const isGeneralInventory = (key === 'inventory.general');
             container.innerHTML = '';
+            
             data.forEach(item => {
                 const itemDiv = document.createElement('div');
                 itemDiv.className = `editable-list-item ${isGeneralInventory && item.isAvailable === false ? 'is-unavailable' : ''}`;
 
-                let itemHTML = `<span class="item-name">${item.name || item.text}</span>`;
+                // CORRECTION : Les deux variables manquantes sont définies ici
+                const propertyToEdit = isTextOnly ? 'text' : 'name';
+                const textValue = item[propertyToEdit] || '';
+
+                let itemHTML = `
+                    <span class="item-name" 
+                        contenteditable="true" 
+                        onblur="updateCharacterItemText('${key}', ${item.id}, '${propertyToEdit}', this.textContent)"
+                        onkeydown="if(event.key==='Enter'){ this.blur(); event.preventDefault(); }">
+                        ${textValue}
+                    </span>`;
+
                 if (item.value !== undefined) {
                     itemHTML += `<input type="number" value="${item.value}" onchange="updateCharacterItemValue('${key}', ${item.id}, this.value)">`;
                 }
                 if (item.description) {
-                    itemHTML += `<span>- <i>${item.description}</i></span>`;
+                    itemHTML += `<span>- <i>
+                        <span contenteditable="true"
+                            onblur="updateCharacterItemText('${key}', ${item.id}, 'description', this.textContent)"
+                            onkeydown="if(event.key==='Enter'){ this.blur(); event.preventDefault(); }">
+                            ${item.description}
+                        </span>
+                    </i></span>`;
                 }
 
                 if (isGeneralInventory) {
@@ -495,7 +514,12 @@ document.addEventListener('DOMContentLoaded', () => {
         
                 slot.innerHTML = `
                     <img src="${item.img || 'https://i.imgur.com/b6f8f5B.png'}" alt="${item.name}">
-                    <span class="item-name">${item.name}</span>
+                    <span class="item-name"
+                        contenteditable="true"
+                        onblur="updateCharacterItemText('inventory.${category}', ${item.id}, 'name', this.textContent)"
+                        onkeydown="if(event.key==='Enter'){ this.blur(); event.preventDefault(); }">
+                        ${item.name}
+                    </span>
                     <button class="delete-item-btn" onclick="deleteCharacterItem('inventory.${category}', ${item.id})">&times;</button>
                     <button class="availability-toggle-btn" onclick="toggleItemAvailability('inventory.${category}', ${item.id})" title="Rendre disponible/indisponible">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 158.8 17.9 198.8 0 256s17.9 97.2 47.4 143.4C96.5 443.2 161.2 480 288 480s191.5-36.8 238.6-80.6C558.1 353.2 576 313.2 576 256s-17.9-97.2-47.4-143.4C434.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64s-64-28.7-64-64s28.7-64 64-64s64 28.7 64 64z"/></svg>
@@ -516,6 +540,20 @@ document.addEventListener('DOMContentLoaded', () => {
             const addFormContainer = document.getElementById(`add-inventory-${category}-form-container`);
             if(addFormContainer) addFormContainer.innerHTML = '';
         }
+
+        window.updateCharacterItemText = async function(key, id, property, newText) {
+            const path = key.split('.');
+            const list = path.reduce((obj, prop) => (obj ? obj[prop] : undefined), gameState.character);
+            
+            if (list && Array.isArray(list)) {
+                const item = list.find(i => i.id === id);
+                if (item) {
+                    item[property] = newText.trim();
+                    await saveGameData();
+                    console.log(`Item ${id} mis à jour : ${property} = ${newText.trim()}`);
+                }
+            }
+        };
 
         window.showAddItemForm = (key, placeholder, hasDescription, isTextOnly, hasImage) => {
             const addFormContainerId = `add-${key.replace('.', '-')}-form-container`;
