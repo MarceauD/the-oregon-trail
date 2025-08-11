@@ -801,7 +801,42 @@ document.addEventListener('DOMContentLoaded', () => {
         function exportSectionToClipboard(type) {
             let output = '';
             const separator = '\n------------------------------------\n\n';
+            if (type === 'character') {
+                const char = gameState.character;
+                output = '=== FICHE DE PERSONNAGE ===\n\n';
+                
+                output += `Monnaie : $${(char.money || 0).toFixed(2)}\n\n`;
 
+                output += '--- STATISTIQUES ---\n';
+                char.stats.forEach(s => { output += `${s.name}: ${s.value}\n`; });
+                output += '\n';
+
+                output += '--- COMPÉTENCES ---\n';
+                char.skills.forEach(s => { output += `${s.name}: ${s.value}\n`; });
+                output += '\n';
+
+                output += '--- POINTS FORTS ---\n';
+                char.strengths.forEach(s => { output += `- ${s.text}\n`; });
+                output += '\n';
+
+                output += '--- POINTS FAIBLES ---\n';
+                char.weaknesses.forEach(w => { output += `- ${w.text}\n`; });
+                output += '\n';
+
+                output += '--- INVENTAIRE ---\n';
+                for (const category in char.inventory) {
+                    if (char.inventory[category].length > 0) {
+                        output += `\n> ${category.charAt(0).toUpperCase() + category.slice(1)}\n`;
+                        char.inventory[category].forEach(item => {
+                            output += `- ${item.name || item.text}\n`;
+                        });
+                    }
+                }
+                output += '\n';
+
+                output += '--- MÉLODIES DE BANJO ---\n';
+                char.banjoMelodies.forEach(m => { output += `- ${m.name} (${m.description})\n`; });
+            }
             if (type === 'npcs') {
                 output = '=== PERSONNAGES NON-JOUABLES ===\n\n';
                 gameState.npcs.forEach(npc => {
@@ -1152,6 +1187,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('add-thread-button').addEventListener('click', () => openModal('thread'));
         document.getElementById('add-journal-button').addEventListener('click', () => openModal('journal'));
         document.getElementById('modal-close-button').addEventListener('click', closeModal);
+        document.getElementById('export-character-button').addEventListener('click', () => exportSectionToClipboard('character'));        
         document.getElementById('export-npcs-button').addEventListener('click', () => exportSectionToClipboard('npcs'));
         document.getElementById('export-threads-button').addEventListener('click', () => exportSectionToClipboard('threads'));
         document.getElementById('export-journal-button').addEventListener('click', () => exportSectionToClipboard('journal'));
