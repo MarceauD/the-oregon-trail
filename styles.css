@@ -572,10 +572,40 @@ textarea { resize: vertical; min-height: 80px; }
     min-height: 140px; /* MODIFIÉ : Zones de texte plus hautes */
 }
 
-.dice-roller-button {
+.dice-roller-container {
     position: fixed;
     bottom: 25px;
     right: 25px;
+    z-index: 999;
+}
+.dice-choice-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+    /* Caché par défaut et prêt pour l'animation */
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    pointer-events: none; /* Non cliquable quand caché */
+}
+.dice-roller-container.open .dice-choice-menu {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto; /* Cliquable quand visible */
+}
+.dice-choice-btn {
+    font-family: 'Merriweather', serif;
+    font-weight: bold;
+    background-color: var(--paper-color);
+    color: var(--accent-color);
+    border: 2px solid var(--accent-color);
+    border-radius: 20px;
+    padding: 8px 15px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+.dice-roller-button {
     width: 60px;
     height: 60px;
     background-color: var(--accent-color);
@@ -587,7 +617,6 @@ textarea { resize: vertical; min-height: 80px; }
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    z-index: 999;
     transition: transform 0.2s ease-in-out;
 }
 .dice-roller-button:hover {
@@ -598,40 +627,19 @@ textarea { resize: vertical; min-height: 80px; }
     height: 32px;
     fill: var(--paper-color);
 }
-
 .dice-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 2000;
-    cursor: pointer;
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.7); display: none;
+    justify-content: center; align-items: center; z-index: 2000; cursor: pointer;
 }
-.dice-overlay.show {
-    display: flex;
-}
+.dice-overlay.show { display: flex; }
 .dice-cube {
-    width: 150px;
-    height: 150px;
-    background-color: var(--paper-color);
-    border: 3px solid var(--accent-color);
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 4em;
-    font-family: 'Merriweather', serif;
-    color: var(--accent-color);
-    font-weight: bold;
+    width: 150px; height: 150px; background-color: var(--paper-color);
+    border: 3px solid var(--accent-color); border-radius: 10px; display: flex;
+    justify-content: center; align-items: center; font-size: 4em;
+    font-family: 'Merriweather', serif; color: var(--accent-color); font-weight: bold;
 }
-.dice-cube.rolling {
-    animation: tumble 1s ease-out;
-}
+.dice-cube.rolling { animation: tumble 1s ease-out; }
 @keyframes tumble {
     0% { transform: scale(0.5) rotate(0deg); }
     50% { transform: scale(1.1) rotate(270deg); }

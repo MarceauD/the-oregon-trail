@@ -1199,24 +1199,43 @@ document.addEventListener('DOMContentLoaded', () => {
         modalOverlay.addEventListener('click', (e) => { if (e.target === modalOverlay) { closeModal(); } });
 
         // --- LOGIQUE DU LANCEUR DE DÉ ---
+        const diceRollerContainer = document.getElementById('dice-roller-container');
         const diceButton = document.getElementById('dice-roller-button');
         const diceOverlay = document.getElementById('dice-overlay');
         const diceCube = document.getElementById('dice-cube');
-        diceButton.addEventListener('click', () => {
+
+        // Le bouton principal ouvre/ferme maintenant le menu
+        diceButton.addEventListener('click', (event) => {
+            event.stopPropagation(); // Empêche la fermeture immédiate si on clique sur le bouton
+            diceRollerContainer.classList.toggle('open');
+        });
+
+        // Cliquer n'importe où ailleurs ferme le menu
+        document.addEventListener('click', () => {
+            if (diceRollerContainer.classList.contains('open')) {
+                diceRollerContainer.classList.remove('open');
+            }
+        });
+
+        // Nouvelle fonction réutilisable pour lancer les dés
+        window.rollDice = function(sides) {
+            diceRollerContainer.classList.remove('open'); // Ferme le menu
             diceOverlay.classList.add('show');
             diceCube.classList.remove('rolling');
             diceCube.textContent = '?';
             void diceCube.offsetWidth; 
             diceCube.classList.add('rolling');
+
             setTimeout(() => {
-                const result = Math.floor(Math.random() * 100) + 1;
+                const result = Math.floor(Math.random() * sides) + 1;
                 diceCube.textContent = result;
             }, 1000);
-        });
+        }
+
+        // L'overlay se ferme toujours au clic
         diceOverlay.addEventListener('click', () => {
             diceOverlay.classList.remove('show');
         });
-
         
 
         // --- LOGIQUE POUR LE VISUALISEUR PDF ---
