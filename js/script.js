@@ -396,11 +396,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // MODE LECTURE
-        const readingModeOverlay = document.getElementById('reading-mode-overlay');
+         const readingModeOverlay = document.getElementById('reading-mode-overlay');
         const openReadingModeBtn = document.getElementById('reading-mode-button');
         const closeReadingModeBtn = document.getElementById('reading-mode-close-button');
-        const bookContent = document.getElementById('book-content');
-        const pageCounter = document.getElementById('page-counter');
+        const bookContainer = document.getElementById('book-container'); // Le conteneur principal
+        const pageCounterDisplay = document.getElementById('page-counter-display');
+        const pageJumper = document.getElementById('page-jumper');
+        const pageJumpInput = document.getElementById('page-jump-input');
         const prevPageBtn = document.getElementById('prev-page-btn');
         const nextPageBtn = document.getElementById('next-page-btn');
 
@@ -414,35 +416,38 @@ document.addEventListener('DOMContentLoaded', () => {
             const item = sortedJournal[index];
             const date = new Date(item.date).toLocaleDateString('fr-FR', {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'});
 
+            // On crée le nouveau conteneur de contenu pour la page
+            const newBookContent = document.createElement('div');
+            newBookContent.className = 'book-content';
+
             const article = document.createElement('article');
             article.className = 'journal-entry';
             article.innerHTML = `
-                <div class="journal-header">
-                    <p class="journal-date">${date}</p>
-                </div>
-                <div class="journal-content-display">
-                    ${item.entry}
-                </div>
+                <div class="journal-header"><p class="journal-date">${date}</p></div>
+                <div class="journal-content-display">${item.entry}</div>
             `;
+            newBookContent.appendChild(article);
 
             // Gestion de l'animation
-            const exitAnimation = direction === 'next' ? 'page-exit-left' : 'page-exit-right';
-            const enterAnimation = direction === 'next' ? 'page-enter-right' : 'page-enter-left';
-            
-            if (direction && bookContent.firstElementChild) {
-                bookContent.firstElementChild.classList.add(exitAnimation);
+            const currentContent = bookContainer.querySelector('.book-content');
+            if (direction && currentContent) {
+                const exitAnimation = direction === 'next' ? 'page-exit-left' : 'page-exit-right';
+                const enterAnimation = direction === 'next' ? 'page-enter-right' : 'page-enter-left';
+                
+                currentContent.classList.add(exitAnimation);
+                newBookContent.classList.add(enterAnimation);
+                
                 setTimeout(() => {
-                    bookContent.innerHTML = '';
-                    article.classList.add(enterAnimation);
-                    bookContent.appendChild(article);
-                }, 300); // Durée de l'animation CSS
+                    currentContent.remove();
+                }, 300); // On supprime l'ancienne page après l'animation
             } else {
-                bookContent.innerHTML = '';
-                bookContent.appendChild(article);
+                bookContainer.innerHTML = '';
             }
 
+            bookContainer.appendChild(newBookContent);
+
             // Mettre à jour le compteur et les boutons
-            pageCounter.textContent = `Page ${index + 1} / ${totalPages}`;
+            pageCounterDisplay.textContent = `Page ${index + 1} / ${totalPages}`;
             prevPageBtn.disabled = (index === 0);
             nextPageBtn.disabled = (index === totalPages - 1);
         }
@@ -477,6 +482,38 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        pageJumper.addEventListener('click', () => {
+            pageCounterDisplay.style.display = 'none';
+            pageJumpInput.style.display = 'inline-block';
+            pageJumpInput.value = currentJournalIndex + 1;
+            pageJumpInput.focus();
+            pageJumpInput.select();
+        });
+
+        function handlePageJump() {
+            pageCounterDisplay.style.display = 'inline-block';
+            pageJumpInput.style.display = 'none';
+            
+            let targetPage = parseInt(pageJumpInput.value, 10);
+            if (isNaN(targetPage) || targetPage < 1 || targetPage > sortedJournal.length) {
+                // Si la valeur est invalide, on ne fait rien
+                return;
+            }
+            
+            const newIndex = targetPage - 1;
+            if (newIndex !== currentJournalIndex) {
+                // On détermine la direction pour l'animation
+                const direction = newIndex > currentJournalIndex ? 'next' : 'prev';
+                displayJournalPage(newIndex, direction);
+            }
+        }
+
+        pageJumpInput.addEventListener('blur', handlePageJump); // Quand on clique ailleurs
+        pageJumpInput.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                handlePageJump();
+            }
+    });
 
         // AFFICHAGE
 

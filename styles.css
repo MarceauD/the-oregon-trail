@@ -999,37 +999,78 @@ font-family: 'Merriweather', serif;
 /* MODIFIÉ : C'est ce conteneur qui gère le défilement horizontal */
 .book-container {
     flex-grow: 1;
-    overflow-x: auto; /* UN SEUL défilement, horizontal */
-    overflow-y: hidden; /* PAS de défilement vertical */
-    padding: 2vh 4vw;
-    scroll-snap-type: x mandatory; /* Force l'arrêt sur une "page" */
+    padding: 1vh 2vw;
+    overflow: hidden; /* Empêche les barres de défilement sur le conteneur principal */
+    position: relative;
 }
-
-/* MODIFIÉ : Ce conteneur ne défile plus, il s'étend autant que nécessaire */
 .book-content {
     height: 100%;
-    column-width: 80ch; /* Largeur optimale pour une colonne/page de lecture */
-    column-gap: 8vw; /* Espace entre les "pages" */
+    width: 100%;
+    overflow-y: auto; /* UN SEUL défilement, vertical, pour le contenu de l'entrée */
+    padding: 0 2vw; /* Ajoute de l'espace sur les côtés du texte */
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
-/* MODIFIÉ : Le contenu de l'entrée n'a plus de hauteur fixe */
-.book-content .journal-entry {
-    scroll-snap-align: start; /* S'assure que le défilement s'arrête au début d'une colonne */
-    /* La hauteur est maintenant automatique */
+
+/* --- Style pour le Mode Lecture (Version finale corrigée) --- */
+.reading-mode-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--paper-color);
+    z-index: 12000;
+    display: none;
+    flex-direction: column;
 }
-.book-content .journal-entry {
+.reading-mode-overlay.active {
+    display: flex;
+}
+.reading-mode-header {
+    text-align: center;
+    padding: 10px;
+    border-bottom: 1px solid var(--border-color);
+    flex-shrink: 0;
+}
+.reading-mode-close-button {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2em;
+    font-weight: bold;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--accent-color);
+}
+.book-container {
+    flex-grow: 1;
+    overflow: hidden; /* Important : cache tout ce qui dépasse pour les animations */
+    position: relative; /* Contexte pour le positionnement de la page */
+}
+.book-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100%;
-    column-width: 80ch; /* Largeur optimale d'une colonne de lecture */
-    column-gap: 5vw;
-    white-space: normal;
+    overflow-y: auto; /* Le SEUL défilement autorisé est vertical */
+    padding: 1em 3vw; /* Marges intérieures pour le confort de lecture */
+    box-sizing: border-box; /* S'assure que le padding ne fait pas déborder l'élément */
 }
-/* NOUVEAU : Pied de page pour la navigation */
+.book-content .journal-entry {
+    /* Plus besoin de styles complexes ici, le contenu s'affiche simplement */
+}
 .reading-mode-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
     border-top: 1px solid var(--border-color);
+    flex-shrink: 0;
 }
 .reading-mode-footer button {
     font-family: 'Merriweather', serif;
@@ -1044,11 +1085,18 @@ font-family: 'Merriweather', serif;
     color: var(--border-color);
     cursor: not-allowed;
 }
-.page-counter {
+.page-jumper {
     font-style: italic;
+    cursor: pointer;
+    padding: 5px 10px;
 }
-
-/* NOUVEAU : Animations de changement de page */
+.page-jumper input {
+    width: 50px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    background-color: var(--paper-color);
+}
+/* --- Animations de changement de page (inchangées) --- */
 @keyframes slideOutToLeft {
     from { transform: translateX(0); opacity: 1; }
     to { transform: translateX(-100%); opacity: 0; }
