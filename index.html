@@ -137,8 +137,7 @@ Eddy n'a pas supporté cette situation et il a pris la fuite de la maison des Du
                     <h2>Journal de Bord</h2>
                     <div class="button-group">
                         <button class="action-button" id="open-quick-update-button">Mise à Jour Rapide</button>
-                        <button class="action-button" onclick="openQuickView('character')">Voir Fiche Perso</button>
-                        <button class="action-button" onclick="openQuickView('tables')">Voir Tables</button>
+                        <button class="action-button" id="reading-mode-button">Mode Lecture</button>
                         <button class="action-button" id="export-journal-button">Exporter</button>
                         <button class="action-button" id="add-journal-button">Nouvelle Entrée</button>
                     </div>
@@ -352,6 +351,22 @@ Eddy n'a pas supporté cette situation et il a pris la fuite de la maison des Du
 
     <div id="dice-overlay" class="dice-overlay">
         <div id="dice-cube" class="dice-cube"></div>
+    </div>
+
+    <div id="reading-mode-overlay" class="reading-mode-overlay">
+        <div class="reading-mode-header">
+            <h2 id="reading-mode-title">Journal de Bord</h2>
+            <button id="reading-mode-close-button" class="reading-mode-close-button">&times;</button>
+        </div>
+        <div class="book-container">
+            <div id="book-content" class="book-content">
+                </div>
+        </div>
+        <div class="reading-mode-footer">
+            <button id="prev-page-btn">← Précédent</button>
+            <span id="page-counter" class="page-counter"></span>
+            <button id="next-page-btn">Suivant →</button>
+        </div>
     </div>
 </body>
 </html>

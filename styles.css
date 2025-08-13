@@ -964,6 +964,112 @@ font-family: 'Merriweather', serif;
 .form-grid-map button {
     height: 40px; /* Aligne la hauteur avec les inputs */
 }
+.reading-mode-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--paper-color);
+    z-index: 12000;
+    display: none;
+    flex-direction: column;
+}
+.reading-mode-overlay.active {
+    display: flex;
+}
+.reading-mode-header {
+    text-align: center;
+    padding: 10px;
+    border-bottom: 1px solid var(--border-color);
+    flex-shrink: 0; /* Empêche le header de rétrécir */
+}
+.reading-mode-close-button {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2em;
+    font-weight: bold;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--accent-color);
+}
+
+/* MODIFIÉ : C'est ce conteneur qui gère le défilement horizontal */
+.book-container {
+    flex-grow: 1;
+    overflow-x: auto; /* UN SEUL défilement, horizontal */
+    overflow-y: hidden; /* PAS de défilement vertical */
+    padding: 2vh 4vw;
+    scroll-snap-type: x mandatory; /* Force l'arrêt sur une "page" */
+}
+
+/* MODIFIÉ : Ce conteneur ne défile plus, il s'étend autant que nécessaire */
+.book-content {
+    height: 100%;
+    column-width: 80ch; /* Largeur optimale pour une colonne/page de lecture */
+    column-gap: 8vw; /* Espace entre les "pages" */
+}
+
+/* MODIFIÉ : Le contenu de l'entrée n'a plus de hauteur fixe */
+.book-content .journal-entry {
+    scroll-snap-align: start; /* S'assure que le défilement s'arrête au début d'une colonne */
+    /* La hauteur est maintenant automatique */
+}
+.book-content .journal-entry {
+    height: 100%;
+    column-width: 80ch; /* Largeur optimale d'une colonne de lecture */
+    column-gap: 5vw;
+    white-space: normal;
+}
+/* NOUVEAU : Pied de page pour la navigation */
+.reading-mode-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    border-top: 1px solid var(--border-color);
+}
+.reading-mode-footer button {
+    font-family: 'Merriweather', serif;
+    padding: 8px 15px;
+    background: none;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    cursor: pointer;
+}
+.reading-mode-footer button:disabled {
+    border-color: var(--border-color);
+    color: var(--border-color);
+    cursor: not-allowed;
+}
+.page-counter {
+    font-style: italic;
+}
+
+/* NOUVEAU : Animations de changement de page */
+@keyframes slideOutToLeft {
+    from { transform: translateX(0); opacity: 1; }
+    to { transform: translateX(-100%); opacity: 0; }
+}
+@keyframes slideInFromRight {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+@keyframes slideOutToRight {
+    from { transform: translateX(0); opacity: 1; }
+    to { transform: translateX(100%); opacity: 0; }
+}
+@keyframes slideInFromLeft {
+    from { transform: translateX(-100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+.page-exit-left { animation: slideOutToLeft 0.3s ease-out forwards; }
+.page-enter-right { animation: slideInFromRight 0.3s ease-out forwards; }
+.page-exit-right { animation: slideOutToRight 0.3s ease-out forwards; }
+.page-enter-left { animation: slideInFromLeft 0.3s ease-out forwards; }
 
 @media (max-width: 768px) {
 

@@ -395,6 +395,90 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log("Nouvelle ville ajoutée :", newCity);
         });
 
+        // MODE LECTURE
+        const readingModeOverlay = document.getElementById('reading-mode-overlay');
+        const openReadingModeBtn = document.getElementById('reading-mode-button');
+        const closeReadingModeBtn = document.getElementById('reading-mode-close-button');
+        const bookContent = document.getElementById('book-content');
+        const pageCounter = document.getElementById('page-counter');
+        const prevPageBtn = document.getElementById('prev-page-btn');
+        const nextPageBtn = document.getElementById('next-page-btn');
+
+        let currentJournalIndex = 0;
+        let sortedJournal = [];
+
+        // Affiche une page spécifique du journal
+        function displayJournalPage(index, direction = '') {
+            currentJournalIndex = index;
+            const totalPages = sortedJournal.length;
+            const item = sortedJournal[index];
+            const date = new Date(item.date).toLocaleDateString('fr-FR', {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'});
+
+            const article = document.createElement('article');
+            article.className = 'journal-entry';
+            article.innerHTML = `
+                <div class="journal-header">
+                    <p class="journal-date">${date}</p>
+                </div>
+                <div class="journal-content-display">
+                    ${item.entry}
+                </div>
+            `;
+
+            // Gestion de l'animation
+            const exitAnimation = direction === 'next' ? 'page-exit-left' : 'page-exit-right';
+            const enterAnimation = direction === 'next' ? 'page-enter-right' : 'page-enter-left';
+            
+            if (direction && bookContent.firstElementChild) {
+                bookContent.firstElementChild.classList.add(exitAnimation);
+                setTimeout(() => {
+                    bookContent.innerHTML = '';
+                    article.classList.add(enterAnimation);
+                    bookContent.appendChild(article);
+                }, 300); // Durée de l'animation CSS
+            } else {
+                bookContent.innerHTML = '';
+                bookContent.appendChild(article);
+            }
+
+            // Mettre à jour le compteur et les boutons
+            pageCounter.textContent = `Page ${index + 1} / ${totalPages}`;
+            prevPageBtn.disabled = (index === 0);
+            nextPageBtn.disabled = (index === totalPages - 1);
+        }
+
+        // Ouvre le mode lecture
+        function openReadingMode() {
+            sortedJournal = [...gameState.journal].sort((a, b) => new Date(a.date) - new Date(b.date));
+            if (sortedJournal.length > 0) {
+                displayJournalPage(0);
+                readingModeOverlay.classList.add('active');
+            } else {
+                alert("Le journal est vide.");
+            }
+        }
+
+        function closeReadingMode() {
+            readingModeOverlay.classList.remove('active');
+        }
+
+        openReadingModeBtn.addEventListener('click', openReadingMode);
+        closeReadingModeBtn.addEventListener('click', closeReadingMode);
+
+        nextPageBtn.addEventListener('click', () => {
+            if (currentJournalIndex < sortedJournal.length - 1) {
+                displayJournalPage(currentJournalIndex + 1, 'next');
+            }
+        });
+
+        prevPageBtn.addEventListener('click', () => {
+            if (currentJournalIndex > 0) {
+                displayJournalPage(currentJournalIndex - 1, 'prev');
+            }
+        });
+
+
+        // AFFICHAGE
 
         function renderCharacterSheet() {
             if (!gameState.character) return;
