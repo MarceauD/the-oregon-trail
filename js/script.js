@@ -2,8 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
         tinymce.init({
             selector: '#journal-entry-text',
             license_key: 'gpl',
-            plugins: 'lists link image table code help wordcount',
-            toolbar: 'undo redo | blocks | bold italic underline | bullist numlist | link image | alignleft aligncenter alignright | code',
+            plugins: 'lists link image table code help wordcount fullscreen',
+            toolbar: 'undo redo | blocks | bold italic underline | bullist numlist | link image | alignleft aligncenter alignright | fullscreen',
             language: 'fr_FR',
             menubar: false,
             content_style: `body { font-family: 'Lora', serif; font-size: 16px; line-height: 1.6; } img { max-width: 100%; height: auto; display: block; margin: 10px 0; }`
