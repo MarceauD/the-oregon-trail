@@ -116,7 +116,25 @@ document.addEventListener('DOMContentLoaded', () => {
         let gameState = {};
         //let gameState = JSON.parse(localStorage.getItem('oregonTrailSave')) || defaultState;
                 
-
+        const imageGalleryList = [
+            "altoona.png",
+            "Eddy_Pilgrim.png",
+            "horseshoe_curve.png",
+            "James_Blackmore.jpg",
+            "knights_of_labor.jpg",
+            "music_in_saloon.png",
+            "remington_derringer_m95.png",
+            "character.png",
+            "background.png",
+            "cattleman_hat.jpg",
+            "fusil_sharps.jpg",
+            "morgan_horse.jpg",
+            "remington_new_model.png",
+            "spencer_m1865.jpg",
+            "smokes/18_jesse_james.png",
+            "smokes/34_samuel_colt.png",
+            "smokes/37_lewis_and_clark_expedition.png",
+         ];
         async function saveGameData() {
             await saveDocRef.set(gameState);
             console.log("Partie sauvegardée sur Firebase !");   
@@ -353,6 +371,34 @@ document.addEventListener('DOMContentLoaded', () => {
             
             await saveGameData();
         });
+
+        // AFFICHAGE GALERIE PHOTO
+        function renderGallery() {
+            const container = document.getElementById('gallery-container');
+            if (!container) return;
+            container.innerHTML = '';
+
+            imageGalleryList.forEach(imageName => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'gallery-item';
+                const imagePath = `images/${imageName}`;
+
+                itemDiv.innerHTML = `
+                    <img src="${imagePath}" alt="${imageName}">
+                    <div class="gallery-item-path">${imagePath}</div>
+                    <button class="copy-path-btn" onclick="copyToClipboard('${imagePath}')">Copier le chemin</button>
+                `;
+                container.appendChild(itemDiv);
+            });
+        }
+
+        window.copyToClipboard = function(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert(`Chemin "${text}" copié dans le presse-papiers !`);
+            }).catch(err => {
+                console.error("Erreur de copie : ", err);
+            });
+        }
 
         //AJOUT D'UNE VILLE A LA ROUTE
         const addCityForm = document.getElementById('add-city-form');
@@ -1301,6 +1347,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // On appelle le dessin de la carte uniquement quand on affiche cet onglet
             if (sectionId === 'map') {
                 renderRoute();
+            } else if (sectionId = 'gallery') {
+                renderGallery();
             }
         }
 

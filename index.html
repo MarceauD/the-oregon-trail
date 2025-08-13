@@ -35,6 +35,7 @@
             <button onclick="showSection('journal')" class="nav-button">Journal</button>
             <button onclick="showSection('tables')" class="nav-button">Tables</button>
             <button onclick="showSection('map')" class="nav-button">Carte</button>
+            <button onclick="showSection('gallery')" class="nav-button">Galerie</button>
         </nav>
 
         <main>
@@ -245,6 +246,15 @@ Eddy n'a pas supporté cette situation et il a pris la fuite de la maison des Du
                         <iframe id="pdf-viewer" src="" title="Visualiseur de PDF"></iframe>
                     </div>
                 </div>
+            </section>
+
+            <section id="gallery" class="content-section">
+                <div class="section-header">
+                    <h2>Galerie d'images</h2>
+                </div>
+                <p>Voici toutes les images disponibles dans votre dossier <code>/images/</code>. Utilisez le bouton "Copier" pour obtenir le chemin à utiliser dans les fiches de personnage ou de PNJ.</p>
+                <div id="gallery-container" class="gallery-grid">
+                    </div>
             </section>
         </main>
     </div>
