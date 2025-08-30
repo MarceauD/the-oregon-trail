@@ -20,7 +20,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
+
+        firebase.auth().signInAnonymously().catch((error) => {
+            console.error("Erreur d'authentification anonyme", error);
+        });
+
         const saveDocRef = db.collection('saves').doc('mainSave');
+
 
         // --- 1. GESTION DE L'ÉTAT (LES DONNÉES DU JEU) ---
         const defaultState = {
@@ -131,6 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "morgan_horse.jpg",
             "remington_new_model.png",
             "spencer_m1865.jpg",
+            "smokes/12_sacagawea.png",
             "smokes/18_jesse_james.png",
             "smokes/34_samuel_colt.png",
             "smokes/37_lewis_and_clark_expedition.png",
