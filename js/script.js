@@ -25,20 +25,21 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error("Erreur d'authentification anonyme", error);
         });
 
+
         const saveDocRef = db.collection('saves').doc('mainSave');
 
 
         // --- 1. GESTION DE L'ÉTAT (LES DONNÉES DU JEU) ---
         const defaultState = {
             character: {
-                money: 100.00,
+                money: 0.00,
                 stats: [
-                    { id: 1, name: "Force", value: 70 },
-                    { id: 2, name: "Endurance", value: 75 },
+                    { id: 1, name: "Force", value: 60 },
+                    { id: 2, name: "Endurance", value: 80 },
                     { id: 3, name: "Charisme", value: 50 },
                     { id: 4, name: "Connaissances", value: 30 },
                     { id: 5, name: "Combat", value: 45 },
-                    { id: 6, name: "Perception", value: 60 },
+                    { id: 6, name: "Perception", value: 65 },
                     { id: 7, name: "Persuasion", value: 70 },
                     { id: 8, name: "Survie", value: 35 },
                     { id: 9, name: "Agilité", value: 50 },
@@ -49,14 +50,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 skills: [
                     { id: 101, name: "Résilience", value: 85 },
                     { id: 102, name: "Débrouillardise", value: 60 },
-                    { id: 103, name: "Jeu de banjo", value: 70 },
+                    { id: 103, name: "Jeu de banjo", value: 60 },
                     { id: 104, name: "Attaque sournoise", value: 70 },
                     { id: 105, name: "Fuite", value: 65 },
-                    { id: 106, name: "Tir au revolver", value: 25 },
-                    { id: 107, name: "Tir au fusil", value: 20 },
-                    { id: 108, name: "Poker", value: 30 },
-                    { id: 109, name: "Lecture", value: 10 },
-                    { id: 110, name: "Equitation", value: 15 },
+                    { id: 109, name: "Lecture", value: 5 },
+                    { id: 110, name: "Ecriture", value: 5},
+                    { id: 110, name: "Equitation", value: 10 },
 
                 ],
                 banjoMelodies: [
@@ -66,56 +65,29 @@ document.addEventListener('DOMContentLoaded', () => {
                     { id: 301, text: "Résilience"},
                     { id: 302, text: "Loyauté"},
                     { id: 303, text: "Droiture"},
-                    { id: 304, text: "Rêveur"},
                  ],
                 weaknesses: [ 
-                    { id: 401, text: "Manque de confiance" },
+                    { id: 401, text: "Manque de confiance"},
                     { id: 402, text: "Ignorant" },
                     { id: 403, text: "Méfiant" },
-                    { id: 404, text: "Rancunier"},
                 ],
                 inventory: {
-                    firearms: [
-                        { id: 501, name: "Remington Army New Model 1863", img: "images/remington_new_model.png",isAvailable: true }
-                    ],
-                    clothing: [
-                        { id: 601, name: "Chapeau Cattleman", img: "images/cattleman_hat.jpg",isAvailable: true }
-                    ],
-                    companions: [
-                        { id: 701, name: "Pilgrim, cheval Morgan", img: "images/morgan_horse.jpg", isAvailable: true }
-                    ],
+                    firearms: [],
+                    clothing: [],
+                    companions: [],
                     general: [
-                        { id: 801, text: "Vêtements neufs et robustes", isAvailable: true},
-                        { id: 802, text: "Bottes de marche neuves", isAvailable: true},
-                        { id: 803, text: "Gilet et vêtement de froid", isAvailable: true},
-                        { id: 804, text: "Couverture de voyage", isAvailable: true },
-                        { id: 805, text: "Kits de cuisine et d'entretien", isAvailable: true},
-                        { id: 806, text: "Couteau de chasse et petit couteau", isAvailable: true},
+                        { id: 801, text: "Vêtements vieux et sales", isAvailable: true},
+                        { id: 802, text: "Bottes de marche usées", isAvailable: true},
                         { id: 807, text: "Banjo dans son étui", isAvailable: true},
-                        { id: 808, text: "Munitions .44 et .50", isAvailable: true},
-                        { id: 809, text: "Pierre d'ombre", isAvailable: true}
+                        { id: 808, text: "Nourriture", isAvailable: true},
                     ]
                 }
             },
-            npcs: [
-                { id: 1, name: "Abigail Carter", description: "Une fermière tenace et bienveillante.", status: "ami", faitsMarquants: "M'a donné des provisions gratuitement."},
-                { id: 2, name: "Silas 'Le Corbeau'", description: "Un bandit de grand chemin rusé et dangereux.", status: "ennemi", faitsMarquants: "A tenté de me voler près d'une auberge."}
-            ],
-            threads: [
-                { id: 1, title: "Traverser la Pennsylvanie", location: "Pennsylvanie", description: "Atteindre la frontière de l'Ohio.", status: "en-cours", events: ["Quitté Philadelphie.", "Repoussé l'attaque de Silas."]}
-            ],
-            journal: [
-                { id: 1690378800000, date: "1868-07-15", entry: "Je me suis enfui. Enfin libre, mais le souffle court. La silhouette de Harrisburg s'éloigne derrière moi. Direction l'ouest, vers Lewistown, en suivant la voie ferrée. Le banjo sur mon dos pèse moins lourd que le nom des Dunbar." }
-            ],
-            // capital, major-city, small-town
+            npcs: [],
+            threads: [],
+            journal: [],
             route: [
                 {id: 1, city: "Harrisburg",  x: 3164, y: 1013, type: "major-city",     labelPosition: "top-right" },
-                {id : 2, city: "Lewistown",   x: 3132, y: 997, type: "small-town",  labelPosition: "top" },
-                {id : 3, city: "Mount Union", x: 3094, y: 1001, type: "small-town",  labelPosition: "bottom-right" },
-                { id : 4,city: "",  x: 3084, y: 999, type: "small-town",  labelPosition: "top-right" },
-                { id : 5,city: "Altoona",     x: 3068, y: 996, type: "small-town",  labelPosition: "top-left" },
-                { id : 6,city: "Ebensburg",     x: 3038, y: 1020, type: "small-town",  labelPosition: "bottom" },
-                { id : 7,city: "Johnstown",     x: 3020, y: 1026, type: "small-town",  labelPosition: "top-left" },
             ]
         };
 
@@ -1448,7 +1420,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
             
+            
             // On remplit notre état de jeu avec les données chargées
+
             gameState = data;
             
             // On s'assure que toutes les propriétés existent pour éviter les erreurs
