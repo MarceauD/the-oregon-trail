@@ -20,10 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
+        const auth = firebase.auth();
 
-        firebase.auth().signInAnonymously().catch((error) => {
-            console.error("Erreur d'authentification anonyme", error);
-        });
 
 
         const saveDocRef = db.collection('saves').doc('mainSave');
@@ -90,6 +88,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 {id: 1, city: "Harrisburg",  x: 3164, y: 1013, type: "major-city",     labelPosition: "top-right" },
             ]
         };
+
+       
 
         let gameState = {};
         //let gameState = JSON.parse(localStorage.getItem('oregonTrailSave')) || defaultState;
@@ -1422,7 +1422,6 @@ document.addEventListener('DOMContentLoaded', () => {
             
             
             // On remplit notre état de jeu avec les données chargées
-
             gameState = data;
             
             // On s'assure que toutes les propriétés existent pour éviter les erreurs
@@ -1442,5 +1441,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
         
         // --- 5. INITIALISATION ---
-        main();
+
+         auth.onAuthStateChanged(user => {
+            if (user) {
+                // L'utilisateur est authentifié (de manière anonyme).
+                console.log("Feu vert de l'authentification reçu pour l'utilisateur :", user.uid);
+                // C'est seulement MAINTENANT qu'on peut lancer l'application sans risque.
+                main();
+            } else {
+                // L'utilisateur n'est pas authentifié.
+                console.log("L'utilisateur n'est pas authentifié.");
+            }
+        });
+
+        // On lance la tentative de connexion anonyme.
+        // La fonction onAuthStateChanged ci-dessus prendra le relais quand ce sera terminé.
+        auth.signInAnonymously().catch((error) => {
+            console.error("Erreur d'authentification anonyme", error);
+            alert("Impossible de démarrer la session d'authentification.");
+        });
     });
