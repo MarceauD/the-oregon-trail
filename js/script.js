@@ -31,6 +31,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const defaultState = {
             character: {
                 money: 0.00,
+                identityFields: {
+                    name: "Edward 'Eddy' Dunbar",
+                    age: "18 ans",
+                    origin: "Harrisburg, Pennsylvanie",
+                    profession: "Fugitif"
+                },
+                history: "Edward 'Eddy' Dunbar, 18 ans. Il vit dans la ville de Harrisburg, Pennsylvanie en 1868. 18 ans plus tôt, ses parents, des immigrés écossais ont eu un enfant mais leur vie en Pennsylvanie était rude. Ils ne parvenaient pas à rassembler suffisamment d'argent pour vivre convenablement. Le père travaillait dans les champs et s'est épuisé au point qu'il a fini par développer une maladie. La mère s'en est occupé mais il a fini par mourir. La mère s'est retrouvée seule avec l'enfant de quelques mois. Elle a préféré mettre fin à ses jours plutôt que d'affronter l'existence qui lui était promise. Edward s'est donc retrouvé seul dans une petite maison. Il a été retrouvé et recueilli dans un orphelinat dans laquelle la vie était rude. Il devait se montrer fort et intimidant pour se faire respecter et obtenir de quoi survivre parmi les autres enfants. Il s'est construit une carapace de résilience. Plus tard, il a été accueilli par une famille, les Dunbar vers l'age de 10 ans. Les Dunbar sont une famille maltraitante. Le père Eugene Dunbar est alcoolique et violent la mère Regina Dunbar est maltraitante. Ils ont adopté Eddy pour le faire travailler de force. D'abord dans les champs pour les aider puis par pur plaisir malsain pour lui faire accomplir n'importe quelle tache physique, fastidieuse et penible dans le but de l'épuiser. Eddy trouvait refuge dans la musique. Il a reussi à récupérer un banjo qu'il cachait précieusemment pour pouvoir en jouer et s'échapper de son quotidien. Pendant ces moments d'évasion, Eddy revait de lointain. Il revait d'indépendance et de liberté. Il a entendu parler d'un endroit où tout cela serait possible : l'Oregon. C'est là qu'il veut vivre. Eddy n'a pas supporté cette situation et il a pris la fuite de la maison des Dunbar un jour de juillet 1868. Il est parti sans rien si ce n'est son banjo qu'il tient en bandoulière dans un étui. Il veut rejoindre son rêve d'Oregon mais il est à pied. Edward a un souhait profond aussi : effacer son nom de famille de Dunbar et retrouver son nom de naissance. Il souhaite mener l'enquete sur ses parents pendant sa route en Pennsylvanie. Nous commencons l'histoire juste à l'extérieur de Harrisburg, à bout de souffle après avoir pris la fuite, Edward se dirige vers la ville directement à l'ouest en suivant la ligne de train : Lewistown.",
                 stats: [
                     { id: 1, name: "Force", value: 60 },
                     { id: 2, name: "Endurance", value: 80 },
@@ -348,7 +355,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert("Veuillez entrer une valeur numérique valide.");
             }
             
-            await saveGameData();
         });
 
         // AFFICHAGE GALERIE PHOTO
@@ -539,6 +545,62 @@ document.addEventListener('DOMContentLoaded', () => {
                 handlePageJump();
             }
     });
+
+        function renderCharacterIdentity() {
+            const container = document.getElementById('identity-container');
+            const data = gameState.character.identityFields || {};
+            container.innerHTML = `
+                <span>Nom</span>
+                <span contenteditable="true" spellcheck="false"
+                    onblur="updateCharacterIdentity('name', this.textContent)"
+                    onkeydown="if(event.key==='Enter'){ this.blur(); event.preventDefault(); }">
+                    ${data.name || ''}
+                </span>
+                <span>Âge</span>
+                <span contenteditable="true" spellcheck="false"
+                    onblur="updateCharacterIdentity('age', this.textContent)"
+                    onkeydown="if(event.key==='Enter'){ this.blur(); event.preventDefault(); }">
+                    ${data.age || ''}
+                </span>
+                <span>Origine</span>
+                <span contenteditable="true" spellcheck="false"
+                    onblur="updateCharacterIdentity('origin', this.textContent)"
+                    onkeydown="if(event.key==='Enter'){ this.blur(); event.preventDefault(); }">
+                    ${data.origin || ''}
+                </span>
+                <span>Profession</span>
+                <span contenteditable="true" spellcheck="false"
+                    onblur="updateCharacterIdentity('profession', this.textContent)"
+                    onkeydown="if(event.key==='Enter'){ this.blur(); event.preventDefault(); }">
+                    ${data.profession || ''}
+                </span>
+            `;
+        }
+
+        function renderCharacterHistory() {
+            const container = document.getElementById('history-container');
+            const data = gameState.character.history || '';
+            container.innerHTML = `
+                <p contenteditable="true" spellcheck="false"
+                onblur="updateCharacterHistory(this.textContent)"
+                onkeydown="if(event.key==='Enter'){ this.blur(); event.preventDefault(); }">
+                ${data}
+                </p>
+            `;
+        }
+
+        // AJOUTEZ CES DEUX NOUVELLES FONCTIONS DE SAUVEGARDE
+
+        window.updateCharacterIdentity = async function(field, newValue) {
+            if (!gameState.character.identityFields) gameState.character.identityFields = {};
+            gameState.character.identityFields[field] = newValue.trim();
+            await saveGameData();
+        }
+
+        window.updateCharacterHistory = async function(newValue) {
+            gameState.character.history = newValue.trim();
+            await saveGameData();
+        }
 
         // AFFICHAGE
 
@@ -823,6 +885,9 @@ document.addEventListener('DOMContentLoaded', () => {
                             <button class="card-button" onclick="openModal('npc', ${npc.id})" title="Modifier">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z"/></svg>
                             </button>
+                            <button class="card-button" onclick="exportSingleItem('npc', ${npc.id})" title="Copier les détails">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M384 336H192c-8.8 0-16-7.2-16-16V64c0-8.8 7.2-16 16-16l140.1 0L400 115.9V320c0 8.8-7.2 16-16 16zM192 384H384c35.3 0 64-28.7 64-64V115.9c0-12.7-5.1-24.9-14.1-33.9L366.1 14.1c-9-9-21.2-14.1-33.9-14.1H192c-35.3 0-64 28.7-64 64V320c0 35.3 28.7 64 64 64zM64 128c-35.3 0-64 28.7-64 64V448c0 35.3 28.7 64 64 64H256c35.3 0 64-28.7 64-64V416H272v32c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V192c0-8.8 7.2-16 16-16H160V128H64z"/></svg>
+                            </button>
                             <button class="card-button delete-button" onclick="deleteItem('npc', ${npc.id})" title="Supprimer">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg>
                             </button>
@@ -862,6 +927,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="button-group">
                              <button class="card-button" onclick="openModal('thread', ${thread.id})" title="Modifier">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z"/></svg>
+                            </button>
+                            <button class="card-button" onclick="exportSingleItem('thread', ${thread.id})" title="Copier les détails">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M384 336H192c-8.8 0-16-7.2-16-16V64c0-8.8 7.2-16 16-16l140.1 0L400 115.9V320c0 8.8-7.2 16-16 16zM192 384H384c35.3 0 64-28.7 64-64V115.9c0-12.7-5.1-24.9-14.1-33.9L366.1 14.1c-9-9-21.2-14.1-33.9-14.1H192c-35.3 0-64 28.7-64 64V320c0 35.3 28.7 64 64 64zM64 128c-35.3 0-64 28.7-64 64V448c0 35.3 28.7 64 64 64H256c35.3 0 64-28.7 64-64V416H272v32c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V192c0-8.8 7.2-16 16-16H160V128H64z"/></svg>
                             </button>
                             <button class="card-button delete-button" onclick="deleteItem('thread', ${thread.id})" title="Supprimer">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg>
@@ -1034,6 +1102,47 @@ document.addEventListener('DOMContentLoaded', () => {
             // Utilisation de l'API Clipboard pour copier le texte
             navigator.clipboard.writeText(output).then(() => {
                 alert('Contenu copié dans le presse-papiers !');
+            }).catch(err => {
+                console.error('Erreur lors de la copie : ', err);
+                alert('Une erreur est survenue lors de la copie.');
+            });
+        }
+
+        window.exportSingleItem = function(type, id) {
+            let output = '';
+            const separator = '\n------------------------------------\n';
+            let item;
+
+            if (type === 'npc') {
+                item = gameState.npcs.find(n => n.id === id);
+                if (!item) return;
+                let statusText = (item.status || '').replace(/-/g, ' ');
+                statusText = statusText.charAt(0).toUpperCase() + statusText.slice(1);
+                
+                output += `Nom: ${item.name}\n`;
+                output += `Statut: ${statusText}\n\n`;
+                output += `Description:\n${item.description}\n\n`;
+                if (item.faitsMarquants && item.faitsMarquants.trim() !== '') {
+                    output += `Faits marquants:\n${item.faitsMarquants}\n`;
+                }
+            } else if (type === 'thread') {
+                item = gameState.threads.find(t => t.id === id);
+                if (!item) return;
+                let statusText = (item.status || '').replace(/-/g, ' ');
+                statusText = statusText.charAt(0).toUpperCase() + statusText.slice(1);
+
+                output += `Titre: ${item.title}\n`;
+                output += `Lieu: ${item.location}\n`;
+                output += `Statut: ${statusText}\n\n`;
+                output += `Description:\n${item.description}\n\n`;
+                if (item.events && item.events.length > 0) {
+                    output += `Événements:\n${item.events.map(e => `- ${e}`).join('\n')}\n`;
+                }
+            }
+
+            // Copier dans le presse-papiers
+            navigator.clipboard.writeText(output.trim()).then(() => {
+                alert('Informations copiées dans le presse-papiers !');
             }).catch(err => {
                 console.error('Erreur lors de la copie : ', err);
                 alert('Une erreur est survenue lors de la copie.');
@@ -1430,6 +1539,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     gameState[key] = defaultState[key];
                 }
             }
+
+            if (!gameState.character.identityFields) gameState.character.identityFields = defaultState.character.identityFields;
+            if (!gameState.character.history) gameState.character.history = defaultState.character.history;
 
             // Le reste de l'initialisation de la page
             if (gameState.character && gameState.character.money !== undefined) {

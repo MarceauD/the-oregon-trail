@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Oregon Trail - Journal de Bord</title>
+    <link rel="icon" type="image/png" href="images/cowboy_hat.png">
     <script src="tinymce/tinymce.min.js"></script>
     <script src="js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/localforage@1.10.0/dist/localforage.min.js"></script>
@@ -49,14 +50,11 @@
                         <div class="char-portrait" title="Edward 'Eddy' Dunbar"></div>
                         <div class="char-panel">
                             <h3>Identité</h3>
-                            <p>Garçon de 18 ans venant de Harrisburg, Pennsylvanie.<br>Né en 1849.
-                            </p>
+                            <div id="identity-container" class="char-info-grid"></div>
                             </div>
                         <div class="char-panel">
                             <h3>Histoire</h3>
-                            <p>Edward 'Eddy' Dunbar, 18 ans. Il vit dans la ville de Harrisburg, Pennsylvanie en 1868. 18 ans plus tôt, ses parents, des immigrés écossais ont eu un enfant mais leur vie en Pennsylvanie était rude. Ils ne parvenaient pas à rassembler suffisamment d'argent pour vivre convenablement. Le père travaillait dans les champs et s'est épuisé au point qu'il a fini par développer une maladie. <br> La mère s'en est occupé mais il a fini par mourir. La mère s'est retrouvée seule avec l'enfant de quelques mois. Elle a préféré mettre fin à ses jours plutôt que d'affronter l'existence qui lui était promise.<br>Edward s'est donc retrouvé seul dans une petite maison. Il a été retrouvé et recueilli dans un orphelinat dans laquelle la vie était rude. Il devait se montrer fort et intimidant pour se faire respecter et obtenir de quoi survivre parmi les autres enfants. Il s'est construit une carapace de résilience. <br>Plus tard, il a été accueilli par une famille, les Dunbar vers l'age de 10 ans. Les Dunbar sont une famille maltraitante. Le père Eugene Dunbar est alcoolique et violent la mère Regina Dunbar est maltraitante. Ils ont adopté Eddy pour le faire travailler de force. D'abord dans les champs pour les aider puis par pur plaisir malsain pour lui faire accomplir n'importe quelle tache physique, fastidieuse et penible dans le but de l'épuiser. 
-<br>Eddy trouvait refuge dans la musique. Il a reussi à récupérer un banjo qu'il cachait précieusemment pour pouvoir en jouer et s'échapper de son quotidien. Pendant ces moments d'évasion, Eddy revait de lointain. Il revait d'indépendance et de liberté. Il a entendu parler d'un endroit où tout cela serait possible : l'Oregon. C'est là qu'il veut vivre.<br>
-Eddy n'a pas supporté cette situation et il a pris la fuite de la maison des Dunbar un jour de juillet 1868. Il est parti sans rien si ce n'est son banjo qu'il tient en bandoulière dans un étui. Il veut rejoindre son rêve d'Oregon mais il est à pied. Edward a un souhait profond aussi : effacer son nom de famille de Dunbar et retrouver son nom de naissance. Il souhaite mener l'enquete sur ses parents pendant sa route en Pennsylvanie.<br>Nous commencons l'histoire juste à l'extérieur de Harrisburg, à bout de souffle après avoir pris la fuite, Edward se dirige vers la ville directement à l'ouest en suivant la ligne de train : Lewistown.</p>
+                            <div id="history-container"></div>
                         </div>
                         <div class="char-panel">
                             <h3>Points Forts</h3>
