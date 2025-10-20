@@ -544,7 +544,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (event.key === 'Enter') {
                 handlePageJump();
             }
-    });
+        });
 
         function renderCharacterIdentity() {
             const container = document.getElementById('identity-container');
@@ -606,6 +606,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function renderCharacterSheet() {
             if (!gameState.character) return;
+            renderCharacterIdentity(); // Appel ajouté
+            renderCharacterHistory();
             renderEditableList('stats', 'Statistique', false);
             renderEditableList('skills', 'Compétence', false);
             renderEditableList('banjoMelodies', 'Mélodie', true);
