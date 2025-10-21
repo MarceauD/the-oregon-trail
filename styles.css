@@ -20,37 +20,50 @@
 
 /* --- Variables de couleurs --- */
 :root {
-    --paper-color: #fdf6e3; /* Couleur papier ancien */
-    --ink-color: #3a3a3a;      /* Couleur encre foncée, pas tout à fait noire */
-    --border-color: #d2c8b1; /* Couleur pour les bordures discrètes */
-    --accent-color: #8b4513;  /* Marron-Selle, pour les accents */
-    --highlight-color: #fbf1d1; /* Couleur de surlignage doux */
-    --delete-color: #a42a2a;
+    --paper-color: #fbf7f0;       /* Papier légèrement plus clair et moins jaune */
+    --ink-color: #4a4033;         /* Encre brun foncé, moins dure que le noir */
+    --border-color: #e0d8c8;     /* Bordure plus douce */
+    --accent-color: #9f7b57;       /* Accent brun-taupe plus doux */
+    --highlight-color: #f5efe2;    /* Surlignage très subtil */
+    --delete-color: #c94c4c;       /* Rouge désaturé */
+    --link-color: #5a7a8a;        /* Bleu-gris pour les liens */
+
+    --font-serif: 'Lora', serif;
+    --font-heading: 'Merriweather', serif;
+    --font-handwriting: 'Religath', cursive; /* Ou votre police manuscrite préférée */
+    --font-interface: 'Lato', sans-serif; /* Police moderne pour l'UI */
+
+    --border-radius-sm: 4px;      /* MODERNIZED : Coins arrondis */
+    --border-radius-md: 6px;
+    --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.06); /* MODERNIZED : Ombres subtiles */
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 /* --- Style général du corps --- */
 body {
-    font-family: 'Lora', serif;
-    background-color: #e8e4d8;
+    font-family: var(--font-serif);
+    background-color: #e9e5d9; /* Fond légèrement différent */
     color: var(--ink-color);
-    line-height: 1.6;
+    line-height: 1.7; /* Plus aéré */
     margin: 0;
-    padding: 20px;
+    padding: 25px; /* Plus d'espace autour */
 }
 
 /* --- Conteneur principal --- */
 .main-container {
-    max-width: 95vw; /* Légèrement élargi pour la nouvelle fiche */
+    max-width: 95vw;
     margin: 0 auto;
     background-color: var(--paper-color);
     border: 1px solid var(--border-color);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-md);
+    border-radius: var(--border-radius-md); /* MODERNIZED */
+    overflow: hidden; /* Important pour que les arrondis s'appliquent bien */
 }
 
 /* --- En-tête de l'application --- */
 header {
     text-align: center;
-    padding: 40px 20px;
+    padding: 30px 25px;
     border-bottom: 2px double var(--border-color);
     background-image: url('images/background.png');
     background-size: cover;
@@ -120,77 +133,53 @@ header::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.4); /* Filtre noir avec 40% d'opacité */
+    background-color: rgba(0, 0, 0, 0.55); /* Filtre noir avec 40% d'opacité */
     z-index: -1; /* Place le filtre entre l'image et le texte */
 }
 
 /* Assurez-vous que la couleur du texte de l'en-tête contraste bien */
 header h1, header p {
     color: var(--paper-color); /* On utilise une couleur claire pour le texte */
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.8); /* Ajoute une ombre au texte pour la lisibilité */
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.7); /* Ajoute une ombre au texte pour la lisibilité */
 }
 
 header h1 {
     font-family: 'Merriweather', serif;
     font-weight: 700;
     font-size: 2.5em;
-    color: #c29305;
+    color: #e6c88e;
     margin: 0;
 }
 
 header p {
     font-style: italic;
     margin: 5px 0 0;
-    color: #e0dddd;
+   color: rgba(255, 255, 255, 0.85);
 }
 
 /* --- Barre de navigation --- */
 nav {
-    display: flex;
-    position: relative; /* Nécessaire pour que z-index fonctionne */
-    z-index: 900;/* Permet aux boutons de passer à la ligne */
-    justify-content: center;
-    background-color: #fff;
-    border-bottom: 1px solid var(--border-color);
+    display: flex; justify-content: center; background-color: #fff;
+    border-bottom: 1px solid var(--border-color); position: relative; z-index: 900;
 }
 
 nav button {
-    font-family: 'Merriweather', serif;
-    background: none;
-    border: none;
-    padding: 15px 25px;
-    cursor: pointer;
-    font-size: 1.1em;
-    color: var(--accent-color);
-    transition: background-color 0.3s, color 0.3s;
+    font-family: var(--font-interface); /* MODERNIZED */
+    background: none; border: none; padding: 15px 25px; cursor: pointer;
+    font-size: 1.1em; color: var(--accent-color);
     border-bottom: 3px solid transparent;
+    transition: background-color 0.2s ease, border-color 0.2s ease; /* MODERNIZED */
 }
 
-nav button:hover {
-    background-color: var(--highlight-color);
-}
-
-nav button.active {
-    border-bottom: 3px solid var(--accent-color);
-    font-weight: bold;
-}
+nav button:hover { background-color: var(--highlight-color); }
+nav button.active { border-bottom-color: var(--accent-color); font-weight: bold; }
 
 /* --- Sections de contenu --- */
-.content-section {
-    padding: 25px 35px;
-    display: none; /* Cachées par défaut */
-}
-
-.content-section.active {
-    display: block; /* Affichée si active */
-}
-
+.content-section { padding: 30px 40px; display: none; }
+.content-section.active { display: block; }
 .section-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid var(--border-color);
-    margin-bottom: 20px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 1px solid var(--border-color); margin-bottom: 25px;
 }
 
 .section-header .button-group {
@@ -199,85 +188,82 @@ nav button.active {
 }
 
 h2 {
-    font-family: 'Merriweather', serif;
-    font-size: 1.8em;
-    padding-bottom: 10px;
-    color: var(--accent-color);
-    margin: 0;
+    font-family: var(--font-heading);
+    font-size: 1.8em; padding-bottom: 10px; color: var(--accent-color); margin: 0;
 }
 
 /* --- Styles pour les formulaires --- */
-.form-grid {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 15px;
-    align-items: center;
+.form-grid { /* Utilisé dans la modale principale */
+    display: grid; grid-template-columns: 150px 1fr; gap: 20px; align-items: start;
+}
+.form-grid-map { /* Utilisé pour l'ajout de ville */
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px; align-items: end;
 }
 
 label {
-    font-weight: bold;
-    font-style: italic;
+    font-family: var(--font-interface); /* MODERNIZED */
+    font-weight: bold; font-style: normal; /* Moins italique */
+    font-size: 0.9em;
+    margin-bottom: 5px; /* Pour les formulaires en colonne */
 }
-
 input[type="text"], input[type="number"], input[type="date"], textarea, select {
-    width: 100%;
-    padding: 8px;
+    width: 100%; padding: 10px 12px; /* Plus d'espace interne */
     border: 1px solid var(--border-color);
     background-color: #fff;
-    font-family: 'Lora', serif;
-    font-size: 1em;
-    box-sizing: border-box;
+    font-family: var(--font-serif); /* Garde la police de contenu */
+    font-size: 1em; box-sizing: border-box;
+    border-radius: var(--border-radius-sm); /* MODERNIZED */
+    transition: border-color 0.2s ease, box-shadow 0.2s ease; /* MODERNIZED */
 }
-
-textarea { resize: vertical; min-height: 80px; }
+input[type="text"]:focus, input[type="number"]:focus, input[type="date"]:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px rgba(159, 123, 87, 0.2); /* Halo subtil au focus */
+}
+textarea { resize: vertical; min-height: 100px; }
 
 .button-group { display: flex; gap: 10px; }
 
-.action-button, .card-button {
-    font-family: 'Merriweather', serif;
-    padding: 10px 20px;
-    background-color: var(--accent-color);
-    color: var(--paper-color);
-    border: none;
-    cursor: pointer;
-    font-size: 1em;
-    transition: background-color 0.3s;
-    text-align: center;
+.action-button, .card-button, .header-quick-actions button {
+    font-family: var(--font-interface); /* MODERNIZED */
+    padding: 10px 20px; background-color: var(--accent-color); color: var(--paper-color);
+    border: none; cursor: pointer; font-size: 1em; text-align: center;
+    border-radius: var(--border-radius-sm); /* MODERNIZED */
+    transition: background-color 0.2s ease; /* MODERNIZED */
 }
-
-.action-button:hover { background-color: #6a340f; }
+.action-button:hover { background-color: #8a6a4a; /* Version plus foncée de l'accent */ }
 
 /* --- Style pour les cartes (PNJ, Quêtes) --- */
-.card-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+.card-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; }
 .card {
-    background: var(--highlight-color);
-    border: 1px solid var(--border-color);
-    padding: 0; /* Le padding sera maintenant dans les sous-sections */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    display: flex;
-    flex-direction: column;
+    background: var(--paper-color); /* Fond papier plus clair */
+    border: 1px solid var(--border-color); padding: 0;
+    box-shadow: var(--shadow-sm); /* MODERNIZED */
+    border-radius: var(--border-radius-md); /* MODERNIZED */
+    display: flex; flex-direction: column;
+    overflow: hidden; /* Pour les arrondis */
 }
-.card h3 { margin-top: 0; font-family: 'Merriweather', serif; }
-.card:hover .card-header {
-    background-color: var(--paper-color);
-}
-.card-header h3 {
-    margin: 0;
-    font-family: 'Merriweather', serif;
-}
-.card-header::after { /* Ajoute une flèche pour indiquer qu'on peut déplier */
-    content: '▼';
-    font-size: 0.8em;
-    color: var(--accent-color);
-    transition: transform 0.3s ease;
-}
-
-/* NOUVEAU : Style pour la partie détails (cachée par défaut) */
-.card-details {
-    display: none; /* Cachée par défaut */
-    padding: 15px;
+.card-header {
+    padding: 15px; cursor: pointer; display: flex; justify-content: space-between; align-items: center;
     border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.2s ease; /* MODERNIZED */
+    background-color: var(--highlight-color); /* MODERNIZED : Fond légèrement différent */
 }
+.card:hover .card-header { background-color: #ede6d8; }
+.card-header h3 { margin: 0; font-family: var(--font-heading); }
+.card-header::after { content: '▼'; font-size: 0.8em; color: var(--accent-color); transition: transform 0.3s ease; }
+.card-details {
+    display: none; padding: 15px;
+    border-bottom: 1px dashed var(--border-color); /* Style de bordure plus léger */
+}
+.card-footer {
+    padding: 10px 15px; background-color: var(--highlight-color); /* MODERNIZED : Fond légèrement différent */
+}
+.card.is-expanded .card-details { display: block; }
+.card.is-expanded .card-header { border-bottom-style: dashed; }
+.card.is-expanded .card-header::after { transform: rotate(180deg); }
+.card-content { flex-grow: 1; }
 .card-details p:first-child, .card-details div:first-child {
     margin-top: 0;
 }
@@ -292,18 +278,25 @@ textarea { resize: vertical; min-height: 80px; }
     background-color: var(--paper-color);
 }
 
-/* NOUVEAU : Logique d'affichage quand la carte est dépliée */
-.card.is-expanded .card-details {
-    display: block;
+.status {
+    position: relative; /* Pour positionner la pastille */
+    font-family: var(--font-interface); /* MODERNIZED */
+    padding: 4px 8px 4px 18px; /* Espace pour la pastille */
+    border-radius: 10px; /* Plus arrondi */
+    display: inline-block; font-size: 0.85em; font-style: normal;
 }
-.card.is-expanded .card-header {
-    border-bottom-style: dashed;
+/* MODERNIZED : Ajout d'une pastille de couleur */
+.status::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: currentColor; /* Prend la couleur du texte du statut */
 }
-.card.is-expanded .card-header::after {
-    transform: rotate(180deg); /* La flèche pointe vers le haut */
-}
-.card-content { flex-grow: 1; }
-.status { font-style: italic; padding: 3px 8px; border-radius: 4px; display: inline-block; font-size: 0.9em; }
 /*Status NPC*/
 .status-amoureux { background-color: #e83e8c; color: #fff; }
 .status-ami-proche { background-color: #17a2b8; color: #fff; } /* Cyan */
@@ -336,7 +329,7 @@ textarea { resize: vertical; min-height: 80px; }
     width: 32px;  /* Taille carrée */
     height: 32px;
     padding: 0; /* Plus besoin de padding de texte */
-    border-radius: 5px;
+    border-radius: var(--border-radius-sm);    
     cursor: pointer;
     transition: background-color 0.2s;
 }
@@ -355,27 +348,24 @@ textarea { resize: vertical; min-height: 80px; }
 }
 
 /* NOUVEAU : Style pour les icônes SVG dans les boutons */
-.card-button svg {
-    width: 16px;
-    height: 16px;
-    fill: currentColor; /* L'icône prend la couleur du texte de son parent (le bouton) */
-}
+.card-button svg { width: 16px; height: 16px; fill: currentColor; }
 
 /* --- Styles pour la Fiche de Personnage "Épique" --- */
 .character-sheet { display: grid; grid-template-columns: 1fr 1.5fr; gap: 30px; }
 .char-left-col, .char-right-col { display: flex; flex-direction: column; gap: 20px; }
 .char-portrait {
-    width: 100%;
-    height: 300px;
-    background-color: var(--highlight-color);
+    width: 100%; height: 300px; background-color: var(--highlight-color);
     border: 1px solid var(--border-color);
-    /* Remplacez l'URL par un lien vers une image de votre personnage */
     background-image: url('images/character.png');
-    background-size: cover;
-    background-position: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-size: cover; background-position: center;
+    box-shadow: var(--shadow-sm); /* MODERNIZED */
+    border-radius: var(--border-radius-md); /* MODERNIZED */
 }
-.char-panel { background-color: var(--highlight-color); border: 1px solid var(--border-color); padding: 15px 20px; }
+.char-panel {
+    background-color: var(--highlight-color); border: 1px solid var(--border-color);
+    padding: 20px 25px; /* Plus d'espace */
+    border-radius: var(--border-radius-md); /* MODERNIZED */
+}
 .char-panel h3 { font-family: 'Merriweather', serif; color: var(--accent-color); border-bottom: 1px solid var(--border-color); padding-bottom: 8px; margin-top: 0; margin-bottom: 15px; font-size: 1.4em; }
 .char-panel p { margin-bottom: 0; }
 .char-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
@@ -397,13 +387,16 @@ textarea { resize: vertical; min-height: 80px; }
     border-bottom: 1px dashed var(--border-color);
 }
 .editable-list-item input[type="number"] {
-    width: 60px; /* Largeur fixe et réduite */
-    flex-grow: 0; /* Empêche l'étirement */
-    flex-shrink: 0; /* Empêche le rétrécissement */
-    text-align: right;
+    width: 55px; /* MODIFIED: Smaller fixed width, adjust as needed */
+    flex-grow: 0; /* Prevents stretching */
+    flex-shrink: 0; /* Prevents shrinking */
+    text-align: right; /* Ensures the number is right-aligned */
     border: 1px solid transparent;
     background-color: transparent;
     padding: 2px 4px;
+    font-family: var(--font-serif); /* Ensures font consistency */
+    font-size: 1em; /* Ensures font consistency */
+    border-radius: var(--border-radius-sm); /* Keep the rounded corners */
 }
 .editable-list-item input[type="number"]:focus {
     border-color: var(--border-color);
@@ -504,39 +497,33 @@ textarea { resize: vertical; min-height: 80px; }
 }
 
 /* --- Style pour le journal --- */
-.journal-entry { 
-    border-bottom: 1px solid var(--border-color); 
-    padding: 20px 15px; /* Padding ajusté */
-    background-color: var(--paper-color); /* Fond de page pour chaque entrée */
-    margin-bottom: 15px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+.journal-entry {
+    border: none; /* Suppression de la bordure */
+    padding: 25px 20px;
+    background-color: var(--paper-color);
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-sm); /* MODERNIZED */
+    border-radius: var(--border-radius-md); /* MODERNIZED */
 }
 .journal-entry:last-child { border-bottom: 1px solid var(--border-color); }
 .journal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-.journal-date { 
-    font-weight: bold; 
-    font-size: 2em; 
-    font-family: 'Religath', serif; 
-    color: var(--accent-color); 
-    margin: 0;
-    border-bottom: 1px dashed var(--border-color);
-    padding-bottom: 5px;
+.journal-date {
+    font-weight: bold; font-size: 1.8em; /* Plus petit ? */
+    font-family: var(--font-handwriting); /* Utilisation de la variable */
+    color: var(--accent-color); margin: 0;
+    border-bottom: 1px dashed var(--border-color); padding-bottom: 5px;
 }
 
 /* NOUVEAU : Style pour le contenu du journal (police manuscrite) */
 .journal-content-display {
-    font-family: 'Merriweather', cursive; /* Application de la police manuscrite */
-    font-size: 1em; /* Taille de police plus grande pour la lisibilité */
-    color: #4a4033; /* Couleur d'encre un peu sépia */
-    line-height: 1.6;
+    font-family: var(--font-serif); /* Retour à Lora pour le contenu */
+    font-size: 1.1em; /* Légèrement plus grand */
+    color: var(--ink-color); line-height: 1.7;
 }
 .journal-content-display h1, .journal-content-display h2, .journal-content-display h3 {
-    font-family: 'Merriweather', serif;
-    color: var(--accent-color);
+    font-family: var(--font-heading); color: var(--accent-color);
 }
-.journal-content-display ul, .journal-content-display ol {
-    padding-left: 25px;
-}
+.journal-content-display ul, .journal-content-display ol { padding-left: 25px; }
 
 
 /* --- Style pour la fenêtre modale --- */
@@ -555,11 +542,11 @@ textarea { resize: vertical; min-height: 80px; }
 .modal-overlay.active { display: flex; }
 .modal-content { 
     background: var(--paper-color); 
-    padding: 55px; /* MODIFIÉ : Un peu plus d'aération */
-    border: 2px solid var(--accent-color); 
-    width: 90%; 
-    max-width: 1200px; /* MODIFIÉ : Fenêtre plus large */
-    box-shadow: 0 5px 20px rgba(0,0,0,0.3); 
+    padding: 35px; 
+    border: none; 
+    width: 90%; /* Takes 90% of screen width */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
+    border-radius: var(--border-radius-md); 
 }
 .modal-header { display: flex; justify-content: space-between; align-items: center; }
 .modal-close-button { font-size: 2em; font-weight: bold; cursor: pointer; background: none; border: none; color: var(--ink-color); }
@@ -725,9 +712,7 @@ font-family: 'Merriweather', serif;
     -webkit-appearance: none;
     margin: 0;
 }
-#character-money[type=number] {
-    
-}
+
 
 #save-money-button {
     background: none;
@@ -947,12 +932,7 @@ font-family: 'Merriweather', serif;
     padding-top: 20px;
     border-top: 2px double var(--border-color);
 }
-.form-grid-map {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 15px;
-    align-items: end; /* Aligne les éléments sur la ligne de base */
-}
+
 .form-grid-map div {
     display: flex;
     flex-direction: column;
@@ -1061,9 +1041,7 @@ font-family: 'Merriweather', serif;
     padding: 1em 3vw; /* Marges intérieures pour le confort de lecture */
     box-sizing: border-box; /* S'assure que le padding ne fait pas déborder l'élément */
 }
-.book-content .journal-entry {
-    /* Plus besoin de styles complexes ici, le contenu s'affiche simplement */
-}
+
 .reading-mode-footer {
     display: flex;
     justify-content: space-between;
@@ -1073,22 +1051,16 @@ font-family: 'Merriweather', serif;
     flex-shrink: 0;
 }
 .reading-mode-footer button {
-    font-family: 'Merriweather', serif;
-    padding: 8px 15px;
-    background: none;
-    border: 1px solid var(--accent-color);
-    color: var(--accent-color);
-    cursor: pointer;
+    font-family: var(--font-interface); /* MODERNIZED */
+    border-radius: var(--border-radius-sm); /* MODERNIZED */
 }
 .reading-mode-footer button:disabled {
     border-color: var(--border-color);
     color: var(--border-color);
     cursor: not-allowed;
 }
-.page-jumper {
-    font-style: italic;
-    cursor: pointer;
-    padding: 5px 10px;
+.page-jumper input {
+    border-radius: var(--border-radius-sm); /* MODERNIZED */
 }
 .page-jumper input {
     width: 50px;
