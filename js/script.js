@@ -1076,7 +1076,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const editIdInput = document.getElementById('edit-id');
         const editTypeInput = document.getElementById('edit-type');
 
-        const mobileEditorOverlay = document.getElementById('mobile-editor-overlay');
         const mobileEditorContainer = document.getElementById('mobile-editor-container');
         const mobileEditorSaveBtn = document.getElementById('mobile-editor-save-btn');
         const journalTextarea = document.getElementById('journal-entry-text');
@@ -1230,38 +1229,14 @@ document.addEventListener('DOMContentLoaded', () => {
             modalForm.reset();
             editTypeInput.value = type;
             currentJournalEditId = id;
-
-            if (type === 'journal' && isMobile()) {
-            const item = id ? gameState.journal.find(j => j.id === id) : null;
-            const initialContent = item ? item.entry : '';
-            
-            // On déplace le textarea dans l'overlay mobile
-            mobileEditorContainer.appendChild(journalTextarea);
-            document.body.classList.add('mobile-editor-active');
-            
-            tinymce.init({
-                selector: '#journal-entry-text',
-                license_key:'gpl',
-                plugins: 'lists link image table code help wordcount',
-                toolbar: 'undo redo | blocks | bold italic | bullist numlist | link image | code',
-                language: 'fr_FR',
-                menubar: false,
-                setup: (editor) => {
-                    editor.on('init', () => editor.setContent(initialContent));
-                }
-            });
-            
-            mobileEditorOverlay.classList.add('active');
-
-        // --- CAS N°2 : Tout le reste (PC, ou PNJ/Threads sur mobile) ---
-        } else {
+        
             // On cache toutes les sections
             npcFields.style.display = 'none';
             threadFields.style.display = 'none';
             journalFields.style.display = 'none';
 
             const editor = tinymce.get('journal-entry-text');
-            
+
             // On active la bonne section
             if (type === 'npc') {
                 npcFields.style.display = 'grid';
@@ -1296,6 +1271,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
             } else if (type === 'journal') {
+                if (isMobile()) {
+                    modalOverlay.classList.add('journal-mobile-mode');
+                } else {
+                    modalOverlay.classList.remove('journal-mobile-mode');
+                }
+
                 journalFields.style.display = 'grid';
                 
                 const item = id ? gameState.journal.find(j => j.id === id) : null;
@@ -1319,41 +1300,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     editor.mode.set('design'); // On s'assure qu'il est éditable
                     editor.setContent(initialContent); // On met à jour son contenu
                 }
-
-                tinymce.init({
-                    selector: '#journal-entry-text',
-                    license_key:'gpl',
-                    plugins: 'lists link image table code help wordcount fullscreen',
-                    toolbar: 'undo redo | blocks | bold italic underline | bullist numlist | link image | alignleft aligncenter alignright | code | fullscreen',
-                    language: 'fr_FR',
-                    menubar: false,
-                    skin: 'oxide-dark',
-                    content_css: 'dark',
-                    content_style: `
-                        body { 
-                            background-color: #191922;  /* --surface-color */
-                            color: #E2E8F0;          /* --text-color */
-                            font-family: 'Lora', serif; /* --font-serif */
-                            font-size: 1.1em; 
-                            line-height: 1.7; 
-                        }
-                        img { max-width: 100%; height: auto; display: block; margin: 10px 0; border-radius: 8px; }
-                        h1, h2, h3 { color: #E2E8F0; font-family: 'Merriweather', serif; }
-                        a { color: #F59E0B; }
-                    `,                    
-                    // On utilise setup: pour s'assurer qu'il se remplit après sa création
-                    setup: function(editor) {
-                        editor.on('init', function() {
-                            editor.setContent(initialContent);
-                        });
-                    },
-                    
-                });
                 
             }
 
             modalOverlay.classList.add('active');
-            }
         } 
         
         async function saveJournalEntry(newContent) {
@@ -1374,19 +1324,16 @@ document.addEventListener('DOMContentLoaded', () => {
             renderJournal();
         }
 
-       function closeModal() {
-            // 1. Gère l'éditeur TinyMCE
-            if (tinymce.get('journal-entry-text')) {
-            tinymce.remove('#journal-entry-text');
+        function closeModal() {
+            // On ne détruit plus l'éditeur, on le vide
+            const editor = tinymce.get('journal-entry-text');
+            if (editor) {
+                editor.setContent('');
             }
             
-            // 2. S'assure que le textarea retourne au bon endroit
-            // (dans le conteneur .journal-editor-container)
-            document.getElementById('journal-fields').appendChild(journalTextarea);
-            
-            // 3. Ferme les overlays
             modalOverlay.classList.remove('active');
-            mobileEditorOverlay.classList.remove('active');
+            
+            // On s'assure que les autres overlays sont aussi fermés (par sécurité)
             document.body.classList.remove('mobile-editor-active');
         }
 

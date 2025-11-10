@@ -1379,6 +1379,54 @@ input[type=number] {
     body {
         padding: 5px;
     }
+    .modal-overlay.journal-mobile-mode .modal-header,
+    .modal-overlay.journal-mobile-mode .journal-date-input {
+        display: none;
+    }
+
+    /* On force l'éditeur à prendre TOUTE la place */
+    .modal-overlay.journal-mobile-mode .modal-content {
+        padding: 0;
+    }
+    .modal-overlay.journal-mobile-mode .modal-form {
+        padding: 0;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    /* On force le conteneur du journal à s'étendre */
+    .modal-overlay.journal-mobile-mode #journal-fields {
+        flex-grow: 1; /* Prend tout l'espace vertical disponible */
+        height: 100%; /* S'assure de remplir le formulaire */
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    /* On force l'éditeur TinyMCE à remplir cet espace */
+    .modal-overlay.journal-mobile-mode #journal-fields .tox-tinymce {
+        flex-grow: 1 !important; /* Force l'éditeur à s'étendre */
+        height: 100% !important;
+    }
+    
+    /* On s'assure que le textarea d'origine ne gêne pas */
+    .modal-overlay.journal-mobile-mode #journal-fields textarea {
+         display: none; /* Cache le textarea de base si TinyMCE est actif */
+    }
+
+    /* On positionne le bouton de sauvegarde en bas */
+    .modal-overlay.journal-mobile-mode .modal-form-footer {
+        margin-top: 0;
+        padding: 10px;
+        background-color: var(--bg-color);
+        border-top: 1px solid var(--border-color);
+        flex-shrink: 0; /* Empêche le pied de page de rétrécir */
+    }
+    .modal-overlay.journal-mobile-mode .modal-form-footer .action-button {
+        width: 100%; /* Le bouton prend toute la largeur */
+    }
+
     .content-section {
         padding: 15px;
     }
@@ -1429,33 +1477,33 @@ input[type=number] {
         max-height: 100vh;
         padding: 0;
         border-radius: 0;
-        /* Force la modale à s'organiser verticalement */
-        display: flex;
+        display: flex; /* Permet à l'éditeur de grandir */
         flex-direction: column;
     }
     .modal-header {
         padding: 15px;
-        flex-shrink: 0; /* Empêche le header de rétrécir */
+        flex-shrink: 0;
     }
     .modal-form {
-        /* Fait en sorte que le formulaire prenne tout l'espace restant */
-        flex-grow: 1;
+        flex-grow: 1; /* Le formulaire prend tout l'espace */
         display: flex;
         flex-direction: column;
-        overflow-y: auto; /* Ajoute le défilement au formulaire LUI-MÊME */
+        overflow-y: auto; /* Le formulaire scrolle, pas l'éditeur */
         padding: 15px;
     }
     
-    /* Force la grille du journal à s'étendre */
-    #journal-fields.form-grid {
+    /* Force les champs du journal à bien s'étendre */
+    #journal-fields.journal-editor-container {
         flex-grow: 1;
         display: flex;
         flex-direction: column;
+        min-height: 0; /* Important pour flexbox */
     }
-    /* Force l'éditeur TinyMCE à remplir l'espace */
-    #journal-fields .tox-tinymce {
-        flex-grow: 1;
-        /* TinyMCE gère sa propre hauteur interne */
+    /* Force l'éditeur TinyMCE à remplir l'espace vertical */
+    .tox-tinymce {
+        flex-grow: 1 !important;
+        /* TinyMCE gère sa propre hauteur interne, mais on le force à s'étendre */
+        height: 100% !important; 
     }
 }
 
