@@ -371,7 +371,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 itemDiv.innerHTML = `
                     <img src="${imagePath}" alt="${imageName}">
                     <div class="gallery-item-path">${imagePath}</div>
-                    <button class="copy-path-btn" onclick="copyToClipboard('${imagePath}')">Copier le chemin</button>
                 `;
                 container.appendChild(itemDiv);
             });

@@ -1,5 +1,6 @@
 /* --- Import de polices pour le style d'époque --- */
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Merriweather:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
 @font-face {
     font-family: 'HandWriting';
     src: url('fonts/hand_writing.ttf');
@@ -20,159 +21,179 @@
 
 /* --- Variables de couleurs --- */
 :root {
-    --paper-color: #fbf7f0;       /* Papier légèrement plus clair et moins jaune */
-    --ink-color: #4a4033;         /* Encre brun foncé, moins dure que le noir */
-    --border-color: #e0d8c8;     /* Bordure plus douce */
-    --accent-color: #9f7b57;       /* Accent brun-taupe plus doux */
-    --highlight-color: #f5efe2;    /* Surlignage très subtil */
-    --delete-color: #c94c4c;       /* Rouge désaturé */
-    --link-color: #5a7a8a;        /* Bleu-gris pour les liens */
-
+    --bg-color: #0B0B0F;
+    --surface-color: #191922;
+    --border-color: #2D2D3A;
+    --accent-color: #F59E0B;
+    --text-color: #E2E8F0;
+    --text-muted: #94A3B8;
+    --delete-color: #e53e3e;
+    --font-interface: 'Inter', sans-serif;
     --font-serif: 'Lora', serif;
-    --font-heading: 'Merriweather', serif;
-    --font-handwriting: 'Religath', cursive; /* Ou votre police manuscrite préférée */
-    --font-interface: 'Lato', sans-serif; /* Police moderne pour l'UI */
+    --font-handwriting: 'Religath', cursive;
+    --border-radius: 8px;
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
 
-    --border-radius-sm: 4px;      /* MODERNIZED : Coins arrondis */
-    --border-radius-md: 6px;
-    --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.06); /* MODERNIZED : Ombres subtiles */
-    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --glass-bg: rgba(25, 25, 34, 0.7); /* --surface-color à 40% d'opacité */
+    --glass-bg-light: rgba(25, 25, 34, 0.85); /* Plus opaque pour le texte */
 }
+
 
 /* --- Style général du corps --- */
 body {
-    font-family: var(--font-serif);
-    background-color: #e9e5d9; /* Fond légèrement différent */
-    color: var(--ink-color);
-    line-height: 1.7; /* Plus aéré */
+    font-family: var(--font-interface);
+    color: var(--text-color);
+    line-height: 1.6;
     margin: 0;
-    padding: 25px; /* Plus d'espace autour */
+    padding: 20px;
+    background-color: var(--bg-color);
+}
+
+@keyframes move-topo-smooth {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        /* On déplace la toile de la taille exacte d'un motif (1000px) */
+        transform: translate(-1000px, -1000px);
+    }
+}
+#particles-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden; /* Très important : cache les parties de la toile qui dépassent */
+}
+
+#particles-bg::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* On crée une toile 2x plus grande que le motif pour une boucle parfaite */
+    width: 150%;
+    height: 150%;
+    
+    /* On applique l'image en fond */
+    background-image: url('https://img.freepik.com/premium-photo/monochrome-wavy-lines-pattern_118124-262370.jpg');
+    
+    /* On définit la taille de l'image (pour que la répétition soit visible) */
+    background-size: 1000px 1000px;
+    
+    /* On applique l'animation fluide */
+    animation: move-topo-smooth 100s linear infinite;
+    
+    /* On garde les filtres de couleur et d'opacité */
+    opacity: 0.1;
+    filter: saturate(5) hue-rotate(10deg);
 }
 
 /* --- Conteneur principal --- */
 .main-container {
     max-width: 95vw;
     margin: 0 auto;
-    background-color: var(--paper-color);
+    background-color: var(--glass-bg);
     border: 1px solid var(--border-color);
     box-shadow: var(--shadow-md);
-    border-radius: var(--border-radius-md); /* MODERNIZED */
-    overflow: hidden; /* Important pour que les arrondis s'appliquent bien */
-}
-
-/* --- En-tête de l'application --- */
-header {
-    text-align: center;
-    padding: 30px 25px;
-    border-bottom: 2px double var(--border-color);
-    background-image: url('images/background.png');
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    z-index: 1;
-
-    /* NOUVEAU : On utilise Flexbox pour l'alignement */
-    display: flex;
-    justify-content: space-between; /* Pousse les éléments sur les côtés */
-    align-items: center;
-}
-
-/* NOUVEAU : Un conteneur vide à gauche pour bien centrer le titre */
-.header-left {
-    flex: 1;
-}
-.header-center {
-    flex: 2; /* Donne plus d'espace au titre */
-}
-/* NOUVEAU : Conteneur pour les actions à droite */
-.header-right {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end; /* Aligne les éléments à droite */
-    gap: 10px;
-}
-
-.header-actions {
-    margin-top: 0px;
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-}
-.header-actions button {
-    font-family: 'Merriweather', serif;
-    display: flex; /* Pour centrer l'icône */
-    justify-content: center;
-    align-items: center;
-    width: 40px;  /* Taille carrée plus compacte */
-    height: 40px;
-    padding: 0;
-    background: none;
-    border: 1px solid var(--paper-color);
-    border-radius: 50%; /* Rend les boutons circulaires */
-    color: var(--paper-color);
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-.header-actions button:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-}
-/* NOUVEAU : Style pour les icônes SVG dans les boutons du header */
-.header-actions button svg {
-    width: 18px;
-    height: 18px;
-    fill: white;
-}
-
-/* NOUVEAU : Ajout d'un filtre sombre pour que le texte reste lisible */
-header::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.55); /* Filtre noir avec 40% d'opacité */
-    z-index: -1; /* Place le filtre entre l'image et le texte */
-}
-
-/* Assurez-vous que la couleur du texte de l'en-tête contraste bien */
-header h1, header p {
-    color: var(--paper-color); /* On utilise une couleur claire pour le texte */
-    text-shadow: 2px 2px 6px rgba(0,0,0,0.7); /* Ajoute une ombre au texte pour la lisibilité */
-}
-
-header h1 {
-    font-family: 'Merriweather', serif;
-    font-weight: 700;
-    font-size: 2.5em;
-    color: #e6c88e;
-    margin: 0;
-}
-
-header p {
-    font-style: italic;
-    margin: 5px 0 0;
-   color: rgba(255, 255, 255, 0.85);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    position: relative; /* Pour que le z-index: 1 fonctionne */
+    z-index: 1; /* Se place par-DESSUS le fond de particules */
 }
 
 /* --- Barre de navigation --- */
 nav {
-    display: flex; justify-content: center; background-color: #fff;
-    border-bottom: 1px solid var(--border-color); position: relative; z-index: 900;
+    display: flex;
+    justify-content: space-between; /* Espace entre le titre, les liens et les actions */
+    align-items: center;
+    padding: 10px 25px;
+    
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    
+    /* Effet "Glassmorphism" */
+    background-color: var(--glass-bg-light); /* Plus opaque pour la lisibilité */
+    border-bottom: 1px solid var(--border-color);
 }
 
-nav button {
-    font-family: var(--font-interface); /* MODERNIZED */
-    background: none; border: none; padding: 15px 25px; cursor: pointer;
-    font-size: 1.1em; color: var(--accent-color);
-    border-bottom: 3px solid transparent;
-    transition: background-color 0.2s ease, border-color 0.2s ease; /* MODERNIZED */
+.nav-title {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.5em;
+    color: var(--text-color);
 }
 
-nav button:hover { background-color: var(--highlight-color); }
-nav button.active { border-bottom-color: var(--accent-color); font-weight: bold; }
+.nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+nav button.nav-button {
+    font-family: var(--font-interface);
+    font-weight: 700;
+    font-size: 0.9em;
+    text-transform: uppercase; /* Style moderne */
+    letter-spacing: 0.5px; /* Aération des lettres */
+    background: none;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    color: var(--text-muted); /* Couleur par défaut (gris-bleu) */
+    transition: color 0.2s ease, border-color 0.2s ease;
+    border-bottom: 2px solid transparent; /* Bordure active (invisible) */
+}
+
+nav button.nav-button:hover {
+    color: var(--text-color); /* Devient blanc au survol */
+}
+
+nav button.nav-button.active {
+    color: var(--text-color); /* Texte blanc pour l'onglet actif */
+    border-bottom-color: var(--accent-color); /* Ligne orange/ambre */
+    font-weight: 700;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.nav-actions .storage-usage {
+    font-size: 0.8em;
+    color: var(--text-muted);
+    margin: 0;
+    padding: 0;
+    background: none;
+}
+.nav-actions button {
+    font-family: var(--font-interface);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    background: none;
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    color: var(--text-muted); /* Gris par défaut */
+    cursor: pointer;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+.nav-actions button:hover {
+    color: var(--text-color); /* Devient blanc */
+    border-color: var(--text-color);
+}
+.nav-actions button svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor; /* L'icône prend la couleur du bouton */
+}
 
 /* --- Sections de contenu --- */
 .content-section { padding: 30px 40px; display: none; }
@@ -201,6 +222,10 @@ h2 {
     gap: 20px; align-items: end;
 }
 
+.table_ref {
+    font-family: var(--font-interface);
+}
+
 label {
     font-family: var(--font-interface); /* MODERNIZED */
     font-weight: bold; font-style: normal; /* Moins italique */
@@ -208,83 +233,140 @@ label {
     margin-bottom: 5px; /* Pour les formulaires en colonne */
 }
 input[type="text"], input[type="number"], input[type="date"], textarea, select {
-    width: 100%; padding: 10px 12px; /* Plus d'espace interne */
+    width: 100%; padding: 10px 12px;
     border: 1px solid var(--border-color);
-    background-color: #fff;
-    font-family: var(--font-serif); /* Garde la police de contenu */
+    background-color: var(--bg-color); /* Fond plus sombre */
+    color: var(--text-color); /* Texte clair */
+    font-family: var(--font-serif);
     font-size: 1em; box-sizing: border-box;
-    border-radius: var(--border-radius-sm); /* MODERNIZED */
-    transition: border-color 0.2s ease, box-shadow 0.2s ease; /* MODERNIZED */
+    border-radius: var(--border-radius);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 input[type="text"]:focus, input[type="number"]:focus, input[type="date"]:focus, textarea:focus, select:focus {
     outline: none;
-    border-color: var(--accent-color);
-    box-shadow: 0 0 0 2px rgba(159, 123, 87, 0.2); /* Halo subtil au focus */
+    background-color: var(--bg-color); /* Fond sombre */
+    color: var(--text-color);
+    box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.3); /* Halo subtil ambre */
 }
 textarea { resize: vertical; min-height: 100px; }
 
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.action-button, .header-quick-actions .copy-path-btn button {
+    font-family: var(--font-interface);
+    padding: 10px 20px;
+    background-color: transparent;
+    color: var(--accent-color);
+    border: 2px solid var(--accent-color);
+    cursor: pointer; font-size: 1em; text-align: center;
+    font-weight: 700;
+    border-radius: var(--border-radius);
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+.action-button:hover, .header-quick-actions button:hover {
+    background-color: var(--accent-color); /* Fond plein au survol */
+    color: var(--surface-color); /* Texte sombre au survol */
+}
+.add-item-form button { /* Adaptation pour les petits boutons '+' */
+    padding: 5px 10px;
+}
+
 .button-group { display: flex; gap: 10px; }
 
-.action-button, .card-button, .header-quick-actions button {
+/* --- Style pour les cartes (PNJ, Quêtes) --- */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+.card {
+    background-color: var(--surface-color); /* Fond sombre */
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius); /* Coins arrondis */
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Important pour les arrondis */
+    transition: all 0.2s ease-in-out;
+}
+.card:hover {
+    border-color: var(--accent-color); /* Surlignage au survol */
+    transform: translateY(-2px); /* Léger effet de soulèvement */
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.03); /* Très léger highlight */
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.2s ease;
+}
+.card:hover .card-header {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+.card-header h3 {
+    margin: 0;
+    font-family: var(--font-interface);
+    font-weight: 700;
+    font-size: 1.1em;
+}
+.card-header::after { /* Flèche pour déplier */
+    content: '▼';
+    font-size: 0.8em;
+    color: var(--text-muted);
+    transition: transform 0.3s ease;
+}
+.card.is-expanded .card-header::after {
+    transform: rotate(180deg);
+}
+
+.card-details {
+    display: none;
+    padding: 15px;
+    font-size: 0.95em;
+    color: var(--text-muted); /* Texte secondaire plus doux */
+    border-bottom: 1px solid var(--border-color);
+}
+.card-details p:first-child { margin-top: 0; }
+.card-details p:last-child { margin-bottom: 0; }
+.card.is-expanded .card-details {
+    display: block;
+}
+
+.card-button {
     font-family: var(--font-interface); /* MODERNIZED */
-    padding: 10px 20px; background-color: var(--accent-color); color: var(--paper-color);
+    padding: 10px 20px; background-color: var(--accent-color); color: var(--bg-color);
     border: none; cursor: pointer; font-size: 1em; text-align: center;
     border-radius: var(--border-radius-sm); /* MODERNIZED */
     transition: background-color 0.2s ease; /* MODERNIZED */
 }
-.action-button:hover { background-color: #8a6a4a; /* Version plus foncée de l'accent */ }
 
-/* --- Style pour les cartes (PNJ, Quêtes) --- */
-.card-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; }
-.card {
-    background: var(--paper-color); /* Fond papier plus clair */
-    border: 1px solid var(--border-color); padding: 0;
-    box-shadow: var(--shadow-sm); /* MODERNIZED */
-    border-radius: var(--border-radius-md); /* MODERNIZED */
-    display: flex; flex-direction: column;
-    overflow: hidden; /* Pour les arrondis */
-}
-.card-header {
-    padding: 15px; cursor: pointer; display: flex; justify-content: space-between; align-items: center;
-    border-bottom: 1px solid var(--border-color);
-    transition: background-color 0.2s ease; /* MODERNIZED */
-    background-color: var(--highlight-color); /* MODERNIZED : Fond légèrement différent */
-}
-.card:hover .card-header { background-color: #ede6d8; }
-.card-header h3 { margin: 0; font-family: var(--font-heading); }
-.card-header::after { content: '▼'; font-size: 0.8em; color: var(--accent-color); transition: transform 0.3s ease; }
-.card-details {
-    display: none; padding: 15px;
-    border-bottom: 1px dashed var(--border-color); /* Style de bordure plus léger */
-}
-.card-footer {
-    padding: 10px 15px; background-color: var(--highlight-color); /* MODERNIZED : Fond légèrement différent */
-}
-.card.is-expanded .card-details { display: block; }
-.card.is-expanded .card-header { border-bottom-style: dashed; }
-.card.is-expanded .card-header::after { transform: rotate(180deg); }
-.card-content { flex-grow: 1; }
-.card-details p:first-child, .card-details div:first-child {
-    margin-top: 0;
-}
-.card-details p:last-child, .card-details div:last-child {
-    margin-bottom: 0;
-}
-.card-details ul { padding-left: 20px; margin-top: 10px; }
-
-/* NOUVEAU : Style pour le pied de page de la carte (boutons) */
 .card-footer {
     padding: 10px 15px;
-    background-color: var(--paper-color);
+    background-color: rgba(0, 0, 0, 0.1); /* Fond légèrement différent */
 }
 
+/* Statuts (MODERNISÉ) */
 .status {
-    position: relative; /* Pour positionner la pastille */
-    font-family: var(--font-interface); /* MODERNIZED */
-    padding: 4px 8px 4px 18px; /* Espace pour la pastille */
-    border-radius: 10px; /* Plus arrondi */
-    display: inline-block; font-size: 0.85em; font-style: normal;
+    font-family: var(--font-interface);
+    font-size: 0.8em;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 12px;
+    text-transform: uppercase;
 }
+
 /* MODERNIZED : Ajout d'une pastille de couleur */
 .status::before {
     content: '';
@@ -323,7 +405,7 @@ textarea { resize: vertical; min-height: 100px; }
     display: flex; /* Pour centrer l'icône */
     justify-content: center;
     align-items: center;
-    background-color: var(--paper-color);
+    background-color: var(--bg-color);
     border: 1px solid var(--border-color);
     color: var(--accent-color); /* La couleur du texte sera héritée par l'icône */
     width: 32px;  /* Taille carrée */
@@ -334,43 +416,126 @@ textarea { resize: vertical; min-height: 100px; }
     transition: background-color 0.2s;
 }
 
-.card-button:hover {
-    background-color: var(--highlight-color);
-    border-color: var(--accent-color);
+.card-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
-
-.delete-button {
-    color: var(--delete-color); /* Couleur rouge pour l'icône poubelle */
+.card-button:hover {
+    color: var(--text-color);
+    border-color: var(--accent-color);
+    background-color: var(--accent-color);
+}
+.card-button svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
 }
 .delete-button:hover {
+    color: var(--text-color);
+    border-color: var(--delete-color);
     background-color: var(--delete-color);
-    color: var(--paper-color); /* L'icône devient blanche au survol */
 }
-
-/* NOUVEAU : Style pour les icônes SVG dans les boutons */
-.card-button svg { width: 16px; height: 16px; fill: currentColor; }
+.order-button {
+    /* ... (style inchangé) ... */
+    color: var(--text-muted);
+    border-color: var(--border-color);
+}
+.order-button:hover {
+    background-color: var(--border-color);
+    color: var(--text-color);
+}
 
 /* --- Styles pour la Fiche de Personnage "Épique" --- */
-.character-sheet { display: grid; grid-template-columns: 1fr 1.5fr; gap: 30px; }
-.char-left-col, .char-right-col { display: flex; flex-direction: column; gap: 20px; }
+.character-sheet {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 25px;
+}
+.char-left-col, .char-right-col {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
 .char-portrait {
-    width: 100%; height: 300px; background-color: var(--highlight-color);
+    width: 100%;
+    height: 300px;
     border: 1px solid var(--border-color);
     background-image: url('images/character.png');
-    background-size: cover; background-position: center;
-    box-shadow: var(--shadow-sm); /* MODERNIZED */
-    border-radius: var(--border-radius-md); /* MODERNIZED */
+    background-size: cover;
+    background-position: center;
+    box-shadow: var(--shadow-sm);
+    border-radius: var(--border-radius);
+    background-color: transparent;
 }
 .char-panel {
-    background-color: var(--highlight-color); border: 1px solid var(--border-color);
-    padding: 20px 25px; /* Plus d'espace */
-    border-radius: var(--border-radius-md); /* MODERNIZED */
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    padding: 20px 25px;
+    border-radius: var(--border-radius);
 }
-.char-panel h3 { font-family: 'Merriweather', serif; color: var(--accent-color); border-bottom: 1px solid var(--border-color); padding-bottom: 8px; margin-top: 0; margin-bottom: 15px; font-size: 1.4em; }
+.char-panel h3 {
+    font-family: var(--font-heading);
+    color: var(--text-color);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.4em;
+    font-weight: 700;
+}
+.char-panel h4 {
+    font-family: var(--font-interface);
+    font-weight: 700;
+    color: var(--accent-color);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 8px;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    letter-spacing: 0.5px;
+}
 .char-panel p { margin-bottom: 0; }
-.char-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.char-info-grid span { display: block; }
-.char-info-grid span:first-child { font-weight: bold; font-style: italic; }
+.char-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    font-size: 0.9em;
+}
+.char-info-grid span {
+    display: block;
+    color: var(--text-muted);
+}
+.char-info-grid span:first-child {
+    font-weight: 700;
+    color: var(--text-color);
+    font-style: normal;
+}
+[contenteditable="true"] {
+    outline: none;
+    background-color: rgba(255,255,255,0.05);
+    padding: 2px 5px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+[contenteditable="true"]:hover {
+    box-shadow: 0 0 0 1px var(--border-color);
+}
+[contenteditable="true"]:focus {
+    background-color: var(--bg-color);
+    box-shadow: 0 0 0 2px var(--accent-color);
+}
+
 .stats-grid, .skills-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 8px; }
 .stats-grid > div, .skills-grid > div { padding-bottom: 8px; border-bottom: 1px dashed var(--border-color); }
 .stats-grid > div:last-child, .skills-grid > div:last-child { border-bottom: none; }
@@ -378,44 +543,47 @@ textarea { resize: vertical; min-height: 100px; }
 .inventory-list { list-style: none; padding: 0; margin: 0; }
 .inventory-list li { padding: 5px 0; border-bottom: 1px dashed var(--border-color); }
 .inventory-list li:last-child { border-bottom: none; }
-.editable-list-container { margin-bottom: 20px; }
 .editable-list-item {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 5px 0;
-    border-bottom: 1px dashed var(--border-color);
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+.editable-list-item:last-child {
+    border-bottom: none;
 }
 .editable-list-item input[type="number"] {
-    width: 55px; /* MODIFIED: Smaller fixed width, adjust as needed */
-    flex-grow: 0; /* Prevents stretching */
-    flex-shrink: 0; /* Prevents shrinking */
-    text-align: right; /* Ensures the number is right-aligned */
-    border: 1px solid transparent;
-    background-color: transparent;
-    padding: 2px 4px;
-    font-family: var(--font-serif); /* Ensures font consistency */
-    font-size: 1em; /* Ensures font consistency */
-    border-radius: var(--border-radius-sm); /* Keep the rounded corners */
+    width: 60px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    text-align: center; /* Centré */
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    padding: 4px 8px;
+    border-radius: var(--border-radius);
+    transition: all 0.2s ease;
 }
 .editable-list-item input[type="number"]:focus {
-    border-color: var(--border-color);
-    background-color: white;
+    border-color: var(--accent-color);
+    background-color: var(--bg-color);
+    box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.3);
 }
 .editable-list-item .item-name {
     flex-grow: 1;
 }
 .delete-item-btn {
     background: none; border: none;
-    color: #aaa; /* Couleur grise discrète */
+    color: var(--text-muted);
     cursor: pointer;
-    font-size: 1em; /* Taille réduite */
-    font-weight: normal; /* Moins gras */
+    font-size: 1em;
+    font-weight: normal;
     padding: 0 5px;
     transition: color 0.2s;
 }
 .delete-item-btn:hover {
-    color: var(--delete-color); /* Devient rouge au survol */
+    color: var(--delete-color);
 }
 
 .add-item-form { display: flex; gap: 10px; margin-top: 10px; }
@@ -457,30 +625,36 @@ textarea { resize: vertical; min-height: 100px; }
 /* MODIFIÉ : La taille des slots d'inventaire est réduite */
 .inventory-item-slot {
     position: relative;
-    width: 90px; /* Taille réduite */
-    height: 90px; /* Taille réduite */
-    background-color: var(--paper-color);
-    border: 2px solid var(--border-color);
+    width: 90px;
+    height: 90px;
+    background-color: var(--bg-color); /* Fond plus sombre */
+    border: 1px solid var(--border-color);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 5px;
     box-sizing: border-box;
+    border-radius: var(--border-radius);
+    transition: all 0.2s ease;
+}
+.inventory-item-slot:hover {
+    border-color: var(--accent-color);
+    background-color: var(--surface-color);
 }
 .inventory-item-slot img {
     width: 100%;
-    height: 55%; /* Proportion ajustée */
+    height: 55%;
     object-fit: contain;
 }
 .inventory-item-slot .item-name {
-    font-size: 0.6em;
+    font-size: 0.75em;
     text-align: center;
     margin-top: 5px;
     height: 40%;
-    /* LIGNES À AJOUTER CI-DESSOUS */
     overflow-wrap: break-word;
     word-break: break-word;
+    color: var(--text-muted);
 }
 .inventory-item-slot .delete-item-btn {
     position: absolute;
@@ -489,39 +663,50 @@ textarea { resize: vertical; min-height: 100px; }
     background-color: var(--delete-color);
     color: white;
     border-radius: 50%;
-    width: 20px; /* Taille du bouton réduite */
-    height: 20px; /* Taille du bouton réduite */
+    width: 20px;
+    height: 20px;
     font-size: 0.9em;
     line-height: 20px;
     padding: 0;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+}
+.inventory-item-slot:hover .delete-item-btn {
+    opacity: 1;
 }
 
 /* --- Style pour le journal --- */
 .journal-entry {
-    border: none; /* Suppression de la bordure */
-    padding: 25px 20px;
-    background-color: var(--paper-color);
+    background-color: transparent; /* Fond sombre */
+    border: 1px solid var(--border-color);
+    padding: 25px 30px; /* Plus d'aération */
     margin-bottom: 20px;
-    box-shadow: var(--shadow-sm); /* MODERNIZED */
-    border-radius: var(--border-radius-md); /* MODERNIZED */
+    box-shadow: var(--shadow-sm);
+    border-radius: var(--border-radius);
+    border-bottom: 1px solid var(--border-color); /* On garde la séparation */
 }
-.journal-entry:last-child { border-bottom: 1px solid var(--border-color); }
+.journal-entry:last-child { border: 1px solid var(--border-color); }
 .journal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
 .journal-date {
-    font-weight: bold; font-size: 1.8em; /* Plus petit ? */
-    font-family: var(--font-handwriting); /* Utilisation de la variable */
-    color: var(--accent-color); margin: 0;
-    border-bottom: 1px dashed var(--border-color); padding-bottom: 5px;
+    font-weight: bold;
+    font-size: 2em;
+    font-family: var(--font-handwriting);
+    color: var(--accent-color);
+    margin: 0;
+    border-bottom: 1px dashed var(--border-color);
+    padding-bottom: 5px;
 }
 
 /* NOUVEAU : Style pour le contenu du journal (police manuscrite) */
 .journal-content-display {
-    font-family: var(--font-serif); /* Retour à Lora pour le contenu */
-    font-size: 1.1em; /* Légèrement plus grand */
-    color: var(--ink-color); line-height: 1.7;
+    font-family: var(--font-serif);
+    font-size: 1.1em;
+    color: var(--text-muted); /* Texte plus doux */
+    line-height: 1.7;
 }
 .journal-content-display h1, .journal-content-display h2, .journal-content-display h3 {
-    font-family: var(--font-heading); color: var(--accent-color);
+    font-family: var(--font-heading);
+    color: var(--text-color); /* Titres en blanc */
 }
 .journal-content-display ul, .journal-content-display ol { padding-left: 25px; }
 
@@ -541,7 +726,7 @@ textarea { resize: vertical; min-height: 100px; }
 }
 .modal-overlay.active { display: flex; }
 .modal-content { 
-    background: var(--paper-color); 
+    background: var(--bg-color); 
     padding: 35px; 
     border: none; 
     width: 90%; /* Takes 90% of screen width */
@@ -584,7 +769,7 @@ textarea { resize: vertical; min-height: 100px; }
 .dice-choice-btn {
     font-family: 'Merriweather', serif;
     font-weight: bold;
-    background-color: var(--paper-color);
+    background-color: var(--bg-color);
     color: var(--accent-color);
     border: 2px solid var(--accent-color);
     border-radius: 20px;
@@ -596,9 +781,9 @@ textarea { resize: vertical; min-height: 100px; }
     width: 60px;
     height: 60px;
     background-color: var(--accent-color);
-    color: var(--paper-color);
+    color: var(--bg-color);
     border-radius: 50%;
-    border: 2px solid var(--paper-color);
+    border: 2px solid var(--bg-color);
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     display: flex;
     justify-content: center;
@@ -612,7 +797,7 @@ textarea { resize: vertical; min-height: 100px; }
 .dice-roller-button svg {
     width: 32px;
     height: 32px;
-    fill: var(--paper-color);
+    fill: var(--bg-color);
 }
 .dice-overlay {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -621,10 +806,10 @@ textarea { resize: vertical; min-height: 100px; }
 }
 .dice-overlay.show { display: flex; }
 .dice-cube {
-    width: 150px; height: 150px; background-color: var(--paper-color);
+    width: 150px; height: 150px; background-color: var(--bg-color);
     border: 3px solid var(--accent-color); border-radius: 10px; display: flex;
     justify-content: center; align-items: center; font-size: 4em;
-    font-family: 'Merriweather', serif; color: var(--accent-color); font-weight: bold;
+    font-family: var(--font-interface), serif; color: var(--accent-color); font-weight: bold;
 }
 .dice-cube.rolling { animation: tumble 1s ease-out; }
 @keyframes tumble {
@@ -651,7 +836,7 @@ textarea { resize: vertical; min-height: 100px; }
     padding: 10px;
     text-decoration: none;
     color: var(--accent-color);
-    font-family: 'Merriweather', serif;
+    font-family: var(--font-interface);
     border-bottom: 1px solid var(--border-color);
     transition: background-color 0.2s;
 }
@@ -680,31 +865,28 @@ textarea { resize: vertical; min-height: 100px; }
 .order-button:disabled { color: #ccc; cursor: not-allowed; }
 
 .money-panel {
-display: flex;
-align-items: center;
-gap: 10px;
-background-color: var(--paper-color);
-padding: 10px;
-border: 1px solid var(--border-color);
-margin-bottom: 20px;
-font-size: 1.2em;
-font-family: 'Merriweather', serif;
-}
-.money-panel > span {
-    font-weight: bold;
-}
-.money-input-wrapper {
     display: flex;
     align-items: center;
-    border-bottom: 1px solid var(--ink-color);
-    flex-grow: 1;
+    gap: 10px;
+    background-color: var(--bg-color);
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    font-family: var(--font-interface);
 }
+.money-panel > span { font-weight: 700; color: var(--accent-color); }
+.money-input-wrapper { display: flex; align-items: center; flex-grow: 1; }
+
 #character-money {
     border: none;
     background: none;
-    font-family: 'Merriweather', serif;
+    font-family: var(--font-interface);
     font-size: 1em;
-    width: 100%;
+    width: 100px;
+    color: var(--text-color);
+    text-align: center; /* Centré */
 }
 /* Cache les flèches de l'input number */
 #character-money::-webkit-outer-spin-button,
@@ -723,11 +905,11 @@ font-family: 'Merriweather', serif;
     height: 30px;
     cursor: pointer;
     font-size: 1em;
-    transition: background-color 0.2s, color 0.2s;
+    transition: all 0.2s;
 }
 #save-money-button:hover {
     background-color: var(--accent-color);
-    color: var(--paper-color);
+    color: var(--surface-color);
 }
 #save-money-button.saved {
     background-color: #28a745;
@@ -752,7 +934,7 @@ font-family: 'Merriweather', serif;
     text-align: center;
 }
 .inventory-item-card {
-    background-color: var(--paper-color);
+    background-color: var(--bg-color);
     border: 1px solid var(--border-color);
     padding: 10px;
 }
@@ -814,7 +996,7 @@ font-family: 'Merriweather', serif;
 }
 
 .route-point {
-    stroke: var(--paper-color);
+    stroke: var(--bg-color);
     stroke-width: 5; /* MODIFIÉ : Contour plus épais */
 }
 
@@ -829,10 +1011,10 @@ font-family: 'Merriweather', serif;
 }
 
 .route-label {
-    font-family: 'Merriweather', serif;
-    fill: var(--ink-color);
+    font-family: var(--font-interface);
+    fill: var(--text-color);
     paint-order: stroke;
-    stroke: var(--paper-color);
+    stroke: var(--bg-color);
     stroke-width: 8px; /* MODIFIÉ : Contour plus épais pour la lisibilité */
 }
 .route-label.capital {
@@ -855,7 +1037,7 @@ font-family: 'Merriweather', serif;
     width: 90%;
     max-width: 800px;
     height: 80vh; /* 80% de la hauteur de la fenêtre */
-    background-color: var(--paper-color);
+    background-color: var(--bg-color);
     border: 2px solid var(--accent-color);
     box-shadow: 0 5px 20px rgba(0,0,0,0.4);
     z-index: 10001; /* Au-dessus de tout, même de la modale principale */
@@ -950,7 +1132,7 @@ font-family: 'Merriweather', serif;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: var(--paper-color);
+    background-color: var(--bg-color);
     z-index: 12000;
     display: none;
     flex-direction: column;
@@ -995,53 +1177,6 @@ font-family: 'Merriweather', serif;
 
 
 /* --- Style pour le Mode Lecture (Version finale corrigée) --- */
-.reading-mode-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: var(--paper-color);
-    z-index: 12000;
-    display: none;
-    flex-direction: column;
-}
-.reading-mode-overlay.active {
-    display: flex;
-}
-.reading-mode-header {
-    text-align: center;
-    padding: 10px;
-    border-bottom: 1px solid var(--border-color);
-    flex-shrink: 0;
-}
-.reading-mode-close-button {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 2em;
-    font-weight: bold;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: var(--accent-color);
-}
-.book-container {
-    flex-grow: 1;
-    overflow: hidden; /* Important : cache tout ce qui dépasse pour les animations */
-    position: relative; /* Contexte pour le positionnement de la page */
-}
-.book-content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow-y: auto; /* Le SEUL défilement autorisé est vertical */
-    padding: 1em 3vw; /* Marges intérieures pour le confort de lecture */
-    box-sizing: border-box; /* S'assure que le padding ne fait pas déborder l'élément */
-}
-
 .reading-mode-footer {
     display: flex;
     justify-content: space-between;
@@ -1066,7 +1201,7 @@ font-family: 'Merriweather', serif;
     width: 50px;
     text-align: center;
     border: 1px solid var(--border-color);
-    background-color: var(--paper-color);
+    background-color: var(--bg-color);
 }
 /* --- Animations de changement de page (inchangées) --- */
 @keyframes slideOutToLeft {

@@ -20,26 +20,30 @@
     <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles-slim@2.0.0/tsparticles.slim.bundle.min.js"></script>
 </head>
 <body>
-
+    <div id="particles-bg"></div>
     <div class="main-container">
-        <header>
-            <h1>The Oregon Trail</h1>
-            <p>L'aventure de Eddy Dunbar vers la liberté.</p>
-            
-            <div class="header-actions">
-            </div>
-        </header>
 
         <nav>
-            <button onclick="showSection('character')" class="nav-button active">Fiche de Personnage</button>
-            <button onclick="showSection('npcs')" class="nav-button">PNJ</button>
-            <button onclick="showSection('threads')" class="nav-button">Threads</button>
-            <button onclick="showSection('journal')" class="nav-button">Journal</button>
-            <button onclick="showSection('tables')" class="nav-button">Tables</button>
-            <button onclick="showSection('map')" class="nav-button">Carte</button>
-            <button onclick="showSection('gallery')" class="nav-button">Galerie</button>
+            <div class="nav-title">
+                The Oregon Trail
+            </div>
+
+            <div class="nav-links">
+                <button onclick="showSection('character')" class="nav-button active">Fiche de Personnage</button>
+                <button onclick="showSection('npcs')" class="nav-button">Personnages</button>
+                <button onclick="showSection('threads')" class="nav-button">Threads</button>
+                <button onclick="showSection('journal')" class="nav-button">Journal</button>
+                <button onclick="showSection('tables')" class="nav-button">Tables</button>
+                <button onclick="showSection('map')" class="nav-button">Carte</button>
+                <button onclick="showSection('gallery')" class="nav-button">Galerie</button>
+            </div>
+
+            <div class="nav-actions">
+                
+            </div>
         </nav>
 
         <main>
@@ -89,7 +93,7 @@
                                 <span>Monnaie :</span>
                                 <div class="money-input-wrapper">
                                     <span>$</span>
-                                    <input type="number" id="character-money" value="100.00" step="0.01">
+                                    <input type="number" id="character-money" value="" step="0.01">
                                 </div>
                                 <button id="save-money-button" title="Sauvegarder la somme">✔</button>
                             </div>
