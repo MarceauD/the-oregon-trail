@@ -137,7 +137,57 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-      
+        const backToTopBtn = document.getElementById('back-to-top-btn');
+
+        // Affiche ou cache le bouton selon le défilement
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+
+        // Gère le clic pour remonter
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth' // Défilement fluide
+            });
+        });
+
+        // RACCOURCIS CLAVIER 
+        document.addEventListener('keydown', (e) => {
+    
+            // Raccourci 1 : 'Echap' pour fermer les fenêtres
+            if (e.key === 'Escape') {
+                // On vérifie chaque modale active
+                if (quickViewModal.classList.contains('active')) {
+                    closeQuickView();
+                } else if (quickUpdateModal.classList.contains('active')) {
+                    closeQuickUpdateBtn.click(); // Simule un clic sur le bouton fermer
+                } else if (modalOverlay.classList.contains('active')) {
+                    closeModal();
+                } else if (readingModeOverlay.classList.contains('active')) {
+                    
+                }
+            }
+
+            // Raccourci 2 : Alt + 1-7 pour changer d'onglet
+            // (Nous utilisons 'Alt' car 'Tab' est réservé à la navigation dans les champs)
+            if (e.altKey) {
+                e.preventDefault(); // Empêche le navigateur d'ouvrir ses propres menus
+                switch (e.key) {
+                    case '&': showSection('character'); break;
+                    case 'é': showSection('npcs'); break;
+                    case '"': showSection('threads'); break;
+                    case '\'': showSection('journal'); break;
+                    case '(': showSection('tables'); break;
+                    case '-': showSection('map'); break;
+                    case 'è': showSection('gallery'); break;
+                }
+            }
+        });
 
         // --- 2. LOGIQUE D'AFFICHAGE (RENDU) ---
         const npcContainer = document.getElementById('npc-container');
