@@ -49,6 +49,47 @@ body {
     background-color: var(--bg-color);
 }
 
+.mobile-editor-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--surface-color);
+    z-index: 15000;
+    display: none; /* Caché par défaut */
+    flex-direction: column;
+}
+.mobile-editor-overlay.active {
+    display: flex;
+}
+#mobile-editor-container {
+    flex-grow: 1; /* Le conteneur de l'éditeur prend toute la place */
+    height: 100%;
+}
+/* Force l'éditeur à remplir le conteneur */
+#mobile-editor-container .tox-tinymce {
+    height: 100% !important;
+}
+.mobile-editor-footer {
+    padding: 10px;
+    background-color: var(--bg-color);
+    border-top: 1px solid var(--border-color);
+    flex-shrink: 0; /* Empêche le pied de page de rétrécir */
+}
+.mobile-editor-footer .action-button {
+    width: 100%;
+    padding: 15px 0;
+    font-size: 1.1em;
+}
+
+/* Cache l'application principale lorsque l'éditeur mobile est actif */
+body.mobile-editor-active .main-container,
+body.mobile-editor-active nav,
+body.mobile-editor-active .dice-roller-container {
+    display: none;
+}
+
 @keyframes move-topo-smooth {
     0% {
         transform: translate(0, 0);
@@ -285,7 +326,7 @@ input[type=number] {
     -moz-appearance: textfield;
 }
 
-.action-button, .header-quick-actions .copy-path-btn button {
+.action-button, .header-quick-actions .next-page-btn button {
     font-family: var(--font-interface);
     padding: 10px 20px;
     background-color: transparent;
@@ -735,6 +776,38 @@ input[type=number] {
 }
 .journal-content-display ul, .journal-content-display ol { padding-left: 25px; }
 
+.journal-editor-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espace entre la date et l'éditeur */
+    
+    /* MODIFIÉ : S'assure que l'éditeur s'étend sur la hauteur */
+    /* Assurez-vous que le conteneur parent (le formulaire) permet cela */
+    min-height: 60vh; /* Hauteur minimale de 60% de l'écran */
+}
+
+/* Style pour le champ de date, pour qu'il ne soit pas en pleine largeur */
+.journal-date-input {
+    font-family: var(--font-interface);
+    font-size: 1em;
+    width: auto; /* S'adapte au contenu */
+    align-self: flex-start; /* Se place à gauche */
+    padding: 8px 10px;
+    background-color: var(--bg-color);
+    color: var(--text-muted);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+}
+.journal-date-input:focus {
+    color: var(--text-color);
+}
+
+/* On s'assure que l'éditeur prend toute la place verticale restante */
+.journal-editor-container .tox-tinymce {
+    flex-grow: 1; /* L'éditeur s'agrandit pour remplir l'espace */
+    min-height: 50vh; /* Hauteur minimale pour l'éditeur */
+}
+
 
 /* --- Style pour la fenêtre modale --- */
 .modal-overlay { 
@@ -767,6 +840,26 @@ input[type=number] {
 /* NOUVEAU : Règle spécifique pour les textareas dans la modale */
 .modal-form textarea {
     min-height: 140px; /* MODIFIÉ : Zones de texte plus hautes */
+}
+
+.modal-form-footer {
+    margin-top: 20px;
+    text-align: center; /* Centre le bouton */
+}
+
+/* On modifie le style du bouton d'action *uniquement* dans ce pied de page */
+.modal-form-footer .action-button {
+    background-color: transparent;
+    color: var(--accent-color);
+    border: 2px solid var(--accent-color);
+    font-weight: 700;
+    width: auto; /* Taille auto */
+    padding: 8px 25px; /* Plus petit et discret */
+}
+
+.modal-form-footer .action-button:hover {
+    background-color: var(--accent-color);
+    color: var(--surface-color);
 }
 
 .dice-roller-container {
@@ -1290,24 +1383,30 @@ input[type=number] {
         padding: 15px;
     }
 
-    /* Le header devient plus compact */
-    header {
-        padding: 20px 10px;
-        flex-direction: column; /* Les éléments s'empilent verticalement */
-        gap: 15px;
-    }
-    .header-left, .header-right {
-        /* On retire les flex pour que les éléments se centrent naturellement */
-        flex: none; 
-    }
-
     /* La barre de navigation s'adapte pour ne pas déborder */
     nav {
-        flex-wrap: wrap; 
-        position: relative; /* Nécessaire pour que z-index fonctionne */
-        z-index: 900;/* Permet aux boutons de passer à la ligne */
+        flex-direction: column; /* Empile Titre, Liens, et Actions */
+        align-items: center; /* Centre les éléments */
+        padding: 10px;
+        flex-wrap: nowrap; /* On supprime le "wrap" problématique */
+        position: relative;
+        z-index: 900;
     }
-    nav button {
+
+    /* NOUVEAU : On rend la barre d'onglets scrollable horizontalement */
+    .nav-links {
+        display: flex;
+        width: 100%; /* Prend toute la largeur */
+        overflow-x: auto; /* Ajoute le défilement horizontal */
+        overflow-y: hidden; /* Cache le défilement vertical */
+        padding: 10px 0; /* Ajoute un peu d'air */
+        justify-content: flex-start; /* Aligne les boutons à gauche */
+        flex-wrap: nowrap; /* Force les boutons à rester sur une ligne */
+    }
+
+    /* On s'assure que les boutons ne rétrécissent pas */
+    nav button.nav-button {
+        flex-shrink: 0; /* Empêche les boutons d'être écrasés */
         font-size: 0.9em;
         padding: 12px 10px;
     }

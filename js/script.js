@@ -1,12 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
         tinymce.init({
             selector: '#journal-entry-text',
-            license_key: 'gpl',
+            license_key:'gpl',
             plugins: 'lists link image table code help wordcount fullscreen',
-            toolbar: 'undo redo | blocks | bold italic underline | bullist numlist | link image | alignleft aligncenter alignright | fullscreen',
+            toolbar: 'undo redo | blocks | bold italic underline | bullist numlist | link image | alignleft aligncenter alignright | code | fullscreen',
             language: 'fr_FR',
             menubar: false,
-            content_style: `body { font-family: 'Lora', serif; font-size: 16px; line-height: 1.6; } img { max-width: 100%; height: auto; display: block; margin: 10px 0; }`
+            skin: 'oxide-dark',
+            content_css: 'dark',
+            content_style: `
+                body { 
+                    background-color: #191922;  /* --surface-color */
+                    color: #E2E8F0;          /* --text-color */
+                    font-family: 'Lora', serif; /* --font-serif */
+                    font-size: 1.1em; 
+                    line-height: 1.7; 
+                }
+                img { max-width: 100%; height: auto; display: block; margin: 10px 0; border-radius: 8px; }
+                h1, h2, h3 { color: #E2E8F0; font-family: 'Merriweather', serif; }
+                a { color: #F59E0B; }
+            `,          
         });
 
         const firebaseConfig = {
@@ -116,6 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "morgan_horse.jpg",
             "remington_new_model.png",
             "spencer_m1865.jpg",
+            "straw_hat.png",
             "smokes/12_sacagawea.png",
             "smokes/18_jesse_james.png",
             "smokes/34_samuel_colt.png",
@@ -1061,6 +1075,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const journalFields = document.getElementById('journal-fields');
         const editIdInput = document.getElementById('edit-id');
         const editTypeInput = document.getElementById('edit-type');
+
+        const mobileEditorOverlay = document.getElementById('mobile-editor-overlay');
+        const mobileEditorContainer = document.getElementById('mobile-editor-container');
+        const mobileEditorSaveBtn = document.getElementById('mobile-editor-save-btn');
+        const journalTextarea = document.getElementById('journal-entry-text');
+        
+        let currentJournalEditId = null;
+
+        function isMobile() {
+            return window.innerWidth <= 768;
+        }
         
 
         function exportSectionToClipboard(type) {
@@ -1204,7 +1229,32 @@ document.addEventListener('DOMContentLoaded', () => {
         window.openModal = function(type, id = null) {
             modalForm.reset();
             editTypeInput.value = type;
+            currentJournalEditId = id;
 
+            if (type === 'journal' && isMobile()) {
+            const item = id ? gameState.journal.find(j => j.id === id) : null;
+            const initialContent = item ? item.entry : '';
+            
+            // On déplace le textarea dans l'overlay mobile
+            mobileEditorContainer.appendChild(journalTextarea);
+            document.body.classList.add('mobile-editor-active');
+            
+            tinymce.init({
+                selector: '#journal-entry-text',
+                license_key:'gpl',
+                plugins: 'lists link image table code help wordcount',
+                toolbar: 'undo redo | blocks | bold italic | bullist numlist | link image | code',
+                language: 'fr_FR',
+                menubar: false,
+                setup: (editor) => {
+                    editor.on('init', () => editor.setContent(initialContent));
+                }
+            });
+            
+            mobileEditorOverlay.classList.add('active');
+
+        // --- CAS N°2 : Tout le reste (PC, ou PNJ/Threads sur mobile) ---
+        } else {
             // On cache toutes les sections
             npcFields.style.display = 'none';
             threadFields.style.display = 'none';
@@ -1270,19 +1320,74 @@ document.addEventListener('DOMContentLoaded', () => {
                     editor.setContent(initialContent); // On met à jour son contenu
                 }
 
-                // L'initialisation se fait maintenant sur un textarea qui a déjà le bon contenu.
+                tinymce.init({
+                    selector: '#journal-entry-text',
+                    license_key:'gpl',
+                    plugins: 'lists link image table code help wordcount fullscreen',
+                    toolbar: 'undo redo | blocks | bold italic underline | bullist numlist | link image | alignleft aligncenter alignright | code | fullscreen',
+                    language: 'fr_FR',
+                    menubar: false,
+                    skin: 'oxide-dark',
+                    content_css: 'dark',
+                    content_style: `
+                        body { 
+                            background-color: #191922;  /* --surface-color */
+                            color: #E2E8F0;          /* --text-color */
+                            font-family: 'Lora', serif; /* --font-serif */
+                            font-size: 1.1em; 
+                            line-height: 1.7; 
+                        }
+                        img { max-width: 100%; height: auto; display: block; margin: 10px 0; border-radius: 8px; }
+                        h1, h2, h3 { color: #E2E8F0; font-family: 'Merriweather', serif; }
+                        a { color: #F59E0B; }
+                    `,                    
+                    // On utilise setup: pour s'assurer qu'il se remplit après sa création
+                    setup: function(editor) {
+                        editor.on('init', function() {
+                            editor.setContent(initialContent);
+                        });
+                    },
+                    
+                });
                 
             }
 
             modalOverlay.classList.add('active');
-        }   
-
-        function closeModal() {
-            const editor = tinymce.get('journal-entry-text');
-            if (editor) {
-                editor.setContent(''); // On vide l'éditeur pour la prochaine fois
             }
+        } 
+        
+        async function saveJournalEntry(newContent) {
+            const id = currentJournalEditId;
+            const journalData = {
+                date: (id ? gameState.journal.find(j => j.id === id).date : document.getElementById('journal-date').value),
+                entry: newContent
+            };
+            
+            if (id) {
+                const index = gameState.journal.findIndex(j => j.id === id);
+                gameState.journal[index] = { ...gameState.journal[index], ...journalData };
+            } else {
+                journalData.id = Date.now();
+                gameState.journal.push(journalData);
+            }
+            await saveGameData();
+            renderJournal();
+        }
+
+       function closeModal() {
+            // 1. Gère l'éditeur TinyMCE
+            if (tinymce.get('journal-entry-text')) {
+            tinymce.remove('#journal-entry-text');
+            }
+            
+            // 2. S'assure que le textarea retourne au bon endroit
+            // (dans le conteneur .journal-editor-container)
+            document.getElementById('journal-fields').appendChild(journalTextarea);
+            
+            // 3. Ferme les overlays
             modalOverlay.classList.remove('active');
+            mobileEditorOverlay.classList.remove('active');
+            document.body.classList.remove('mobile-editor-active');
         }
 
         modalForm.addEventListener('submit', async (e) => {
@@ -1316,25 +1421,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     gameState.threads[index] = { ...gameState.threads[index], ...threadData };
                 } else { threadData.id = Date.now(); threadData.events = []; gameState.threads.unshift(threadData); }
             } else if (type === 'journal') {
-                const editor = tinymce.get('journal-entry-text');
-                const journalData = {
-                    date: document.getElementById('journal-date').value,
-                    // On utilise la méthode de TinyMCE pour récupérer le contenu HTML
-                    entry: editor ? editor.getContent() : ''
-                };
-                if (id) {
-                    const index = gameState.journal.findIndex(j => j.id === id);
-                    gameState.journal[index] = { ...gameState.journal[index], ...journalData };
-                } else {
-                    journalData.id = Date.now();
-                    gameState.journal.push(journalData);
-                }
+                const newContent = tinymce.get('journal-entry-text').getContent();
+                await saveJournalEntry(newContent);
             }
 
             await saveGameData();
-
             renderAll();
             closeModal();
+        });
+
+        mobileEditorSaveBtn.addEventListener('click', async () => {
+            const newContent = tinymce.get('journal-entry-text').getContent();
+            await saveJournalEntry(newContent);
+            closeModal(); // On ferme l'overlay mobile
         });
         
         window.deleteItem = async function(type, id) {

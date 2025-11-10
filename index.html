@@ -335,15 +335,14 @@
                 <textarea id="thread-description"></textarea>
             </div>
 
-            <div id="journal-fields" class="form-grid" style="display: none;">
-                <label for="journal-date">Date :</label>
-                <input type="date" id="journal-date" required>
-                <label for="journal-entry-text">Entrée :</label>
-                <textarea id="journal-entry-text" rows="6" required></textarea>
+            <div id="journal-fields" class="journal-editor-container" style="display: none;">
+    
+                <input type="date" id="journal-date" class="journal-date-input" required>
+                
+                <textarea id="journal-entry-text" rows="15" required></textarea>
             </div>
 
-            <div class="form-grid">
-                <span></span>
+            <div class="modal-form-footer">
                 <button type="submit" class="action-button">Sauvegarder</button>
             </div>
         </form>
@@ -376,15 +375,22 @@
         <div id="book-container" class="book-container">
             </div>
         <div class="reading-mode-footer">
-            <button id="prev-page-btn">← Précédent</button>
+            <button class="action-button" id="prev-page-btn">← Précédent</button>
             <div id="page-jumper" class="page-jumper">
                 <span id="page-counter-display"></span>
                 <input type="number" id="page-jump-input" style="display: none;">
             </div>
-            <button id="next-page-btn">Suivant →</button>
+            <button class="action-button" id="next-page-btn">Suivant →</button>
         </div>
     </div>
 
     <button id="back-to-top-btn" title="Retour en haut">↑</button>
+    <div id="mobile-editor-overlay" class="mobile-editor-overlay">
+    <div id="mobile-editor-container"></div>
+    
+    <div class="mobile-editor-footer">
+        <button id="mobile-editor-save-btn" class="action-button">Sauvegarder</button>
+    </div>
+</div>
 </body>
 </html>
