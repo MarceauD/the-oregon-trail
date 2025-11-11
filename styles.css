@@ -1373,12 +1373,17 @@ input[type=number] {
     cursor: pointer;
 }
 
+.mobile-editor-footer{
+    display:none;
+}
+
 @media (max-width: 768px) {
 
     /* On réduit les marges générales pour gagner de la place */
     body {
         padding: 5px;
     }
+    
     .modal-overlay.journal-mobile-mode .modal-header,
     .modal-overlay.journal-mobile-mode .journal-date-input {
         display: none;

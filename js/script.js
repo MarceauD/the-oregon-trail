@@ -134,6 +134,10 @@ document.addEventListener('DOMContentLoaded', () => {
             "smokes/18_jesse_james.png",
             "smokes/34_samuel_colt.png",
             "smokes/37_lewis_and_clark_expedition.png",
+            "day1/TheOregonTrail_DAY1_1.png",
+            "day1/TheOregonTrail_DAY1_2.png",
+            "day1/TheOregonTrail_DAY1_3.png",
+            "day1/TheOregonTrail_DAY1_4.png",
          ];
         async function saveGameData() {
             await saveDocRef.set(gameState);
