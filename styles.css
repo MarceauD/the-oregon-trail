@@ -90,15 +90,7 @@ body.mobile-editor-active .dice-roller-container {
     display: none;
 }
 
-@keyframes move-topo-smooth {
-    0% {
-        transform: translate(0, 0);
-    }
-    100% {
-        /* On déplace la toile de la taille exacte d'un motif (1000px) */
-        transform: translate(-1000px, -1000px);
-    }
-}
+
 #particles-bg {
     position: fixed;
     top: 0;
