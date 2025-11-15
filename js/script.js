@@ -1299,31 +1299,29 @@ document.addEventListener('DOMContentLoaded', () => {
                     modalTitle.textContent = 'Ajouter une entrée au journal';
                     let newEntryDate = new Date(); // Par défaut : aujourd'hui
 
-                if (gameState.journal && gameState.journal.length > 0) {
-                    // 1. On trouve la date la plus récente dans le journal
-                    // On transforme les dates "YYYY-MM-DD" en vrais objets Date pour les comparer
-                    const allDates = gameState.journal.map(entry => {
-                        const [year, month, day] = entry.date.split('-').map(Number);
-                        return new Date(year, month - 1, day); // mois 0-indexé
-                    });
-                    const latestDate = new Date(Math.max.apply(null, allDates));
-                    
-                    // 2. On ajoute un jour
-                    latestDate.setDate(latestDate.getDate() + 1);
-                    newEntryDate = latestDate;
+                    if (gameState.journal && gameState.journal.length > 0) {
+                        // 1. On trouve la date la plus récente dans le journal
+                        // On transforme les dates "YYYY-MM-DD" en vrais objets Date pour les comparer
+                        const allDates = gameState.journal.map(entry => {
+                            const [year, month, day] = entry.date.split('-').map(Number);
+                            return new Date(year, month - 1, day); // mois 0-indexé
+                        });
+                        const latestDate = new Date(Math.max.apply(null, allDates));
+                        console.log(latestDate);
+                        // 2. On ajoute un jour
+                        latestDate.setDate(latestDate.getDate() + 1);
+                        newEntryDate = latestDate;
+                    }
 
-                    document.getElementById('journal-date').valueAsDate = newEntryDate;
+                    document.getElementById('journal-date').value = newEntryDate.toISOString().split('T')[0];
                     editIdInput.value = '';
                 }
 
                 if (editor) {
                     editor.mode.set('design'); // On s'assure qu'il est éditable
                     editor.setContent(initialContent); // On met à jour son contenu
-                }
+                }  
             }
-                
-            }
-
             modalOverlay.classList.add('active');
         } 
         
