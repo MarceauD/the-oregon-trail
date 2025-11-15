@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
             selector: '#journal-entry-text',
             license_key:'gpl',
             plugins: 'lists link image table code help wordcount fullscreen',
-            toolbar: 'bold italic underline | selectblockmenu | bullist numlist | link image | alignleft aligncenter alignright | code | fullscreen',
+            toolbar: 'bold italic underline | blocks | link image | alignleft aligncenter alignright | fullscreen',
             language: 'fr_FR',
             menubar: false,
             skin: 'oxide-dark',
@@ -20,79 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 h1, h2, h3 { color: #E2E8F0; font-family: 'Merriweather', serif; }
                 a { color: #F59E0B; }
             `,
-        
-        // Fonction réutilisable pour sélectionner N paragraphes
-        setup: function(editor) {
-        
-        // La fonction interne pour sélectionner les blocs (reste inchangée)
-        const selectLastNBlocks = (n) => {
-            const currentNode = editor.selection.getNode();
-            const parentBlocks = editor.dom.getParents(currentNode, 'p,h2,h3,h4,li,div');
-            
-            if (parentBlocks.length === 0) return;
-
-            let targetBlock = parentBlocks[0];
-            const blocksToSelect = [targetBlock];
-            let count = 1;
-
-            while (count < n) {
-                const prevBlock = targetBlock.previousElementSibling;
-                if (prevBlock) {
-                    blocksToSelect.unshift(prevBlock);
-                    targetBlock = prevBlock;
-                    count++;
-                } else {
-                    break;
-                }
-            }
-
-            const startBlock = blocksToSelect[0];
-            const endBlock = blocksToSelect[blocksToSelect.length - 1];
-            const rng = editor.dom.createRng();
-            rng.setStart(startBlock, 0);
-            rng.setEndAfter(endBlock);
-            editor.selection.setRng(rng);
-        };
-
-        // Enregistre le nouveau bouton à menu déroulant
-        editor.ui.registry.addSplitButton('selectblockmenu', {
-            icon: 'selectall',
-            tooltip: 'Sélectionner...',
-            
-            // Action du bouton principal (clic direct)
-            onAction: function () {
-                selectLastNBlocks(1); // Action par défaut
-            },
-            
-            // NOUVEAU : Le gestionnaire requis pour les éléments du menu
-            onItemAction: function (api, value) {
-                // 'value' sera 1, 5, ou 10
-                selectLastNBlocks(value);
-            },
-            
-            // MODIFIÉ : 'fetch' renvoie maintenant des 'value' au lieu de 'onAction'
-            fetch: function (callback) {
-                const items = [
-                    {
-                        type: 'menuitem',
-                        text: 'Sélectionner 1 paragraphe',
-                        value: 1
-                    },
-                    {
-                        type: 'menuitem',
-                        text: 'Sélectionner les 5 derniers',
-                        value: 5
-                    },
-                    {
-                        type: 'menuitem',
-                        text: 'Sélectionner les 10 derniers',
-                        value: 10
-                    }
-                ];
-                callback(items);
-            }
-            });
-        },
         });   
         
 
@@ -568,7 +495,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // MODE LECTURE
-         const readingModeOverlay = document.getElementById('reading-mode-overlay');
+        const readingModeOverlay = document.getElementById('reading-mode-overlay');
         const openReadingModeBtn = document.getElementById('reading-mode-button');
         const closeReadingModeBtn = document.getElementById('reading-mode-close-button');
         const bookContainer = document.getElementById('book-container'); // Le conteneur principal
@@ -1370,7 +1297,22 @@ document.addEventListener('DOMContentLoaded', () => {
                     editIdInput.value = id;
                 } else {
                     modalTitle.textContent = 'Ajouter une entrée au journal';
-                    document.getElementById('journal-date').valueAsDate = new Date();
+                    let newEntryDate = new Date(); // Par défaut : aujourd'hui
+
+                if (gameState.journal && gameState.journal.length > 0) {
+                    // 1. On trouve la date la plus récente dans le journal
+                    // On transforme les dates "YYYY-MM-DD" en vrais objets Date pour les comparer
+                    const allDates = gameState.journal.map(entry => {
+                        const [year, month, day] = entry.date.split('-').map(Number);
+                        return new Date(year, month - 1, day); // mois 0-indexé
+                    });
+                    const latestDate = new Date(Math.max.apply(null, allDates));
+                    
+                    // 2. On ajoute un jour
+                    latestDate.setDate(latestDate.getDate() + 1);
+                    newEntryDate = latestDate;
+
+                    document.getElementById('journal-date').valueAsDate = newEntryDate;
                     editIdInput.value = '';
                 }
 
@@ -1378,6 +1320,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     editor.mode.set('design'); // On s'assure qu'il est éditable
                     editor.setContent(initialContent); // On met à jour son contenu
                 }
+            }
                 
             }
 
