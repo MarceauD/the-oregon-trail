@@ -800,6 +800,10 @@ input[type=number] {
     min-height: 50vh; /* Hauteur minimale pour l'éditeur */
 }
 
+.tox-menu {
+    z-index: 10002 !important; /* Doit être > au z-index de .modal-overlay (10000) */
+}
+
 
 /* --- Style pour la fenêtre modale --- */
 .modal-overlay { 

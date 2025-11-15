@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
             selector: '#journal-entry-text',
             license_key:'gpl',
             plugins: 'lists link image table code help wordcount fullscreen',
-            toolbar: 'undo redo | blocks | bold italic underline | bullist numlist | link image | alignleft aligncenter alignright | code | fullscreen',
+            toolbar: 'bold italic underline | selectblockmenu | bullist numlist | link image | alignleft aligncenter alignright | code | fullscreen',
             language: 'fr_FR',
             menubar: false,
             skin: 'oxide-dark',
@@ -19,8 +19,82 @@ document.addEventListener('DOMContentLoaded', () => {
                 img { max-width: 100%; height: auto; display: block; margin: 10px 0; border-radius: 8px; }
                 h1, h2, h3 { color: #E2E8F0; font-family: 'Merriweather', serif; }
                 a { color: #F59E0B; }
-            `,          
-        });
+            `,
+        
+        // Fonction réutilisable pour sélectionner N paragraphes
+        setup: function(editor) {
+        
+        // La fonction interne pour sélectionner les blocs (reste inchangée)
+        const selectLastNBlocks = (n) => {
+            const currentNode = editor.selection.getNode();
+            const parentBlocks = editor.dom.getParents(currentNode, 'p,h2,h3,h4,li,div');
+            
+            if (parentBlocks.length === 0) return;
+
+            let targetBlock = parentBlocks[0];
+            const blocksToSelect = [targetBlock];
+            let count = 1;
+
+            while (count < n) {
+                const prevBlock = targetBlock.previousElementSibling;
+                if (prevBlock) {
+                    blocksToSelect.unshift(prevBlock);
+                    targetBlock = prevBlock;
+                    count++;
+                } else {
+                    break;
+                }
+            }
+
+            const startBlock = blocksToSelect[0];
+            const endBlock = blocksToSelect[blocksToSelect.length - 1];
+            const rng = editor.dom.createRng();
+            rng.setStart(startBlock, 0);
+            rng.setEndAfter(endBlock);
+            editor.selection.setRng(rng);
+        };
+
+        // Enregistre le nouveau bouton à menu déroulant
+        editor.ui.registry.addSplitButton('selectblockmenu', {
+            icon: 'selectall',
+            tooltip: 'Sélectionner...',
+            
+            // Action du bouton principal (clic direct)
+            onAction: function () {
+                selectLastNBlocks(1); // Action par défaut
+            },
+            
+            // NOUVEAU : Le gestionnaire requis pour les éléments du menu
+            onItemAction: function (api, value) {
+                // 'value' sera 1, 5, ou 10
+                selectLastNBlocks(value);
+            },
+            
+            // MODIFIÉ : 'fetch' renvoie maintenant des 'value' au lieu de 'onAction'
+            fetch: function (callback) {
+                const items = [
+                    {
+                        type: 'menuitem',
+                        text: 'Sélectionner 1 paragraphe',
+                        value: 1
+                    },
+                    {
+                        type: 'menuitem',
+                        text: 'Sélectionner les 5 derniers',
+                        value: 5
+                    },
+                    {
+                        type: 'menuitem',
+                        text: 'Sélectionner les 10 derniers',
+                        value: 10
+                    }
+                ];
+                callback(items);
+            }
+            });
+        },
+        });   
+        
 
         const firebaseConfig = {
             apiKey: "AIzaSyCx9A30knmNxaOpm9XNTD7zLKSFop9cJFg",
