@@ -1,0 +1,146 @@
+/* --- Cards UI (PNJs et Threads) --- */
+.card-container {
+    display: block;
+    column-count: 3;
+    column-gap: 20px;
+}
+
+@media (max-width: 1200px) {
+    .card-container {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 768px) {
+    .card-container {
+        column-count: 1;
+    }
+}
+
+.card {
+    background-color: var(--surface-color);
+    /* Fond sombre */
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    /* Coins arrondis */
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    /* Important pour les arrondis */
+    transition: all 0.2s ease-in-out;
+    break-inside: avoid;
+    margin-bottom: 20px;
+}
+
+.card:hover {
+    border-color: var(--accent-color);
+    /* Surlignage au survol */
+    transform: translateY(-2px);
+    /* Léger effet de soulèvement */
+}
+
+.full-view-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-content {
+    display: flex;
+    padding: 15px;
+    gap: 15px;
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.npc-portrait {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid var(--border-color);
+    flex-shrink: 0;
+}
+
+.npc-portrait.default {
+    opacity: 0.5;
+}
+
+.card-text-container {
+    flex-grow: 1;
+}
+
+.npc-name {
+    margin: 0 0 5px 0;
+    font-family: var(--font-heading);
+    font-size: 1.2em;
+    color: var(--text-color);
+}
+
+.npc-status-sober {
+    color: var(--text-muted);
+    font-size: 0.85em;
+    font-style: italic;
+    margin: 0 0 10px 0;
+}
+
+.npc-desc {
+    margin: 0;
+    font-size: 0.95em;
+    color: var(--text-color);
+    text-align: justify;
+}
+
+.card-section {
+    font-size: 0.9em;
+    padding-top: 10px;
+    border-top: 1px dashed var(--border-color);
+    text-align: justify;
+}
+
+.card-content div>p,
+.card-content>p {
+    text-align: justify;
+}
+
+.card-actions-bar {
+    padding: 10px 15px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: flex-end;
+    background: transparent;
+}
+
+/* Boutons individuels dans header/cards */
+.card-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.card-button:hover {
+    color: var(--text-color);
+    border-color: var(--accent-color);
+    background-color: var(--accent-color);
+}
+
+.card-button svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+}
+
+.delete-button:hover {
+    color: var(--text-color);
+    border-color: var(--delete-color);
+    background-color: var(--delete-color);
+}

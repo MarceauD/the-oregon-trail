@@ -1,0 +1,98 @@
+/* --- Styles de la Carte --- */
+.map-container {
+    position: relative;
+    width: 100%;
+    border: 1px solid var(--border-color);
+}
+
+.map-image {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.route-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.route-line {
+    fill: none;
+    stroke: var(--delete-color);
+    stroke-width: 10;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.7));
+}
+
+.route-point {
+    stroke: var(--bg-color);
+    stroke-width: 5;
+}
+
+.route-point.capital {
+    fill: #c9b037;
+}
+
+/* Or */
+.route-point.major-city {
+    fill: var(--accent-color);
+}
+
+.route-point.small-town {
+    fill: #6c757d;
+}
+
+/* Gris */
+
+.route-label {
+    font-family: var(--font-interface);
+    fill: var(--text-color);
+    paint-order: stroke;
+    stroke: var(--bg-color);
+    stroke-width: 8px;
+    /* Contour épais */
+}
+
+.route-label.capital {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.route-label.major-city {
+    font-size: 35px;
+}
+
+.route-label.small-town {
+    font-size: 30px;
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .route-line {
+        stroke-width: 6;
+    }
+
+    .route-point {
+        stroke-width: 3;
+    }
+
+    .route-label {
+        stroke-width: 6px;
+    }
+
+    .route-label.capital {
+        font-size: 30px;
+    }
+
+    .route-label.major-city {
+        font-size: 25px;
+    }
+
+    .route-label.small-town {
+        font-size: 20px;
+    }
+}

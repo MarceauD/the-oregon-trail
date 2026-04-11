@@ -1,0 +1,312 @@
+/* --- Journal et PDF Styles --- */
+.journal-entry {
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    padding: 25px 30px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-sm);
+    border-radius: var(--border-radius);
+    border-bottom: 1px solid var(--border-color);
+}
+
+@media (max-width: 768px) {
+    .journal-entry {
+        padding: 15px;
+    }
+}
+
+.journal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+@media (max-width: 768px) {
+    .journal-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+}
+
+.journal-date {
+    font-weight: bold;
+    font-size: 2em;
+    font-family: var(--font-handwriting);
+    color: var(--accent-color);
+    margin: 0;
+    border-bottom: 1px dashed var(--border-color);
+    padding-bottom: 5px;
+}
+
+.journal-content-display {
+    font-family: var(--font-serif);
+    font-size: 1.1em;
+    color: var(--text-muted);
+    line-height: 1.7;
+}
+
+.journal-content-display h1,
+.journal-content-display h2,
+.journal-content-display h3 {
+    font-family: var(--font-heading);
+    color: var(--text-color);
+}
+
+.journal-content-display ul,
+.journal-content-display ol {
+    padding-left: 25px;
+}
+
+.journal-editor-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    min-height: 60vh;
+}
+
+.journal-date-input {
+    font-family: var(--font-interface);
+    font-size: 1em;
+    width: auto;
+    align-self: flex-start;
+    padding: 8px 10px;
+    background-color: var(--bg-color);
+    color: var(--text-muted);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+}
+
+.journal-date-input:focus {
+    color: var(--text-color);
+}
+
+.journal-editor-container .tox-tinymce {
+    flex-grow: 1;
+    min-height: 50vh;
+}
+
+/* Fix z-index pour TinyMCE modales */
+.tox-menu {
+    z-index: 10002 !important;
+}
+
+.tox-tinymce-aux {
+    z-index: 10001 !important;
+}
+
+/* Modale de Lecture Histoires / Journal */
+.reading-mode-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bg-color);
+    z-index: 12000;
+    display: none;
+    flex-direction: column;
+}
+
+.reading-mode-overlay.active {
+    display: flex;
+}
+
+.reading-mode-header {
+    text-align: center;
+    padding: 10px;
+    border-bottom: 1px solid var(--border-color);
+    flex-shrink: 0;
+}
+
+.reading-mode-close-button {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2em;
+    font-weight: bold;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--accent-color);
+}
+
+.book-container {
+    flex-grow: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 2em 1em;
+    position: relative;
+}
+
+.book-content {
+    max-width: 80ch;
+    margin: 0 auto;
+    height: auto;
+    width: 90%;
+    position: static;
+}
+
+.book-content .journal-content-display img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    margin: 1.5em 0;
+}
+
+.reading-mode-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    border-top: 1px solid var(--border-color);
+    flex-shrink: 0;
+}
+
+.reading-mode-footer button {
+    font-family: var(--font-interface);
+    border-radius: var(--border-radius);
+    padding: 8px 15px;
+    background: none;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    cursor: pointer;
+}
+
+.reading-mode-footer button:disabled {
+    border-color: var(--border-color);
+    color: var(--border-color);
+    cursor: not-allowed;
+}
+
+.page-jumper {
+    font-style: italic;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+.page-jumper input {
+    width: 50px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-color);
+    border-radius: var(--border-radius);
+}
+
+/* Animations Reading Mode */
+@keyframes slideOutToLeft {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
+@keyframes slideInFromRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutToRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+@keyframes slideInFromLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.page-exit-left {
+    animation: slideOutToLeft 0.3s ease-out forwards;
+}
+
+.page-enter-right {
+    animation: slideInFromRight 0.3s ease-out forwards;
+}
+
+.page-exit-right {
+    animation: slideOutToRight 0.3s ease-out forwards;
+}
+
+.page-enter-left {
+    animation: slideInFromLeft 0.3s ease-out forwards;
+}
+
+/* Section PDF Viewer */
+.pdf-layout {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 25px;
+    height: 75vh;
+}
+
+@media (max-width: 768px) {
+    .pdf-layout {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+}
+
+.pdf-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pdf-list a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: var(--accent-color);
+    font-family: var(--font-interface);
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.2s;
+}
+
+.pdf-list a:hover {
+    background-color: var(--highlight-color);
+}
+
+.pdf-viewer-container {
+    border: 1px solid var(--border-color);
+}
+
+@media (max-width: 768px) {
+    .pdf-viewer-container {
+        height: 50vh;
+    }
+}
+
+#pdf-viewer {
+    width: 100%;
+    height: 100%;
+    border: none;
+}

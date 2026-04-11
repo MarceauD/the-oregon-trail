@@ -84,6 +84,7 @@ window.exportSingleItem = function (type, id) {
 };
 
 let currentJournalEditId = null;
+let autoSaveJournalInterval = null;
 
 window.openModal = function (type, id = null) {
     const modalForm = document.getElementById('modal-form');
@@ -138,14 +139,29 @@ window.openModal = function (type, id = null) {
             document.getElementById('thread-location').value = thread.location || '';
             document.getElementById('thread-status').value = thread.status || '';
             document.getElementById('thread-description').value = thread.description || '';
+
+            const imgField = document.getElementById('thread-img');
+            if (imgField) imgField.value = thread.img || '';
+
             editIdInput.value = id;
         } else {
             modalTitle.textContent = 'Ajouter un Thread';
             editIdInput.value = '';
+            const imgField = document.getElementById('thread-img');
+            if (imgField) imgField.value = '';
         }
     } else if (type === 'journal') {
         if (isMobile()) modalOverlay.classList.add('journal-mobile-mode');
         else modalOverlay.classList.remove('journal-mobile-mode');
+
+        if (autoSaveJournalInterval) clearInterval(autoSaveJournalInterval);
+        autoSaveJournalInterval = setInterval(async () => {
+            if (typeof tinymce !== 'undefined') {
+                const newContent = tinymce.get('journal-entry-text').getContent();
+                await saveJournalEntry(newContent);
+                console.log('Auto-save du journal effectué.');
+            }
+        }, 30000);
 
         journalFields.style.display = 'grid';
         const item = id ? gameState.journal.find(j => j.id === id) : null;
@@ -181,6 +197,10 @@ window.openModal = function (type, id = null) {
 };
 
 window.closeModal = function () {
+    if (autoSaveJournalInterval) {
+        clearInterval(autoSaveJournalInterval);
+        autoSaveJournalInterval = null;
+    }
     if (typeof tinymce !== 'undefined') {
         const editor = tinymce.get('journal-entry-text');
         if (editor) editor.setContent('');
@@ -257,7 +277,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     title: document.getElementById('thread-title').value,
                     location: document.getElementById('thread-location').value,
                     status: document.getElementById('thread-status').value,
-                    description: document.getElementById('thread-description').value
+                    description: document.getElementById('thread-description').value,
+                    img: (document.getElementById('thread-img') ? document.getElementById('thread-img').value : "")
                 };
                 if (id) {
                     const index = gameState.threads.findIndex(t => t.id === id);

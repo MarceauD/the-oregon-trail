@@ -39,8 +39,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (window.scrollY > 300) backToTopBtn.classList.add('visible');
             else backToTopBtn.classList.remove('visible');
         });
-        backToTopBtn.addEventListener('click', () => {
+        backToTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
             window.scrollTo({ top: 0, behavior: 'smooth' });
+            document.documentElement.scrollTop = 0; // fallback immédiat si smooth behavior bug
         });
     }
 
@@ -150,3 +153,30 @@ window.showPdf = function (fileName) {
         pdfViewer.src = `pdfs/${fileName}`;
     }
 }
+
+window.handleImageUpload = function (fileInput, targetId) {
+    if (fileInput.files && fileInput.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const img = new Image();
+            img.onload = function () {
+                const canvas = document.createElement('canvas');
+                const MAX_WIDTH = 300;
+                let width = img.width;
+                let height = img.height;
+                if (width > MAX_WIDTH) {
+                    height = Math.round((height * MAX_WIDTH) / width);
+                    width = MAX_WIDTH;
+                }
+                canvas.width = !!width ? width : 100;
+                canvas.height = height;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0, width, height);
+                // Sauvegarde compressée en JPEG qualité 80% pour économiser la base de données
+                document.getElementById(targetId).value = canvas.toDataURL('image/jpeg', 0.8);
+            };
+            img.src = e.target.result;
+        };
+        reader.readAsDataURL(fileInput.files[0]);
+    }
+};

@@ -8,18 +8,27 @@ function renderThreads() {
         card.className = 'card full-view-card'; // New generic style 
         card.dataset.id = thread.id;
 
-        const eventsHtml = thread.events && thread.events.length > 0 ? `<ul style="margin-top:5px; padding-left: 20px;">${thread.events.map(e => `<li>${e}</li>`).join('')}</ul>` : '';
+        let eventsHtml = '';
+        if (thread.events) {
+            eventsHtml = `<ul>` + thread.events.map(event => `<li>${event}</li>`).join('') + `</ul>`;
+        }
+
         let statusText = (thread.status || "").replace(/-/g, ' ');
         statusText = statusText.charAt(0).toUpperCase() + statusText.slice(1);
 
+        let imgHtml = thread.img ? `<img src="${thread.img}" alt="${thread.title}" class="npc-portrait">` : `<img src="images/placeholder_thread.png" alt="Missing portrait" class="npc-portrait default">`;
+
         card.innerHTML = `
-            <div class="card-content" style="padding: 15px; display: block;">
-                <h3 style="margin-top:0; margin-bottom:5px;">${thread.title}</h3>
-                <p style="color:var(--accent-color); font-weight:bold; font-size: 0.9em; margin-top:0; margin-bottom: 5px;">${thread.location}</p>
-                <p style="color:var(--text-muted); font-size: 0.85em; font-style: italic; margin-top:0;">Statut: ${statusText}</p>
-                <div style="margin-top: 15px;">
-                    <p>${thread.description}</p>
-                    ${eventsHtml ? `<div style="margin-top:10px;"><strong>Événements :</strong>${eventsHtml}</div>` : ''}
+            <div class="card-content" style="padding: 15px;">
+                ${imgHtml}
+                <div class="card-text-container">
+                    <h3 style="margin-top:0; margin-bottom:5px;">${thread.title}</h3>
+                    <p style="color:var(--accent-color); font-weight:bold; font-size: 0.9em; margin-top:0; margin-bottom: 5px;">${thread.location}</p>
+                    <p style="color:var(--text-muted); font-size: 0.85em; font-style: italic; margin-top:0;">Statut: ${statusText}</p>
+                    <div style="margin-top: 15px;">
+                        ${eventsHtml ? `<div style="margin-bottom:10px;"><strong>Événements :</strong>${eventsHtml}</div>` : ''}
+                        <p>${thread.description}</p>
+                    </div>
                 </div>
             </div>
             <div class="card-actions-bar">
@@ -39,3 +48,18 @@ function renderThreads() {
         threadContainer.appendChild(card);
     });
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const searchThread = document.getElementById('search-thread');
+    if (searchThread) {
+        searchThread.addEventListener('input', () => {
+            const query = searchThread.value.toLowerCase();
+            const cards = document.querySelectorAll('#thread-container .card');
+            cards.forEach(card => {
+                const titleNode = card.querySelector('h3');
+                const text = titleNode ? titleNode.textContent.toLowerCase() : '';
+                card.style.display = text.includes(query) ? '' : 'none';
+            });
+        });
+    }
+});

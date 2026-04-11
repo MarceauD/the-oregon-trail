@@ -46,3 +46,18 @@ function renderNpcs() {
         npcContainer.appendChild(card);
     });
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const searchNpc = document.getElementById('search-npc');
+    if (searchNpc) {
+        searchNpc.addEventListener('input', () => {
+            const query = searchNpc.value.toLowerCase();
+            const cards = document.querySelectorAll('#npc-container .card');
+            cards.forEach(card => {
+                const titleNode = card.querySelector('h3');
+                const text = titleNode ? titleNode.textContent.toLowerCase() : '';
+                card.style.display = text.includes(query) ? '' : 'none';
+            });
+        });
+    }
+});
