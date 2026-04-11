@@ -28,7 +28,7 @@ const defaultState = {
             origin: "Harrisburg, Pennsylvanie",
             profession: "Fugitif"
         },
-        history: "Edward 'Eddy' Dunbar, 18 ans...",
+        history: "Edward 'Eddy' Dunbar...",
         stats: [
             { id: 1, name: "Force", value: 60 },
             { id: 2, name: "Endurance", value: 80 },
@@ -38,44 +38,45 @@ const defaultState = {
             { id: 6, name: "Perception", value: 65 },
             { id: 7, name: "Persuasion", value: 70 },
             { id: 8, name: "Survie", value: 35 },
-            { id: 9, name: "AgilitÃ©", value: 50 },
-            { id: 10, name: "DiscrÃ©tion", value: 65 },
-            { id: 11, name: "DextÃ©ritÃ©", value: 40 },
+            { id: 9, name: "Agilité", value: 50 },
+            { id: 10, name: "Discrétion", value: 65 },
+            { id: 11, name: "Dextérité", value: 40 },
         ],
         skills: [
-            { id: 101, name: "RÃ©silience", value: 85 },
-            { id: 102, name: "DÃ©brouillardise", value: 60 },
+            { id: 101, name: "Résilience", value: 85 },
+            { id: 102, name: "Débrouillardise", value: 60 },
             { id: 103, name: "Jeu de banjo", value: 60 },
             { id: 104, name: "Attaque sournoise", value: 70 },
             { id: 105, name: "Fuite", value: 65 },
             { id: 109, name: "Lecture", value: 5 },
             { id: 110, name: "Ecriture", value: 5 },
-            { id: 110, name: "Equitation", value: 10 },
+            { id: 111, name: "Equitation", value: 10 },
         ],
         banjoMelodies: [
             { id: 201, name: "Hard Times Come Again No More", description: "Triste et lent" }
         ],
         strengths: [
-            { id: 301, text: "RÃ©silience" },
-            { id: 302, text: "LoyautÃ©" },
+            { id: 301, text: "Résilience" },
+            { id: 302, text: "Loyauté" },
             { id: 303, text: "Droiture" },
         ],
         weaknesses: [
             { id: 401, text: "Manque de confiance" },
             { id: 402, text: "Ignorant" },
-            { id: 403, text: "MÃ©fiant" },
+            { id: 403, text: "Méfiant" },
         ],
         inventory: {
             firearms: [],
             clothing: [],
             companions: [],
             general: [
-                { id: 801, text: "VÃªtements vieux et sales", isAvailable: true },
-                { id: 802, text: "Bottes de marche usÃ©es", isAvailable: true },
-                { id: 807, text: "Banjo dans son Ã©tui", isAvailable: true },
+                { id: 801, text: "Vêtements vieux et sales", isAvailable: true },
+                { id: 802, text: "Bottes de marche usées", isAvailable: true },
+                { id: 807, text: "Banjo dans son étui", isAvailable: true },
                 { id: 808, text: "Nourriture", isAvailable: true },
             ]
-        }
+        },
+        plotNotes: "" // Carnet d'intrigues
     },
     npcs: [],
     threads: [],
@@ -150,7 +151,7 @@ async function saveGameData() {
     }
 
     await getSaveDocRef().set(gameState);
-    console.log(`Partie [${currentSaveId}] sauvegardÃ©e sur Firebase !`);
+    console.log(`Partie [${currentSaveId}] sauvegardée sur Firebase !`);
 
     // Sync campaigns list to Firestore for cross-device persistence
     if (auth.currentUser) {
@@ -177,10 +178,10 @@ async function loadGameData() {
 
     const doc = await getSaveDocRef().get();
     if (doc.exists) {
-        console.log(`DonnÃ©es chargÃ©es pour [${currentSaveId}] depuis Firebase.`);
+        console.log(`Données chargées pour [${currentSaveId}] depuis Firebase.`);
         return doc.data();
     } else {
-        console.log(`Aucune sauvegarde Firebase trouvÃ©e pour [${currentSaveId}].`);
+        console.log(`Aucune sauvegarde Firebase trouvée pour [${currentSaveId}].`);
         return null;
     }
 }
@@ -206,7 +207,7 @@ window.switchCampaign = async function (id) {
 
 window.deleteCampaign = async function (id) {
     if (campaignsList.length <= 1) return alert("Impossible de supprimer la seule campagne restante.");
-    if (!confirm("Voulez-vous vraiment supprimer cette campagne ? Cette action est irrÃ©versible.")) return;
+    if (!confirm("Voulez-vous vraiment supprimer cette campagne ? Cette action est irréversible.")) return;
 
     campaignsList = campaignsList.filter(c => c.id !== id);
     if (currentSaveId === id) {
@@ -219,7 +220,3 @@ window.deleteCampaign = async function (id) {
     await db.collection('saves').doc(id).delete();
     location.reload();
 };
-
-
-
-

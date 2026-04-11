@@ -47,6 +47,32 @@ function renderThreads() {
         `;
         threadContainer.appendChild(card);
     });
+
+    // Initialisation du Carnet d'Intrigues
+    const plotNotesTextarea = document.getElementById('plot-notes');
+    if (plotNotesTextarea) {
+        plotNotesTextarea.value = gameState.character.plotNotes || "";
+
+        // Auto-save sur la saisie
+        let saveTimeout;
+        plotNotesTextarea.addEventListener('input', () => {
+            const status = document.getElementById('plot-notes-status');
+            if (status) {
+                status.textContent = "Modifications en cours...";
+                status.classList.add('syncing');
+            }
+
+            clearTimeout(saveTimeout);
+            saveTimeout = setTimeout(async () => {
+                gameState.character.plotNotes = plotNotesTextarea.value;
+                await saveGameData();
+                if (status) {
+                    status.textContent = "Tout est à jour.";
+                    status.classList.remove('syncing');
+                }
+            }, 1000);
+        });
+    }
 }
 
 document.addEventListener('DOMContentLoaded', () => {

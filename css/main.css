@@ -438,3 +438,64 @@ input[type=number] {
     font-style: italic;
     word-break: break-all;
 }
+
+/* --- Carnet d'Intrigues --- */
+.plot-notes-section {
+    margin-top: 40px;
+    padding: 25px;
+    background: rgba(25, 25, 34, 0.5);
+    border: 1px dashed var(--border-color);
+    border-radius: var(--border-radius-md);
+}
+
+.plot-notes-section h3 {
+    margin-top: 0;
+    margin-bottom: 5px;
+    color: var(--accent-color);
+    font-family: var(--font-heading);
+}
+
+.section-subtitle {
+    font-size: 0.9em;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.plot-notes-textarea {
+    width: 100%;
+    min-height: 250px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    color: var(--text-color);
+    padding: 15px;
+    font-family: var(--font-handwriting);
+    font-size: 1.2em;
+    line-height: 1.5;
+    resize: vertical;
+    transition: all 0.3s ease;
+}
+
+.plot-notes-textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    background: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 10px rgba(245, 158, 11, 0.1);
+}
+
+.plot-notes-footer {
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#plot-notes-status {
+    font-size: 0.8em;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+#plot-notes-status.syncing {
+    color: var(--accent-color);
+}

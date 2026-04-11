@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
             selector: '#journal-entry-text',
             license_key: 'gpl',
             plugins: 'lists link image table code help wordcount fullscreen forecolor',
-            toolbar: 'bold italic underline forecolor | blocks | jet gallery | link image | alignleft aligncenter alignright | fullscreen',
+            toolbar: 'bold italic underline forecolor | blocks | jet oracle gallery | link image | alignleft aligncenter alignright | fullscreen',
             language: 'fr_FR',
             menubar: false,
             skin: 'oxide-dark',
@@ -112,6 +112,74 @@ document.addEventListener('DOMContentLoaded', () => {
                                 editor.insertContent(`<img src="${path}" alt="Image RPG">`);
                             });
                         }
+                    }
+                });
+
+                // Bouton Oracle (Mythic GME)
+                editor.ui.registry.addButton('oracle', {
+                    text: '🔮 Oracle',
+                    tooltip: 'Poser une question au destin (Mythic Oracle)',
+                    onAction: () => {
+                        const oddsList = [
+                            { text: 'Impossible (10%)', value: '10|Impossible' },
+                            { text: 'Peu probable (15%)', value: '15|No way' },
+                            { text: 'Très improbable (25%)', value: '25|Very unlikely' },
+                            { text: 'Improbable (35%)', value: '35|Unlikely' },
+                            { text: '50/50 (50%)', value: '50|50/50' },
+                            { text: 'Plutôt probable (65%)', value: '65|Somewhat likely' },
+                            { text: 'Probable (75%)', value: '75|Likely' },
+                            { text: 'Très probable (85%)', value: '85|Very likely' },
+                            { text: 'Quasi certain (90%)', value: '90|Near sure thing' },
+                            { text: 'Sûr (95%)', value: '95|A sure thing' },
+                            { text: 'Certain (99%)', value: '99|Has to be' }
+                        ];
+
+                        editor.windowManager.open({
+                            title: 'Consulter l\'Oracle',
+                            body: {
+                                type: 'panel',
+                                items: [{
+                                    type: 'selectbox',
+                                    name: 'odds',
+                                    label: 'Probabilité de "Oui"',
+                                    items: oddsList
+                                }]
+                            },
+                            initialData: { odds: '50|50/50' },
+                            buttons: [
+                                { type: 'cancel', text: 'Annuler' },
+                                { type: 'submit', text: 'Interroger', primary: true }
+                            ],
+                            onSubmit: (api) => {
+                                const data = api.getData();
+                                const [chance, label] = data.odds.split('|');
+                                const yesChance = parseInt(chance);
+                                const roll = Math.floor(Math.random() * 100) + 1;
+
+                                let result = "";
+                                let color = "#F59E0B";
+
+                                const exceptionalYesLimit = Math.max(1, Math.floor(yesChance / 5));
+                                const exceptionalNoLimit = 100 - Math.max(0, Math.floor((100 - yesChance) / 5)) + 1;
+
+                                if (roll <= exceptionalYesLimit) {
+                                    result = "OUI EXCEPTIONNEL !";
+                                    color = "#10B981"; // Vert
+                                } else if (roll <= yesChance) {
+                                    result = "OUI.";
+                                } else if (roll >= exceptionalNoLimit) {
+                                    result = "NON EXCEPTIONNEL !";
+                                    color = "#EF4444"; // Rouge
+                                } else {
+                                    result = "NON.";
+                                    color = "#94A3B8"; // Gris
+                                }
+
+                                const output = `<p class="oracle-result" style="color: ${color}; font-weight: bold;">[Oracle] ${label} (${roll}%) : ${result}</p>`;
+                                editor.insertContent(output);
+                                api.close();
+                            }
+                        });
                     }
                 });
             }
