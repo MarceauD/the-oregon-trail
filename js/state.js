@@ -38,13 +38,13 @@ const defaultState = {
             { id: 6, name: "Perception", value: 65 },
             { id: 7, name: "Persuasion", value: 70 },
             { id: 8, name: "Survie", value: 35 },
-            { id: 9, name: "Agilité", value: 50 },
-            { id: 10, name: "Discrétion", value: 65 },
-            { id: 11, name: "Dextérité", value: 40 },
+            { id: 9, name: "AgilitÃ©", value: 50 },
+            { id: 10, name: "DiscrÃ©tion", value: 65 },
+            { id: 11, name: "DextÃ©ritÃ©", value: 40 },
         ],
         skills: [
-            { id: 101, name: "Résilience", value: 85 },
-            { id: 102, name: "Débrouillardise", value: 60 },
+            { id: 101, name: "RÃ©silience", value: 85 },
+            { id: 102, name: "DÃ©brouillardise", value: 60 },
             { id: 103, name: "Jeu de banjo", value: 60 },
             { id: 104, name: "Attaque sournoise", value: 70 },
             { id: 105, name: "Fuite", value: 65 },
@@ -56,23 +56,23 @@ const defaultState = {
             { id: 201, name: "Hard Times Come Again No More", description: "Triste et lent" }
         ],
         strengths: [
-            { id: 301, text: "Résilience" },
-            { id: 302, text: "Loyauté" },
+            { id: 301, text: "RÃ©silience" },
+            { id: 302, text: "LoyautÃ©" },
             { id: 303, text: "Droiture" },
         ],
         weaknesses: [
             { id: 401, text: "Manque de confiance" },
             { id: 402, text: "Ignorant" },
-            { id: 403, text: "Méfiant" },
+            { id: 403, text: "MÃ©fiant" },
         ],
         inventory: {
             firearms: [],
             clothing: [],
             companions: [],
             general: [
-                { id: 801, text: "Vêtements vieux et sales", isAvailable: true },
-                { id: 802, text: "Bottes de marche usées", isAvailable: true },
-                { id: 807, text: "Banjo dans son étui", isAvailable: true },
+                { id: 801, text: "VÃªtements vieux et sales", isAvailable: true },
+                { id: 802, text: "Bottes de marche usÃ©es", isAvailable: true },
+                { id: 807, text: "Banjo dans son Ã©tui", isAvailable: true },
                 { id: 808, text: "Nourriture", isAvailable: true },
             ]
         }
@@ -89,45 +89,52 @@ let gameState = {};
 
 const imageGalleryList = [
     "altoona.png",
+    "background.png",
+    "cattleman_hat.jpg",
+    "character.png",
+    "cowboy_hat.png",
+    "day1/TheOregonTrail_DAY1_1.png",
+    "day1/TheOregonTrail_DAY1_2.png",
+    "day1/TheOregonTrail_DAY1_3.png",
+    "day1/TheOregonTrail_DAY1_4.png",
     "Eddy_Pilgrim.png",
+    "fusil_sharps.jpg",
     "horseshoe_curve.png",
     "James_Blackmore.jpg",
     "knights_of_labor.jpg",
-    "music_in_saloon.png",
-    "remington_derringer_m95.png",
-    "character.png",
-    "background.png",
-    "cattleman_hat.jpg",
-    "fusil_sharps.jpg",
     "morgan_horse.jpg",
-    "remington_new_model.png",
-    "spencer_m1865.jpg",
-    "straw_hat.png",
-    "placeholder_npc.png",
-    "placeholder_thread.png",
-    "usa_1866.jpg",
+    "music_in_saloon.png",
     "npc/artus_flynn.png",
     "npc/benjamin.png",
     "npc/caleb_winters.png",
+    "npc/edward_dunbar.png",
     "npc/elara_mcnamera.png",
+    "npc/eugene_dunbar.png",
     "npc/finn.png",
     "npc/isaac_meeks.png",
+    "npc/jedediah_harper.png",
     "npc/john_geary.png",
+    "npc/journaliers.png",
     "npc/matronne.png",
     "npc/morris_diamond.png",
     "npc/mr_vogel.png",
     "npc/ollie.png",
     "npc/pisteur_eugene.png",
+    "npc/regina_dunbar.png",
     "npc/silas_flynn.png",
     "npc/theodore_mcnamera.png",
+    "orphelinat de harrisburg.png",
+    "placeholder_npc.png",
+    "placeholder_thread.png",
+    "remington_derringer_m95.png",
+    "remington_new_model.png",
     "smokes/12_sacagawea.png",
     "smokes/18_jesse_james.png",
     "smokes/34_samuel_colt.png",
     "smokes/37_lewis_and_clark_expedition.png",
-    "day1/TheOregonTrail_DAY1_1.png",
-    "day1/TheOregonTrail_DAY1_2.png",
-    "day1/TheOregonTrail_DAY1_3.png",
-    "day1/TheOregonTrail_DAY1_4.png",
+    "spencer_m1865.jpg",
+    "straw_hat.png",
+    "usa_1866.jpg"
 ];
 
 async function saveGameData() {
@@ -143,7 +150,7 @@ async function saveGameData() {
     }
 
     await getSaveDocRef().set(gameState);
-    console.log(`Partie [${currentSaveId}] sauvegardée sur Firebase !`);
+    console.log(`Partie [${currentSaveId}] sauvegardÃ©e sur Firebase !`);
 
     // Sync campaigns list to Firestore for cross-device persistence
     if (auth.currentUser) {
@@ -170,10 +177,10 @@ async function loadGameData() {
 
     const doc = await getSaveDocRef().get();
     if (doc.exists) {
-        console.log(`Données chargées pour [${currentSaveId}] depuis Firebase.`);
+        console.log(`DonnÃ©es chargÃ©es pour [${currentSaveId}] depuis Firebase.`);
         return doc.data();
     } else {
-        console.log(`Aucune sauvegarde Firebase trouvée pour [${currentSaveId}].`);
+        console.log(`Aucune sauvegarde Firebase trouvÃ©e pour [${currentSaveId}].`);
         return null;
     }
 }
@@ -199,7 +206,7 @@ window.switchCampaign = async function (id) {
 
 window.deleteCampaign = async function (id) {
     if (campaignsList.length <= 1) return alert("Impossible de supprimer la seule campagne restante.");
-    if (!confirm("Voulez-vous vraiment supprimer cette campagne ? Cette action est irréversible.")) return;
+    if (!confirm("Voulez-vous vraiment supprimer cette campagne ? Cette action est irrÃ©versible.")) return;
 
     campaignsList = campaignsList.filter(c => c.id !== id);
     if (currentSaveId === id) {
@@ -212,3 +219,7 @@ window.deleteCampaign = async function (id) {
     await db.collection('saves').doc(id).delete();
     location.reload();
 };
+
+
+
+
