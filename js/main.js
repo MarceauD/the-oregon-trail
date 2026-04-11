@@ -11,6 +11,20 @@ window.exportSectionToClipboard = function (type) {
     if (type === 'character') {
         const char = gameState.character;
         output = '=== FICHE DE PERSONNAGE ===\n\n';
+
+        // IDENTITÉ
+        const id = char.identityFields || {};
+        output += `--- IDENTITÉ ---\n`;
+        output += `Nom : ${id.name || 'N/A'}\n`;
+        output += `Âge : ${id.age || 'N/A'}\n`;
+        output += `Origine : ${id.origin || 'N/A'}\n`;
+        output += `Profession : ${id.profession || 'N/A'}\n\n`;
+
+        // HISTOIRE
+        output += `--- HISTOIRE ---\n`;
+        output += `${char.history || 'Pas d\'histoire enregistrée.'}\n\n`;
+
+        output += `--- ÉCONOMIE ---\n`;
         output += `Monnaie : $${(char.money || 0).toFixed(2)}\n\n`;
         output += '--- STATISTIQUES ---\n';
         char.stats.forEach(s => { output += `${s.name}: ${s.value}\n`; });
@@ -300,7 +314,6 @@ document.addEventListener('DOMContentLoaded', () => {
             closeModal();
         });
     }
-
     const mobileEditorSaveBtn = document.getElementById('mobile-editor-save-btn');
     if (mobileEditorSaveBtn) {
         mobileEditorSaveBtn.addEventListener('click', async () => {
@@ -311,6 +324,47 @@ document.addEventListener('DOMContentLoaded', () => {
             closeModal();
         });
     }
+
+    window.initCampaignBubbles = function () {
+        const container = document.getElementById('campaign-bubbles');
+        if (!container) return;
+
+        container.innerHTML = '';
+        campaignsList.forEach(c => {
+            const bubble = document.createElement('div');
+            bubble.className = 'campaign-bubble';
+            if (c.id === currentSaveId) bubble.classList.add('active');
+
+            // Background image (portrait or default)
+            const portraitUrl = c.portrait || 'images/placeholder_npc.png';
+            bubble.style.backgroundImage = `url('${portraitUrl}')`;
+            bubble.setAttribute('data-name', c.name);
+
+            bubble.onclick = () => {
+                if (c.id !== currentSaveId) switchCampaign(c.id);
+            };
+
+            container.appendChild(bubble);
+        });
+    };
+
+    window.handleCharacterPortraitUpload = async function (input) {
+        if (!input.files || !input.files[0]) return;
+        const base64 = await handleImageUpload(input, 'character-portrait-display'); // Generic tool
+        if (base64) {
+            gameState.character.portrait = base64;
+            document.getElementById('character-portrait-display').style.backgroundImage = `url('${base64}')`;
+            await saveGameData();
+            initCampaignBubbles(); // Refresh bubbles too
+        }
+    };
+
+    window.handleNewCampaignRequest = function () {
+        const name = prompt("Entrez le nom de votre nouvelle campagne / personnage :");
+        if (name && name.trim()) {
+            createNewCampaign(name.trim());
+        }
+    };
 
     async function initializeApp() {
         let data = await loadGameData();
@@ -329,6 +383,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!gameState.character.identityFields) gameState.character.identityFields = defaultState.character.identityFields;
         if (!gameState.character.history) gameState.character.history = defaultState.character.history;
+
+        initCampaignBubbles();
+
+        // Update character portrait from state
+        const portraitDisplay = document.getElementById('character-portrait-display');
+        if (portraitDisplay) {
+            portraitDisplay.style.backgroundImage = `url('${gameState.character.portrait || 'images/placeholder_npc.png'}')`;
+        }
 
         const moneyInput = document.getElementById('character-money');
         if (moneyInput && gameState.character && gameState.character.money !== undefined) {

@@ -36,6 +36,19 @@
 
 <body>
     <div id="particles-bg"></div>
+    <!-- Modal pour le sélecteur d'images du projet -->
+    <div id="image-picker-overlay" class="modal-overlay image-picker-z">
+        <div class="modal image-picker-content">
+            <div class="modal-header">
+                <h2>Bibliothèque d'images du projet</h2>
+                <button id="image-picker-close" class="modal-close-button" onclick="closeImagePicker()">&times;</button>
+            </div>
+            <div id="image-picker-grid" class="gallery-grid">
+                <!-- Images injectées ici -->
+            </div>
+        </div>
+    </div>
+
     <div class="main-container">
 
         <nav>
@@ -62,13 +75,24 @@
             <section id="character" class="content-section active">
                 <div class="section-header">
                     <h2>Fiche de Personnage</h2>
+                    <div class="campaign-manager">
+                        <div id="campaign-bubbles" class="campaign-bubbles">
+                            <!-- Bubbles rendered by JS -->
+                        </div>
+                        <button class="new-campaign-btn" onclick="handleNewCampaignRequest()"
+                            title="Nouvelle Campagne">+</button>
+                    </div>
                     <div class="button-group">
                         <button class="action-button" id="export-character-button">Exporter</button>
                     </div>
                 </div>
                 <div class="character-sheet">
                     <div class="char-left-col">
-                        <div class="char-portrait" title="Edward 'Eddy' Dunbar"></div>
+                        <div class="char-portrait-wrapper">
+                            <div class="char-portrait" id="character-portrait-display"
+                                onclick="openImagePicker('character-portrait')" title="Changer le portrait"></div>
+                            <div class="portrait-overlay">Cliquer pour choisir dans la bibliothèque</div>
+                        </div>
                         <div class="char-panel">
                             <h3>Identité</h3>
                             <div id="identity-container" class="char-info-grid"></div>
@@ -248,8 +272,6 @@
                 <div class="section-header">
                     <h2>Galerie d'images</h2>
                 </div>
-                <p>Voici toutes les images disponibles dans votre dossier <code>/images/</code>. Utilisez le bouton
-                    "Copier" pour obtenir le chemin à utiliser dans les fiches de personnage ou de PNJ.</p>
                 <div id="gallery-container" class="gallery-grid">
                 </div>
             </section>
@@ -280,12 +302,9 @@
                     <input type="text" id="npc-name" required>
                     <label for="npc-img">Où est l'image ? :</label>
                     <div style="display: flex; gap: 10px;">
-                        <input type="text" id="npc-img" placeholder="images/James_Blackmore.jpg" style="flex: 1;">
-                        <input type="file" id="npc-img-file" accept="image/*" style="display: none;"
-                            onchange="handleImageUpload(this, 'npc-img')">
-                        <button type="button" class="action-button"
-                            onclick="document.getElementById('npc-img-file').click()"
-                            style="padding: 5px 12px; font-size: 0.9em; height: 100%; box-sizing: border-box;">Parcourir</button>
+                        <input type="text" id="npc-img" placeholder="images/npc/john_geary.png" style="flex: 1;">
+                        <button type="button" class="action-button" onclick="openImagePicker('npc-img')"
+                            style="padding: 5px 12px; font-size: 0.9em; height: 100%; box-sizing: border-box;">Bibliothèque</button>
                     </div>
                     <label for="npc-status">Statut :</label>
                     <select id="npc-status">
@@ -323,11 +342,8 @@
                     <label for="thread-img">Où est l'image ? (Facultatif) :</label>
                     <div style="display: flex; gap: 10px;">
                         <input type="text" id="thread-img" placeholder="images/quest.jpg" style="flex: 1;">
-                        <input type="file" id="thread-img-file" accept="image/*" style="display: none;"
-                            onchange="handleImageUpload(this, 'thread-img')">
-                        <button type="button" class="action-button"
-                            onclick="document.getElementById('thread-img-file').click()"
-                            style="padding: 5px 12px; font-size: 0.9em; height: 100%; box-sizing: border-box;">Parcourir</button>
+                        <button type="button" class="action-button" onclick="openImagePicker('thread-img')"
+                            style="padding: 5px 12px; font-size: 0.9em; height: 100%; box-sizing: border-box;">Bibliothèque</button>
                     </div>
                     <label for="thread-location">Lieu :</label>
                     <input type="text" id="thread-location">

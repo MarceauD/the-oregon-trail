@@ -154,7 +154,49 @@ window.showPdf = function (fileName) {
     }
 }
 
+window.openImagePicker = function (targetId) {
+    const overlay = document.getElementById('image-picker-overlay');
+    const grid = document.getElementById('image-picker-grid');
+    if (!overlay || !grid) return;
+
+    grid.innerHTML = '';
+    imageGalleryList.forEach(imageName => {
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'gallery-item';
+        itemDiv.style.cursor = 'pointer';
+        const imagePath = `images/${imageName}`;
+        itemDiv.innerHTML = `
+            <img src="${imagePath}" alt="${imageName}">
+            <div class="gallery-item-path">${imageName}</div>
+        `;
+        itemDiv.onclick = () => selectImage(imagePath, targetId);
+        grid.appendChild(itemDiv);
+    });
+
+    overlay.style.display = 'flex';
+};
+
+window.closeImagePicker = function () {
+    document.getElementById('image-picker-overlay').style.display = 'none';
+};
+
+window.selectImage = async function (path, targetId) {
+    if (targetId === 'character-portrait') {
+        gameState.character.portrait = path;
+        const display = document.getElementById('character-portrait-display');
+        if (display) display.style.backgroundImage = `url('${path}')`;
+        await saveGameData();
+        if (typeof initCampaignBubbles === 'function') initCampaignBubbles();
+    } else {
+        const input = document.getElementById(targetId);
+        if (input) input.value = path;
+    }
+    closeImagePicker();
+};
+
 window.handleImageUpload = function (fileInput, targetId) {
+    // Gardé temporairement pour compatibilité si nécessaire, 
+    // mais la bibliothèque du projet est désormais prioritaire.
     if (fileInput.files && fileInput.files[0]) {
         const reader = new FileReader();
         reader.onload = function (e) {
@@ -172,8 +214,14 @@ window.handleImageUpload = function (fileInput, targetId) {
                 canvas.height = height;
                 const ctx = canvas.getContext('2d');
                 ctx.drawImage(img, 0, 0, width, height);
-                // Sauvegarde compressée en JPEG qualité 80% pour économiser la base de données
-                document.getElementById(targetId).value = canvas.toDataURL('image/jpeg', 0.8);
+                const base64 = canvas.toDataURL('image/jpeg', 0.8);
+
+                if (typeof targetId === 'string' && document.getElementById(targetId)) {
+                    const el = document.getElementById(targetId);
+                    if (el.tagName === 'INPUT') el.value = base64;
+                    else el.style.backgroundImage = `url('${base64}')`;
+                }
+                return base64;
             };
             img.src = e.target.result;
         };

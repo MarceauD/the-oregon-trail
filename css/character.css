@@ -18,16 +18,44 @@
     gap: 25px;
 }
 
-.char-portrait {
+.char-portrait-wrapper {
+    position: relative;
     width: 100%;
     height: 300px;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    cursor: pointer;
     border: 1px solid var(--border-color);
-    background-image: url('../images/character.png');
+}
+
+.char-portrait {
+    width: 100%;
+    height: 100%;
     background-size: cover;
     background-position: center;
-    box-shadow: var(--shadow-sm);
-    border-radius: var(--border-radius);
-    background-color: transparent;
+    transition: transform 0.5s ease;
+}
+
+.char-portrait-wrapper:hover .char-portrait {
+    transform: scale(1.05);
+}
+
+.portrait-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 8px;
+    text-align: center;
+    font-size: 0.8em;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.char-portrait-wrapper:hover .portrait-overlay {
+    opacity: 1;
 }
 
 .char-panel {
@@ -341,4 +369,94 @@
     background-color: #28a745;
     border-color: #28a745;
     color: white;
+}
+
+/* Gestion des Campagnes (Bubbles) */
+.campaign-manager {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.campaign-bubbles {
+    display: flex;
+    align-items: center;
+    gap: -10px;
+    /* Slight overlap */
+}
+
+.campaign-bubble {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 2px solid var(--border-color);
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    background-color: var(--surface-color);
+    margin-left: -8px;
+    /* Negative margin for stacking effect */
+}
+
+.campaign-bubble:first-child {
+    margin-left: 0;
+}
+
+.campaign-bubble:hover {
+    transform: translateY(-5px) scale(1.1);
+    z-index: 10;
+    border-color: var(--accent-color);
+}
+
+.campaign-bubble.active {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 15px rgba(245, 158, 11, 0.4);
+    z-index: 5;
+    transform: scale(1.15);
+}
+
+.campaign-bubble::after {
+    content: attr(data-name);
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--surface-color);
+    color: var(--text-color);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.7em;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    border: 1px solid var(--border-color);
+}
+
+.campaign-bubble:hover::after {
+    opacity: 1;
+}
+
+.new-campaign-btn {
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.new-campaign-btn:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2);
 }

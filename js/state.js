@@ -11,10 +11,16 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 const auth = firebase.auth();
 
-const saveDocRef = db.collection('saves').doc('mainSave');
+let currentSaveId = localStorage.getItem('oregon_current_save_id') || 'mainSave';
+let campaignsList = JSON.parse(localStorage.getItem('oregon_campaigns_list')) || [{ id: 'mainSave', name: 'Campagne Principale' }];
+
+function getSaveDocRef() {
+    return db.collection('saves').doc(currentSaveId);
+}
 
 const defaultState = {
     character: {
+        portrait: "images/placeholder_npc.png",
         money: 0.00,
         identityFields: {
             name: "Edward 'Eddy' Dunbar",
@@ -97,6 +103,23 @@ const imageGalleryList = [
     "remington_new_model.png",
     "spencer_m1865.jpg",
     "straw_hat.png",
+    "placeholder_npc.png",
+    "placeholder_thread.png",
+    "usa_1866.jpg",
+    "npc/artus_flynn.png",
+    "npc/benjamin.png",
+    "npc/caleb_winters.png",
+    "npc/elara_mcnamera.png",
+    "npc/finn.png",
+    "npc/isaac_meeks.png",
+    "npc/john_geary.png",
+    "npc/matronne.png",
+    "npc/morris_diamond.png",
+    "npc/mr_vogel.png",
+    "npc/ollie.png",
+    "npc/pisteur_eugene.png",
+    "npc/silas_flynn.png",
+    "npc/theodore_mcnamera.png",
     "smokes/12_sacagawea.png",
     "smokes/18_jesse_james.png",
     "smokes/34_samuel_colt.png",
@@ -108,17 +131,84 @@ const imageGalleryList = [
 ];
 
 async function saveGameData() {
-    await saveDocRef.set(gameState);
-    console.log("Partie sauvegardée sur Firebase !");
+    // Update metadata for this campaign before saving
+    const currentIdx = campaignsList.findIndex(c => c.id === currentSaveId);
+    if (currentIdx !== -1) {
+        if (gameState.character && gameState.character.identityFields) {
+            campaignsList[currentIdx].name = gameState.character.identityFields.name || 'Inconnu';
+        }
+        if (gameState.character && gameState.character.portrait) {
+            campaignsList[currentIdx].portrait = gameState.character.portrait;
+        }
+    }
+
+    await getSaveDocRef().set(gameState);
+    console.log(`Partie [${currentSaveId}] sauvegardée sur Firebase !`);
+
+    // Sync campaigns list to Firestore for cross-device persistence
+    if (auth.currentUser) {
+        await db.collection('settings').doc(auth.currentUser.uid).set({
+            campaignsList: campaignsList,
+            currentSaveId: currentSaveId
+        });
+    }
+    localStorage.setItem('oregon_campaigns_list', JSON.stringify(campaignsList));
 }
 
 async function loadGameData() {
-    const doc = await saveDocRef.get();
+    // Before loading actual game data, try to sync the campaigns list from settings
+    if (auth.currentUser) {
+        const settingsDoc = await db.collection('settings').doc(auth.currentUser.uid).get();
+        if (settingsDoc.exists) {
+            const settings = settingsDoc.data();
+            if (settings.campaignsList) {
+                campaignsList = settings.campaignsList;
+                localStorage.setItem('oregon_campaigns_list', JSON.stringify(campaignsList));
+            }
+        }
+    }
+
+    const doc = await getSaveDocRef().get();
     if (doc.exists) {
-        console.log("Données chargées depuis Firebase.");
+        console.log(`Données chargées pour [${currentSaveId}] depuis Firebase.`);
         return doc.data();
     } else {
-        console.log("Aucune sauvegarde Firebase trouvée.");
+        console.log(`Aucune sauvegarde Firebase trouvée pour [${currentSaveId}].`);
         return null;
     }
 }
+
+window.createNewCampaign = async function (name) {
+    const id = 'save_' + Date.now();
+    campaignsList.push({ id, name });
+    currentSaveId = id;
+    localStorage.setItem('oregon_current_save_id', id);
+    localStorage.setItem('oregon_campaigns_list', JSON.stringify(campaignsList));
+
+    // Initialize with default state
+    gameState = JSON.parse(JSON.stringify(defaultState));
+    await saveGameData();
+    location.reload(); // Hard reload to clear everything and start fresh
+};
+
+window.switchCampaign = async function (id) {
+    currentSaveId = id;
+    localStorage.setItem('oregon_current_save_id', id);
+    location.reload();
+};
+
+window.deleteCampaign = async function (id) {
+    if (campaignsList.length <= 1) return alert("Impossible de supprimer la seule campagne restante.");
+    if (!confirm("Voulez-vous vraiment supprimer cette campagne ? Cette action est irréversible.")) return;
+
+    campaignsList = campaignsList.filter(c => c.id !== id);
+    if (currentSaveId === id) {
+        currentSaveId = campaignsList[0].id;
+        localStorage.setItem('oregon_current_save_id', currentSaveId);
+    }
+    localStorage.setItem('oregon_campaigns_list', JSON.stringify(campaignsList));
+
+    // Deleting from Firebase
+    await db.collection('saves').doc(id).delete();
+    location.reload();
+};
