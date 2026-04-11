@@ -5,7 +5,7 @@ function renderThreads() {
     threadContainer.innerHTML = '';
     gameState.threads.forEach((thread) => {
         const card = document.createElement('div');
-        card.className = 'card full-view-card'; // New generic style 
+        card.className = `card full-view-card status-${thread.status || 'en-cours'}`; // Dynamic status class
         card.dataset.id = thread.id;
 
         let eventsHtml = '';

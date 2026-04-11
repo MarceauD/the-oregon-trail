@@ -5,7 +5,7 @@ function renderNpcs() {
     npcContainer.innerHTML = '';
     gameState.npcs.forEach((npc) => {
         const card = document.createElement('div');
-        card.className = 'card full-view-card'; // New class for flat styling instead of accordion
+        card.className = `card full-view-card status-${npc.status || 'vivant'}`; // New dynamic status class
         card.dataset.id = npc.id;
 
         let statusText = (npc.status || "").replace(/-/g, ' ');

@@ -144,3 +144,38 @@
     border-color: var(--delete-color);
     background-color: var(--delete-color);
 }
+
+/* --- Card Status Filters --- */
+/* NPC Mort / Disparu */
+.status-mort .npc-portrait,
+.status-disparu .npc-portrait {
+    filter: grayscale(100%) brightness(0.5) contrast(1.1);
+    border-color: var(--text-muted);
+    opacity: 0.8;
+}
+
+/* Thread Abandonné / Raté */
+.status-abandonne .npc-portrait {
+    filter: grayscale(80%) brightness(0.4) sepia(0.3);
+    border-color: #4A1212;
+}
+
+/* Thread En Cours (Vibrant) */
+.status-en-cours .npc-portrait {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 12px rgba(245, 158, 11, 0.3);
+    filter: brightness(1.1);
+}
+
+/* Thread Terminé (Succès) */
+.status-termine .npc-portrait {
+    filter: brightness(0.85) saturate(0.9);
+    border-color: #10B981;
+    /* Vert Émeraude */
+}
+
+/* Thread Suspendu */
+.status-suspendu .npc-portrait {
+    filter: grayscale(40%) brightness(0.7);
+    border-color: var(--text-muted);
+}
