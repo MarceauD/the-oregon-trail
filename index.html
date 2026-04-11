@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Oregon Trail - Journal de Bord</title>
     <link rel="icon" type="image/png" href="images/cowboy_hat.png">
     <script src="tinymce/tinymce.min.js"></script>
-    <script src="js/script.js"></script>
+    <script src="js/state.js" defer></script>
+    <script src="js/utils.js" defer></script>
+    <script src="js/character.js" defer></script>
+    <script src="js/npcs.js" defer></script>
+    <script src="js/threads.js" defer></script>
+    <script src="js/journal.js" defer></script>
+    <script src="js/map.js" defer></script>
+    <script src="js/main.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/localforage@1.10.0/dist/localforage.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
@@ -19,9 +25,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    
+
     <script src="https://cdn.jsdelivr.net/npm/tsparticles-slim@2.0.0/tsparticles.slim.bundle.min.js"></script>
 </head>
+
 <body>
     <div id="particles-bg"></div>
     <div class="main-container">
@@ -42,20 +49,25 @@
             </div>
 
             <div class="nav-actions">
-                
+
             </div>
         </nav>
 
         <main>
             <section id="character" class="content-section active">
-                
+                <div class="section-header">
+                    <h2>Fiche de Personnage</h2>
+                    <div class="button-group">
+                        <button class="action-button" id="export-character-button">Exporter</button>
+                    </div>
+                </div>
                 <div class="character-sheet">
                     <div class="char-left-col">
                         <div class="char-portrait" title="Edward 'Eddy' Dunbar"></div>
                         <div class="char-panel">
                             <h3>Identité</h3>
                             <div id="identity-container" class="char-info-grid"></div>
-                            </div>
+                        </div>
                         <div class="char-panel">
                             <h3>Histoire</h3>
                             <div id="history-container"></div>
@@ -100,7 +112,7 @@
                             <h4>Armes à feu</h4>
                             <div id="inventory-firearms-container" class="inventory-category-grid"></div>
                             <div id="add-inventory-firearms-form-container"></div>
-                            
+
                             <h4>Vêtements</h4>
                             <div id="inventory-clothing-container" class="inventory-category-grid"></div>
                             <div id="add-inventory-clothing-form-container"></div>
@@ -108,78 +120,47 @@
                             <h4>Compagnons</h4>
                             <div id="inventory-companions-container" class="inventory-category-grid"></div>
                             <div id="add-inventory-companions-form-container"></div>
-                            
+
                             <h4>Équipement divers</h4>
                             <div id="inventory-general-container"></div>
                             <div id="add-inventory-general-form-container"></div>
                         </div>
                     </div>
                 </div>
-                <div class="button-group">
-                        <button class="action-button" id="export-character-button">Exporter</button>
-                </div>
             </section>
-            
+
             <section id="npcs" class="content-section">
                 <div class="section-header">
                     <h2>Personnages Rencontrés</h2>
-                    <button class="action-button" id="export-npcs-button">Exporter</button>
-                    <button class="action-button" id="add-npc-button">Ajouter un PNJ</button>
+                    <div class="button-group">
+                        <button class="action-button" id="export-npcs-button">Exporter</button>
+                        <button class="action-button" id="add-npc-button">Ajouter un PNJ</button>
+                    </div>
                 </div>
                 <div id="npc-container" class="card-container"></div>
             </section>
 
             <section id="threads" class="content-section">
-                 <div class="section-header">
+                <div class="section-header">
                     <h2>Threads</h2>
-                    <button class="action-button" id="export-threads-button">Exporter</button>
-                    <button class="action-button" id="add-thread-button">Ajouter un Thread</button>
+                    <div class="button-group">
+                        <button class="action-button" id="export-threads-button">Exporter</button>
+                        <button class="action-button" id="add-thread-button">Ajouter un Thread</button>
+                    </div>
                 </div>
                 <div id="thread-container" class="card-container"></div>
             </section>
-            
+
             <section id="journal" class="content-section">
                 <div class="section-header">
                     <h2>Journal de Bord</h2>
                     <div class="button-group">
-                        <button class="action-button" id="open-quick-update-button">Mise à Jour Rapide</button>
                         <button class="action-button" id="reading-mode-button">Mode Lecture</button>
                         <button class="action-button" id="export-journal-button">Exporter</button>
                         <button class="action-button" id="add-journal-button">Nouvelle Entrée</button>
                     </div>
                 </div>
                 <div id="journal-content"></div>
-
-                <div id="quick-update-modal" class="quick-view-modal">
-                    <div id="quick-update-header" class="quick-view-header">
-                        <h3>Mise à Jour Rapide</h3>
-                        <button id="quick-update-close-button" class="quick-view-close-button">&times;</button>
-                    </div>
-                    <div class="quick-view-content">
-                        <div class="quick-update-columns">
-                            <div class="quick-update-column">
-                                <label for="quick-update-npc-select">Mettre à jour un PNJ :</label>
-                                <select id="quick-update-npc-select">
-                                    <option value="">-- Choisir un PNJ --</option>
-                                </select>
-                                <div id="quick-update-npc-form" class="quick-update-form">
-                                    <textarea id="quick-update-npc-textarea" placeholder="Ajouter un fait marquant..."></textarea>
-                                    <button class="action-button" onclick="handleQuickUpdate('npc')">Ajouter</button>
-                                </div>
-                            </div>
-                            <div class="quick-update-column">
-                                <label for="quick-update-thread-select">Mettre à jour un Thread :</label>
-                                <select id="quick-update-thread-select">
-                                    <option value="">-- Choisir un Thread --</option>
-                                </select>
-                                <div id="quick-update-thread-form" class="quick-update-form">
-                                    <textarea id="quick-update-thread-textarea" placeholder="Ajouter un événement..."></textarea>
-                                    <button class="action-button" onclick="handleQuickUpdate('thread')">Ajouter</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </section>
 
             <section id="map" class="content-section">
@@ -243,9 +224,10 @@
                             <li><a href="#" onclick="showPdf('UNE NPC Generator.pdf')">UNE NPC Generator</a></li>
                             <li><a href="#" onclick="showPdf('Mythic GME 2.pdf')">Mythic GME 2</a></li>
                             <li><a href="#" onclick="showPdf('aventure_crafter.pdf')">Aventure Crafter</a></li>
-                            <li><a href="#" onclick="showPdf('cigarettes_images.pdf')">Collection images paquet de cigarettes</a></li>
+                            <li><a href="#" onclick="showPdf('cigarettes_images.pdf')">Collection images paquet de
+                                    cigarettes</a></li>
                             <li><a href="#" onclick="showPdf('table_vitesses.pdf')">Allures</a></li>
-                            </ul>
+                        </ul>
                     </div>
                     <div class="pdf-viewer-container">
                         <iframe id="pdf-viewer" src="" title="Visualiseur de PDF"></iframe>
@@ -257,9 +239,10 @@
                 <div class="section-header">
                     <h2>Galerie d'images</h2>
                 </div>
-                <p>Voici toutes les images disponibles dans votre dossier <code>/images/</code>. Utilisez le bouton "Copier" pour obtenir le chemin à utiliser dans les fiches de personnage ou de PNJ.</p>
+                <p>Voici toutes les images disponibles dans votre dossier <code>/images/</code>. Utilisez le bouton
+                    "Copier" pour obtenir le chemin à utiliser dans les fiches de personnage ou de PNJ.</p>
                 <div id="gallery-container" class="gallery-grid">
-                    </div>
+                </div>
             </section>
         </main>
     </div>
@@ -274,80 +257,82 @@
     </div>
 
     <div id="modal-overlay" class="modal-overlay">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h2 id="modal-title">Titre</h2>
-            <button id="modal-close-button" class="modal-close-button">&times;</button>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Titre</h2>
+                <button id="modal-close-button" class="modal-close-button">&times;</button>
+            </div>
+            <form id="modal-form" class="modal-form" novalidate>
+                <input type="hidden" id="edit-id">
+                <input type="hidden" id="edit-type">
+
+                <div id="npc-fields" class="form-grid" style="display: none;">
+                    <label for="npc-name">Nom :</label>
+                    <input type="text" id="npc-name" required>
+                    <label for="npc-img">Où est l'image ? :</label>
+                    <input type="text" id="npc-img" placeholder="images/James_Blackmore.jpg">
+                    <label for="npc-status">Statut :</label>
+                    <select id="npc-status">
+                        <optgroup label="Positif">
+                            <option value="amoureux">Amoureux / Amoureuse</option>
+                            <option value="ami-proche">Ami proche</option>
+                            <option value="ami">Ami</option>
+                            <option value="allie">Allié</option>
+                            <option value="amical">Amical</option>
+                        </optgroup>
+                        <optgroup label="Neutre">
+                            <option value="connaissance">Connaissance</option>
+                            <option value="suspect">Suspect</option>
+                        </optgroup>
+                        <optgroup label="Négatif">
+                            <option value="rival">Rival</option>
+                            <option value="hostile">Hostile</option>
+                            <option value="ennemi-mineur">Ennemi mineur</option>
+                            <option value="ennemi-majeur">Ennemi majeur</option>
+                        </optgroup>
+                        <optgroup label="Spécial">
+                            <option value="disparu">Disparu</option>
+                            <option value="mort">Mort</option>
+                        </optgroup>
+                    </select>
+                    <label for="npc-description">Description :</label>
+                    <textarea id="npc-description"></textarea>
+                    <label for="npc-faits">Faits marquants :</label>
+                    <textarea id="npc-faits"></textarea>
+                </div>
+
+                <div id="thread-fields" class="form-grid" style="display: none;">
+                    <label for="thread-title">Titre :</label>
+                    <input type="text" id="thread-title" required>
+                    <label for="thread-location">Lieu :</label>
+                    <input type="text" id="thread-location">
+                    <label for="thread-status">Statut :</label>
+                    <select id="thread-status">
+                        <option value="nouveau">Nouveau</option>
+                        <option value="actif">Actif</option>
+                        <option value="en-sommeil">En sommeil</option>
+                        <option value="bloque">Bloqué</option>
+                        <option value="reussi">Réussi</option>
+                        <option value="echoue">Échoué</option>
+                        <option value="abandonne">Abandonné</option>
+                    </select>
+                    <label for="thread-description">Description :</label>
+                    <textarea id="thread-description"></textarea>
+                </div>
+
+                <div id="journal-fields" class="journal-editor-container" style="display: none;">
+
+                    <input type="date" id="journal-date" class="journal-date-input" required>
+
+                    <textarea id="journal-entry-text" rows="15" required></textarea>
+                </div>
+
+                <div class="modal-form-footer">
+                    <button type="submit" class="action-button">Sauvegarder</button>
+                </div>
+            </form>
         </div>
-        <form id="modal-form" class="modal-form" novalidate>
-            <input type="hidden" id="edit-id">
-            <input type="hidden" id="edit-type">
-
-            <div id="npc-fields" class="form-grid" style="display: none;">
-                <label for="npc-name">Nom :</label>
-                <input type="text" id="npc-name" required>
-                <label for="npc-status">Statut :</label>
-                <select id="npc-status">
-                    <optgroup label="Positif">
-                        <option value="amoureux">Amoureux / Amoureuse</option>
-                        <option value="ami-proche">Ami proche</option>
-                        <option value="ami">Ami</option>
-                        <option value="allie">Allié</option>
-                        <option value="amical">Amical</option>
-                    </optgroup>
-                    <optgroup label="Neutre">
-                        <option value="connaissance">Connaissance</option>
-                        <option value="suspect">Suspect</option>
-                    </optgroup>
-                    <optgroup label="Négatif">
-                        <option value="rival">Rival</option>
-                        <option value="hostile">Hostile</option>
-                        <option value="ennemi-mineur">Ennemi mineur</option>
-                        <option value="ennemi-majeur">Ennemi majeur</option>
-                    </optgroup>
-                    <optgroup label="Spécial">
-                        <option value="disparu">Disparu</option>
-                        <option value="mort">Mort</option>
-                    </optgroup>
-                </select>
-                <label for="npc-description">Description :</label>
-                <textarea id="npc-description"></textarea>
-                <label for="npc-faits">Faits marquants :</label>
-                <textarea id="npc-faits"></textarea>
-            </div>
-
-            <div id="thread-fields" class="form-grid" style="display: none;">
-                <label for="thread-title">Titre :</label>
-                <input type="text" id="thread-title" required>
-                <label for="thread-location">Lieu :</label>
-                <input type="text" id="thread-location">
-                <label for="thread-status">Statut :</label>
-                <select id="thread-status">
-                    <option value="nouveau">Nouveau</option>
-                    <option value="actif">Actif</option>
-                    <option value="en-sommeil">En sommeil</option>
-                    <option value="bloque">Bloqué</option>
-                    <option value="reussi">Réussi</option>
-                    <option value="echoue">Échoué</option>
-                    <option value="abandonne">Abandonné</option>
-                </select>
-                <label for="thread-description">Description :</label>
-                <textarea id="thread-description"></textarea>
-            </div>
-
-            <div id="journal-fields" class="journal-editor-container" style="display: none;">
-    
-                <input type="date" id="journal-date" class="journal-date-input" required>
-                
-                <textarea id="journal-entry-text" rows="15" required></textarea>
-            </div>
-
-            <div class="modal-form-footer">
-                <button type="submit" class="action-button">Sauvegarder</button>
-            </div>
-        </form>
     </div>
-</div>
 
     <div id="dice-roller-container" class="dice-roller-container">
         <div id="dice-choice-menu" class="dice-choice-menu">
@@ -355,7 +340,10 @@
             <button class="dice-choice-btn" onclick="rollDice(100)">1D100</button>
         </div>
         <div id="dice-roller-button" class="dice-roller-button" title="Lancer un dé">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M192 64H320L384 128V384L320 448H192L128 384V128L192 64zM0 128L128 0H384L512 128V384L384 512H128L0 384V128zM256 192a64 64 0 1 0 0 128 64 64 0 1 0 0-128z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                <path
+                    d="M192 64H320L384 128V384L320 448H192L128 384V128L192 64zM0 128L128 0H384L512 128V384L384 512H128L0 384V128zM256 192a64 64 0 1 0 0 128 64 64 0 1 0 0-128z" />
+            </svg>
         </div>
     </div>
 
@@ -373,7 +361,7 @@
             <button id="reading-mode-close-button" class="reading-mode-close-button">&times;</button>
         </div>
         <div id="book-container" class="book-container">
-            </div>
+        </div>
         <div class="reading-mode-footer">
             <button class="action-button" id="prev-page-btn">← Précédent</button>
             <div id="page-jumper" class="page-jumper">
@@ -386,10 +374,11 @@
 
     <button id="back-to-top-btn" title="Retour en haut">↑</button>
     <div id="mobile-editor-container"></div>
-    
+
     <div class="mobile-editor-footer">
         <button id="mobile-editor-save-btn" class="action-button">Sauvegarder</button>
     </div>
-</div>
+    </div>
 </body>
+
 </html>

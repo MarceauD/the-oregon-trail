@@ -1,0 +1,296 @@
+function renderCharacterIdentity() {
+    const container = document.getElementById('identity-container');
+    const data = gameState.character.identityFields || {};
+    container.innerHTML = `
+        <span>Nom</span>
+        <span contenteditable="true" spellcheck="false"
+            onblur="updateCharacterIdentity('name', this.textContent)"
+            onkeydown="if(event.key==='Enter'){ this.blur(); event.preventDefault(); }">
+            ${data.name || ''}
+        </span>
+        <span>Âge</span>
+        <span contenteditable="true" spellcheck="false"
+            onblur="updateCharacterIdentity('age', this.textContent)"
+            onkeydown="if(event.key==='Enter'){ this.blur(); event.preventDefault(); }">
+            ${data.age || ''}
+        </span>
+        <span>Origine</span>
+        <span contenteditable="true" spellcheck="false"
+            onblur="updateCharacterIdentity('origin', this.textContent)"
+            onkeydown="if(event.key==='Enter'){ this.blur(); event.preventDefault(); }">
+            ${data.origin || ''}
+        </span>
+        <span>Profession</span>
+        <span contenteditable="true" spellcheck="false"
+            onblur="updateCharacterIdentity('profession', this.textContent)"
+            onkeydown="if(event.key==='Enter'){ this.blur(); event.preventDefault(); }">
+            ${data.profession || ''}
+        </span>
+    `;
+}
+
+function renderCharacterHistory() {
+    const container = document.getElementById('history-container');
+    const data = gameState.character.history || '';
+    container.innerHTML = `
+        <p contenteditable="true" spellcheck="false"
+        onblur="updateCharacterHistory(this.textContent)"
+        onkeydown="if(event.key==='Enter'){ this.blur(); event.preventDefault(); }">
+        ${data}
+        </p>
+    `;
+}
+
+window.updateCharacterIdentity = async function (field, newValue) {
+    if (!gameState.character.identityFields) gameState.character.identityFields = {};
+    gameState.character.identityFields[field] = newValue.trim();
+    await saveGameData();
+}
+
+window.updateCharacterHistory = async function (newValue) {
+    gameState.character.history = newValue.trim();
+    await saveGameData();
+}
+
+function renderCharacterSheet() {
+    if (!gameState.character) return;
+    renderCharacterIdentity();
+    renderCharacterHistory();
+    renderEditableList('stats', 'Statistique', false);
+    renderEditableList('skills', 'Compétence', false);
+    renderEditableList('banjoMelodies', 'Mélodie', true);
+    renderEditableList('strengths', 'Point Fort', false, true);
+    renderEditableList('weaknesses', 'Point Faible', false, true);
+    renderInventory();
+}
+
+function renderEditableList(key, placeholder, hasDescription = false, isTextOnly = false) {
+    const containerId = `${key.replace('.', '-')}-container`;
+    const container = document.getElementById(containerId);
+
+    if (!container) return;
+    const path = key.split('.');
+    const data = path.reduce((obj, prop) => (obj ? obj[prop] : undefined), gameState.character) || [];
+
+    const isGeneralInventory = (key === 'inventory.general');
+    container.innerHTML = '';
+
+    data.forEach(item => {
+        const itemDiv = document.createElement('div');
+        itemDiv.className = `editable-list-item ${isGeneralInventory && item.isAvailable === false ? 'is-unavailable' : ''}`;
+
+        const propertyToEdit = isTextOnly ? 'text' : 'name';
+        const textValue = item[propertyToEdit] || '';
+
+        let itemHTML = `
+            <span class="item-name" 
+                contenteditable="true" 
+                spellcheck="false"
+                onblur="updateCharacterItemText('${key}', ${item.id}, '${propertyToEdit}', this.textContent)"
+                onkeydown="if(event.key==='Enter'){ this.blur(); event.preventDefault(); }">
+                ${textValue}
+            </span>`;
+
+        if (item.value !== undefined) {
+            itemHTML += `<input type="number" value="${item.value}" onchange="updateCharacterItemValue('${key}', ${item.id}, this.value)">`;
+        }
+        if (item.description) {
+            itemHTML += `<span>- <i>
+                <span contenteditable="true"
+                    spellcheck="false"
+                    onblur="updateCharacterItemText('${key}', ${item.id}, 'description', this.textContent)"
+                    onkeydown="if(event.key==='Enter'){ this.blur(); event.preventDefault(); }">
+                    ${item.description}
+                </span>
+            </i></span>`;
+        }
+
+        if (isGeneralInventory) {
+            itemHTML += `
+                <button class="card-button" onclick="toggleItemAvailability('${key}', ${item.id})" title="Rendre disponible/indisponible">
+                    <svg style="width:16px; height:16px; fill:currentColor;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 158.8 17.9 198.8 0 256s17.9 97.2 47.4 143.4C96.5 443.2 161.2 480 288 480s191.5-36.8 238.6-80.6C558.1 353.2 576 313.2 576 256s-17.9-97.2-47.4-143.4C434.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64s-64-28.7-64-64s28.7-64 64-64s64 28.7 64 64z"/></svg>
+                </button>
+            `;
+        }
+
+        itemHTML += `<button class="delete-item-btn" onclick="deleteCharacterItem('${key}', ${item.id})">&times;</button>`;
+        itemDiv.innerHTML = itemHTML;
+        container.appendChild(itemDiv);
+    });
+
+    const addFormContainerId = `add-${key.replace('.', '-')}-form-container`;
+    const addFormContainer = document.getElementById(addFormContainerId);
+    if (addFormContainer) {
+        addFormContainer.innerHTML = `<button class="action-button" style="font-size: 0.8em; padding: 5px 10px;" onclick="showAddItemForm('${key}', '${placeholder}', ${hasDescription}, ${isTextOnly})">+ Ajouter</button>`;
+    }
+}
+
+window.toggleItemAvailability = async function (key, id) {
+    let list;
+    if (key.startsWith('inventory.')) {
+        const category = key.split('.')[1];
+        list = gameState.character.inventory[category];
+    }
+    const item = list.find(i => i.id === id);
+    if (item) {
+        item.isAvailable = !(item.isAvailable === true);
+        await saveGameData();
+        renderCharacterSheet();
+    }
+};
+
+function renderInventory() {
+    if (!gameState.character.inventory) return;
+    renderInventoryCategory('firearms', 'Arme à feu');
+    renderInventoryCategory('clothing', 'Vêtement/Accessoire');
+    renderInventoryCategory('companions', 'Compagnon');
+    renderEditableList('inventory.general', 'Objet', false, true);
+}
+
+function renderInventoryCategory(category, placeholder) {
+    const container = document.getElementById(`inventory-${category}-container`);
+    container.innerHTML = '';
+    const data = gameState.character.inventory[category] || [];
+
+    data.forEach(item => {
+        const slot = document.createElement('div');
+        slot.className = `inventory-item-slot ${item.isAvailable === false ? 'is-unavailable' : ''}`;
+        slot.innerHTML = `
+            <img src="${item.img || 'https://i.imgur.com/b6f8f5B.png'}" alt="${item.name}">
+            <span class="item-name"
+                spellcheck="false"
+                contenteditable="true"
+                onblur="updateCharacterItemText('inventory.${category}', ${item.id}, 'name', this.textContent)"
+                onkeydown="if(event.key==='Enter'){ this.blur(); event.preventDefault(); }">
+                ${item.name}
+            </span>
+            <button class="delete-item-btn" onclick="deleteCharacterItem('inventory.${category}', ${item.id})">&times;</button>
+            <button class="availability-toggle-btn" onclick="toggleItemAvailability('inventory.${category}', ${item.id})" title="Rendre disponible/indisponible">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 158.8 17.9 198.8 0 256s17.9 97.2 47.4 143.4C96.5 443.2 161.2 480 288 480s191.5-36.8 238.6-80.6C558.1 353.2 576 313.2 576 256s-17.9-97.2-47.4-143.4C434.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64s-64-28.7-64-64s28.7-64 64-64s64 28.7 64 64z"/></svg>
+            </button>
+        `;
+        container.appendChild(slot);
+    });
+
+    const addSlot = document.createElement('div');
+    addSlot.className = 'inventory-item-slot';
+    addSlot.style.cursor = 'pointer';
+    addSlot.onclick = () => showAddItemForm(`inventory.${category}`, placeholder, false, false, true);
+    addSlot.innerHTML = `<span style="font-size: 3em; color: var(--border-color);">+</span>`;
+    container.appendChild(addSlot);
+
+    const addFormContainer = document.getElementById(`add-inventory-${category}-form-container`);
+    if (addFormContainer) addFormContainer.innerHTML = '';
+}
+
+window.updateCharacterItemText = async function (key, id, property, newText) {
+    const path = key.split('.');
+    const list = path.reduce((obj, prop) => (obj ? obj[prop] : undefined), gameState.character);
+    if (list && Array.isArray(list)) {
+        const item = list.find(i => i.id === id);
+        if (item) {
+            item[property] = newText.trim();
+            await saveGameData();
+        }
+    }
+};
+
+window.showAddItemForm = (key, placeholder, hasDescription, isTextOnly, hasImage) => {
+    const addFormContainerId = `add-${key.replace('.', '-')}-form-container`;
+    const container = document.getElementById(addFormContainerId);
+
+    let formHTML = `<div class="add-item-form">`;
+    const inputId = `new-item-name-${key.replace('.', '-')}`;
+    const valueId = `new-item-value-${key.replace('.', '-')}`;
+    const descId = `new-item-desc-${key.replace('.', '-')}`;
+    const imgId = `new-item-img-${key.replace('.', '-')}`;
+
+    formHTML += `<input type="text" id="${inputId}" placeholder="${placeholder}">`;
+
+    if (hasDescription) {
+        formHTML += `<input type="text" id="${descId}" placeholder="Description">`;
+    } else if (hasImage) {
+        formHTML += `<input type="text" id="${imgId}" placeholder="URL image (images/...)">`;
+    } else if (!isTextOnly) {
+        formHTML += `<input type="number" id="${valueId}" placeholder="Val" style="width: 80px;">`;
+    }
+
+    formHTML += `<button class="action-button" onclick="handleAddItem('${key}', ${hasDescription}, ${isTextOnly}, ${hasImage})">✔</button>`;
+    formHTML += `</div>`;
+    container.innerHTML = formHTML;
+};
+
+window.handleAddItem = (key, hasDescription, isTextOnly, hasImage) => {
+    const inputId = `new-item-name-${key.replace('.', '-')}`;
+    const nameInput = document.getElementById(inputId);
+    const name = nameInput.value.trim();
+    if (!name) return alert("Le nom ne peut pas être vide.");
+
+    const newItem = { id: Date.now() };
+
+    if (hasDescription) {
+        newItem.name = name;
+        newItem.description = document.getElementById(`new-item-desc-${key.replace('.', '-')}`).value;
+    } else if (hasImage) {
+        newItem.name = name;
+        newItem.img = document.getElementById(`new-item-img-${key.replace('.', '-')}`).value;
+        if (newItem.img && !newItem.img.startsWith('images/')) { newItem.img = 'images/' + newItem.img; }
+        newItem.isAvailable = true;
+    } else if (isTextOnly) {
+        newItem.text = name;
+        newItem.isAvailable = true;
+    } else {
+        newItem.name = name;
+        const value = document.getElementById(`new-item-value-${key.replace('.', '-')}`).value;
+        newItem.value = parseInt(value, 10) || 0;
+    }
+
+    let list;
+    if (key.startsWith('inventory.')) {
+        list = gameState.character.inventory[key.split('.')[1]];
+    } else list = gameState.character[key];
+
+    list.push(newItem);
+    saveGameData();
+    renderCharacterSheet();
+};
+
+window.updateCharacterItemValue = async (key, id, newValue) => {
+    const item = gameState.character[key].find(i => i.id === id);
+    if (item) {
+        item.value = parseInt(newValue, 10);
+        await saveGameData();
+    }
+};
+
+window.deleteCharacterItem = async (key, id) => {
+    let list;
+    if (key.startsWith('inventory.')) list = gameState.character.inventory[key.split('.')[1]];
+    else list = gameState.character[key];
+    const index = list.findIndex(i => i.id === id);
+    if (index > -1) {
+        list.splice(index, 1);
+        await saveGameData();
+        renderCharacterSheet();
+    }
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    const moneyInput = document.getElementById('character-money');
+    const saveMoneyButton = document.getElementById('save-money-button');
+    if (saveMoneyButton) {
+        saveMoneyButton.addEventListener('click', async () => {
+            const newAmount = parseFloat(moneyInput.value);
+            if (!isNaN(newAmount)) {
+                if (!gameState.character) gameState.character = {};
+                gameState.character.money = newAmount;
+                await saveGameData();
+                moneyInput.value = newAmount.toFixed(2);
+                saveMoneyButton.classList.add('saved');
+                setTimeout(() => { saveMoneyButton.classList.remove('saved'); }, 1500);
+            } else {
+                alert("Veuillez entrer une valeur numérique valide.");
+            }
+        });
+    }
+});
