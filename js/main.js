@@ -192,7 +192,7 @@ window.openModal = function (type, id = null) {
                     }, 2000);
                 }
             }
-        }, 30000);
+        }, 300000); // 5 minutes instead of 30 seconds
 
         journalFields.style.display = 'grid';
         const item = id ? gameState.journal.find(j => j.id === id) : null;
