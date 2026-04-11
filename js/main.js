@@ -171,9 +171,19 @@ window.openModal = function (type, id = null) {
         if (autoSaveJournalInterval) clearInterval(autoSaveJournalInterval);
         autoSaveJournalInterval = setInterval(async () => {
             if (typeof tinymce !== 'undefined') {
-                const newContent = tinymce.get('journal-entry-text').getContent();
+                const editor = tinymce.get('journal-entry-text');
+                const newContent = editor.getContent();
                 await saveJournalEntry(newContent);
-                console.log('Auto-save du journal effectué.');
+
+                // Feedback visuel
+                const indicator = document.getElementById('autosave-indicator');
+                if (indicator) {
+                    indicator.textContent = 'Sauvegardé...';
+                    indicator.classList.add('visible');
+                    setTimeout(() => {
+                        indicator.classList.remove('visible');
+                    }, 2000);
+                }
             }
         }, 30000);
 
@@ -205,6 +215,12 @@ window.openModal = function (type, id = null) {
         if (editor) {
             editor.mode.set('design');
             editor.setContent(initialContent);
+
+            // Placer le curseur à la fin après le chargement du contenu
+            editor.focus();
+            editor.selection.select(editor.getBody(), true);
+            editor.selection.collapse(false);
+            editor.selection.scrollIntoView();
         }
     }
     modalOverlay.classList.add('active');

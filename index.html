@@ -365,9 +365,11 @@
                 </div>
 
                 <div id="journal-fields" class="journal-editor-container" style="display: none;">
-
-                    <input type="date" id="journal-date" class="journal-date-input" required>
-
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                        <input type="date" id="journal-date" class="journal-date-input" required>
+                        <span id="autosave-indicator" class="autosave-indicator"></span>
+                    </div>
                     <textarea id="journal-entry-text" rows="15" required></textarea>
                 </div>
 
@@ -389,10 +391,6 @@
                     d="M192 64H320L384 128V384L320 448H192L128 384V128L192 64zM0 128L128 0H384L512 128V384L384 512H128L0 384V128zM256 192a64 64 0 1 0 0 128 64 64 0 1 0 0-128z" />
             </svg>
         </div>
-    </div>
-
-    <div id="dice-overlay" class="dice-overlay">
-        <div id="dice-cube" class="dice-cube"></div>
     </div>
 
     <div id="dice-overlay" class="dice-overlay">

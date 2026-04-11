@@ -3,8 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
         tinymce.init({
             selector: '#journal-entry-text',
             license_key: 'gpl',
-            plugins: 'lists link image table code help wordcount fullscreen',
-            toolbar: 'bold italic underline | blocks | link image | alignleft aligncenter alignright | fullscreen',
+            plugins: 'lists link image table code help wordcount fullscreen forecolor',
+            toolbar: 'bold italic underline forecolor | blocks | jet gallery | link image | alignleft aligncenter alignright | fullscreen',
             language: 'fr_FR',
             menubar: false,
             skin: 'oxide-dark',
@@ -18,9 +18,103 @@ document.addEventListener('DOMContentLoaded', () => {
                     line-height: 1.7; 
                 }
                 img { max-width: 100%; height: auto; display: block; margin: 10px 0; border-radius: 8px; }
+                p { margin-bottom: 1em; }
                 h1, h2, h3 { color: #E2E8F0; font-family: 'Merriweather', serif; }
                 a { color: #F59E0B; }
+                .jet-result { font-weight: bold; color: #F59E0B; }
             `,
+            setup: (editor) => {
+                // Placer le curseur à la fin après l'initialisation
+                editor.on('init', () => {
+                    editor.focus();
+                    editor.selection.select(editor.getBody(), true);
+                    editor.selection.collapse(false);
+                    editor.selection.scrollIntoView();
+                });
+
+                // Bouton Jet (Stat / Compétence)
+                editor.ui.registry.addButton('jet', {
+                    text: '🎲 Jet',
+                    onAction: () => {
+                        const char = gameState.character;
+                        if (!char) return alert("Aucun personnage chargé.");
+
+                        const stats = (char.stats || []).map(s => ({ text: `Stat: ${s.name} (${s.value})`, value: `${s.name}|${s.value}` }));
+                        const skills = (char.skills || []).map(s => ({ text: `Skill: ${s.name} (${s.value})`, value: `${s.name}|${s.value}` }));
+
+                        const openDialog = (currentValueList, currentType) => {
+                            editor.windowManager.open({
+                                title: 'Lancer un dé (1D100)',
+                                body: {
+                                    type: 'panel',
+                                    items: [
+                                        {
+                                            type: 'selectbox',
+                                            name: 'typeSelection',
+                                            label: 'Catégorie',
+                                            items: [
+                                                { text: 'Statistiques', value: 'stats' },
+                                                { text: 'Compétences', value: 'skills' }
+                                            ]
+                                        },
+                                        {
+                                            type: 'selectbox',
+                                            name: 'targetSelection',
+                                            label: 'Cible',
+                                            items: currentValueList
+                                        }
+                                    ]
+                                },
+                                initialData: {
+                                    typeSelection: currentType
+                                },
+                                buttons: [
+                                    { type: 'cancel', text: 'Annuler' },
+                                    { type: 'submit', text: 'Lancer !', primary: true }
+                                ],
+                                onChange: (api, details) => {
+                                    if (details.name === 'typeSelection') {
+                                        const newType = api.getData().typeSelection;
+                                        api.close();
+                                        openDialog(newType === 'stats' ? stats : skills, newType);
+                                    }
+                                },
+                                onSubmit: (api) => {
+                                    const data = api.getData();
+                                    const [name, value] = data.targetSelection.split('|');
+                                    const targetValue = parseInt(value);
+                                    const roll = Math.floor(Math.random() * 100) + 1;
+
+                                    let resultText = "";
+                                    if (roll <= 5) resultText = "Réussite Critique !";
+                                    else if (roll >= 95) resultText = "Échec Critique !";
+                                    else if (roll <= targetValue) resultText = "Réussite.";
+                                    else resultText = "Échec.";
+
+                                    const output = `<p class="jet-result">Jet de ${name} : ${roll}/${targetValue}. ${resultText}</p>`;
+                                    editor.insertContent(output);
+                                    api.close();
+                                }
+                            });
+                        };
+
+                        openDialog(stats, 'stats');
+                    }
+                });
+
+                // Bouton Galerie
+                editor.ui.registry.addButton('gallery', {
+                    icon: 'image',
+                    tooltip: 'Insérer une image de la bibliothèque',
+                    onAction: () => {
+                        if (typeof openImagePicker === 'function') {
+                            openImagePicker((path) => {
+                                editor.insertContent(`<img src="${path}" alt="Image RPG">`);
+                            });
+                        }
+                    }
+                });
+            }
         });
     }
 });
