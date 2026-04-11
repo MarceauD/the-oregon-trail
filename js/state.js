@@ -206,7 +206,10 @@ window.switchCampaign = async function (id) {
 };
 
 window.deleteCampaign = async function (id) {
-    if (campaignsList.length <= 1) return alert("Impossible de supprimer la seule campagne restante.");
+    if (campaignsList.length <= 1) {
+        showToast("Impossible de supprimer la seule campagne restante.", 'warning');
+        return;
+    }
     if (!confirm("Voulez-vous vraiment supprimer cette campagne ? Cette action est irréversible.")) return;
 
     campaignsList = campaignsList.filter(c => c.id !== id);

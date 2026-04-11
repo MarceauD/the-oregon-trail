@@ -37,7 +37,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     text: '🎲 Jet',
                     onAction: () => {
                         const char = gameState.character;
-                        if (!char) return alert("Aucun personnage chargé.");
+                        if (!char) {
+                            showToast("Aucun personnage chargé.", 'error');
+                            return;
+                        }
 
                         const stats = (char.stats || []).map(s => ({ text: `Stat: ${s.name} (${s.value})`, value: `${s.name}|${s.value}` }));
                         const skills = (char.skills || []).map(s => ({ text: `Skill: ${s.name} (${s.value})`, value: `${s.name}|${s.value}` }));
@@ -290,7 +293,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (sortedJournal.length > 0) {
             displayJournalPage(0);
             readingModeOverlay.classList.add('active');
-        } else alert("Le journal est vide.");
+        } else {
+            showToast("Le journal est vide.", 'info');
+        }
     }
 
     function closeReadingMode() { readingModeOverlay.classList.remove('active'); }

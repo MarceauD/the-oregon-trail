@@ -10,7 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const cityType = document.getElementById('city-type').value;
         const labelPosition = document.getElementById('city-label-pos').value;
 
-        if (isNaN(x) || isNaN(y)) { alert("Les coordonnées X et Y doivent être des nombres."); return; }
+        if (isNaN(x) || isNaN(y)) {
+            showToast("Les coordonnées X et Y doivent être des nombres.", 'warning');
+            return;
+        }
 
         const newCity = {
             id: Date.now(),

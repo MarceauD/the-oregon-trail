@@ -224,7 +224,10 @@ window.handleAddItem = (key, hasDescription, isTextOnly, hasImage) => {
     const inputId = `new-item-name-${key.replace('.', '-')}`;
     const nameInput = document.getElementById(inputId);
     const name = nameInput.value.trim();
-    if (!name) return alert("Le nom ne peut pas être vide.");
+    if (!name) {
+        showToast("Le nom ne peut pas être vide.", 'warning');
+        return;
+    }
 
     const newItem = { id: Date.now() };
 
@@ -289,7 +292,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 saveMoneyButton.classList.add('saved');
                 setTimeout(() => { saveMoneyButton.classList.remove('saved'); }, 1500);
             } else {
-                alert("Veuillez entrer une valeur numérique valide.");
+                showToast("Veuillez entrer une valeur numérique valide.", 'error');
             }
         });
     }

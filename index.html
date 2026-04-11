@@ -79,8 +79,15 @@
                         <div id="campaign-bubbles" class="campaign-bubbles">
                             <!-- Bubbles rendered by JS -->
                         </div>
-                        <button class="new-campaign-btn" onclick="handleNewCampaignRequest()"
-                            title="Nouvelle Campagne">+</button>
+                        <div class="new-campaign-wrapper">
+                            <button class="new-campaign-btn" onclick="toggleNewCampaignPopover()"
+                                title="Nouvelle Campagne">+</button>
+                            <div id="new-campaign-popover" class="campaign-popover">
+                                <input type="text" id="inline-campaign-name" placeholder="Nom de l'aventure..."
+                                    onkeydown="if(event.key==='Enter') executeInlineCreate()">
+                                <button onclick="executeInlineCreate()">✔</button>
+                            </div>
+                        </div>
                     </div>
                     <div class="button-group">
                         <button class="action-button" id="export-character-button">Exporter</button>
@@ -184,7 +191,7 @@
                 <div id="thread-container" class="card-container"></div>
 
                 <div class="plot-notes-section">
-                    <h3>📓 Carnet d'Intrigues</h3>
+                    <h3>Carnet d'Intrigues</h3>
                     <p class="section-subtitle">Notez ici vos idées de scènes, de rencontres ou de rebondissements
                         futurs.</p>
                     <textarea id="plot-notes" class="plot-notes-textarea"
@@ -352,7 +359,7 @@
                     <input type="text" id="thread-title" required>
                     <label for="thread-img">Où est l'image ? (Facultatif) :</label>
                     <div style="display: flex; gap: 10px;">
-                        <input type="text" id="thread-img" placeholder="images/quest.jpg" style="flex: 1;">
+                        <input type="text" id="thread-img" placeholder="images/placeholder_thread.png" style="flex: 1;">
                         <button type="button" class="action-button" onclick="openImagePicker('thread-img')"
                             style="padding: 5px 12px; font-size: 0.9em; height: 100%; box-sizing: border-box;">Bibliothèque</button>
                     </div>
@@ -360,35 +367,34 @@
                     <input type="text" id="thread-location">
                     <label for="thread-status">Statut :</label>
                     <select id="thread-status">
-                        <option value="nouveau">Nouveau</option>
-                        <option value="actif">Actif</option>
-                        <option value="en-sommeil">En sommeil</option>
-                        <option value="bloque">Bloqué</option>
-                        <option value="reussi">Réussi</option>
-                        <option value="echoue">Échoué</option>
+                        <option value="en-cours">En cours</option>
+                        <option value="termine">Terminé</option>
                         <option value="abandonne">Abandonné</option>
+                        <option value="suspendu">En attente</option>
                     </select>
-                    <label for="thread-description">Description et Événements</label>
+                    <label for="thread-description">Description :</label>
                     <textarea id="thread-description"></textarea>
-
-                    <label for="thread-img">Où est l'image ? (Facultatif)</label>
-                    <input type="text" id="thread-img" placeholder="Ex: images/quest.png">
                 </div>
 
-                <div id="journal-fields" class="journal-editor-container" style="display: none;">
-                    <div
-                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                        <input type="date" id="journal-date" class="journal-date-input" required>
-                        <span id="autosave-indicator" class="autosave-indicator"></span>
+                <div id="journal-fields" class="form-grid" style="display: none;">
+                    <label for="journal-date">Date :</label>
+                    <input type="date" id="journal-date" required>
+                    <div id="journal-entry-text-container" style="grid-column: span 2;">
+                        <textarea id="journal-entry-text"></textarea>
+                        <div id="autosave-indicator" class="autosave-indicator">Sauvegardé...</div>
                     </div>
-                    <textarea id="journal-entry-text" rows="15" required></textarea>
                 </div>
 
-                <div class="modal-form-footer">
-                    <button type="submit" class="action-button">Sauvegarder</button>
+                <div class="modal-footer">
+                    <button type="submit" class="action-button">Enregistrer</button>
+                    <button type="button" class="action-button secondary" onclick="closeModal()">Annuler</button>
                 </div>
             </form>
         </div>
+    </div>
+
+    <div id="toast-container" class="toast-container"></div>
+    </div>
     </div>
 
     <div id="dice-roller-container" class="dice-roller-container">

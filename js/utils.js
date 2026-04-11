@@ -141,7 +141,7 @@ function renderGallery() {
 
 window.copyToClipboard = function (text) {
     navigator.clipboard.writeText(text).then(() => {
-        alert(`Chemin "${text}" copié dans le presse-papiers !`);
+        showToast(`Chemin "${text}" copié !`, 'success');
     }).catch(err => {
         console.error("Erreur de copie : ", err);
     });
@@ -228,3 +228,22 @@ window.handleImageUpload = function (fileInput, targetId) {
         reader.readAsDataURL(fileInput.files[0]);
     }
 };
+
+// Système de Toasts
+window.showToast = function (message, type = 'info') {
+    const container = document.getElementById('toast-container');
+    if (!container) return;
+
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+    toast.textContent = message;
+
+    container.appendChild(toast);
+
+    // Auto-suppression après 3.5s
+    setTimeout(() => {
+        toast.classList.add('fade-out');
+        setTimeout(() => toast.remove(), 300);
+    }, 3500);
+};
+

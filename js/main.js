@@ -71,8 +71,8 @@ window.exportSectionToClipboard = function (type) {
             output += `Date: ${date}\n${tempDiv.textContent || ""}\n${separator}`;
         });
     }
-    navigator.clipboard.writeText(output).then(() => { alert('Contenu copié dans le presse-papiers !'); })
-        .catch(err => { console.error('Erreur lors de la copie : ', err); alert('Une erreur est survenue lors de la copie.'); });
+    navigator.clipboard.writeText(output).then(() => { showToast('Contenu copié dans le presse-papiers !', 'success'); })
+        .catch(err => { console.error('Erreur lors de la copie : ', err); showToast('Une erreur est survenue lors de la copie.', 'error'); });
 };
 
 window.exportSingleItem = function (type, id) {
@@ -93,8 +93,8 @@ window.exportSingleItem = function (type, id) {
         output += `Titre: ${item.title}\nLieu: ${item.location}\nStatut: ${statusText}\n\nDescription:\n${item.description}\n\n`;
         if (item.events && item.events.length > 0) output += `Événements:\n${item.events.map(e => `- ${e}`).join('\n')}\n`;
     }
-    navigator.clipboard.writeText(output.trim()).then(() => { alert('Informations copiées dans le presse-papiers !'); })
-        .catch(err => { console.error('Erreur :', err); alert('Erreur de copie.'); });
+    navigator.clipboard.writeText(output.trim()).then(() => { showToast('Informations copiées dans le presse-papiers !', 'success'); })
+        .catch(err => { console.error('Erreur :', err); showToast('Erreur de copie.', 'error'); });
 };
 
 let currentJournalEditId = null;
@@ -164,6 +164,13 @@ window.openModal = function (type, id = null) {
             const imgField = document.getElementById('thread-img');
             if (imgField) imgField.value = '';
         }
+    } else if (type === 'campaign') {
+        const campaignFields = document.getElementById('campaign-fields');
+        if (campaignFields) campaignFields.style.display = 'grid';
+        modalTitle.textContent = 'Nouvelle Aventure';
+        if (editor) editor.mode.set('readonly');
+        document.getElementById('campaign-name').value = '';
+        editIdInput.value = '';
     } else if (type === 'journal') {
         if (isMobile()) modalOverlay.classList.add('journal-mobile-mode');
         else modalOverlay.classList.remove('journal-mobile-mode');
@@ -323,6 +330,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     const newContent = tinymce.get('journal-entry-text').getContent();
                     await saveJournalEntry(newContent);
                 }
+            } else if (type === 'campaign') {
+                const name = document.getElementById('campaign-name').value;
+                if (name && name.trim()) {
+                    createNewCampaign(name.trim());
+                    showToast('Nouvelle campagne créée !', 'success');
+                    return; // createNewCampaign loads a new session
+                } else {
+                    showToast('Veuillez entrer un nom pour votre campagne.', 'warning');
+                    return;
+                }
             }
 
             if (type !== 'journal') await saveGameData(); // journal already saved
@@ -375,10 +392,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    window.handleNewCampaignRequest = function () {
-        const name = prompt("Entrez le nom de votre nouvelle campagne / personnage :");
-        if (name && name.trim()) {
-            createNewCampaign(name.trim());
+    window.toggleNewCampaignPopover = function () {
+        const popover = document.getElementById('new-campaign-popover');
+        if (popover) {
+            popover.classList.toggle('active');
+            if (popover.classList.contains('active')) {
+                document.getElementById('inline-campaign-name').focus();
+            }
+        }
+    };
+
+    window.executeInlineCreate = function () {
+        const input = document.getElementById('inline-campaign-name');
+        if (!input) return;
+        const name = input.value.trim();
+        if (name) {
+            window.createNewCampaign(name);
+            input.value = '';
+            document.getElementById('new-campaign-popover').classList.remove('active');
+        } else {
+            showToast('Veuillez entrer un nom pour votre campagne.', 'warning');
         }
     };
 
@@ -430,6 +463,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     auth.signInAnonymously().catch((error) => {
         console.error("Erreur d'authentification anonyme", error);
-        alert("Impossible de démarrer la session d'authentification.");
+        showToast("Impossible de démarrer la session d'authentification.", 'error');
     });
 });

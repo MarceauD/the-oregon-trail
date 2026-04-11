@@ -460,3 +460,70 @@
     transform: scale(1.1);
     filter: brightness(1.2);
 }
+
+/* Popover Inline Création */
+.new-campaign-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.campaign-popover {
+    display: none;
+    position: absolute;
+    left: 40px;
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    padding: 8px 12px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    z-index: 100;
+    gap: 8px;
+    align-items: center;
+    animation: fadeInSlideRight 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.campaign-popover.active {
+    display: flex;
+}
+
+.campaign-popover input {
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 6px 12px;
+    border-radius: var(--border-radius-sm);
+    outline: none;
+    font-size: 0.9em;
+    width: 200px;
+    font-family: var(--font-interface);
+}
+
+.campaign-popover input:focus {
+    border-color: var(--accent-color);
+}
+
+.campaign-popover button {
+    background: var(--accent-color);
+    border: none;
+    color: var(--bg-color);
+    padding: 6px 10px;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@keyframes fadeInSlideRight {
+    from {
+        opacity: 0;
+        transform: translateX(-15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
