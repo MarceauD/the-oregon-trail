@@ -135,6 +135,14 @@ const imageGalleryList = [
     "smokes/37_lewis_and_clark_expedition.png",
     "spencer_m1865.jpg",
     "straw_hat.png",
+    "threads/enterrer_caleb.png",
+    "threads/exil_dans_les_bois.png",
+    "threads/exprimer_ma_gratitude.png",
+    "threads/la_part_d_ombre_de_benjamin.png",
+    "threads/la_traque_d_eugene.png",
+    "threads/le_secret_du_14_de_trefle.png",
+    "threads/le_vautour_et_la_proie.png",
+    "threads/retrouvailles_douloureuses.png",
     "usa_1866.jpg"
 ];
 
