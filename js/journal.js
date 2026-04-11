@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 h1, h2, h3 { color: #E2E8F0; font-family: 'Merriweather', serif; }
                 a { color: #F59E0B; }
                 .jet-result { font-weight: bold; color: #F59E0B; }
+                .oracle-result { font-weight: bold; }
             `,
             setup: (editor) => {
                 // Placer le curseur à la fin après l'initialisation
@@ -94,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                     else if (roll <= targetValue) resultText = "Réussite.";
                                     else resultText = "Échec.";
 
-                                    const output = `<p class="jet-result">Jet de ${name} : ${roll}/${targetValue}. ${resultText}</p>`;
+                                    const output = `<p><span class="jet-result">Jet de ${name} : ${roll}/${targetValue}. ${resultText}</span></p><p>&nbsp;</p>`;
                                     editor.insertContent(output);
                                     api.close();
                                 }
@@ -178,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                     color = "#94A3B8"; // Gris
                                 }
 
-                                const output = `<p class="oracle-result" style="color: ${color}; font-weight: bold;">[Oracle] ${label} (${roll}%) : ${result}</p>`;
+                                const output = `<p><span class="oracle-result" style="color: ${color}; font-weight: bold;">[Oracle] ${label} (${roll}%) : ${result}</span></p><p>&nbsp;</p>`;
                                 editor.insertContent(output);
                                 api.close();
                             }
