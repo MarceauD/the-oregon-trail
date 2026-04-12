@@ -45,10 +45,10 @@ window.exportSectionToClipboard = function (type) {
         char.specificKnowledge.forEach(m => { output += `- ${m.name} (${m.description})\n`; });
 
         output += '\n--- ÉTAT PHYSIQUE ---\n';
-        char.physicalState.forEach(s => { output += `- ${s.name} (Soins: ${s.care}, Effets: ${s.effects})\n`; });
+        char.physicalState.forEach(s => { output += `- ${s.name || 'Inconnue'} (Depuis: ${s.duration || '?'}, Soins: ${s.care || 'aucun'}, Effets: ${s.effects || 'aucun'})\n`; });
 
         output += '\n--- SANTÉ MENTALE ---\n';
-        char.mentalState.forEach(s => { output += `- ${s.name} (Soins: ${s.care}, Effets: ${s.effects})\n`; });
+        char.mentalState.forEach(s => { output += `- ${s.name || 'Inconnu'} (Depuis: ${s.duration || '?'}, Soins: ${s.care || 'aucun'}, Effets: ${s.effects || 'aucun'})\n`; });
     } else if (type === 'npcs') {
         output = '=== PERSONNAGES NON-JOUABLES ===\n\n';
         gameState.npcs.forEach(npc => {
@@ -438,6 +438,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!gameState.character.identityFields) gameState.character.identityFields = defaultState.character.identityFields;
         if (!gameState.character.history) gameState.character.history = defaultState.character.history;
+        if (!gameState.character.physicalState) gameState.character.physicalState = [];
+        if (!gameState.character.mentalState) gameState.character.mentalState = [];
 
         // Migration banjoMelodies -> specificKnowledge
         if (gameState.character.banjoMelodies) {

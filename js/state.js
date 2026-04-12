@@ -183,6 +183,10 @@ async function loadGameData() {
                 campaignsList = settings.campaignsList;
                 localStorage.setItem('oregon_campaigns_list', JSON.stringify(campaignsList));
             }
+            if (settings.currentSaveId) {
+                currentSaveId = settings.currentSaveId;
+                localStorage.setItem('oregon_current_save_id', currentSaveId);
+            }
         }
     }
 
@@ -212,6 +216,15 @@ window.createNewCampaign = async function (name) {
 window.switchCampaign = async function (id) {
     currentSaveId = id;
     localStorage.setItem('oregon_current_save_id', id);
+    
+    // Sync current ID to Firebase settings before reload
+    if (auth.currentUser) {
+        await db.collection('settings').doc(auth.currentUser.uid).set({
+            campaignsList: campaignsList,
+            currentSaveId: currentSaveId
+        }, { merge: true });
+    }
+    
     location.reload();
 };
 

@@ -154,6 +154,7 @@ function renderHealthList(key, placeholder) {
             <thead>
                 <tr>
                     <th>${placeholder}</th>
+                    <th>Durée</th>
                     <th>Soins</th>
                     <th>Effets</th>
                     <th></th>
@@ -169,6 +170,12 @@ function renderHealthList(key, placeholder) {
                     <span contenteditable="true" spellcheck="false" 
                         onblur="updateCharacterItemText('${key}', ${item.id}, 'name', this.textContent)">
                         ${item.name || ''}
+                    </span>
+                </td>
+                <td>
+                    <span contenteditable="true" spellcheck="false" 
+                        onblur="updateCharacterItemText('${key}', ${item.id}, 'duration', this.textContent)">
+                        ${item.duration || ''}
                     </span>
                 </td>
                 <td>
@@ -203,6 +210,7 @@ window.showAddHealthForm = (key, placeholder) => {
     container.innerHTML = `
         <div class="add-item-form health-form">
             <input type="text" id="new-health-name-${key}" placeholder="${placeholder} (ex: Bras cassé)">
+            <input type="text" id="new-health-duration-${key}" placeholder="Depuis (ex: 3 jours)">
             <input type="text" id="new-health-care-${key}" placeholder="Soins (ex: Attelle)">
             <input type="text" id="new-health-effects-${key}" placeholder="Effets (ex: -20% tir)">
             <button class="action-button" onclick="handleAddHealth('${key}')">✔</button>
@@ -212,15 +220,18 @@ window.showAddHealthForm = (key, placeholder) => {
 
 window.handleAddHealth = async (key) => {
     const name = document.getElementById(`new-health-name-${key}`).value.trim();
+    const duration = document.getElementById(`new-health-duration-${key}`).value.trim();
     const care = document.getElementById(`new-health-care-${key}`).value.trim();
     const effects = document.getElementById(`new-health-effects-${key}`).value.trim();
 
-    if (!name) {
-        showToast("Le nom est obligatoire.", 'warning');
+    // On accepte désormais les champs vides si l'un au moins est rempli
+    if (!name && !duration && !care && !effects) {
+        showToast("Veuillez remplir au moins un champ.", 'warning');
         return;
     }
 
-    const newItem = { id: Date.now(), name, care, effects };
+    const newItem = { id: Date.now(), name, duration, care, effects };
+    if (!gameState.character[key]) gameState.character[key] = [];
     gameState.character[key].push(newItem);
     await saveGameData();
     renderCharacterSheet();
