@@ -76,6 +76,9 @@
                 <div class="section-header">
                     <h2>Fiche de Personnage</h2>
                     <div class="campaign-manager">
+                        <button class="sync-campaigns-btn" onclick="recoverOrphanedCampaigns()" title="Récupérer les campagnes de la base">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="width:16px; height:16px; fill:currentColor;"><path d="M463.5 224H472c13.3 0 24-10.7 24-24V72c0-9.7-5.8-18.5-14.8-22.2s-19.3-1.7-26.2 5.2L413.4 96.6c-87.6-86.5-228.7-86.2-315.8 1c-87.5 87.5-87.5 229.3 0 316.8s229.3 87.5 316.8 0c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0c-62.5 62.5-163.8 62.5-226.3 0s-62.5-163.8 0-226.3c62.2-62.2 162.7-62.5 225.3-1L327 183c-6.9 6.9-8.9 17.2-5.2 26.2s12.5 14.8 22.2 14.8H463.5z"/></svg>
+                        </button>
                         <div id="campaign-bubbles" class="campaign-bubbles">
                             <!-- Bubbles rendered by JS -->
                         </div>
@@ -145,33 +148,30 @@
                             <div id="mentalState-container"></div>
                             <div id="add-mentalState-form-container"></div>
                         </div>
-                        <div class="char-panel">
-                            <h3>Inventaire</h3>
-                            <div class="money-panel">
-                                <span>Monnaie :</span>
-                                <div class="money-input-wrapper">
-                                    <span>$</span>
-                                    <input type="number" id="character-money" value="" step="0.01">
-                                </div>
-                                <button id="save-money-button" title="Sauvegarder la somme">✔</button>
-                            </div>
-                            <h4>Armes à feu</h4>
-                            <div id="inventory-firearms-container" class="inventory-category-grid"></div>
-                            <div id="add-inventory-firearms-form-container"></div>
-
-                            <h4>Vêtements</h4>
-                            <div id="inventory-clothing-container" class="inventory-category-grid"></div>
-                            <div id="add-inventory-clothing-form-container"></div>
-
-                            <h4>Compagnons</h4>
-                            <div id="inventory-companions-container" class="inventory-category-grid"></div>
-                            <div id="add-inventory-companions-form-container"></div>
-
-                            <h4>Équipement divers</h4>
-                            <div id="inventory-general-container"></div>
-                            <div id="add-inventory-general-form-container"></div>
-                        </div>
                     </div>
+                </div> <!-- End of character-sheet -->
+
+                <div class="char-panel" style="margin-top: 25px;">
+                    <h3>Inventaire</h3>
+                    <div class="money-panel">
+                        <span>$</span>
+                        <input type="number" id="character-money" value="" step="0.01">
+                    </div>
+                    <h4>Armes à feu</h4>
+                    <div id="inventory-firearms-container" class="inventory-category-grid"></div>
+                    <div id="add-inventory-firearms-form-container"></div>
+
+                    <h4>Vêtements</h4>
+                    <div id="inventory-clothing-container" class="inventory-category-grid"></div>
+                    <div id="add-inventory-clothing-form-container"></div>
+
+                    <h4>Compagnons</h4>
+                    <div id="inventory-companions-container" class="inventory-category-grid"></div>
+                    <div id="add-inventory-companions-form-container"></div>
+
+                    <h4>Équipement divers</h4>
+                    <div id="inventory-general-container"></div>
+                    <div id="add-inventory-general-form-container"></div>
                 </div>
             </section>
 

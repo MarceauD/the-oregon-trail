@@ -154,7 +154,7 @@ window.showPdf = function (fileName) {
     }
 }
 
-window.openImagePicker = function (targetId) {
+window.openImagePicker = function (target) {
     const overlay = document.getElementById('image-picker-overlay');
     const grid = document.getElementById('image-picker-grid');
     if (!overlay || !grid) return;
@@ -169,7 +169,7 @@ window.openImagePicker = function (targetId) {
             <img src="${imagePath}" alt="${imageName}">
             <div class="gallery-item-path">${imageName}</div>
         `;
-        itemDiv.onclick = () => selectImage(imagePath, targetId);
+        itemDiv.onclick = () => selectImage(imagePath, target);
         grid.appendChild(itemDiv);
     });
 
@@ -177,19 +177,26 @@ window.openImagePicker = function (targetId) {
 };
 
 window.closeImagePicker = function () {
-    document.getElementById('image-picker-overlay').style.display = 'none';
+    const overlay = document.getElementById('image-picker-overlay');
+    if (overlay) overlay.style.display = 'none';
 };
 
-window.selectImage = async function (path, targetId) {
-    if (targetId === 'character-portrait') {
+window.selectImage = async function (path, target) {
+    if (typeof target === 'function') {
+        target(path);
+    } else if (target === 'character-portrait') {
         gameState.character.portrait = path;
         const display = document.getElementById('character-portrait-display');
         if (display) display.style.backgroundImage = `url('${path}')`;
         await saveGameData();
         if (typeof initCampaignBubbles === 'function') initCampaignBubbles();
-    } else {
-        const input = document.getElementById(targetId);
-        if (input) input.value = path;
+    } else if (typeof target === 'string') {
+        const input = document.getElementById(target);
+        if (input) {
+            input.value = path;
+            // Déclencher un événement change pour les écouteurs éventuels
+            input.dispatchEvent(new Event('change'));
+        }
     }
     closeImagePicker();
 };

@@ -200,6 +200,44 @@ async function loadGameData() {
     }
 }
 
+window.recoverOrphanedCampaigns = async function () {
+    try {
+        showToast("Recherche de campagnes en cours...", 'info');
+        const snapshot = await db.collection('saves').get();
+        let addedCount = 0;
+
+        for (const doc of snapshot.docs) {
+            const id = doc.id;
+            const data = doc.data();
+            const exists = campaignsList.find(c => c.id === id);
+
+            if (!exists) {
+                const name = data.character?.identityFields?.name || data.character?.name || `Campagne récupérée (${id})`;
+                const portrait = data.character?.portrait || "images/placeholder_npc.png";
+                campaignsList.push({ id, name, portrait });
+                addedCount++;
+            }
+        }
+
+        if (addedCount > 0) {
+            localStorage.setItem('oregon_campaigns_list', JSON.stringify(campaignsList));
+            if (auth.currentUser) {
+                await db.collection('settings').doc(auth.currentUser.uid).set({
+                    campaignsList: campaignsList,
+                    currentSaveId: currentSaveId
+                }, { merge: true });
+            }
+            showToast(`${addedCount} campagne(s) récupérée(s) !`, 'success');
+            setTimeout(() => location.reload(), 1500);
+        } else {
+            showToast("Aucune nouvelle campagne trouvée.", 'info');
+        }
+    } catch (error) {
+        console.error("Erreur de récupération :", error);
+        showToast("Erreur lors de la récupération. Vérifiez vos permissions Firebase.", 'error');
+    }
+};
+
 window.createNewCampaign = async function (name) {
     const id = 'save_' + Date.now();
     campaignsList.push({ id, name });

@@ -432,6 +432,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
         gameState = data;
 
+        // Mise à jour des métadonnées de la liste des campagnes à partir de la sauvegarde réelle
+        const currentIdx = campaignsList.findIndex(c => c.id === currentSaveId);
+        if (currentIdx !== -1 && gameState.character) {
+            let metaUpdated = false;
+            const charName = gameState.character.identityFields?.name;
+            const charPortrait = gameState.character.portrait;
+
+            if (charName && campaignsList[currentIdx].name !== charName) {
+                campaignsList[currentIdx].name = charName;
+                metaUpdated = true;
+            }
+            if (charPortrait && campaignsList[currentIdx].portrait !== charPortrait) {
+                campaignsList[currentIdx].portrait = charPortrait;
+                metaUpdated = true;
+            }
+            if (metaUpdated) {
+                localStorage.setItem('oregon_campaigns_list', JSON.stringify(campaignsList));
+                // On ne sauvegarde pas immédiatement sur Firebase pour éviter les appels inutiles, 
+                // saveGameData le fera à la prochaine modification.
+            }
+        }
+
         for (const key in defaultState) {
             if (!gameState[key]) gameState[key] = defaultState[key];
         }

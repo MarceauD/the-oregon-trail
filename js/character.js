@@ -123,7 +123,7 @@ function renderEditableList(key, placeholder, hasDescription = false, isTextOnly
     const addFormContainerId = `add-${key.replace('.', '-')}-form-container`;
     const addFormContainer = document.getElementById(addFormContainerId);
     if (addFormContainer) {
-        addFormContainer.innerHTML = `<button class="action-button" style="font-size: 0.8em; padding: 5px 10px;" onclick="showAddItemForm('${key}', '${placeholder}', ${hasDescription}, ${isTextOnly})">+ Ajouter</button>`;
+        addFormContainer.innerHTML = `<button class="add-btn-round" onclick="showAddItemForm('${key}', '${placeholder}', ${hasDescription}, ${isTextOnly})" title="Ajouter un élément">+</button>`;
     }
 }
 
@@ -201,7 +201,7 @@ function renderHealthList(key, placeholder) {
 
     const addFormContainer = document.getElementById(`add-${key}-form-container`);
     if (addFormContainer) {
-        addFormContainer.innerHTML = `<button class="action-button" style="font-size: 0.8em; padding: 5px 10px;" onclick="showAddHealthForm('${key}', '${placeholder}')">+ Ajouter ${placeholder}</button>`;
+        addFormContainer.innerHTML = `<button class="add-btn-round" onclick="showAddHealthForm('${key}', '${placeholder}')" title="Ajouter un élément">+</button>`;
     }
 }
 
@@ -254,7 +254,9 @@ function renderInventoryCategory(category, placeholder) {
         const slot = document.createElement('div');
         slot.className = `inventory-item-slot ${item.isAvailable === false ? 'is-unavailable' : ''}`;
         slot.innerHTML = `
-            <img src="${item.img || 'https://i.imgur.com/b6f8f5B.png'}" alt="${item.name}">
+            <div class="image-container">
+                <img src="${item.img || 'images/placeholder_inventory.png'}" alt="${item.name}">
+            </div>
             <span class="item-name"
                 spellcheck="false"
                 contenteditable="true"
@@ -262,24 +264,44 @@ function renderInventoryCategory(category, placeholder) {
                 onkeydown="if(event.key==='Enter'){ this.blur(); event.preventDefault(); }">
                 ${item.name}
             </span>
-            <button class="delete-item-btn" onclick="deleteCharacterItem('inventory.${category}', ${item.id})">&times;</button>
+            <button class="delete-item-btn" onclick="deleteCharacterItem('inventory.${category}', ${item.id})" title="Supprimer cet objet">&times;</button>
             <button class="availability-toggle-btn" onclick="toggleItemAvailability('inventory.${category}', ${item.id})" title="Rendre disponible/indisponible">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 158.8 17.9 198.8 0 256s17.9 97.2 47.4 143.4C96.5 443.2 161.2 480 288 480s191.5-36.8 238.6-80.6C558.1 353.2 576 313.2 576 256s-17.9-97.2-47.4-143.4C434.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64s-64-28.7-64-64s28.7-64 64-64s64 28.7 64 64z"/></svg>
+            </button>
+            <button class="change-img-btn" onclick="changeInventoryItemImage('${category}', ${item.id})" title="Changer l'image">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="width:12px; height:12px; fill:currentColor;"><path d="M448 80c8.8 0 16 7.2 16 16V415.8l-5-6.5-136-176c-4.5-5.9-11.6-9.3-19-9.3s-14.4 3.4-19 9.3L202 340.7l-30.5-42.7C167 291.7 159.8 288 152 288s-15 3.7-19.5 10.1l-80 112L48 416.3l0-.3V96c0-8.8 7.2-16 16-16H448zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm80 192a48 48 0 1 0 0-96 48 48 0 1 0 0 96z"/></svg>
             </button>
         `;
         container.appendChild(slot);
     });
 
     const addSlot = document.createElement('div');
-    addSlot.className = 'inventory-item-slot';
+    addSlot.className = 'inventory-item-slot add-item-slot';
     addSlot.style.cursor = 'pointer';
     addSlot.onclick = () => showAddItemForm(`inventory.${category}`, placeholder, false, false, true);
-    addSlot.innerHTML = `<span style="font-size: 3em; color: var(--border-color);">+</span>`;
+    addSlot.innerHTML = `
+        <div class="add-slot-content">
+            <span style="font-size: 3em;">+</span>
+            <span style="font-size: 0.8em; text-transform: uppercase; font-weight: bold;">${placeholder}</span>
+        </div>
+    `;
     container.appendChild(addSlot);
 
     const addFormContainer = document.getElementById(`add-inventory-${category}-form-container`);
     if (addFormContainer) addFormContainer.innerHTML = '';
 }
+
+window.changeInventoryItemImage = function (category, id) {
+    openImagePicker(async (newPath) => {
+        const list = gameState.character.inventory[category];
+        const item = list.find(i => i.id === id);
+        if (item) {
+            item.img = newPath;
+            await saveGameData();
+            renderCharacterSheet();
+        }
+    });
+};
 
 window.updateCharacterItemText = async function (key, id, property, newText) {
     const path = key.split('.');
@@ -378,17 +400,15 @@ window.deleteCharacterItem = async (key, id) => {
 
 document.addEventListener('DOMContentLoaded', () => {
     const moneyInput = document.getElementById('character-money');
-    const saveMoneyButton = document.getElementById('save-money-button');
-    if (saveMoneyButton) {
-        saveMoneyButton.addEventListener('click', async () => {
+    if (moneyInput) {
+        moneyInput.addEventListener('change', async () => {
             const newAmount = parseFloat(moneyInput.value);
             if (!isNaN(newAmount)) {
                 if (!gameState.character) gameState.character = {};
                 gameState.character.money = newAmount;
                 await saveGameData();
                 moneyInput.value = newAmount.toFixed(2);
-                saveMoneyButton.classList.add('saved');
-                setTimeout(() => { saveMoneyButton.classList.remove('saved'); }, 1500);
+                showToast("Porte-monnaie mis à jour !", "success");
             } else {
                 showToast("Veuillez entrer une valeur numérique valide.", 'error');
             }
