@@ -96,19 +96,8 @@ body {
     height: 200%;
     background-image: url('https://img.freepik.com/premium-photo/monochrome-wavy-lines-pattern_118124-262370.jpg');
     background-size: 1000px 1000px;
-    animation: move-topo-smooth 100s linear infinite;
     opacity: 0.1;
     filter: saturate(5) hue-rotate(10deg);
-}
-
-@keyframes move-topo-smooth {
-    0% {
-        transform: translate(0, 0);
-    }
-
-    100% {
-        transform: translate(-1000px, -1000px);
-    }
 }
 
 /* --- Navigation --- */

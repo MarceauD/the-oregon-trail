@@ -58,7 +58,9 @@ function renderCharacterSheet() {
     renderCharacterHistory();
     renderEditableList('stats', 'Statistique', false);
     renderEditableList('skills', 'Compétence', false);
-    renderEditableList('banjoMelodies', 'Mélodie', true);
+    renderEditableList('specificKnowledge', 'Savoir', true);
+    renderHealthList('physicalState', 'Blessure');
+    renderHealthList('mentalState', 'Trauma');
     renderEditableList('strengths', 'Point Fort', false, true);
     renderEditableList('weaknesses', 'Point Faible', false, true);
     renderInventory();
@@ -137,6 +139,91 @@ window.toggleItemAvailability = async function (key, id) {
         await saveGameData();
         renderCharacterSheet();
     }
+};
+
+function renderHealthList(key, placeholder) {
+    const container = document.getElementById(`${key}-container`);
+    if (!container) return;
+    const data = gameState.character[key] || [];
+    container.innerHTML = '';
+
+    if (data.length > 0) {
+        const table = document.createElement('table');
+        table.className = 'health-table';
+        table.innerHTML = `
+            <thead>
+                <tr>
+                    <th>${placeholder}</th>
+                    <th>Soins</th>
+                    <th>Effets</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        `;
+        const tbody = table.querySelector('tbody');
+        data.forEach(item => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>
+                    <span contenteditable="true" spellcheck="false" 
+                        onblur="updateCharacterItemText('${key}', ${item.id}, 'name', this.textContent)">
+                        ${item.name || ''}
+                    </span>
+                </td>
+                <td>
+                    <span contenteditable="true" spellcheck="false" 
+                        onblur="updateCharacterItemText('${key}', ${item.id}, 'care', this.textContent)">
+                        ${item.care || ''}
+                    </span>
+                </td>
+                <td>
+                    <span contenteditable="true" spellcheck="false" 
+                        onblur="updateCharacterItemText('${key}', ${item.id}, 'effects', this.textContent)">
+                        ${item.effects || ''}
+                    </span>
+                </td>
+                <td>
+                    <button class="delete-item-btn" onclick="deleteCharacterItem('${key}', ${item.id})">&times;</button>
+                </td>
+            `;
+            tbody.appendChild(tr);
+        });
+        container.appendChild(table);
+    }
+
+    const addFormContainer = document.getElementById(`add-${key}-form-container`);
+    if (addFormContainer) {
+        addFormContainer.innerHTML = `<button class="action-button" style="font-size: 0.8em; padding: 5px 10px;" onclick="showAddHealthForm('${key}', '${placeholder}')">+ Ajouter ${placeholder}</button>`;
+    }
+}
+
+window.showAddHealthForm = (key, placeholder) => {
+    const container = document.getElementById(`add-${key}-form-container`);
+    container.innerHTML = `
+        <div class="add-item-form health-form">
+            <input type="text" id="new-health-name-${key}" placeholder="${placeholder} (ex: Bras cassé)">
+            <input type="text" id="new-health-care-${key}" placeholder="Soins (ex: Attelle)">
+            <input type="text" id="new-health-effects-${key}" placeholder="Effets (ex: -20% tir)">
+            <button class="action-button" onclick="handleAddHealth('${key}')">✔</button>
+        </div>
+    `;
+};
+
+window.handleAddHealth = async (key) => {
+    const name = document.getElementById(`new-health-name-${key}`).value.trim();
+    const care = document.getElementById(`new-health-care-${key}`).value.trim();
+    const effects = document.getElementById(`new-health-effects-${key}`).value.trim();
+
+    if (!name) {
+        showToast("Le nom est obligatoire.", 'warning');
+        return;
+    }
+
+    const newItem = { id: Date.now(), name, care, effects };
+    gameState.character[key].push(newItem);
+    await saveGameData();
+    renderCharacterSheet();
 };
 
 function renderInventory() {

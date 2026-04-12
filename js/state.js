@@ -45,16 +45,18 @@ const defaultState = {
         skills: [
             { id: 101, name: "Résilience", value: 85 },
             { id: 102, name: "Débrouillardise", value: 60 },
-            { id: 103, name: "Jeu de banjo", value: 60 },
+            { id: 103, name: "Jeu d'instrument", value: 60 },
             { id: 104, name: "Attaque sournoise", value: 70 },
             { id: 105, name: "Fuite", value: 65 },
             { id: 109, name: "Lecture", value: 5 },
             { id: 110, name: "Ecriture", value: 5 },
             { id: 111, name: "Equitation", value: 10 },
         ],
-        banjoMelodies: [
+        specificKnowledge: [
             { id: 201, name: "Hard Times Come Again No More", description: "Triste et lent" }
         ],
+        physicalState: [],
+        mentalState: [],
         strengths: [
             { id: 301, text: "Résilience" },
             { id: 302, text: "Loyauté" },
@@ -72,7 +74,7 @@ const defaultState = {
             general: [
                 { id: 801, text: "Vêtements vieux et sales", isAvailable: true },
                 { id: 802, text: "Bottes de marche usées", isAvailable: true },
-                { id: 807, text: "Banjo dans son étui", isAvailable: true },
+                { id: 807, text: "Instrument de musique", isAvailable: true },
                 { id: 808, text: "Nourriture", isAvailable: true },
             ]
         },

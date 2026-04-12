@@ -41,8 +41,14 @@ window.exportSectionToClipboard = function (type) {
                 char.inventory[category].forEach(item => { output += `- ${item.name || item.text}\n`; });
             }
         }
-        output += '\n--- MÉLODIES DE BANJO ---\n';
-        char.banjoMelodies.forEach(m => { output += `- ${m.name} (${m.description})\n`; });
+        output += '\n--- SAVOIRS SPÉCIFIQUES ---\n';
+        char.specificKnowledge.forEach(m => { output += `- ${m.name} (${m.description})\n`; });
+
+        output += '\n--- ÉTAT PHYSIQUE ---\n';
+        char.physicalState.forEach(s => { output += `- ${s.name} (Soins: ${s.care}, Effets: ${s.effects})\n`; });
+
+        output += '\n--- SANTÉ MENTALE ---\n';
+        char.mentalState.forEach(s => { output += `- ${s.name} (Soins: ${s.care}, Effets: ${s.effects})\n`; });
     } else if (type === 'npcs') {
         output = '=== PERSONNAGES NON-JOUABLES ===\n\n';
         gameState.npcs.forEach(npc => {
@@ -432,6 +438,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!gameState.character.identityFields) gameState.character.identityFields = defaultState.character.identityFields;
         if (!gameState.character.history) gameState.character.history = defaultState.character.history;
+
+        // Migration banjoMelodies -> specificKnowledge
+        if (gameState.character.banjoMelodies) {
+            if (!gameState.character.specificKnowledge) {
+                gameState.character.specificKnowledge = gameState.character.banjoMelodies;
+            }
+            delete gameState.character.banjoMelodies;
+            await saveGameData();
+        }
 
         initCampaignBubbles();
 

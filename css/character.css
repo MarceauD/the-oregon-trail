@@ -527,3 +527,62 @@
         transform: translateX(0);
     }
 }
+/* État Physique et Mental (Tableaux de Santé) */
+.health-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+    font-size: 0.9em;
+}
+
+.health-table th, 
+.health-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.health-table th {
+    font-family: var(--font-interface);
+    text-transform: uppercase;
+    font-size: 0.75em;
+    letter-spacing: 0.5px;
+    color: var(--accent-color);
+    font-weight: 700;
+}
+
+.health-table td span[contenteditable="true"] {
+    display: block;
+    min-height: 1.2em;
+    padding: 2px 4px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.health-table td span[contenteditable="true"]:hover {
+    background-color: rgba(245, 158, 11, 0.05);
+}
+
+.health-table td span[contenteditable="true"]:focus {
+    background-color: rgba(245, 158, 11, 0.1);
+    outline: 1px solid var(--accent-color);
+}
+
+.health-form {
+    flex-direction: column;
+    gap: 8px;
+    background-color: var(--bg-color);
+    padding: 15px;
+    border-radius: var(--border-radius);
+    border: 1px dashed var(--accent-color);
+}
+
+.health-form input {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.health-form button {
+    align-self: flex-end;
+    margin-top: 5px;
+}
