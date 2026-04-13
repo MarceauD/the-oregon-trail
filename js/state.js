@@ -119,6 +119,7 @@ const imageGalleryList = [
     "npc/john_geary.png",
     "npc/journaliers.png",
     "npc/matronne.png",
+    "npc/max.png",
     "npc/michael_penn.png",
     "npc/morris_diamond.png",
     "npc/mr_vogel.png",
