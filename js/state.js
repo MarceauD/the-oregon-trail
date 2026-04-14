@@ -29,14 +29,6 @@ async function syncCloudGallery() {
     }
 }
 
-window.getCloudUrl = function (path) {
-    if (!path) return path;
-    if (path.startsWith('http')) return path;
-    const fileName = path.replace('images/', '');
-    const cloudImg = cloudGallery.find(img => img.fileName === fileName);
-    return cloudImg ? cloudImg.url : path;
-};
-
 let currentSaveId = localStorage.getItem('oregon_current_save_id') || 'mainSave';
 let campaignsList = JSON.parse(localStorage.getItem('oregon_campaigns_list')) || [{ id: 'mainSave', name: 'Campagne Principale' }];
 

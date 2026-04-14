@@ -477,8 +477,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Update character portrait from state
         const portraitDisplay = document.getElementById('character-portrait-display');
         if (portraitDisplay) {
-            const portraitUrl = getCloudUrl(gameState.character.portrait || 'images/placeholder_npc.png');
-            portraitDisplay.style.backgroundImage = `url('${portraitUrl}')`;
+            portraitDisplay.style.backgroundImage = `url('${gameState.character.portrait || 'images/placeholder_npc.png'}')`;
         }
 
         const moneyInput = document.getElementById('character-money');
