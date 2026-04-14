@@ -19,9 +19,8 @@ const CLOUDINARY_CONFIG = {
 
 let cloudGallery = [];
 
-// Sécurité de surface : le code est '1868' encodé en base64
 const ENCODED_CODE = "MTg2OA==";
-let isReadOnly = true; // Toujours vrai au chargement
+let isReadOnly = true;
 
 async function syncCloudGallery() {
     try {
