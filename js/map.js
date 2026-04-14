@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     addCityForm.addEventListener('submit', async (event) => {
         event.preventDefault();
+        if (isReadOnly) return;
         const x = parseInt(document.getElementById('city-coord-x').value, 10);
         const y = parseInt(document.getElementById('city-coord-y').value, 10);
         const cityName = document.getElementById('city-name').value.trim();
@@ -93,4 +94,24 @@ window.renderRoute = function () {
             svg.appendChild(text);
         }
     });
+
+    // Mise à jour de l'image de fond si elle existe dans le gameState
+    const mapImg = document.getElementById('map-image-background');
+    if (mapImg && gameState.routeSettings && gameState.routeSettings.mapBackground) {
+        mapImg.src = gameState.routeSettings.mapBackground;
+    }
 }
+
+window.changeMapBackground = function () {
+    if (isReadOnly) return;
+    openImagePicker(async (newUrl) => {
+        if (!gameState.routeSettings) gameState.routeSettings = {};
+        gameState.routeSettings.mapBackground = newUrl;
+
+        const mapImg = document.getElementById('map-image-background');
+        if (mapImg) mapImg.src = newUrl;
+
+        await saveGameData();
+        showToast("Fond de carte mis à jour !", "success");
+    });
+};

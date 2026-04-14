@@ -3,25 +3,25 @@ function renderCharacterIdentity() {
     const data = gameState.character.identityFields || {};
     container.innerHTML = `
         <span>Nom</span>
-        <span contenteditable="true" spellcheck="false"
+        <span contenteditable="${!isReadOnly}" spellcheck="false"
             onblur="updateCharacterIdentity('name', this.textContent)"
             onkeydown="if(event.key==='Enter'){ this.blur(); event.preventDefault(); }">
             ${data.name || ''}
         </span>
         <span>Âge</span>
-        <span contenteditable="true" spellcheck="false"
+        <span contenteditable="${!isReadOnly}" spellcheck="false"
             onblur="updateCharacterIdentity('age', this.textContent)"
             onkeydown="if(event.key==='Enter'){ this.blur(); event.preventDefault(); }">
             ${data.age || ''}
         </span>
         <span>Origine</span>
-        <span contenteditable="true" spellcheck="false"
+        <span contenteditable="${!isReadOnly}" spellcheck="false"
             onblur="updateCharacterIdentity('origin', this.textContent)"
             onkeydown="if(event.key==='Enter'){ this.blur(); event.preventDefault(); }">
             ${data.origin || ''}
         </span>
         <span>Profession</span>
-        <span contenteditable="true" spellcheck="false"
+        <span contenteditable="${!isReadOnly}" spellcheck="false"
             onblur="updateCharacterIdentity('profession', this.textContent)"
             onkeydown="if(event.key==='Enter'){ this.blur(); event.preventDefault(); }">
             ${data.profession || ''}
@@ -33,7 +33,7 @@ function renderCharacterHistory() {
     const container = document.getElementById('history-container');
     const data = gameState.character.history || '';
     container.innerHTML = `
-        <p contenteditable="true" spellcheck="false"
+        <p contenteditable="${!isReadOnly}" spellcheck="false"
         onblur="updateCharacterHistory(this.textContent)"
         onkeydown="if(event.key==='Enter'){ this.blur(); event.preventDefault(); }">
         ${data}
@@ -42,12 +42,14 @@ function renderCharacterHistory() {
 }
 
 window.updateCharacterIdentity = async function (field, newValue) {
+    if (isReadOnly) return;
     if (!gameState.character.identityFields) gameState.character.identityFields = {};
     gameState.character.identityFields[field] = newValue.trim();
     await saveGameData();
 }
 
 window.updateCharacterHistory = async function (newValue) {
+    if (isReadOnly) return;
     gameState.character.history = newValue.trim();
     await saveGameData();
 }
@@ -86,7 +88,7 @@ function renderEditableList(key, placeholder, hasDescription = false, isTextOnly
 
         let itemHTML = `
             <span class="item-name" 
-                contenteditable="true" 
+                contenteditable="${!isReadOnly}" 
                 spellcheck="false"
                 onblur="updateCharacterItemText('${key}', ${item.id}, '${propertyToEdit}', this.textContent)"
                 onkeydown="if(event.key==='Enter'){ this.blur(); event.preventDefault(); }">
@@ -94,11 +96,11 @@ function renderEditableList(key, placeholder, hasDescription = false, isTextOnly
             </span>`;
 
         if (item.value !== undefined) {
-            itemHTML += `<input type="number" value="${item.value}" onchange="updateCharacterItemValue('${key}', ${item.id}, this.value)">`;
+            itemHTML += `<input type="number" value="${item.value}" onchange="updateCharacterItemValue('${key}', ${item.id}, this.value)" ${isReadOnly ? 'disabled' : ''}>`;
         }
         if (item.description) {
             itemHTML += `<span>- <i>
-                <span contenteditable="true"
+                <span contenteditable="${!isReadOnly}"
                     spellcheck="false"
                     onblur="updateCharacterItemText('${key}', ${item.id}, 'description', this.textContent)"
                     onkeydown="if(event.key==='Enter'){ this.blur(); event.preventDefault(); }">
@@ -109,13 +111,15 @@ function renderEditableList(key, placeholder, hasDescription = false, isTextOnly
 
         if (isGeneralInventory) {
             itemHTML += `
-                <button class="card-button" onclick="toggleItemAvailability('${key}', ${item.id})" title="Rendre disponible/indisponible">
+                <button class="card-button" onclick="toggleItemAvailability('${key}', ${item.id})" title="Rendre disponible/indisponible" style="display: ${isReadOnly ? 'none' : 'flex'}">
                     <svg style="width:16px; height:16px; fill:currentColor;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 158.8 17.9 198.8 0 256s17.9 97.2 47.4 143.4C96.5 443.2 161.2 480 288 480s191.5-36.8 238.6-80.6C558.1 353.2 576 313.2 576 256s-17.9-97.2-47.4-143.4C434.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64s-64-28.7-64-64s28.7-64 64-64s64 28.7 64 64z"/></svg>
                 </button>
             `;
         }
 
-        itemHTML += `<button class="delete-item-btn" onclick="deleteCharacterItem('${key}', ${item.id})">&times;</button>`;
+        if (!isReadOnly) {
+            itemHTML += `<button class="delete-item-btn" onclick="deleteCharacterItem('${key}', ${item.id})">&times;</button>`;
+        }
         itemDiv.innerHTML = itemHTML;
         container.appendChild(itemDiv);
     });
@@ -123,7 +127,11 @@ function renderEditableList(key, placeholder, hasDescription = false, isTextOnly
     const addFormContainerId = `add-${key.replace('.', '-')}-form-container`;
     const addFormContainer = document.getElementById(addFormContainerId);
     if (addFormContainer) {
-        addFormContainer.innerHTML = `<button class="add-btn-round" onclick="showAddItemForm('${key}', '${placeholder}', ${hasDescription}, ${isTextOnly})" title="Ajouter un élément">+</button>`;
+        if (isReadOnly) {
+            addFormContainer.innerHTML = '';
+        } else {
+            addFormContainer.innerHTML = `<button class="add-btn-round" onclick="showAddItemForm('${key}', '${placeholder}', ${hasDescription}, ${isTextOnly})" title="Ajouter un élément">+</button>`;
+        }
     }
 }
 
@@ -167,31 +175,31 @@ function renderHealthList(key, placeholder) {
             const tr = document.createElement('tr');
             tr.innerHTML = `
                 <td>
-                    <span contenteditable="true" spellcheck="false" 
+                    <span contenteditable="${!isReadOnly}" spellcheck="false" 
                         onblur="updateCharacterItemText('${key}', ${item.id}, 'name', this.textContent)">
                         ${item.name || ''}
                     </span>
                 </td>
                 <td>
-                    <span contenteditable="true" spellcheck="false" 
+                    <span contenteditable="${!isReadOnly}" spellcheck="false" 
                         onblur="updateCharacterItemText('${key}', ${item.id}, 'duration', this.textContent)">
                         ${item.duration || ''}
                     </span>
                 </td>
                 <td>
-                    <span contenteditable="true" spellcheck="false" 
+                    <span contenteditable="${!isReadOnly}" spellcheck="false" 
                         onblur="updateCharacterItemText('${key}', ${item.id}, 'care', this.textContent)">
                         ${item.care || ''}
                     </span>
                 </td>
                 <td>
-                    <span contenteditable="true" spellcheck="false" 
+                    <span contenteditable="${!isReadOnly}" spellcheck="false" 
                         onblur="updateCharacterItemText('${key}', ${item.id}, 'effects', this.textContent)">
                         ${item.effects || ''}
                     </span>
                 </td>
                 <td>
-                    <button class="delete-item-btn" onclick="deleteCharacterItem('${key}', ${item.id})">&times;</button>
+                    ${!isReadOnly ? `<button class="delete-item-btn" onclick="deleteCharacterItem('${key}', ${item.id})">&times;</button>` : ''}
                 </td>
             `;
             tbody.appendChild(tr);
@@ -201,7 +209,11 @@ function renderHealthList(key, placeholder) {
 
     const addFormContainer = document.getElementById(`add-${key}-form-container`);
     if (addFormContainer) {
-        addFormContainer.innerHTML = `<button class="add-btn-round" onclick="showAddHealthForm('${key}', '${placeholder}')" title="Ajouter un élément">+</button>`;
+        if (isReadOnly) {
+            addFormContainer.innerHTML = '';
+        } else {
+            addFormContainer.innerHTML = `<button class="add-btn-round" onclick="showAddHealthForm('${key}', '${placeholder}')" title="Ajouter un élément">+</button>`;
+        }
     }
 }
 
@@ -259,33 +271,36 @@ function renderInventoryCategory(category, placeholder) {
             </div>
             <span class="item-name"
                 spellcheck="false"
-                contenteditable="true"
+                contenteditable="${!isReadOnly}"
                 onblur="updateCharacterItemText('inventory.${category}', ${item.id}, 'name', this.textContent)"
                 onkeydown="if(event.key==='Enter'){ this.blur(); event.preventDefault(); }">
                 ${item.name}
             </span>
+            ${!isReadOnly ? `
             <button class="delete-item-btn" onclick="deleteCharacterItem('inventory.${category}', ${item.id})" title="Supprimer cet objet">&times;</button>
             <button class="availability-toggle-btn" onclick="toggleItemAvailability('inventory.${category}', ${item.id})" title="Rendre disponible/indisponible">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 158.8 17.9 198.8 0 256s17.9 97.2 47.4 143.4C96.5 443.2 161.2 480 288 480s191.5-36.8 238.6-80.6C558.1 353.2 576 313.2 576 256s-17.9-97.2-47.4-143.4C434.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64s-64-28.7-64-64s28.7-64 64-64s64 28.7 64 64z"/></svg>
             </button>
             <button class="change-img-btn" onclick="changeInventoryItemImage('${category}', ${item.id})" title="Changer l'image">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="width:12px; height:12px; fill:currentColor;"><path d="M448 80c8.8 0 16 7.2 16 16V415.8l-5-6.5-136-176c-4.5-5.9-11.6-9.3-19-9.3s-14.4 3.4-19 9.3L202 340.7l-30.5-42.7C167 291.7 159.8 288 152 288s-15 3.7-19.5 10.1l-80 112L48 416.3l0-.3V96c0-8.8 7.2-16 16-16H448zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm80 192a48 48 0 1 0 0-96 48 48 0 1 0 0 96z"/></svg>
-            </button>
+            </button>` : ''}
         `;
         container.appendChild(slot);
     });
 
-    const addSlot = document.createElement('div');
-    addSlot.className = 'inventory-item-slot add-item-slot';
-    addSlot.style.cursor = 'pointer';
-    addSlot.onclick = () => showAddItemForm(`inventory.${category}`, placeholder, false, false, true);
-    addSlot.innerHTML = `
-        <div class="add-slot-content">
-            <span style="font-size: 3em;">+</span>
-            <span style="font-size: 0.8em; text-transform: uppercase; font-weight: bold;">${placeholder}</span>
-        </div>
-    `;
-    container.appendChild(addSlot);
+    if (!isReadOnly) {
+        const addSlot = document.createElement('div');
+        addSlot.className = 'inventory-item-slot add-item-slot';
+        addSlot.style.cursor = 'pointer';
+        addSlot.onclick = () => showAddItemForm(`inventory.${category}`, placeholder, false, false, true);
+        addSlot.innerHTML = `
+            <div class="add-slot-content">
+                <span style="font-size: 3em;">+</span>
+                <span style="font-size: 0.8em; text-transform: uppercase; font-weight: bold;">${placeholder}</span>
+            </div>
+        `;
+        container.appendChild(addSlot);
+    }
 
     const addFormContainer = document.getElementById(`add-inventory-${category}-form-container`);
     if (addFormContainer) addFormContainer.innerHTML = '';
@@ -401,7 +416,9 @@ window.deleteCharacterItem = async (key, id) => {
 document.addEventListener('DOMContentLoaded', () => {
     const moneyInput = document.getElementById('character-money');
     if (moneyInput) {
+        moneyInput.disabled = isReadOnly;
         moneyInput.addEventListener('change', async () => {
+            if (isReadOnly) return;
             const newAmount = parseFloat(moneyInput.value);
             if (!isNaN(newAmount)) {
                 if (!gameState.character) gameState.character = {};

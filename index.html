@@ -67,7 +67,15 @@
             </div>
 
             <div class="nav-actions">
-
+                <button id="readonly-toggle" class="nav-button readonly-btn" onclick="toggleReadOnlyMode()"
+                    title="Mode Lecture Seule">
+                    <svg id="lock-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
+                        style="width:16px; height:16px; fill:currentColor;">
+                        <path
+                            d="M144 144v48H304V144c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192V144C80 64.5 144.5 0 224 0s144 64.5 144 144v48h16c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V256c0-35.3 28.7-64 64-64H80z" />
+                    </svg>
+                    <span id="readonly-text">Lecture</span>
+                </button>
             </div>
         </nav>
 
@@ -229,10 +237,19 @@
                 <div id="journal-content"></div>
             </section>
 
-            <section id="map" class="content-section">
+            <section id="map" class="content-section no-padding">
                 <div class="map-container">
-                    <img src="images/usa_1866.jpg" alt="Carte des États-Unis, 1866" class="map-image">
+                    <img src="images/usa_1866.jpg" alt="Carte des États-Unis, 1866" class="map-image"
+                        id="map-image-background">
                     <svg id="route-svg" class="route-overlay" viewBox="0 0 4000 2537"></svg>
+                </div>
+                <div class="map-controls-panel">
+                    <div class="section-header" style="border:none; margin-bottom:10px;">
+                        <button class="action-button secondary" onclick="changeMapBackground()"
+                            style="font-size: 0.8em;">
+                            🖼️ Modifier
+                        </button>
+                    </div>
                 </div>
                 <div class="add-city-panel">
                     <h3>Ajouter une étape au trajet</h3>

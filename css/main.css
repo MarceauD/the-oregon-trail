@@ -215,6 +215,27 @@ nav button.nav-button.active {
     fill: currentColor;
 }
 
+/* Mode Lecture / Écriture */
+.readonly-btn {
+    width: auto !important;
+    padding: 0 15px !important;
+    border-radius: 20px !important;
+    gap: 8px;
+    font-size: 0.8em;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.readonly-btn.unlocked {
+    background-color: var(--accent-color) !important;
+    color: var(--surface-color) !important;
+    border-color: var(--accent-color) !important;
+}
+
+.readonly-btn.unlocked svg {
+    fill: var(--surface-color) !important;
+}
+
 /* --- Layout Sections Principales --- */
 .content-section {
     padding: 30px 40px;

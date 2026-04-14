@@ -151,13 +151,14 @@ async function renderGallery() {
         itemDiv.innerHTML = `
             <img src="${optimizedUrl}" alt="${img.fileName}" loading="lazy">
             <div class="gallery-item-path">${img.fileName} (Cloud)</div>
-            <button class="delete-cloud-btn" onclick="deleteCloudImage('${img.id}', '${img.public_id}')" title="Supprimer">&times;</button>
+            ${isReadOnly ? '' : `<button class="delete-cloud-btn" onclick="deleteCloudImage('${img.id}', '${img.public_id}')" title="Supprimer">&times;</button>`}
         `;
         container.appendChild(itemDiv);
     });
 }
 
 async function handleCloudUpload(event) {
+    if (isReadOnly) return;
     const file = event.target.files[0];
     if (!file) return;
 
@@ -202,6 +203,7 @@ async function handleCloudUpload(event) {
 }
 
 window.deleteCloudImage = async function (docId, publicId) {
+    if (isReadOnly) return;
     if (!confirm("Voulez-vous supprimer cette image du Cloud ?")) return;
 
     try {
@@ -278,6 +280,7 @@ window.closeImagePicker = function () {
 };
 
 window.selectImage = async function (path, target) {
+    if (isReadOnly) return;
     if (typeof target === 'function') {
         target(path);
     } else if (target === 'character-portrait') {

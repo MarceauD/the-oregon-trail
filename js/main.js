@@ -3,6 +3,7 @@ function renderAll() {
     if (typeof renderNpcs === 'function') renderNpcs();
     if (typeof renderThreads === 'function') renderThreads();
     if (typeof renderJournal === 'function') renderJournal();
+    if (typeof renderRoute === 'function') renderRoute();
 }
 
 window.exportSectionToClipboard = function (type) {
@@ -106,6 +107,64 @@ window.exportSingleItem = function (type, id) {
 let currentJournalEditId = null;
 let autoSaveJournalInterval = null;
 
+window.toggleReadOnlyMode = function () {
+    if (isReadOnly) {
+        const code = prompt("Entrez le code à 4 chiffres pour passer en mode Écriture :");
+        if (code === atob(ENCODED_CODE)) {
+            isReadOnly = false;
+            showToast("Mode Écriture activé.", "success");
+        } else if (code !== null) {
+            showToast("Code incorrect.", "error");
+        }
+    } else {
+        isReadOnly = true;
+        showToast("Mode Lecture seule activé.", "info");
+    }
+    updateReadOnlyUI();
+};
+
+window.updateReadOnlyUI = function () {
+    const toggleBtn = document.getElementById('readonly-toggle');
+    const lockIcon = document.getElementById('lock-icon');
+    const readonlyText = document.getElementById('readonly-text');
+
+    if (isReadOnly) {
+        toggleBtn.classList.remove('unlocked');
+        toggleBtn.title = "Mode Lecture Seule (Cliquer pour déverrouiller)";
+        readonlyText.textContent = "Lecture";
+        // Icone Cadenas Fermé
+        lockIcon.innerHTML = '<path d="M144 144v48H304V144c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192V144C80 64.5 144.5 0 224 0s144 64.5 144 144v48h16c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V256c0-35.3 28.7-64 64-64H80z"/>';
+    } else {
+        toggleBtn.classList.add('unlocked');
+        toggleBtn.title = "Mode Écriture (Cliquer pour verrouiller)";
+        readonlyText.textContent = "Écriture";
+        // Icone Cadenas Ouvert
+        lockIcon.innerHTML = '<path d="M352 144c0-44.2-35.8-80-80-80s-80 35.8-80 80v48h160V144zM112 192c-17.7 0-32 14.3-32 32V448c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32H112zM32 144C32 64.5 96.5 0 176 0s144 64.5 144 144v48h16c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V256c0-35.3 28.7-64 64-64H80V144z"/>';
+    }
+
+    // Masquer les boutons d'ajout
+    const addButtons = [
+        'add-npc-button', 'add-thread-button', 'add-journal-button',
+        'sync-campaigns-btn', 'new-campaign-btn', 'cloud-upload-input',
+        'add-city-panel', 'map-controls-panel'
+    ];
+    addButtons.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+            if (id === 'cloud-upload-input') {
+                // Pour l'upload cloud, c'est le bouton parent qu'on veut masquer
+                const btn = el.previousElementSibling;
+                if (btn) btn.style.display = isReadOnly ? 'none' : 'inline-block';
+            } else {
+                el.style.display = isReadOnly ? 'none' : 'inline-block';
+            }
+        }
+    });
+
+    // Re-rendre les sections pour appliquer contenteditable et cacher les boutons de suppression
+    renderAll();
+};
+
 window.openModal = function (type, id = null) {
     const modalForm = document.getElementById('modal-form');
     const modalTitle = document.getElementById('modal-title');
@@ -131,7 +190,7 @@ window.openModal = function (type, id = null) {
         npcFields.style.display = 'grid';
         if (editor) editor.mode.set('readonly');
         if (id) {
-            modalTitle.textContent = 'Modifier le PNJ';
+            modalTitle.textContent = isReadOnly ? 'Voir le PNJ' : 'Modifier le PNJ';
             const npc = gameState.npcs.find(n => n.id === id);
             document.getElementById('npc-name').value = npc.name;
             document.getElementById('npc-status').value = npc.status || '';
@@ -143,17 +202,24 @@ window.openModal = function (type, id = null) {
             if (imgField) imgField.value = npc.img || '';
 
             editIdInput.value = id;
+
+            // Bloquer les champs en lecture seule
+            document.querySelectorAll('#npc-fields input, #npc-fields select, #npc-fields textarea').forEach(el => el.disabled = isReadOnly);
+            const libBtn = document.querySelector('#npc-fields .action-button');
+            if (libBtn) libBtn.style.display = isReadOnly ? 'none' : 'block';
         } else {
+            if (isReadOnly) return;
             modalTitle.textContent = 'Ajouter un PNJ';
             editIdInput.value = '';
             const imgField = document.getElementById('npc-img');
             if (imgField) imgField.value = '';
+            document.querySelectorAll('#npc-fields input, #npc-fields select, #npc-fields textarea').forEach(el => el.disabled = false);
         }
     } else if (type === 'thread') {
         threadFields.style.display = 'grid';
         if (editor) editor.mode.set('readonly');
         if (id) {
-            modalTitle.textContent = 'Modifier le Thread';
+            modalTitle.textContent = isReadOnly ? 'Voir le Thread' : 'Modifier le Thread';
             const thread = gameState.threads.find(t => t.id === id);
             document.getElementById('thread-title').value = thread.title || '';
             document.getElementById('thread-location').value = thread.location || '';
@@ -164,11 +230,18 @@ window.openModal = function (type, id = null) {
             if (imgField) imgField.value = thread.img || '';
 
             editIdInput.value = id;
+
+            // Bloquer les champs en lecture seule
+            document.querySelectorAll('#thread-fields input, #thread-fields select, #thread-fields textarea').forEach(el => el.disabled = isReadOnly);
+            const libBtn = document.querySelector('#thread-fields .action-button');
+            if (libBtn) libBtn.style.display = isReadOnly ? 'none' : 'block';
         } else {
+            if (isReadOnly) return;
             modalTitle.textContent = 'Ajouter un Thread';
             editIdInput.value = '';
             const imgField = document.getElementById('thread-img');
             if (imgField) imgField.value = '';
+            document.querySelectorAll('#thread-fields input, #thread-fields select, #thread-fields textarea').forEach(el => el.disabled = false);
         }
     } else if (type === 'campaign') {
         const campaignFields = document.getElementById('campaign-fields');
@@ -206,10 +279,11 @@ window.openModal = function (type, id = null) {
         document.getElementById('journal-entry-text').value = initialContent;
 
         if (id) {
-            modalTitle.textContent = 'Modifier l\'entrée';
+            modalTitle.textContent = isReadOnly ? 'Voir l\'entrée' : 'Modifier l\'entrée';
             document.getElementById('journal-date').value = item.date;
             editIdInput.value = id;
         } else {
+            if (isReadOnly) return;
             modalTitle.textContent = 'Nouvelle entrée';
             let newEntryDate = new Date();
             if (gameState.journal && gameState.journal.length > 0) {
@@ -226,7 +300,7 @@ window.openModal = function (type, id = null) {
         }
 
         if (editor) {
-            editor.mode.set('design');
+            editor.mode.set(isReadOnly ? 'readonly' : 'design');
             editor.setContent(initialContent);
 
             // Placer le curseur à la fin après le chargement du contenu
@@ -236,6 +310,11 @@ window.openModal = function (type, id = null) {
             editor.selection.scrollIntoView();
         }
     }
+
+    // Footer de la modal : cacher Enregistrer si readonly
+    const saveBtn = document.querySelector('#modal-form .action-button:not(.secondary)');
+    if (saveBtn) saveBtn.style.display = isReadOnly ? 'none' : 'block';
+
     modalOverlay.classList.add('active');
 };
 
@@ -254,6 +333,7 @@ window.closeModal = function () {
 };
 
 window.deleteItem = async function (type, id) {
+    if (isReadOnly) return;
     if (confirm('Êtes-vous sûr de vouloir supprimer cet élément ?')) {
         if (type === 'npc') { gameState.npcs = gameState.npcs.filter(npc => npc.id !== id); }
         else if (type === 'thread') { gameState.threads = gameState.threads.filter(thread => thread.id !== id); }
@@ -293,6 +373,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (modalForm) {
         modalForm.addEventListener('submit', async (e) => {
             e.preventDefault();
+            if (isReadOnly) return;
             const editIdInput = document.getElementById('edit-id');
             const editTypeInput = document.getElementById('edit-type');
             const id = editIdInput.value ? parseInt(editIdInput.value) : null;
@@ -356,6 +437,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileEditorSaveBtn = document.getElementById('mobile-editor-save-btn');
     if (mobileEditorSaveBtn) {
         mobileEditorSaveBtn.addEventListener('click', async () => {
+            if (isReadOnly) return;
             if (typeof tinymce !== 'undefined') {
                 const newContent = tinymce.get('journal-entry-text').getContent();
                 await saveJournalEntry(newContent);
@@ -388,6 +470,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     window.handleCharacterPortraitUpload = async function (input) {
+        if (isReadOnly) return;
         if (!input.files || !input.files[0]) return;
         const base64 = await handleImageUpload(input, 'character-portrait-display'); // Generic tool
         if (base64) {
@@ -399,6 +482,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     window.toggleNewCampaignPopover = function () {
+        if (isReadOnly) return;
         const popover = document.getElementById('new-campaign-popover');
         if (popover) {
             popover.classList.toggle('active');
@@ -409,6 +493,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     window.executeInlineCreate = function () {
+        if (isReadOnly) return;
         const input = document.getElementById('inline-campaign-name');
         if (!input) return;
         const name = input.value.trim();
@@ -484,6 +569,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (moneyInput && gameState.character && gameState.character.money !== undefined) {
             moneyInput.value = parseFloat(gameState.character.money).toFixed(2);
         }
+
+        updateReadOnlyUI();
         renderAll();
         // Fallback or explicit call to character section load
         const charBtn = document.querySelector(`.nav-button[onclick="showSection('character')"]`);

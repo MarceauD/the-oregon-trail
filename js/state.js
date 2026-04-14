@@ -19,6 +19,10 @@ const CLOUDINARY_CONFIG = {
 
 let cloudGallery = [];
 
+// Sécurité de surface : le code est '1868' encodé en base64
+const ENCODED_CODE = "MTg2OA==";
+let isReadOnly = true; // Toujours vrai au chargement
+
 async function syncCloudGallery() {
     try {
         const snapshot = await db.collection('gallery').orderBy('createdAt', 'desc').get();
@@ -123,8 +127,13 @@ async function saveGameData() {
         }
     }
 
+    if (isReadOnly) {
+        console.warn("Tentative de sauvegarde bloquée : mode lecture seule actif.");
+        return;
+    }
+
     await getSaveDocRef().set(gameState);
-    console.log(`Partie [${currentSaveId}] sauvegard\u00e9e sur Firebase !`);
+    console.log(`Partie [${currentSaveId}] sauvegardée sur Firebase !`);
 
     // Sync campaigns list to Firestore for cross-device persistence
     if (auth.currentUser) {
