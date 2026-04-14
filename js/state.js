@@ -11,6 +11,32 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 const auth = firebase.auth();
 
+// Configuration Cloudinary
+const CLOUDINARY_CONFIG = {
+    cloudName: "dg64n9fhe",
+    uploadPreset: "us_preset"
+};
+
+let cloudGallery = [];
+
+async function syncCloudGallery() {
+    try {
+        const snapshot = await db.collection('gallery').orderBy('createdAt', 'desc').get();
+        cloudGallery = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        console.log("Galerie Cloud synchronis\u00e9e :", cloudGallery.length, "images.");
+    } catch (error) {
+        console.error("Erreur lors de la synchronisation de la galerie Cloud :", error);
+    }
+}
+
+window.getCloudUrl = function (path) {
+    if (!path) return path;
+    if (path.startsWith('http')) return path;
+    const fileName = path.replace('images/', '');
+    const cloudImg = cloudGallery.find(img => img.fileName === fileName);
+    return cloudImg ? cloudImg.url : path;
+};
+
 let currentSaveId = localStorage.getItem('oregon_current_save_id') || 'mainSave';
 let campaignsList = JSON.parse(localStorage.getItem('oregon_campaigns_list')) || [{ id: 'mainSave', name: 'Campagne Principale' }];
 
@@ -38,13 +64,13 @@ const defaultState = {
             { id: 6, name: "Perception", value: 65 },
             { id: 7, name: "Persuasion", value: 70 },
             { id: 8, name: "Survie", value: 35 },
-            { id: 9, name: "Agilité", value: 50 },
-            { id: 10, name: "Discrétion", value: 65 },
-            { id: 11, name: "Dextérité", value: 40 },
+            { id: 9, name: "Agilit\u00e9", value: 50 },
+            { id: 10, name: "Discr\u00e9tion", value: 65 },
+            { id: 11, name: "Dext\u00e9rit\u00e9", value: 40 },
         ],
         skills: [
-            { id: 101, name: "Résilience", value: 85 },
-            { id: 102, name: "Débrouillardise", value: 60 },
+            { id: 101, name: "R\u00e9silience", value: 85 },
+            { id: 102, name: "D\u00e9brouillardise", value: 60 },
             { id: 103, name: "Jeu d'instrument", value: 60 },
             { id: 104, name: "Attaque sournoise", value: 70 },
             { id: 105, name: "Fuite", value: 65 },
@@ -58,22 +84,22 @@ const defaultState = {
         physicalState: [],
         mentalState: [],
         strengths: [
-            { id: 301, text: "Résilience" },
-            { id: 302, text: "Loyauté" },
+            { id: 301, text: "R\u00e9silience" },
+            { id: 302, text: "Loyaut\u00e9" },
             { id: 303, text: "Droiture" },
         ],
         weaknesses: [
             { id: 401, text: "Manque de confiance" },
             { id: 402, text: "Ignorant" },
-            { id: 403, text: "Méfiant" },
+            { id: 403, text: "M\u00e9fiant" },
         ],
         inventory: {
             firearms: [],
             clothing: [],
             companions: [],
             general: [
-                { id: 801, text: "Vêtements vieux et sales", isAvailable: true },
-                { id: 802, text: "Bottes de marche usées", isAvailable: true },
+                { id: 801, text: "V\u00eatements vieux et sales", isAvailable: true },
+                { id: 802, text: "Bottes de marche us\u00e9es", isAvailable: true },
                 { id: 807, text: "Instrument de musique", isAvailable: true },
                 { id: 808, text: "Nourriture", isAvailable: true },
             ]
@@ -90,74 +116,8 @@ const defaultState = {
 
 let gameState = {};
 
-const imageGalleryList = [
-    "altoona.png",
-    "background.png",
-    "cattleman_hat.jpg",
-    "character.png",
-    "cowboy_hat.png",
-    "day1/TheOregonTrail_DAY1_1.png",
-    "day1/TheOregonTrail_DAY1_2.png",
-    "day1/TheOregonTrail_DAY1_3.png",
-    "day1/TheOregonTrail_DAY1_4.png",
-    "Eddy_Pilgrim.png",
-    "fusil_sharps.jpg",
-    "horseshoe_curve.png",
-    "James_Blackmore.jpg",
-    "knights_of_labor.jpg",
-    "morgan_horse.jpg",
-    "music_in_saloon.png",
-    "npc/artus_flynn.png",
-    "npc/benjamin.png",
-    "npc/caleb_winters.png",
-    "npc/edward_dunbar.png",
-    "npc/elara_mcnamera.png",
-    "npc/ellis_miller.png",
-    "npc/eugene_dunbar.png",
-    "npc/finn.png",
-    "npc/isaac_meeks.png",
-    "npc/isaac_stapleton.png",
-    "npc/jedediah_harper.png",
-    "npc/john_geary.png",
-    "npc/journaliers.png",
-    "npc/mary.png",
-    "npc/matronne.png",
-    "npc/max.png",
-    "npc/michael_penn.png",
-    "npc/morris_diamond.png",
-    "npc/mr_baron.png",
-    "npc/mr_stoker.png",
-    "npc/mr_vogel.png",
-    "npc/oliver_edwards.png",
-    "npc/ollie.png",
-    "npc/pisteur_eugene.png",
-    "npc/regina_dunbar.png",
-    "npc/silas_flynn.png",
-    "npc/theodore_mcnamera.png",
-    "orphelinat de harrisburg.png",
-    "placeholder_clothing.png",
-    "placeholder_inventory.png",
-    "placeholder_npc.png",
-    "placeholder_thread.png",
-    "placeholder_weapons.png",
-    "remington_derringer_m95.png",
-    "remington_new_model.png",
-    "smokes/12_sacagawea.png",
-    "smokes/18_jesse_james.png",
-    "smokes/34_samuel_colt.png",
-    "smokes/37_lewis_and_clark_expedition.png",
-    "spencer_m1865.jpg",
-    "straw_hat.png",
-    "threads/enterrer_caleb.png",
-    "threads/exil_dans_les_bois.png",
-    "threads/exprimer_ma_gratitude.png",
-    "threads/la_part_d_ombre_de_benjamin.png",
-    "threads/la_traque_d_eugene.png",
-    "threads/le_secret_du_14_de_trefle.png",
-    "threads/le_vautour_et_la_proie.png",
-    "threads/retrouvailles_douloureuses.png",
-    "usa_1866.jpg"
-];
+const imageGalleryList = [];
+
 
 async function saveGameData() {
     // Update metadata for this campaign before saving
@@ -172,7 +132,7 @@ async function saveGameData() {
     }
 
     await getSaveDocRef().set(gameState);
-    console.log(`Partie [${currentSaveId}] sauvegardée sur Firebase !`);
+    console.log(`Partie [${currentSaveId}] sauvegard\u00e9e sur Firebase !`);
 
     // Sync campaigns list to Firestore for cross-device persistence
     if (auth.currentUser) {
@@ -203,10 +163,10 @@ async function loadGameData() {
 
     const doc = await getSaveDocRef().get();
     if (doc.exists) {
-        console.log(`Données chargées pour [${currentSaveId}] depuis Firebase.`);
+        console.log(`Donn\u00e9es charg\u00e9es pour [${currentSaveId}] depuis Firebase.`);
         return doc.data();
     } else {
-        console.log(`Aucune sauvegarde Firebase trouvée pour [${currentSaveId}].`);
+        console.log(`Aucune sauvegarde Firebase trouv\u00e9e pour [${currentSaveId}].`);
         return null;
     }
 }
@@ -223,7 +183,7 @@ window.recoverOrphanedCampaigns = async function () {
             const exists = campaignsList.find(c => c.id === id);
 
             if (!exists) {
-                const name = data.character?.identityFields?.name || data.character?.name || `Campagne récupérée (${id})`;
+                const name = data.character?.identityFields?.name || data.character?.name || `Campagne r\u00e9cup\u00e9r\u00e9e (${id})`;
                 const portrait = data.character?.portrait || "images/placeholder_npc.png";
                 campaignsList.push({ id, name, portrait });
                 addedCount++;
@@ -238,14 +198,14 @@ window.recoverOrphanedCampaigns = async function () {
                     currentSaveId: currentSaveId
                 }, { merge: true });
             }
-            showToast(`${addedCount} campagne(s) récupérée(s) !`, 'success');
+            showToast(`${addedCount} campagne(s) r\u00e9cup\u00e9r\u00e9e(s) !`, 'success');
             setTimeout(() => location.reload(), 1500);
         } else {
-            showToast("Aucune nouvelle campagne trouvée.", 'info');
+            showToast("Aucune nouvelle campagne trouv\u00e9e.", 'info');
         }
     } catch (error) {
-        console.error("Erreur de récupération :", error);
-        showToast("Erreur lors de la récupération. Vérifiez vos permissions Firebase.", 'error');
+        console.error("Erreur de r\u00e9cup\u00e9ration :", error);
+        showToast("Erreur lors de la r\u00e9cup\u00e9ration. V\u00e9rifiez vos permissions Firebase.", 'error');
     }
 };
 
@@ -265,7 +225,7 @@ window.createNewCampaign = async function (name) {
 window.switchCampaign = async function (id) {
     currentSaveId = id;
     localStorage.setItem('oregon_current_save_id', id);
-    
+
     // Sync current ID to Firebase settings before reload
     if (auth.currentUser) {
         await db.collection('settings').doc(auth.currentUser.uid).set({
@@ -273,7 +233,7 @@ window.switchCampaign = async function (id) {
             currentSaveId: currentSaveId
         }, { merge: true });
     }
-    
+
     location.reload();
 };
 
@@ -282,7 +242,7 @@ window.deleteCampaign = async function (id) {
         showToast("Impossible de supprimer la seule campagne restante.", 'warning');
         return;
     }
-    if (!confirm("Voulez-vous vraiment supprimer cette campagne ? Cette action est irréversible.")) return;
+    if (!confirm("Voulez-vous vraiment supprimer cette campagne ? Cette action est irr\u00e9versible.")) return;
 
     campaignsList = campaignsList.filter(c => c.id !== id);
     if (currentSaveId === id) {

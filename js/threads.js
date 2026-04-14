@@ -16,7 +16,8 @@ function renderThreads() {
         let statusText = (thread.status || "").replace(/-/g, ' ');
         statusText = statusText.charAt(0).toUpperCase() + statusText.slice(1);
 
-        let imgHtml = thread.img ? `<img src="${thread.img}" alt="${thread.title}" class="npc-portrait">` : `<img src="images/placeholder_thread.png" alt="Missing portrait" class="npc-portrait default">`;
+        let threadSrc = getCloudUrl(thread.img || "images/placeholder_thread.png");
+        let imgHtml = `<img src="${threadSrc}" alt="${thread.title}" class="npc-portrait ${!thread.img ? 'default' : ''}">`;
 
         card.innerHTML = `
             <div class="card-content" style="padding: 15px;">

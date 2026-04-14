@@ -17,7 +17,8 @@ function renderNpcs() {
             faitsHtml = `<div class="card-section" style="margin-top: 15px;"><strong>Faits marquants :</strong><p>${faitsContent}</p></div>`;
         }
 
-        let imgHtml = npc.img ? `<img src="${npc.img}" alt="${npc.name}" class="npc-portrait">` : `<img src="images/placeholder_npc.png" alt="Missing portrait" class="npc-portrait default">`;
+        let portraitSrc = getCloudUrl(npc.img || "images/placeholder_npc.png");
+        let imgHtml = `<img src="${portraitSrc}" alt="${npc.name}" class="npc-portrait ${!npc.img ? 'default' : ''}">`;
 
         card.innerHTML = `
             <div class="card-content">

@@ -123,21 +123,102 @@ function showSection(sectionId) {
     else if (sectionId === 'gallery' && typeof renderGallery === 'function') renderGallery();
 }
 
-function renderGallery() {
+async function renderGallery() {
     const container = document.getElementById('gallery-container');
     if (!container) return;
     container.innerHTML = '';
+
+    // 1. Affichage des images locales (legacy)
     imageGalleryList.forEach(imageName => {
         const itemDiv = document.createElement('div');
         itemDiv.className = 'gallery-item';
         const imagePath = `images/${imageName}`;
         itemDiv.innerHTML = `
-            <img src="${imagePath}" alt="${imageName}">
+            <img src="${imagePath}" alt="${imageName}" loading="lazy">
             <div class="gallery-item-path">${imagePath}</div>
         `;
         container.appendChild(itemDiv);
     });
+
+    // 2. Affichage des images Cloud (nouvelles)
+    cloudGallery.forEach(img => {
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'gallery-item cloud-item';
+
+        // On demande une version optimisée à Cloudinary (largeur 300px, auto format/qualité)
+        const optimizedUrl = img.url.replace('/upload/', '/upload/w_300,c_scale,f_auto,q_auto/');
+
+        itemDiv.innerHTML = `
+            <img src="${optimizedUrl}" alt="${img.fileName}" loading="lazy">
+            <div class="gallery-item-path">${img.fileName} (Cloud)</div>
+            <button class="delete-cloud-btn" onclick="deleteCloudImage('${img.id}', '${img.public_id}')" title="Supprimer">&times;</button>
+        `;
+        container.appendChild(itemDiv);
+    });
 }
+
+async function handleCloudUpload(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    if (CLOUDINARY_CONFIG.cloudName === "A_REMPLIR") {
+        showToast("Configuration Cloudinary manquante (Cloud Name).", "warning");
+        return;
+    }
+
+    showToast("Envoi en cours...", "info");
+
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('upload_preset', CLOUDINARY_CONFIG.uploadPreset);
+
+    try {
+        const response = await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_CONFIG.cloudName}/image/upload`, {
+            method: 'POST',
+            body: formData
+        });
+
+        const data = await response.json();
+
+        if (data.secure_url) {
+            // Sauvegarde dans Firestore
+            await db.collection('gallery').add({
+                public_id: data.public_id,
+                url: data.secure_url,
+                fileName: file.name,
+                createdAt: firebase.firestore.FieldValue.serverTimestamp()
+            });
+
+            showToast("Image ajoutée avec succès !", "success");
+            await syncCloudGallery();
+            renderGallery();
+        } else {
+            throw new Error(data.error?.message || "Erreur d'upload");
+        }
+    } catch (error) {
+        console.error("Erreur Cloudinary:", error);
+        showToast("Erreur lors de l'envoi : " + error.message, "error");
+    }
+}
+
+window.deleteCloudImage = async function (docId, publicId) {
+    if (!confirm("Voulez-vous supprimer cette image du Cloud ?")) return;
+
+    try {
+        // 1. Supprimer de Firestore
+        await db.collection('gallery').doc(docId).delete();
+
+        // Note: La suppression du fichier REEL sur Cloudinary nécessite une signature API
+        // Pour l'instant on le retire juste de la vue. On pourra ajouter une Netlify Function plus tard.
+
+        showToast("Image retirée de la galerie.", "success");
+        await syncCloudGallery();
+        renderGallery();
+    } catch (error) {
+        console.error(error);
+        showToast("Erreur lors de la suppression.", "error");
+    }
+};
 
 window.copyToClipboard = function (text) {
     navigator.clipboard.writeText(text).then(() => {
@@ -166,10 +247,25 @@ window.openImagePicker = function (target) {
         itemDiv.style.cursor = 'pointer';
         const imagePath = `images/${imageName}`;
         itemDiv.innerHTML = `
-            <img src="${imagePath}" alt="${imageName}">
+            <img src="${imagePath}" alt="${imageName}" loading="lazy">
             <div class="gallery-item-path">${imageName}</div>
         `;
         itemDiv.onclick = () => selectImage(imagePath, target);
+        grid.appendChild(itemDiv);
+    });
+
+    // Ajout des images Cloud dans le sélecteur
+    cloudGallery.forEach(img => {
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'gallery-item cloud-item';
+        itemDiv.style.cursor = 'pointer';
+        // Miniature optimisée
+        const optimizedUrl = img.url.replace('/upload/', '/upload/w_200,c_scale,f_auto,q_auto/');
+        itemDiv.innerHTML = `
+            <img src="${optimizedUrl}" alt="${img.fileName}" loading="lazy">
+            <div class="gallery-item-path">${img.fileName} (Cloud)</div>
+        `;
+        itemDiv.onclick = () => selectImage(img.url, target);
         grid.appendChild(itemDiv);
     });
 

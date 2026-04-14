@@ -477,7 +477,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Update character portrait from state
         const portraitDisplay = document.getElementById('character-portrait-display');
         if (portraitDisplay) {
-            portraitDisplay.style.backgroundImage = `url('${gameState.character.portrait || 'images/placeholder_npc.png'}')`;
+            const portraitUrl = getCloudUrl(gameState.character.portrait || 'images/placeholder_npc.png');
+            portraitDisplay.style.backgroundImage = `url('${portraitUrl}')`;
         }
 
         const moneyInput = document.getElementById('character-money');
@@ -491,10 +492,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // AUTH STARTUP
-    auth.onAuthStateChanged(user => {
+    auth.onAuthStateChanged(async user => {
         if (user) {
             console.log("Connecté avec l'id :", user.uid);
-            initializeApp();
+            await initializeApp();
+            await syncCloudGallery();
         } else {
             console.log("Utilisateur non authentifié.");
         }

@@ -309,6 +309,14 @@
                 </div>
                 <div id="gallery-container" class="gallery-grid">
                 </div>
+                <!-- Bouton flottant ou en bas pour l'upload -->
+                <div class="gallery-actions" style="margin-top: 20px; text-align: center;">
+                    <button class="action-button" onclick="document.getElementById('cloud-upload-input').click()">
+                        + Ajouter une photo à la bibliothèque Cloud
+                    </button>
+                    <input type="file" id="cloud-upload-input" style="display: none;"
+                        onchange="handleCloudUpload(event)" accept="image/*">
+                </div>
             </section>
         </main>
     </div>
