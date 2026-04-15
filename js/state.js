@@ -114,6 +114,8 @@ let gameState = {};
 const imageGalleryList = [];
 
 
+let lastSavedSettings = null; // Pour éviter les sauvegardes redondantes des réglages
+
 async function saveGameData() {
     // Update metadata for this campaign before saving
     const currentIdx = campaignsList.findIndex(c => c.id === currentSaveId);
@@ -134,12 +136,19 @@ async function saveGameData() {
     await getSaveDocRef().set(gameState);
     console.log(`Partie [${currentSaveId}] sauvegardée sur Firebase !`);
 
-    // Sync campaigns list to Firestore for cross-device persistence
+    // Sync campaigns list to Firestore for cross-device persistence - optimized
     if (auth.currentUser) {
-        await db.collection('settings').doc(auth.currentUser.uid).set({
+        const settingsToSave = {
             campaignsList: campaignsList,
             currentSaveId: currentSaveId
-        });
+        };
+
+        const settingsStr = JSON.stringify(settingsToSave);
+        if (settingsStr !== lastSavedSettings) {
+            await db.collection('settings').doc(auth.currentUser.uid).set(settingsToSave);
+            lastSavedSettings = settingsStr;
+            console.log("Paramètres (liste des campagnes) mis à jour sur Firebase.");
+        }
     }
     localStorage.setItem('oregon_campaigns_list', JSON.stringify(campaignsList));
 }
@@ -158,6 +167,10 @@ async function loadGameData() {
                 currentSaveId = settings.currentSaveId;
                 localStorage.setItem('oregon_current_save_id', currentSaveId);
             }
+            lastSavedSettings = JSON.stringify({
+                campaignsList: campaignsList,
+                currentSaveId: currentSaveId
+            });
         }
     }
 

@@ -236,6 +236,7 @@ async function saveJournalEntry(newContent) {
     } else {
         journalData.id = Date.now();
         gameState.journal.push(journalData);
+        currentJournalEditId = journalData.id; // Fix: Update the global ID for subsequent auto-saves
     }
     await saveGameData();
     renderJournal();
