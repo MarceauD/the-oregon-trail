@@ -67,6 +67,12 @@
             </div>
 
             <div class="nav-actions">
+                <button class="nav-button" onclick="exportFullCampaignToClipboard()" title="Copier tout le contexte de la campagne">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="width:16px; height:16px; fill:currentColor;">
+                        <path d="M288 448H64V224h64V160H64c-35.3 0-64 28.7-64 64V448c0 35.3 28.7 64 64 64H288c35.3 0 64-28.7 64-64V384H288v64zm-64-96H448c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H224c-35.3 0-64 28.7-64 64V288c0 35.3 28.7 64 64 64zm64-256a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm160 160H256V64H448V256z"/>
+                    </svg>
+                    <span>Export complet</span>
+                </button>
                 <button id="readonly-toggle" class="nav-button readonly-btn" onclick="toggleReadOnlyMode()"
                     title="Mode Lecture Seule">
                     <svg id="lock-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"

@@ -82,6 +82,95 @@ window.exportSectionToClipboard = function (type) {
         .catch(err => { console.error('Erreur lors de la copie : ', err); showToast('Une erreur est survenue lors de la copie.', 'error'); });
 };
 
+window.exportFullCampaignToClipboard = function () {
+    let output = '';
+    const separator = '\n' + '='.repeat(40) + '\n\n';
+    
+    // PREAMBLE
+    output += `CONTEXTE DE JEU DE RÔLE EN SOLITAIRE\n`;
+    output += `Tu es mon assistant de JDR et mon éditeur littéraire. Voici l'état actuel de ma campagne "The Oregon Trail".\n`;
+    output += `Utilise ces informations pour :\n`;
+    output += `1. Corriger l'orthographe et le style de mes nouveaux écrits.\n`;
+    output += `2. Vérifier la cohérence avec les personnages (PNJs) et les intrigues (Threads).\n`;
+    output += `3. Commenter la pertinence de mes choix et m'aider à brainstormer sur la suite si je te le demande.\n\n`;
+    output += separator;
+
+    // 1. CHARACTER
+    const char = gameState.character;
+    output += '=== FICHE DE PERSONNAGE ===\n\n';
+    const id = char.identityFields || {};
+    output += `--- IDENTITÉ ---\n`;
+    output += `Nom : ${id.name || 'N/A'}\n`;
+    output += `Âge : ${id.age || 'N/A'}\n`;
+    output += `Origine : ${id.origin || 'N/A'}\n`;
+    output += `Profession : ${id.profession || 'N/A'}\n\n`;
+    output += `--- HISTOIRE ---\n${char.history || ''}\n\n`;
+    output += `--- ÉCONOMIE ---\nMonnaie : $${(char.money || 0).toFixed(2)}\n\n`;
+    output += '--- STATISTIQUES ---\n';
+    char.stats.forEach(s => { output += `${s.name}: ${s.value}\n`; });
+    output += '\n--- COMPÉTENCES ---\n';
+    char.skills.forEach(s => { output += `${s.name}: ${s.value}\n`; });
+    output += '\n--- POINTS FORTS ---\n';
+    char.strengths.forEach(s => { output += `- ${s.text}\n`; });
+    output += '\n--- POINTS FAIBLES ---\n';
+    char.weaknesses.forEach(w => { output += `- ${w.text}\n`; });
+    output += '\n--- INVENTAIRE ---\n';
+    for (const category in char.inventory) {
+        if (char.inventory[category].length > 0) {
+            output += `\n> ${category.charAt(0).toUpperCase() + category.slice(1)}\n`;
+            char.inventory[category].forEach(item => { output += `- ${item.name || item.text}\n`; });
+        }
+    }
+    output += separator;
+
+    // 2. NPCs
+    output += '=== PERSONNAGES NON-JOUABLES ===\n\n';
+    gameState.npcs.forEach(npc => {
+        let statusText = (npc.status || '').replace(/-/g, ' ');
+        output += `Nom: ${npc.name}\nStatut: ${statusText}\nDescription: ${npc.description}\n`;
+        if (npc.faitsMarquants) output += `Faits marquants: ${npc.faitsMarquants}\n`;
+        output += '---\n';
+    });
+    output += separator;
+
+    // 3. THREADS
+    output += '=== THREADS (INTRIGUES EN COURS) ===\n\n';
+    gameState.threads.forEach(thread => {
+        let statusText = (thread.status || '').replace(/-/g, ' ');
+        output += `Titre: ${thread.title}\nLieu: ${thread.location}\nStatut: ${statusText}\nDescription: ${thread.description}\n`;
+        output += '---\n';
+    });
+    output += separator;
+
+    // 4. MAP ROUTE
+    output += '=== ITINÉRAIRE (CARTE) ===\n\n';
+    if (gameState.route && gameState.route.length > 0) {
+        gameState.route.forEach((point, index) => {
+            output += `${index + 1}. ${point.city || 'Étape'} (${point.type || 'Inconnu'})\n`;
+        });
+    } else {
+        output += 'Aucun itinéraire tracé.\n';
+    }
+    output += separator;
+
+    // 5. JOURNAL
+    output += '=== JOURNAL DE BORD ===\n\n';
+    const sortedJournal = [...gameState.journal].sort((a, b) => new Date(a.date) - new Date(b.date));
+    const tempDiv = document.createElement('div');
+    sortedJournal.forEach(item => {
+        const date = new Date(item.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+        tempDiv.innerHTML = item.entry;
+        output += `Date: ${date}\n${tempDiv.textContent || tempDiv.innerText || ""}\n\n`;
+    });
+
+    navigator.clipboard.writeText(output).then(() => {
+        showToast('Campagne complète copiée dans le presse-papiers !', 'success');
+    }).catch(err => {
+        console.error('Erreur export complet:', err);
+        showToast('Erreur lors de l\'exportation.', 'error');
+    });
+};
+
 window.exportSingleItem = function (type, id) {
     let output = '';
     let item;
