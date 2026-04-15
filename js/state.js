@@ -186,24 +186,39 @@ async function loadGameData() {
 
 window.recoverOrphanedCampaigns = async function () {
     try {
-        showToast("Recherche de campagnes en cours...", 'info');
+        showToast("Synchronisation des campagnes...", 'info');
         const snapshot = await db.collection('saves').get();
         let addedCount = 0;
+        let updatedCount = 0;
 
         for (const doc of snapshot.docs) {
             const id = doc.id;
             const data = doc.data();
-            const exists = campaignsList.find(c => c.id === id);
+            
+            const name = data.character?.identityFields?.name || data.character?.name || `Campagne r\u00e9cup\u00e9r\u00e9e (${id})`;
+            const portrait = data.character?.portrait || "images/placeholder_npc.png";
 
-            if (!exists) {
-                const name = data.character?.identityFields?.name || data.character?.name || `Campagne r\u00e9cup\u00e9r\u00e9e (${id})`;
-                const portrait = data.character?.portrait || "images/placeholder_npc.png";
+            const existingIndex = campaignsList.findIndex(c => c.id === id);
+
+            if (existingIndex === -1) {
                 campaignsList.push({ id, name, portrait });
                 addedCount++;
+            } else {
+                let updated = false;
+                const c = campaignsList[existingIndex];
+                if (c.name !== name) {
+                    c.name = name;
+                    updated = true;
+                }
+                if (c.portrait !== portrait) {
+                    c.portrait = portrait;
+                    updated = true;
+                }
+                if (updated) updatedCount++;
             }
         }
 
-        if (addedCount > 0) {
+        if (addedCount > 0 || updatedCount > 0) {
             localStorage.setItem('oregon_campaigns_list', JSON.stringify(campaignsList));
             if (auth.currentUser) {
                 await db.collection('settings').doc(auth.currentUser.uid).set({
@@ -211,10 +226,20 @@ window.recoverOrphanedCampaigns = async function () {
                     currentSaveId: currentSaveId
                 }, { merge: true });
             }
-            showToast(`${addedCount} campagne(s) r\u00e9cup\u00e9r\u00e9e(s) !`, 'success');
+            
+            let message = "";
+            if (addedCount > 0 && updatedCount > 0) {
+                message = `${addedCount} campagne(s) ajout\u00e9e(s) et ${updatedCount} mise(s) \u00e0 jour !`;
+            } else if (addedCount > 0) {
+                message = `${addedCount} campagne(s) r\u00e9cup\u00e9r\u00e9e(s) !`;
+            } else {
+                message = `${updatedCount} miniature(s) mise(s) \u00e0 jour !`;
+            }
+            
+            showToast(message, 'success');
             setTimeout(() => location.reload(), 1500);
         } else {
-            showToast("Aucune nouvelle campagne trouv\u00e9e.", 'info');
+            showToast("Toutes les campagnes sont d\u00e9j\u00e0 \u00e0 jour.", 'info');
         }
     } catch (error) {
         console.error("Erreur de r\u00e9cup\u00e9ration :", error);
