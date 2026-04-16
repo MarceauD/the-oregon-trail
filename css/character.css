@@ -634,25 +634,7 @@
     margin-top: 5px;
 }
 
-.sync-campaigns-btn {
-    background-color: var(--surface-color);
-    color: var(--accent-color);
-    border: 1px solid var(--border-color);
-    border-radius: 50%;
-    width: 32px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
 
-.sync-campaigns-btn:hover {
-    background-color: var(--accent-color);
-    color: var(--bg-color);
-    transform: rotate(180deg);
-}
 
 /* Styles des nouveaux boutons "+" */
 .add-btn-round {

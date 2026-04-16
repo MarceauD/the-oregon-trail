@@ -85,7 +85,7 @@ window.exportSectionToClipboard = function (type) {
 window.exportFullCampaignToClipboard = function () {
     let output = '';
     const separator = '\n' + '='.repeat(40) + '\n\n';
-    
+
     // PREAMBLE
     output += `CONTEXTE DE JEU DE RÔLE EN SOLITAIRE\n`;
     output += `Tu es mon assistant de JDR et mon éditeur littéraire. Voici l'état actuel de ma campagne "The Oregon Trail".\n`;
@@ -424,10 +424,16 @@ window.closeModal = function () {
 window.deleteItem = async function (type, id) {
     if (isReadOnly) return;
     if (confirm('Êtes-vous sûr de vouloir supprimer cet élément ?')) {
-        if (type === 'npc') { gameState.npcs = gameState.npcs.filter(npc => npc.id !== id); }
-        else if (type === 'thread') { gameState.threads = gameState.threads.filter(thread => thread.id !== id); }
-        else if (type === 'journal') { gameState.journal = gameState.journal.filter(j => j.id !== id); }
-        await saveGameData();
+        if (type === 'npc') {
+            gameState.npcs = gameState.npcs.filter(npc => npc.id !== id);
+            await savePartialData('npcs', gameState.npcs);
+        } else if (type === 'thread') {
+            gameState.threads = gameState.threads.filter(thread => thread.id !== id);
+            await savePartialData('threads', gameState.threads);
+        } else if (type === 'journal') {
+            gameState.journal = gameState.journal.filter(j => j.id !== id);
+            await savePartialData('journal', gameState.journal);
+        }
         renderAll();
     }
 };
@@ -441,7 +447,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const addThreadBtn = document.getElementById('add-thread-button');
     if (addThreadBtn) addThreadBtn.addEventListener('click', () => openModal('thread'));
     const addJournalBtn = document.getElementById('add-journal-button');
-    if (addJournalBtn) addJournalBtn.addEventListener('click', () => openModal('journal'));
+    if (addJournalBtn) addJournalBtn.addEventListener('click', () => addInlineJournalEntry());
 
     const closeModalBtn = document.getElementById('modal-close-button');
     if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
@@ -518,7 +524,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            if (type !== 'journal') await saveGameData(); // journal already saved
+            if (type === 'npc') {
+                await savePartialData('npcs', gameState.npcs);
+            } else if (type === 'thread') {
+                await savePartialData('threads', gameState.threads);
+            }
+            // journal already saved via saveJournalEntry
             renderAll();
             closeModal();
         });
@@ -565,7 +576,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (base64) {
             gameState.character.portrait = base64;
             document.getElementById('character-portrait-display').style.backgroundImage = `url('${base64}')`;
-            await saveGameData();
+            await savePartialData('character.portrait', base64);
             initCampaignBubbles(); // Refresh bubbles too
         }
     };
@@ -593,6 +604,11 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             showToast('Veuillez entrer un nom pour votre campagne.', 'warning');
         }
+    };
+
+    window.toggleShortcutsHelp = function () {
+        const overlay = document.getElementById('shortcuts-help-overlay');
+        if (overlay) overlay.classList.toggle('active');
     };
 
     async function initializeApp() {

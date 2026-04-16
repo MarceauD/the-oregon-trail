@@ -43,19 +43,25 @@ function renderCharacterHistory() {
 
 window.updateCharacterIdentity = async function (field, newValue) {
     if (isReadOnly) return;
-    if (!gameState.character.identityFields) gameState.character.identityFields = {};
-    gameState.character.identityFields[field] = newValue.trim();
-    await saveGameData();
+    const value = newValue.trim();
+    await savePartialData(`character.identityFields.${field}`, value);
 }
 
 window.updateCharacterHistory = async function (newValue) {
     if (isReadOnly) return;
-    gameState.character.history = newValue.trim();
-    await saveGameData();
+    const value = newValue.trim();
+    await savePartialData('character.history', value);
 }
 
 function renderCharacterSheet() {
     if (!gameState.character) return;
+
+    // Mise à jour de l'état désactivé du champ argent
+    const moneyInput = document.getElementById('character-money');
+    if (moneyInput) {
+        moneyInput.disabled = isReadOnly;
+    }
+
     renderCharacterIdentity();
     renderCharacterHistory();
     renderEditableList('stats', 'Statistique', false);
@@ -325,7 +331,7 @@ window.updateCharacterItemText = async function (key, id, property, newText) {
         const item = list.find(i => i.id === id);
         if (item) {
             item[property] = newText.trim();
-            await saveGameData();
+            await savePartialData(`character.${key}`, list);
         }
     }
 };
@@ -397,7 +403,7 @@ window.updateCharacterItemValue = async (key, id, newValue) => {
     const item = gameState.character[key].find(i => i.id === id);
     if (item) {
         item.value = parseInt(newValue, 10);
-        await saveGameData();
+        await savePartialData(`character.${key}`, gameState.character[key]);
     }
 };
 
@@ -416,14 +422,12 @@ window.deleteCharacterItem = async (key, id) => {
 document.addEventListener('DOMContentLoaded', () => {
     const moneyInput = document.getElementById('character-money');
     if (moneyInput) {
-        moneyInput.disabled = isReadOnly;
         moneyInput.addEventListener('change', async () => {
             if (isReadOnly) return;
             const newAmount = parseFloat(moneyInput.value);
             if (!isNaN(newAmount)) {
                 if (!gameState.character) gameState.character = {};
-                gameState.character.money = newAmount;
-                await saveGameData();
+                await savePartialData('character.money', newAmount);
                 moneyInput.value = newAmount.toFixed(2);
                 showToast("Porte-monnaie mis à jour !", "success");
             } else {

@@ -189,22 +189,38 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // Gestion de la recherche dans le journal
+    const journalSearch = document.getElementById('journal-search');
+    if (journalSearch) {
+        journalSearch.addEventListener('input', () => {
+            renderJournal();
+        });
+    }
 });
 
 function renderJournal() {
     const journalContent = document.getElementById('journal-content');
     if (!journalContent) return;
+
+    const query = document.getElementById('journal-search')?.value.toLowerCase() || "";
     journalContent.innerHTML = '';
+
     const sortedJournal = [...gameState.journal].sort((a, b) => new Date(b.date) - new Date(a.date));
 
     sortedJournal.forEach(item => {
+        // Filtrage par recherche
+        const dateText = new Date(item.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }).toLowerCase();
+        const contentText = item.entry.toLowerCase();
+        if (query && !dateText.includes(query) && !contentText.includes(query)) return;
+
         const entryDiv = document.createElement('div');
         entryDiv.className = 'journal-entry';
         entryDiv.innerHTML = `
             <div class="journal-header">
                 <p class="journal-date">${new Date(item.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
                 <div class="button-group">
-                    <button class="card-button" onclick="openModal('journal', ${item.id})" title="${isReadOnly ? 'Voir' : 'Modifier'}">
+                    <button class="card-button" onclick="toggleInlineEdit(${item.id})" title="${isReadOnly ? 'Voir' : 'Modifier'}">
                         ${isReadOnly ?
                 '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 158.8 17.9 198.8 0 256s17.9 97.2 47.4 143.4C96.5 443.2 161.2 480 288 480s191.5-36.8 238.6-80.6C558.1 353.2 576 313.2 576 256s-17.9-97.2-47.4-143.4C434.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0z"/></svg>' :
                 '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z"/></svg>'}
@@ -215,16 +231,115 @@ function renderJournal() {
                     </button>` : ''}
                 </div>
             </div>
-            <div class="journal-content-display">
+            <div id="journal-body-${item.id}" class="journal-content-display" 
+                 onclick="if(!isReadOnly) toggleInlineEdit(${item.id})" 
+                 title="${!isReadOnly ? 'Cliquer pour modifier' : ''}" 
+                 style="${!isReadOnly ? 'cursor: pointer;' : ''}">
                 ${item.entry} 
+            </div>
+            <div id="journal-footer-${item.id}" class="inline-editor-footer" style="display:none;">
+                <button class="action-button small" onclick="saveInlineEdit(${item.id})">Enregistrer</button>
+                <button class="action-button small secondary" onclick="cancelInlineEdit(${item.id})">Annuler</button>
             </div>
         `;
         journalContent.appendChild(entryDiv);
     });
 }
 
+async function toggleInlineEdit(id) {
+    if (isReadOnly) return;
+
+    const bodyId = `journal-body-${id}`;
+    const footerId = `journal-footer-${id}`;
+    const entryBody = document.getElementById(bodyId);
+    const entryFooter = document.getElementById(footerId);
+
+    if (!entryBody) return;
+
+    // Si on est déjà en cours d'édition (TinyMCE actif sur cet élément)
+    if (tinymce.get(bodyId)) {
+        tinymce.get(bodyId).focus();
+        return;
+    }
+
+    // Sinon, on initialise TinyMCE en mode inline
+    tinymce.init({
+        selector: `#${bodyId}`,
+        inline: true,
+        license_key: 'gpl',
+        plugins: 'lists link image table code forecolor',
+        toolbar: 'bold italic underline forecolor | blocks | jet oracle gallery | link image | alignleft aligncenter alignright',
+        menubar: false,
+        skin: 'oxide-dark',
+        content_css: 'dark',
+        setup: (editor) => {
+            editor.on('init', () => {
+                editor.focus();
+                // Afficher le footer
+                if (entryFooter) entryFooter.style.display = 'flex';
+            });
+        }
+    });
+}
+
+window.toggleInlineEdit = toggleInlineEdit;
+
+window.addInlineJournalEntry = async function () {
+    if (isReadOnly) return;
+
+    // Créer une nouvelle ID et une date (lendemain de la plus récente ou aujourd'hui)
+    const newId = Date.now();
+    let newDate = new Date().toISOString().split('T')[0];
+
+    if (gameState.journal.length > 0) {
+        const sorted = [...gameState.journal].sort((a, b) => new Date(b.date) - new Date(a.date));
+        const latest = new Date(sorted[0].date);
+        latest.setDate(latest.getDate() + 1);
+        newDate = latest.toISOString().split('T')[0];
+    }
+
+    const newEntry = {
+        id: newId,
+        date: newDate,
+        entry: "<p>Nouvelle pensée...</p>"
+    };
+
+    gameState.journal.unshift(newEntry); // Ajouter au début pour visibilité immédiate
+    await savePartialData('journal', gameState.journal);
+    renderJournal();
+
+    // Activer l'édition après un court délai pour l'injection DOM
+    setTimeout(() => toggleInlineEdit(newId), 150);
+};
+
+window.saveInlineEdit = async function (id) {
+    const bodyId = `journal-body-${id}`;
+    const editor = tinymce.get(bodyId);
+    if (editor) {
+        const newContent = editor.getContent();
+        const index = gameState.journal.findIndex(j => j.id === id);
+        if (index > -1) {
+            gameState.journal[index].entry = newContent;
+            await savePartialData('journal', gameState.journal);
+        }
+        editor.destroy();
+        renderJournal();
+    }
+};
+
+window.cancelInlineEdit = function (id) {
+    const bodyId = `journal-body-${id}`;
+    const editor = tinymce.get(bodyId);
+    if (editor) {
+        editor.destroy();
+        renderJournal();
+    }
+};
+
 async function saveJournalEntry(newContent) {
-    const id = currentJournalEditId; // vient de main.js
+    // Cette fonction est conservée pour la compatibilité avec main.js si nécessaire,
+    // mais on privilégie saveInlineEdit pour le flux fluide.
+    const id = currentJournalEditId;
     const journalData = {
         date: (id ? gameState.journal.find(j => j.id === id).date : document.getElementById('journal-date').value),
         entry: newContent
@@ -236,9 +351,8 @@ async function saveJournalEntry(newContent) {
     } else {
         journalData.id = Date.now();
         gameState.journal.push(journalData);
-        currentJournalEditId = journalData.id; // Fix: Update the global ID for subsequent auto-saves
     }
-    await saveGameData();
+    await savePartialData('journal', gameState.journal);
     renderJournal();
 }
 

@@ -54,6 +54,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (modalOverlay && modalOverlay.classList.contains('active') && typeof closeModal === 'function') {
                 closeModal();
             }
+            const helpOverlay = document.getElementById('shortcuts-help-overlay');
+            if (helpOverlay && helpOverlay.classList.contains('active')) {
+                toggleShortcutsHelp();
+            }
         }
         if (e.altKey) {
             e.preventDefault();

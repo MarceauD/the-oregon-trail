@@ -310,3 +310,34 @@
     height: 100%;
     border: none;
 }
+
+/* --- Inline Editor Controls --- */
+.inline-editor-footer {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px dashed var(--border-color);
+    justify-content: flex-end;
+}
+
+.action-button.small {
+    padding: 6px 15px;
+    font-size: 0.85em;
+    min-width: unset;
+}
+
+/* Style de focus pour l'éditeur inline */
+.journal-content-display.tox-edit-focus {
+    outline: none !important;
+    background-color: rgba(255, 255, 255, 0.02);
+    border-radius: 4px;
+    padding: 5px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.tox-tinymce-inline {
+    border: 1px solid var(--accent-color) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
+    border-radius: 8px !important;
+}

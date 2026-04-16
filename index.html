@@ -67,9 +67,11 @@
             </div>
 
             <div class="nav-actions">
-                <button class="nav-button export-context-btn" onclick="exportFullCampaignToClipboard()" title="Copier tout le contexte de la campagne">
+                <button class="nav-button export-context-btn" onclick="exportFullCampaignToClipboard()"
+                    title="Copier tout le contexte de la campagne">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                        <path d="M288 448H64V224h64V160H64c-35.3 0-64 28.7-64 64V448c0 35.3 28.7 64 64 64H288c35.3 0 64-28.7 64-64V384H288v64zm-64-96H448c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H224c-35.3 0-64 28.7-64 64V288c0 35.3 28.7 64 64 64zm64-256a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm160 160H256V64H448V256z"/>
+                        <path
+                            d="M288 448H64V224h64V160H64c-35.3 0-64 28.7-64 64V448c0 35.3 28.7 64 64 64H288c35.3 0 64-28.7 64-64V384H288v64zm-64-96H448c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H224c-35.3 0-64 28.7-64 64V288c0 35.3 28.7 64 64 64zm64-256a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm160 160H256V64H448V256z" />
                     </svg>
                 </button>
                 <button id="readonly-toggle" class="nav-button readonly-btn" onclick="toggleReadOnlyMode()"
@@ -81,6 +83,9 @@
                     </svg>
                     <span id="readonly-text">Lecture</span>
                 </button>
+                <button class="nav-button help-btn" onclick="toggleShortcutsHelp()" title="Raccourcis Clavier">
+                    <span style="font-weight: bold;">?</span>
+                </button>
             </div>
         </nav>
 
@@ -89,14 +94,6 @@
                 <div class="section-header">
                     <h2>Fiche de Personnage</h2>
                     <div class="campaign-manager">
-                        <button class="sync-campaigns-btn" onclick="recoverOrphanedCampaigns()"
-                            title="Synchroniser les miniatures et récupérer les campagnes">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
-                                style="width:16px; height:16px; fill:currentColor;">
-                                <path
-                                    d="M463.5 224H472c13.3 0 24-10.7 24-24V72c0-9.7-5.8-18.5-14.8-22.2s-19.3-1.7-26.2 5.2L413.4 96.6c-87.6-86.5-228.7-86.2-315.8 1c-87.5 87.5-87.5 229.3 0 316.8s229.3 87.5 316.8 0c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0c-62.5 62.5-163.8 62.5-226.3 0s-62.5-163.8 0-226.3c62.2-62.2 162.7-62.5 225.3-1L327 183c-6.9 6.9-8.9 17.2-5.2 26.2s12.5 14.8 22.2 14.8H463.5z" />
-                            </svg>
-                        </button>
                         <div id="campaign-bubbles" class="campaign-bubbles">
                             <!-- Bubbles rendered by JS -->
                         </div>
@@ -219,11 +216,14 @@
                 <div id="thread-container" class="card-container"></div>
 
                 <div class="plot-notes-section">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
                         <h3>Carnet d'Intrigues</h3>
-                        <button class="action-button" onclick="addPlotIdea()" id="add-plot-idea-btn">Ajouter une idée</button>
+                        <button class="action-button" onclick="addPlotIdea()" id="add-plot-idea-btn">Ajouter une
+                            idée</button>
                     </div>
-                    <p class="section-subtitle">Notez ici vos idées de scènes, de rencontres ou de rebondissements futurs.</p>
+                    <p class="section-subtitle">Notez ici vos idées de scènes, de rencontres ou de rebondissements
+                        futurs.</p>
                     <div id="plot-ideas-container" class="plot-ideas-list"></div>
                 </div>
             </section>
@@ -232,6 +232,8 @@
                 <div class="section-header">
                     <h2>Journal de Bord</h2>
                     <div class="button-group">
+                        <input type="text" id="journal-search" placeholder="Rechercher dans le journal..."
+                            style="padding: 5px 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-color); color: var(--text-color); width: 220px;">
                         <button class="action-button" id="reading-mode-button">Mode Lecture</button>
                         <button class="action-button" id="export-journal-button">Exporter</button>
                         <button class="action-button" id="add-journal-button">Nouvelle Entrée</button>
@@ -480,6 +482,55 @@
     <div id="mobile-editor-container"></div>
 
 
+    </div>
+    <div id="shortcuts-help-overlay" class="modal-overlay" onclick="if(event.target === this) toggleShortcutsHelp()">
+        <div class="modal shortcuts-help-content">
+            <div class="modal-header" style="margin-bottom: 25px;">
+                <h2
+                    style="margin: 0; color: var(--accent-color); font-family: var(--font-handwriting); font-size: 2.5em;">
+                    Raccourcis Clavier</h2>
+                <button class="modal-close-button" onclick="toggleShortcutsHelp()">&times;</button>
+            </div>
+            <div class="shortcuts-list">
+                <div class="shortcut-row">
+                    <span class="shortcut-keys"><kbd>Alt</kbd> + <kbd>1</kbd></span>
+                    <span class="shortcut-label">Fiche de Personnage</span>
+                </div>
+                <div class="shortcut-row">
+                    <span class="shortcut-keys"><kbd>Alt</kbd> + <kbd>2</kbd></span>
+                    <span class="shortcut-label">Personnages rencontrés</span>
+                </div>
+                <div class="shortcut-row">
+                    <span class="shortcut-keys"><kbd>Alt</kbd> + <kbd>3</kbd></span>
+                    <span class="shortcut-label">Threads (Intrigues)</span>
+                </div>
+                <div class="shortcut-row">
+                    <span class="shortcut-keys"><kbd>Alt</kbd> + <kbd>4</kbd></span>
+                    <span class="shortcut-label">Journal de Bord</span>
+                </div>
+                <div class="shortcut-row">
+                    <span class="shortcut-keys"><kbd>Alt</kbd> + <kbd>5</kbd></span>
+                    <span class="shortcut-label">Tables Aléatoires</span>
+                </div>
+                <div class="shortcut-row">
+                    <span class="shortcut-keys"><kbd>Alt</kbd> + <kbd>6</kbd></span>
+                    <span class="shortcut-label">Carte du Voyage</span>
+                </div>
+                <div class="shortcut-row">
+                    <span class="shortcut-keys"><kbd>Alt</kbd> + <kbd>7</kbd></span>
+                    <span class="shortcut-label">Galerie d'Images</span>
+                </div>
+                <div class="shortcut-separator"></div>
+                <div class="shortcut-row">
+                    <span class="shortcut-keys"><kbd>Echap</kbd></span>
+                    <span class="shortcut-label">Fermer la modale / Annuler</span>
+                </div>
+                <div class="shortcut-row">
+                    <span class="shortcut-keys"><kbd>Entrée</kbd></span>
+                    <span class="shortcut-label">Valider les titres et stats</span>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 

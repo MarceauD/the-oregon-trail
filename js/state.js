@@ -39,6 +39,62 @@ function getSaveDocRef() {
     return db.collection('saves').doc(currentSaveId);
 }
 
+/**
+ * Mise à jour locale d'un objet imbriqué via un chemin en notation pointée (ex: "character.money")
+ */
+function setDeepValue(obj, path, value) {
+    const parts = path.split('.');
+    let current = obj;
+    for (let i = 0; i < parts.length - 1; i++) {
+        if (!current[parts[i]]) current[parts[i]] = {};
+        current = current[parts[i]];
+    }
+    current[parts[parts.length - 1]] = value;
+}
+
+// Canal de synchronisation entre onglets
+const syncChannel = new BroadcastChannel('oregon_trail_sync');
+
+syncChannel.onmessage = (event) => {
+    const { type, path, value, campaignId } = event.data;
+    // On ne traite le message que si c'est la même campagne que l'onglet actuel
+    if (type === 'STATE_UPDATE' && campaignId === currentSaveId) {
+        console.log(`[Sync] Mise à jour reçue d'un autre onglet : ${path} =`, value);
+        setDeepValue(gameState, path, value);
+        if (typeof renderAll === 'function') renderAll();
+    }
+};
+
+/**
+ * Sauvegarde chirurgicale d'un champ précis sur Firebase et diffusion aux autres onglets
+ * @param {string} path - Chemin en notation pointée (ex: "character.money")
+ * @param {any} value - Nouvelle valeur
+ */
+window.savePartialData = async function (path, value) {
+    if (isReadOnly) return;
+
+    // 1. Mise à jour locale immédiate
+    setDeepValue(gameState, path, value);
+
+    // 2. Diffusion aux autres onglets ouverts
+    syncChannel.postMessage({
+        type: 'STATE_UPDATE',
+        path,
+        value,
+        campaignId: currentSaveId
+    });
+
+    // 3. Sauvegarde sur Firebase via .update() (notation pointée gérée nativement)
+    try {
+        await getSaveDocRef().update({ [path]: value });
+        // console.log(`[Firebase] Champ mis à jour : ${path}`);
+    } catch (error) {
+        console.error(`Erreur lors de la mise à jour partielle (${path}):`, error);
+        // Fallback sur set merge si le document n'accepte pas l'update (ex: inexistant)
+        await getSaveDocRef().set(gameState, { merge: true });
+    }
+};
+
 const defaultState = {
     character: {
         portrait: "images/placeholder_npc.png",
@@ -107,42 +163,76 @@ async function saveGameData() {
         return;
     }
 
-    await getSaveDocRef().set(gameState);
+    // Sauvegarde de l'état avec fusion (merge) pour éviter d'écraser les changements concurrents sur d'autres champs
+    await getSaveDocRef().set(gameState, { merge: true });
     console.log(`Partie [${currentSaveId}] sauvegardée sur Firebase !`);
 
-    // Sync campaigns list to Firestore for cross-device persistence - optimized
+    // Mise à jour de l'index global des campagnes (nom, portrait, date)
+    if (currentIdx !== -1) {
+        const campaignMeta = campaignsList[currentIdx];
+        await db.collection('campaigns').doc(currentSaveId).set({
+            ...campaignMeta,
+            lastUpdated: firebase.firestore.FieldValue.serverTimestamp()
+        }, { merge: true });
+    }
+
+    // Sauvegarde des réglages personnels de l'utilisateur (uniquement l'ID de la session en cours)
     if (auth.currentUser) {
         const settingsToSave = {
-            campaignsList: campaignsList,
             currentSaveId: currentSaveId
         };
 
         const settingsStr = JSON.stringify(settingsToSave);
         if (settingsStr !== lastSavedSettings) {
-            await db.collection('settings').doc(auth.currentUser.uid).set(settingsToSave);
+            await db.collection('settings').doc(auth.currentUser.uid).set(settingsToSave, { merge: true });
             lastSavedSettings = settingsStr;
-            console.log("Paramètres (liste des campagnes) mis à jour sur Firebase.");
+            console.log("Session active mise à jour sur Firebase.");
         }
     }
     localStorage.setItem('oregon_campaigns_list', JSON.stringify(campaignsList));
 }
 
 async function loadGameData() {
-    // Before loading actual game data, try to sync the campaigns list from settings
+    // 1. Synchronisation de la liste GLOBALE des campagnes (Fusion Local + Cloud)
+    try {
+        const campaignsSnapshot = await db.collection('campaigns').get();
+        if (!campaignsSnapshot.empty) {
+            const cloudCampaigns = campaignsSnapshot.docs.map(doc => doc.data());
+
+            // On fusionne pour ne rien perdre du local tout en récupérant le cloud
+            cloudCampaigns.forEach(cloudCamp => {
+                const idx = campaignsList.findIndex(c => c.id === cloudCamp.id);
+                if (idx === -1) {
+                    campaignsList.push(cloudCamp);
+                } else {
+                    // On met à jour avec les infos cloud (plus fraîches normalement)
+                    campaignsList[idx] = { ...campaignsList[idx], ...cloudCamp };
+                }
+            });
+            localStorage.setItem('oregon_campaigns_list', JSON.stringify(campaignsList));
+            console.log(`${campaignsList.length} campagnes au total après fusion.`);
+        }
+    } catch (e) {
+        console.warn("Impossible de récupérer l'index global des campagnes :", e);
+    }
+
+    // 2. Récupération de sécurité (si des campagnes manquent encore à l'appel dans l'index global)
+    // On lance une récupération silencieuse des campagnes orphelines présentes dans 'saves'
+    if (typeof recoverOrphanedCampaigns === 'function') {
+        // On le fait sans toast pour ne pas polluer l'UI au chargement
+        await recoverOrphanedCampaigns(true);
+    }
+
+    // 2. Récupération de la session active de l'utilisateur
     if (auth.currentUser) {
         const settingsDoc = await db.collection('settings').doc(auth.currentUser.uid).get();
         if (settingsDoc.exists) {
             const settings = settingsDoc.data();
-            if (settings.campaignsList) {
-                campaignsList = settings.campaignsList;
-                localStorage.setItem('oregon_campaigns_list', JSON.stringify(campaignsList));
-            }
             if (settings.currentSaveId) {
                 currentSaveId = settings.currentSaveId;
                 localStorage.setItem('oregon_current_save_id', currentSaveId);
             }
             lastSavedSettings = JSON.stringify({
-                campaignsList: campaignsList,
                 currentSaveId: currentSaveId
             });
         }
@@ -158,9 +248,9 @@ async function loadGameData() {
     }
 }
 
-window.recoverOrphanedCampaigns = async function () {
+window.recoverOrphanedCampaigns = async function (silent = false) {
     try {
-        showToast("Synchronisation des campagnes...", 'info');
+        if (!silent) showToast("Synchronisation des campagnes...", 'info');
         const snapshot = await db.collection('saves').get();
         let addedCount = 0;
         let updatedCount = 0;
@@ -168,8 +258,8 @@ window.recoverOrphanedCampaigns = async function () {
         for (const doc of snapshot.docs) {
             const id = doc.id;
             const data = doc.data();
-            
-            const name = data.character?.identityFields?.name || data.character?.name || `Campagne r\u00e9cup\u00e9r\u00e9e (${id})`;
+
+            const name = data.character?.identityFields?.name || data.character?.name || `Campagne récupérée (${id})`;
             const portrait = data.character?.portrait || "images/placeholder_npc.png";
 
             const existingIndex = campaignsList.findIndex(c => c.id === id);
@@ -194,30 +284,31 @@ window.recoverOrphanedCampaigns = async function () {
 
         if (addedCount > 0 || updatedCount > 0) {
             localStorage.setItem('oregon_campaigns_list', JSON.stringify(campaignsList));
-            if (auth.currentUser) {
-                await db.collection('settings').doc(auth.currentUser.uid).set({
-                    campaignsList: campaignsList,
-                    currentSaveId: currentSaveId
-                }, { merge: true });
+
+            // Mise à jour de l'index global
+            for (const c of campaignsList) {
+                await db.collection('campaigns').doc(c.id).set(c, { merge: true });
             }
-            
-            let message = "";
-            if (addedCount > 0 && updatedCount > 0) {
-                message = `${addedCount} campagne(s) ajout\u00e9e(s) et ${updatedCount} mise(s) \u00e0 jour !`;
-            } else if (addedCount > 0) {
-                message = `${addedCount} campagne(s) r\u00e9cup\u00e9r\u00e9e(s) !`;
-            } else {
-                message = `${updatedCount} miniature(s) mise(s) \u00e0 jour !`;
+
+            if (!silent) {
+                let message = "";
+                if (addedCount > 0 && updatedCount > 0) {
+                    message = `${addedCount} campagne(s) ajoutée(s) et ${updatedCount} mise(s) à jour !`;
+                } else if (addedCount > 0) {
+                    message = `${addedCount} campagne(s) récupérée(s) !`;
+                } else {
+                    message = `${updatedCount} miniature(s) mise à jour !`;
+                }
+
+                showToast(message, 'success');
+                setTimeout(() => location.reload(), 1500);
             }
-            
-            showToast(message, 'success');
-            setTimeout(() => location.reload(), 1500);
         } else {
-            showToast("Toutes les campagnes sont d\u00e9j\u00e0 \u00e0 jour.", 'info');
+            if (!silent) showToast("Toutes les campagnes sont déjà à jour.", 'info');
         }
     } catch (error) {
-        console.error("Erreur de r\u00e9cup\u00e9ration :", error);
-        showToast("Erreur lors de la r\u00e9cup\u00e9ration. V\u00e9rifiez vos permissions Firebase.", 'error');
+        console.error("Erreur de récupération :", error);
+        if (!silent) showToast("Erreur lors de la récupération. Vérifiez vos permissions Firebase.", 'error');
     }
 };
 
@@ -241,7 +332,6 @@ window.switchCampaign = async function (id) {
     // Sync current ID to Firebase settings before reload
     if (auth.currentUser) {
         await db.collection('settings').doc(auth.currentUser.uid).set({
-            campaignsList: campaignsList,
             currentSaveId: currentSaveId
         }, { merge: true });
     }
@@ -265,5 +355,6 @@ window.deleteCampaign = async function (id) {
 
     // Deleting from Firebase
     await db.collection('saves').doc(id).delete();
+    await db.collection('campaigns').doc(id).delete();
     location.reload();
 };
