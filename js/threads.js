@@ -57,35 +57,120 @@ function renderThreads() {
         threadContainer.appendChild(card);
     });
 
-    const plotNotesTextarea = document.getElementById('plot-notes');
-    if (plotNotesTextarea) {
-        plotNotesTextarea.value = gameState.character.plotNotes || "";
-        plotNotesTextarea.disabled = isReadOnly;
+    renderPlotIdeas();
+}
 
-        if (!isReadOnly) {
-            let saveTimeout;
-            plotNotesTextarea.oninput = () => {
-                const status = document.getElementById('plot-notes-status');
-                if (status) {
-                    status.textContent = "Modifications en cours...";
-                    status.classList.add('syncing');
-                }
+function renderPlotIdeas() {
+    const container = document.getElementById('plot-ideas-container');
+    if (!container) return;
 
-                clearTimeout(saveTimeout);
-                saveTimeout = setTimeout(async () => {
-                    gameState.character.plotNotes = plotNotesTextarea.value;
-                    await saveGameData();
-                    if (status) {
-                        status.textContent = "Tout est à jour.";
-                        status.classList.remove('syncing');
-                    }
-                }, 1000);
-            };
+    container.innerHTML = '';
+    
+    // Migration logic if plotNotes is still a string
+    if (typeof gameState.character.plotNotes === 'string') {
+        if (gameState.character.plotNotes.trim() === "") {
+            gameState.character.plotNotes = [];
         } else {
-            plotNotesTextarea.oninput = null;
+            gameState.character.plotNotes = [{
+                id: Date.now(),
+                text: gameState.character.plotNotes,
+                done: false
+            }];
         }
     }
+
+    if (!gameState.character.plotNotes || gameState.character.plotNotes.length === 0) {
+        container.innerHTML = '<p style="color:var(--text-muted); font-style:italic; text-align:center; padding: 20px;">Aucune idée notée pour le moment.</p>';
+        return;
+    }
+
+    gameState.character.plotNotes.forEach((idea) => {
+        const item = document.createElement('div');
+        item.className = `plot-idea-item ${idea.done ? 'done' : ''}`;
+        
+        item.innerHTML = `
+            <input type="checkbox" ${idea.done ? 'checked' : ''} onchange="togglePlotIdea(${idea.id})" ${isReadOnly ? 'disabled' : ''}>
+            <div class="plot-idea-content">
+                <textarea 
+                    oninput="updatePlotIdeaText(${idea.id}, this.value)" 
+                    ${isReadOnly ? 'readonly' : ''}
+                    placeholder="Votre idée..."
+                    rows="1"
+                    onkeyup="autoGrow(this)"
+                >${idea.text}</textarea>
+            </div>
+            ${!isReadOnly ? `
+                <button class="delete-idea-btn" onclick="deletePlotIdea(${idea.id})" title="Supprimer">
+                    &times;
+                </button>
+            ` : ''}
+        `;
+        container.appendChild(item);
+        
+        // Initial auto-grow
+        const textarea = item.querySelector('textarea');
+        autoGrow(textarea);
+    });
 }
+
+window.autoGrow = function(element) {
+    element.style.height = "5px";
+    element.style.height = (element.scrollHeight) + "px";
+}
+
+window.addPlotIdea = async function() {
+    if (isReadOnly) return;
+    
+    if (!Array.isArray(gameState.character.plotNotes)) {
+        gameState.character.plotNotes = [];
+    }
+
+    const newIdea = {
+        id: Date.now(),
+        text: "",
+        done: false
+    };
+
+    gameState.character.plotNotes.push(newIdea);
+    renderPlotIdeas();
+    
+    // Focus the new textarea
+    setTimeout(() => {
+        const textareas = document.querySelectorAll('#plot-ideas-container textarea');
+        if (textareas.length > 0) {
+            textareas[textareas.length - 1].focus();
+        }
+    }, 0);
+};
+
+window.togglePlotIdea = async function(id) {
+    if (isReadOnly) return;
+    const idea = gameState.character.plotNotes.find(i => i.id === id);
+    if (idea) {
+        idea.done = !idea.done;
+        await saveGameData();
+        renderPlotIdeas();
+    }
+};
+
+window.updatePlotIdeaText = function(id, text) {
+    if (isReadOnly) return;
+    const idea = gameState.character.plotNotes.find(i => i.id === id);
+    if (idea) {
+        idea.text = text;
+        // Simple debounced save without visual indicator
+        clearTimeout(window.plotNotesSaveTimeout);
+        window.plotNotesSaveTimeout = setTimeout(() => saveGameData(), 1000);
+    }
+};
+
+window.deletePlotIdea = async function(id) {
+    if (isReadOnly) return;
+    if (!confirm("Supprimer cette idée ?")) return;
+    gameState.character.plotNotes = gameState.character.plotNotes.filter(i => i.id !== id);
+    await saveGameData();
+    renderPlotIdeas();
+};
 
 document.addEventListener('DOMContentLoaded', () => {
     const searchThread = document.getElementById('search-thread');

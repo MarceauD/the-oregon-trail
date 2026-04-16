@@ -44,69 +44,43 @@ const defaultState = {
         portrait: "images/placeholder_npc.png",
         money: 0.00,
         identityFields: {
-            name: "Edward 'Eddy' Dunbar",
-            age: "18 ans",
-            origin: "Harrisburg, Pennsylvanie",
-            profession: "Fugitif"
+            name: "Nouveau Voyageur",
+            age: "Âge",
+            origin: "Origine",
+            profession: "Profession"
         },
-        history: "Edward 'Eddy' Dunbar...",
+        history: "L'histoire de votre personnage...",
         stats: [
-            { id: 1, name: "Force", value: 60 },
-            { id: 2, name: "Endurance", value: 80 },
+            { id: 1, name: "Force", value: 50 },
+            { id: 2, name: "Endurance", value: 50 },
             { id: 3, name: "Charisme", value: 50 },
-            { id: 4, name: "Connaissances", value: 30 },
-            { id: 5, name: "Combat", value: 45 },
-            { id: 6, name: "Perception", value: 65 },
-            { id: 7, name: "Persuasion", value: 70 },
-            { id: 8, name: "Survie", value: 35 },
-            { id: 9, name: "Agilit\u00e9", value: 50 },
-            { id: 10, name: "Discr\u00e9tion", value: 65 },
-            { id: 11, name: "Dext\u00e9rit\u00e9", value: 40 },
+            { id: 4, name: "Connaissances", value: 50 },
+            { id: 5, name: "Combat", value: 50 },
+            { id: 6, name: "Perception", value: 50 },
+            { id: 7, name: "Persuasion", value: 50 },
+            { id: 8, name: "Survie", value: 50 },
+            { id: 9, name: "Agilité", value: 50 },
+            { id: 10, name: "Discrétion", value: 50 },
+            { id: 11, name: "Dextérité", value: 50 },
         ],
-        skills: [
-            { id: 101, name: "R\u00e9silience", value: 85 },
-            { id: 102, name: "D\u00e9brouillardise", value: 60 },
-            { id: 103, name: "Jeu d'instrument", value: 60 },
-            { id: 104, name: "Attaque sournoise", value: 70 },
-            { id: 105, name: "Fuite", value: 65 },
-            { id: 109, name: "Lecture", value: 5 },
-            { id: 110, name: "Ecriture", value: 5 },
-            { id: 111, name: "Equitation", value: 10 },
-        ],
-        specificKnowledge: [
-            { id: 201, name: "Hard Times Come Again No More", description: "Triste et lent" }
-        ],
+        skills: [],
+        specificKnowledge: [],
         physicalState: [],
         mentalState: [],
-        strengths: [
-            { id: 301, text: "R\u00e9silience" },
-            { id: 302, text: "Loyaut\u00e9" },
-            { id: 303, text: "Droiture" },
-        ],
-        weaknesses: [
-            { id: 401, text: "Manque de confiance" },
-            { id: 402, text: "Ignorant" },
-            { id: 403, text: "M\u00e9fiant" },
-        ],
+        strengths: [],
+        weaknesses: [],
         inventory: {
             firearms: [],
             clothing: [],
             companions: [],
-            general: [
-                { id: 801, text: "V\u00eatements vieux et sales", isAvailable: true },
-                { id: 802, text: "Bottes de marche us\u00e9es", isAvailable: true },
-                { id: 807, text: "Instrument de musique", isAvailable: true },
-                { id: 808, text: "Nourriture", isAvailable: true },
-            ]
+            general: []
         },
-        plotNotes: "" // Carnet d'intrigues
+        plotNotes: [] // Liste d'idées de scénario
     },
     npcs: [],
     threads: [],
     journal: [],
-    route: [
-        { id: 1, city: "Harrisburg", x: 3164, y: 1013, type: "major-city", labelPosition: "top-right" },
-    ]
+    route: []
 };
 
 let gameState = {};

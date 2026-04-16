@@ -209,6 +209,16 @@ nav button.nav-button.active {
     border-color: var(--text-color);
 }
 
+.nav-actions .export-context-btn {
+    width: 45px;
+    height: 45px;
+}
+
+.nav-actions .export-context-btn svg {
+    width: 32px;
+    height: 32px;
+}
+
 .nav-actions button svg {
     width: 16px;
     height: 16px;
@@ -503,30 +513,91 @@ input[type=number] {
     font-style: italic;
 }
 
-.plot-notes-textarea {
-    width: 100%;
-    min-height: 250px;
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius-sm);
-    color: var(--text-color);
-    padding: 15px;
-    font-family: var(--font-handwriting);
-    font-size: 1.2em;
-    line-height: 1.5;
-    resize: vertical;
-    transition: all 0.3s ease;
+.plot-ideas-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
-.plot-notes-textarea:focus {
+.plot-idea-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 12px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    transition: all 0.2s ease;
+}
+
+.plot-idea-item:hover {
+    border-color: rgba(245, 158, 11, 0.4);
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.plot-idea-item.done {
+    opacity: 0.6;
+    border-color: transparent;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.plot-idea-item.done .plot-idea-content textarea {
+    text-decoration: line-through;
+    color: var(--text-muted);
+}
+
+.plot-idea-item input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-top: 5px;
+    cursor: pointer;
+    accent-color: var(--accent-color);
+}
+
+.plot-idea-content {
+    flex: 1;
+}
+
+.plot-idea-content textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    color: var(--text-color);
+    font-family: var(--font-serif); /* More readable font */
+    font-size: 1.05em;
+    line-height: 1.4;
+    resize: none;
+    min-height: 1.4em;
+    overflow: hidden;
+}
+
+.plot-idea-content textarea:focus {
     outline: none;
-    border-color: var(--accent-color);
-    background: rgba(0, 0, 0, 0.4);
-    box-shadow: 0 0 10px rgba(245, 158, 11, 0.1);
+    box-shadow: none;
+}
+
+.delete-idea-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.5em;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0 5px;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.delete-idea-btn:hover {
+    color: var(--delete-color);
 }
 
 .plot-notes-footer {
-    margin-top: 10px;
+    margin-top: 15px;
     display: flex;
     justify-content: flex-end;
 }

@@ -67,8 +67,8 @@
             </div>
 
             <div class="nav-actions">
-                <button class="nav-button" onclick="exportFullCampaignToClipboard()" title="Copier tout le contexte de la campagne">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="width:18px; height:18px; fill:currentColor;">
+                <button class="nav-button export-context-btn" onclick="exportFullCampaignToClipboard()" title="Copier tout le contexte de la campagne">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                         <path d="M288 448H64V224h64V160H64c-35.3 0-64 28.7-64 64V448c0 35.3 28.7 64 64 64H288c35.3 0 64-28.7 64-64V384H288v64zm-64-96H448c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H224c-35.3 0-64 28.7-64 64V288c0 35.3 28.7 64 64 64zm64-256a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm160 160H256V64H448V256z"/>
                     </svg>
                 </button>
@@ -219,14 +219,12 @@
                 <div id="thread-container" class="card-container"></div>
 
                 <div class="plot-notes-section">
-                    <h3>Carnet d'Intrigues</h3>
-                    <p class="section-subtitle">Notez ici vos idées de scènes, de rencontres ou de rebondissements
-                        futurs.</p>
-                    <textarea id="plot-notes" class="plot-notes-textarea"
-                        placeholder="Ex: Rencontre avec un ancien soldat de la guerre civile près de la rivière..."></textarea>
-                    <div class="plot-notes-footer">
-                        <span id="plot-notes-status">Tout est à jour.</span>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                        <h3>Carnet d'Intrigues</h3>
+                        <button class="action-button" onclick="addPlotIdea()" id="add-plot-idea-btn">Ajouter une idée</button>
                     </div>
+                    <p class="section-subtitle">Notez ici vos idées de scènes, de rencontres ou de rebondissements futurs.</p>
+                    <div id="plot-ideas-container" class="plot-ideas-list"></div>
                 </div>
             </section>
 
