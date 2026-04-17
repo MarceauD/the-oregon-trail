@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
             plugins: 'lists link image table code help wordcount fullscreen forecolor quickbars',
             toolbar: 'bold italic underline forecolor | blocks | jet oracle gallery | link image | alignleft aligncenter alignright | fullscreen',
             quickbars_selection_toolbar: 'bold italic | jet oracle gallery',
-            quickbars_insert_toolbar: 'jet oracle gallery',
+            quickbars_insert_toolbar: false,
             language: 'fr_FR',
             menubar: false,
             skin: 'oxide-dark',
@@ -35,159 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     editor.selection.scrollIntoView();
                 });
 
-                // Bouton Jet (Stat / Compétence)
-                editor.ui.registry.addButton('jet', {
-                    text: '🎲 Jet',
-                    onAction: () => {
-                        const char = gameState.character;
-                        if (!char) {
-                            showToast("Aucun personnage chargé.", 'error');
-                            return;
-                        }
-
-                        const stats = (char.stats || []).map(s => ({ text: `Stat: ${s.name} (${s.value})`, value: `${s.name}|${s.value}` }));
-                        const skills = (char.skills || []).map(s => ({ text: `Skill: ${s.name} (${s.value})`, value: `${s.name}|${s.value}` }));
-
-                        const openDialog = (currentValueList, currentType) => {
-                            editor.windowManager.open({
-                                title: 'Lancer un dé (1D100)',
-                                body: {
-                                    type: 'panel',
-                                    items: [
-                                        {
-                                            type: 'selectbox',
-                                            name: 'typeSelection',
-                                            label: 'Catégorie',
-                                            items: [
-                                                { text: 'Statistiques', value: 'stats' },
-                                                { text: 'Compétences', value: 'skills' }
-                                            ]
-                                        },
-                                        {
-                                            type: 'selectbox',
-                                            name: 'targetSelection',
-                                            label: 'Cible',
-                                            items: currentValueList
-                                        }
-                                    ]
-                                },
-                                initialData: {
-                                    typeSelection: currentType
-                                },
-                                buttons: [
-                                    { type: 'cancel', text: 'Annuler' },
-                                    { type: 'submit', text: 'Lancer !', primary: true }
-                                ],
-                                onChange: (api, details) => {
-                                    if (details.name === 'typeSelection') {
-                                        const newType = api.getData().typeSelection;
-                                        api.close();
-                                        openDialog(newType === 'stats' ? stats : skills, newType);
-                                    }
-                                },
-                                onSubmit: (api) => {
-                                    const data = api.getData();
-                                    const [name, value] = data.targetSelection.split('|');
-                                    const targetValue = parseInt(value);
-                                    const roll = Math.floor(Math.random() * 100) + 1;
-
-                                    let resultText = "";
-                                    if (roll <= 5) resultText = "Réussite Critique !";
-                                    else if (roll >= 95) resultText = "Échec Critique !";
-                                    else if (roll <= targetValue) resultText = "Réussite.";
-                                    else resultText = "Échec.";
-
-                                    const output = `<p><span class="jet-result">Jet de ${name} : ${roll}/${targetValue}. ${resultText}</span></p><p>&nbsp;</p>`;
-                                    editor.insertContent(output);
-                                    api.close();
-                                }
-                            });
-                        };
-
-                        openDialog(stats, 'stats');
-                    }
-                });
-
-                // Bouton Galerie
-                editor.ui.registry.addButton('gallery', {
-                    icon: 'image',
-                    tooltip: 'Insérer une image de la bibliothèque',
-                    onAction: () => {
-                        if (typeof openImagePicker === 'function') {
-                            openImagePicker((path) => {
-                                editor.insertContent(`<img src="${path}" alt="Image RPG">`);
-                            });
-                        }
-                    }
-                });
-
-                // Bouton Oracle (Mythic GME)
-                editor.ui.registry.addButton('oracle', {
-                    text: '🔮 Oracle',
-                    tooltip: 'Poser une question au destin (Mythic Oracle)',
-                    onAction: () => {
-                        const oddsList = [
-                            { text: 'Impossible (10%)', value: '10|Impossible' },
-                            { text: 'Peu probable (15%)', value: '15|No way' },
-                            { text: 'Très improbable (25%)', value: '25|Very unlikely' },
-                            { text: 'Improbable (35%)', value: '35|Unlikely' },
-                            { text: '50/50 (50%)', value: '50|50/50' },
-                            { text: 'Plutôt probable (65%)', value: '65|Somewhat likely' },
-                            { text: 'Probable (75%)', value: '75|Likely' },
-                            { text: 'Très probable (85%)', value: '85|Very likely' },
-                            { text: 'Quasi certain (90%)', value: '90|Near sure thing' },
-                            { text: 'Sûr (95%)', value: '95|A sure thing' },
-                            { text: 'Certain (99%)', value: '99|Has to be' }
-                        ];
-
-                        editor.windowManager.open({
-                            title: 'Consulter l\'Oracle',
-                            body: {
-                                type: 'panel',
-                                items: [{
-                                    type: 'selectbox',
-                                    name: 'odds',
-                                    label: 'Probabilité de "Oui"',
-                                    items: oddsList
-                                }]
-                            },
-                            initialData: { odds: '50|50/50' },
-                            buttons: [
-                                { type: 'cancel', text: 'Annuler' },
-                                { type: 'submit', text: 'Interroger', primary: true }
-                            ],
-                            onSubmit: (api) => {
-                                const data = api.getData();
-                                const [chance, label] = data.odds.split('|');
-                                const yesChance = parseInt(chance);
-                                const roll = Math.floor(Math.random() * 100) + 1;
-
-                                let result = "";
-                                let color = "#F59E0B";
-
-                                const exceptionalYesLimit = Math.max(1, Math.floor(yesChance / 5));
-                                const exceptionalNoLimit = 100 - Math.max(0, Math.floor((100 - yesChance) / 5)) + 1;
-
-                                if (roll <= exceptionalYesLimit) {
-                                    result = "OUI EXCEPTIONNEL !";
-                                    color = "#10B981"; // Vert
-                                } else if (roll <= yesChance) {
-                                    result = "OUI.";
-                                } else if (roll >= exceptionalNoLimit) {
-                                    result = "NON EXCEPTIONNEL !";
-                                    color = "#EF4444"; // Rouge
-                                } else {
-                                    result = "NON.";
-                                    color = "#94A3B8"; // Gris
-                                }
-
-                                const output = `<p><span class="oracle-result" style="color: ${color}; font-weight: bold;">[Oracle] ${label} (${roll}%) : ${result}</span></p><p>&nbsp;</p>`;
-                                editor.insertContent(output);
-                                api.close();
-                            }
-                        });
-                    }
-                });
+                registerCustomTinyMCEButtons(editor);
             }
         });
     }
@@ -200,6 +48,173 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+/**
+ * Registre les boutons personnalisés (Jet, Oracle, Galerie) pour une instance TinyMCE
+ */
+function registerCustomTinyMCEButtons(editor) {
+    // Bouton Jet (Stat / Compétence)
+    editor.ui.registry.addButton('jet', {
+        text: '🎲 Jet',
+        onAction: () => {
+            const char = gameState.character;
+            if (!char) {
+                showToast("Aucun personnage chargé.", 'error');
+                return;
+            }
+
+            const stats = (char.stats || []).map(s => ({ text: `Stat: ${s.name} (${s.value})`, value: `${s.name}|${s.value}` }));
+            const skills = (char.skills || []).map(s => ({ text: `Skill: ${s.name} (${s.value})`, value: `${s.name}|${s.value}` }));
+
+            const openDialog = (currentValueList, currentType) => {
+                editor.windowManager.open({
+                    title: 'Lancer un dé (1D100)',
+                    body: {
+                        type: 'panel',
+                        items: [
+                            {
+                                type: 'selectbox',
+                                name: 'typeSelection',
+                                label: 'Catégorie',
+                                items: [
+                                    { text: 'Statistiques', value: 'stats' },
+                                    { text: 'Compétences', value: 'skills' }
+                                ]
+                            },
+                            {
+                                type: 'selectbox',
+                                name: 'targetSelection',
+                                label: 'Cible',
+                                items: currentValueList
+                            }
+                        ]
+                    },
+                    initialData: {
+                        typeSelection: currentType
+                    },
+                    buttons: [
+                        { type: 'cancel', text: 'Annuler' },
+                        { type: 'submit', text: 'Lancer !', primary: true }
+                    ],
+                    onChange: (api, details) => {
+                        if (details.name === 'typeSelection') {
+                            const newType = api.getData().typeSelection;
+                            api.close();
+                            openDialog(newType === 'stats' ? stats : skills, newType);
+                        }
+                    },
+                    onSubmit: (api) => {
+                        const data = api.getData();
+                        const [name, value] = data.targetSelection.split('|');
+                        const targetValue = parseInt(value);
+                        const roll = Math.floor(Math.random() * 100) + 1;
+
+                        let resultText = "";
+                        if (roll <= 5) resultText = "Réussite Critique !";
+                        else if (roll >= 95) resultText = "Échec Critique !";
+                        else if (roll <= targetValue) resultText = "Réussite.";
+                        else resultText = "Échec.";
+
+                        const output = `<p><span class="jet-result">Jet de ${name} : ${roll}/${targetValue}. ${resultText}</span></p><p>&nbsp;</p>`;
+                        editor.insertContent(output);
+                        api.close();
+                    }
+                });
+            };
+
+            openDialog(stats, 'stats');
+        }
+    });
+
+    // Bouton Galerie
+    editor.ui.registry.addButton('gallery', {
+        icon: 'image',
+        tooltip: 'Insérer une image de la bibliothèque',
+        onAction: () => {
+            if (typeof openImagePicker === 'function') {
+                openImagePicker((path) => {
+                    editor.insertContent(`<img src="${path}" alt="Image RPG">`);
+                });
+            }
+        }
+    });
+
+    // Bouton Oracle (Mythic GME)
+    editor.ui.registry.addButton('oracle', {
+        text: '🔮 Oracle',
+        tooltip: 'Poser une question au destin (Mythic Oracle)',
+        onAction: () => {
+            const oddsList = [
+                { text: 'Impossible (10%)', value: '10|Impossible' },
+                { text: 'Peu probable (15%)', value: '15|No way' },
+                { text: 'Très improbable (25%)', value: '25|Very unlikely' },
+                { text: 'Improbable (35%)', value: '35|Unlikely' },
+                { text: '50/50 (50%)', value: '50|50/50' },
+                { text: 'Plutôt probable (65%)', value: '65|Somewhat likely' },
+                { text: 'Probable (75%)', value: '75|Likely' },
+                { text: 'Très probable (85%)', value: '85|Very likely' },
+                { text: 'Quasi certain (90%)', value: '90|Near sure thing' },
+                { text: 'Sûr (95%)', value: '95|A sure thing' },
+                { text: 'Certain (99%)', value: '99|Has to be' }
+            ];
+
+            editor.windowManager.open({
+                title: 'Consulter l\'Oracle',
+                body: {
+                    type: 'panel',
+                    items: [{
+                        type: 'selectbox',
+                        name: 'odds',
+                        label: 'Probabilité de "Oui"',
+                        items: oddsList
+                    }]
+                },
+                initialData: { odds: '50|50/50' },
+                buttons: [
+                    { type: 'cancel', text: 'Annuler' },
+                    { type: 'submit', text: 'Interroger', primary: true }
+                ],
+                onSubmit: (api) => {
+                    const data = api.getData();
+                    const [chance, label] = data.odds.split('|');
+                    const yesChance = parseInt(chance);
+                    const roll = Math.floor(Math.random() * 100) + 1;
+
+                    let result = "";
+                    let color = "#F59E0B";
+
+                    const exceptionalYesLimit = Math.max(1, Math.floor(yesChance / 5));
+                    const exceptionalNoLimit = 100 - Math.max(0, Math.floor((100 - yesChance) / 5)) + 1;
+
+                    if (roll <= exceptionalYesLimit) {
+                        result = "OUI EXCEPTIONNEL !";
+                        color = "#10B981"; // Vert
+                    } else if (roll <= yesChance) {
+                        result = "OUI.";
+                    } else if (roll >= exceptionalNoLimit) {
+                        result = "NON EXCEPTIONNEL !";
+                        color = "#EF4444"; // Rouge
+                    } else {
+                        result = "NON.";
+                        color = "#94A3B8"; // Gris
+                    }
+
+                    const output = `<p><span class="oracle-result" style="color: ${color}; font-weight: bold;">[Oracle] ${label} (${roll}%) : ${result}</span></p><p>&nbsp;</p>`;
+                    editor.insertContent(output);
+                    api.close();
+                }
+            });
+        }
+    });
+}
+
+// Gestion de la recherche dans le journal
+const journalSearch = document.getElementById('journal-search');
+if (journalSearch) {
+    journalSearch.addEventListener('input', () => {
+        renderJournal();
+    });
+}
 
 function renderJournal() {
     const journalContent = document.getElementById('journal-content');
@@ -227,6 +242,9 @@ function renderJournal() {
         const contentText = item.entry.toLowerCase();
         if (query && !dateText.includes(query) && !contentText.includes(query)) return;
 
+        const bodyId = `journal-body-${item.id}`;
+        const footerId = `journal-footer-${item.id}`;
+
         const entryDiv = document.createElement('div');
         entryDiv.className = 'journal-entry';
         entryDiv.innerHTML = `
@@ -244,13 +262,13 @@ function renderJournal() {
                     </button>` : ''}
                 </div>
             </div>
-            <div id="journal-body-${item.id}" class="journal-content-display" 
+            <div id="${bodyId}" class="journal-content-display" 
                  onclick="if(!isReadOnly) toggleInlineEdit(${item.id})" 
                  title="${!isReadOnly ? 'Cliquer pour modifier' : ''}" 
                  style="${!isReadOnly ? 'cursor: pointer;' : ''}">
                 ${item.entry} 
             </div>
-            <div id="journal-footer-${item.id}" class="inline-editor-footer" style="display:none;">
+            <div id="${footerId}" class="inline-editor-footer" style="display:none;">
                 <button class="action-button small" onclick="saveInlineEdit(${item.id})">Enregistrer</button>
                 <button class="action-button small secondary" onclick="cancelInlineEdit(${item.id})">Annuler</button>
             </div>
@@ -296,11 +314,13 @@ async function toggleInlineEdit(id, restoreContent = null) {
         plugins: 'lists link image table code forecolor quickbars',
         toolbar: 'bold italic underline forecolor | blocks | jet oracle gallery | link image | alignleft aligncenter alignright',
         quickbars_selection_toolbar: 'bold italic | jet oracle gallery',
-        quickbars_insert_toolbar: 'jet oracle gallery',
+        quickbars_insert_toolbar: false,
         menubar: false,
         skin: 'oxide-dark',
         content_css: 'dark',
         setup: (editor) => {
+            registerCustomTinyMCEButtons(editor);
+
             editor.on('init', () => {
                 editor.focus();
                 // Afficher le footer
