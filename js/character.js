@@ -273,7 +273,7 @@ function renderInventoryCategory(category, placeholder) {
         slot.className = `inventory-item-slot ${item.isAvailable === false ? 'is-unavailable' : ''}`;
         slot.innerHTML = `
             <div class="image-container">
-                <img src="${item.img || 'images/placeholder_inventory.png'}" alt="${item.name}">
+                <img src="${item.img || 'https://res.cloudinary.com/dg64n9fhe/image/upload/w_300,c_scale,f_auto,q_auto/v1776178797/f9zhxf8orfqhkjmu5b8p.jpg'}" alt="${item.name}">
             </div>
             <span class="item-name"
                 spellcheck="false"

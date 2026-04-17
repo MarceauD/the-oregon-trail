@@ -17,7 +17,7 @@ function renderNpcs() {
             faitsHtml = `<div class="card-section" style="margin-top: 15px;"><strong>Faits marquants :</strong><p>${faitsContent}</p></div>`;
         }
 
-        let imgHtml = npc.img ? `<img src="${npc.img}" alt="${npc.name}" class="npc-portrait">` : `<img src="images/placeholder_npc.png" alt="Missing portrait" class="npc-portrait default">`;
+        let imgHtml = npc.img ? `<img src="${npc.img}" alt="${npc.name}" class="npc-portrait">` : `<img src="https://res.cloudinary.com/dg64n9fhe/image/upload/w_300,c_scale,f_auto,q_auto/v1776178797/f9zhxf8orfqhkjmu5b8p.jpg" alt="Missing portrait" class="npc-portrait default">`;
 
         card.innerHTML = `
             <div class="card-content">

@@ -557,7 +557,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (c.id === currentSaveId) bubble.classList.add('active');
 
             // Background image (portrait or default)
-            const portraitUrl = c.portrait || 'images/placeholder_npc.png';
+            const portraitUrl = c.portrait || 'https://res.cloudinary.com/dg64n9fhe/image/upload/w_300,c_scale,f_auto,q_auto/v1776178797/f9zhxf8orfqhkjmu5b8p.jpg';
             bubble.style.backgroundImage = `url('${portraitUrl}')`;
             bubble.setAttribute('data-name', c.name);
 
@@ -667,7 +667,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Update character portrait from state
         const portraitDisplay = document.getElementById('character-portrait-display');
         if (portraitDisplay) {
-            portraitDisplay.style.backgroundImage = `url('${gameState.character.portrait || 'images/placeholder_npc.png'}')`;
+            portraitDisplay.style.backgroundImage = `url('${gameState.character.portrait || 'https://res.cloudinary.com/dg64n9fhe/image/upload/w_300,c_scale,f_auto,q_auto/v1776178797/f9zhxf8orfqhkjmu5b8p.jpg'}')`;
         }
 
         const moneyInput = document.getElementById('character-money');

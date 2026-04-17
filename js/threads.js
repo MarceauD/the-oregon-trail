@@ -22,7 +22,7 @@ function renderThreads() {
         let statusText = (thread.status || "").replace(/-/g, ' ');
         statusText = statusText.charAt(0).toUpperCase() + statusText.slice(1);
 
-        let imgHtml = thread.img ? `<img src="${thread.img}" alt="${thread.title}" class="npc-portrait">` : `<img src="images/placeholder_thread.png" alt="Missing portrait" class="npc-portrait default">`;
+        let imgHtml = thread.img ? `<img src="${thread.img}" alt="${thread.title}" class="npc-portrait">` : `<img src="https://res.cloudinary.com/dg64n9fhe/image/upload/w_300,c_scale,f_auto,q_auto/v1776178798/si0jhdvqffvrvh8sgngh.jpg" alt="Missing portrait" class="npc-portrait default">`;
 
         card.innerHTML = `
         <div class="card-content" style="padding: 15px;">
@@ -65,7 +65,7 @@ function renderPlotIdeas() {
     if (!container) return;
 
     container.innerHTML = '';
-    
+
     // Migration logic if plotNotes is still a string
     if (typeof gameState.character.plotNotes === 'string') {
         if (gameState.character.plotNotes.trim() === "") {
@@ -87,7 +87,7 @@ function renderPlotIdeas() {
     gameState.character.plotNotes.forEach((idea) => {
         const item = document.createElement('div');
         item.className = `plot-idea-item ${idea.done ? 'done' : ''}`;
-        
+
         item.innerHTML = `
             <input type="checkbox" ${idea.done ? 'checked' : ''} onchange="togglePlotIdea(${idea.id})" ${isReadOnly ? 'disabled' : ''}>
             <div class="plot-idea-content">
@@ -106,21 +106,21 @@ function renderPlotIdeas() {
             ` : ''}
         `;
         container.appendChild(item);
-        
+
         // Initial auto-grow
         const textarea = item.querySelector('textarea');
         autoGrow(textarea);
     });
 }
 
-window.autoGrow = function(element) {
+window.autoGrow = function (element) {
     element.style.height = "5px";
     element.style.height = (element.scrollHeight) + "px";
 }
 
-window.addPlotIdea = async function() {
+window.addPlotIdea = async function () {
     if (isReadOnly) return;
-    
+
     if (!Array.isArray(gameState.character.plotNotes)) {
         gameState.character.plotNotes = [];
     }
@@ -133,7 +133,7 @@ window.addPlotIdea = async function() {
 
     gameState.character.plotNotes.push(newIdea);
     renderPlotIdeas();
-    
+
     // Focus the new textarea
     setTimeout(() => {
         const textareas = document.querySelectorAll('#plot-ideas-container textarea');
@@ -143,7 +143,7 @@ window.addPlotIdea = async function() {
     }, 0);
 };
 
-window.togglePlotIdea = async function(id) {
+window.togglePlotIdea = async function (id) {
     if (isReadOnly) return;
     const idea = gameState.character.plotNotes.find(i => i.id === id);
     if (idea) {
@@ -153,7 +153,7 @@ window.togglePlotIdea = async function(id) {
     }
 };
 
-window.updatePlotIdeaText = function(id, text) {
+window.updatePlotIdeaText = function (id, text) {
     if (isReadOnly) return;
     const idea = gameState.character.plotNotes.find(i => i.id === id);
     if (idea) {
@@ -164,7 +164,7 @@ window.updatePlotIdeaText = function(id, text) {
     }
 };
 
-window.deletePlotIdea = async function(id) {
+window.deletePlotIdea = async function (id) {
     if (isReadOnly) return;
     if (!confirm("Supprimer cette idée ?")) return;
     gameState.character.plotNotes = gameState.character.plotNotes.filter(i => i.id !== id);

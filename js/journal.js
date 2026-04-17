@@ -3,8 +3,10 @@ document.addEventListener('DOMContentLoaded', () => {
         tinymce.init({
             selector: '#journal-entry-text',
             license_key: 'gpl',
-            plugins: 'lists link image table code help wordcount fullscreen forecolor',
+            plugins: 'lists link image table code help wordcount fullscreen forecolor quickbars',
             toolbar: 'bold italic underline forecolor | blocks | jet oracle gallery | link image | alignleft aligncenter alignright | fullscreen',
+            quickbars_selection_toolbar: 'bold italic | jet oracle gallery',
+            quickbars_insert_toolbar: 'jet oracle gallery',
             language: 'fr_FR',
             menubar: false,
             skin: 'oxide-dark',
@@ -204,6 +206,17 @@ function renderJournal() {
     if (!journalContent) return;
 
     const query = document.getElementById('journal-search')?.value.toLowerCase() || "";
+
+    // Identifier les éditeurs actifs pour ne pas les écraser
+    const activeEditors = {};
+    if (typeof tinymce !== 'undefined') {
+        tinymce.editors.forEach(ed => {
+            if (ed.id.startsWith('journal-body-')) {
+                activeEditors[ed.id] = ed.getContent();
+            }
+        });
+    }
+
     journalContent.innerHTML = '';
 
     const sortedJournal = [...gameState.journal].sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -243,10 +256,21 @@ function renderJournal() {
             </div>
         `;
         journalContent.appendChild(entryDiv);
+
+        // Restaurer l'éditeur si nécessaire après l'injection DOM
+        if (activeEditors[bodyId]) {
+            setTimeout(() => {
+                if (!tinymce.get(bodyId)) {
+                    toggleInlineEdit(item.id, activeEditors[bodyId]);
+                }
+            }, 0);
+        }
     });
 }
 
-async function toggleInlineEdit(id) {
+let inlineAutoSaveInterval = null;
+
+async function toggleInlineEdit(id, restoreContent = null) {
     if (isReadOnly) return;
 
     const bodyId = `journal-body-${id}`;
@@ -255,6 +279,8 @@ async function toggleInlineEdit(id) {
     const entryFooter = document.getElementById(footerId);
 
     if (!entryBody) return;
+
+    if (restoreContent) entryBody.innerHTML = restoreContent;
 
     // Si on est déjà en cours d'édition (TinyMCE actif sur cet élément)
     if (tinymce.get(bodyId)) {
@@ -267,8 +293,10 @@ async function toggleInlineEdit(id) {
         selector: `#${bodyId}`,
         inline: true,
         license_key: 'gpl',
-        plugins: 'lists link image table code forecolor',
+        plugins: 'lists link image table code forecolor quickbars',
         toolbar: 'bold italic underline forecolor | blocks | jet oracle gallery | link image | alignleft aligncenter alignright',
+        quickbars_selection_toolbar: 'bold italic | jet oracle gallery',
+        quickbars_insert_toolbar: 'jet oracle gallery',
         menubar: false,
         skin: 'oxide-dark',
         content_css: 'dark',
@@ -277,6 +305,36 @@ async function toggleInlineEdit(id) {
                 editor.focus();
                 // Afficher le footer
                 if (entryFooter) entryFooter.style.display = 'flex';
+
+                // Set up auto-save
+                if (inlineAutoSaveInterval) clearInterval(inlineAutoSaveInterval);
+                inlineAutoSaveInterval = setInterval(async () => {
+                    const content = editor.getContent();
+                    const index = gameState.journal.findIndex(j => j.id === id);
+                    if (index > -1 && content !== gameState.journal[index].entry) {
+                        gameState.journal[index].entry = content;
+                        await savePartialData('journal', gameState.journal);
+                        console.log("Auto-save journal inline ok");
+                    }
+                }, 300000); // 5 minutes
+            });
+
+            editor.on('remove', () => {
+                if (inlineAutoSaveInterval) {
+                    clearInterval(inlineAutoSaveInterval);
+                    inlineAutoSaveInterval = null;
+                }
+            });
+
+            // Save on blur (click outside)
+            editor.on('blur', () => {
+                // Short delay to allow clicking on "Cancel" or "Save" buttons without double saving or conflicting
+                setTimeout(() => {
+                    const activeEditor = tinymce.get(bodyId);
+                    if (activeEditor && !activeEditor.hasFocus()) {
+                        saveInlineEdit(id);
+                    }
+                }, 200);
             });
         }
     });

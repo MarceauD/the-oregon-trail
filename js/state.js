@@ -97,7 +97,7 @@ window.savePartialData = async function (path, value) {
 
 const defaultState = {
     character: {
-        portrait: "images/placeholder_npc.png",
+        portrait: "https://res.cloudinary.com/dg64n9fhe/image/upload/w_300,c_scale,f_auto,q_auto/v1776178797/f9zhxf8orfqhkjmu5b8p.jpg",
         money: 0.00,
         identityFields: {
             name: "Nouveau Voyageur",
@@ -260,7 +260,7 @@ window.recoverOrphanedCampaigns = async function (silent = false) {
             const data = doc.data();
 
             const name = data.character?.identityFields?.name || data.character?.name || `Campagne récupérée (${id})`;
-            const portrait = data.character?.portrait || "images/placeholder_npc.png";
+            const portrait = data.character?.portrait || "https://res.cloudinary.com/dg64n9fhe/image/upload/w_300,c_scale,f_auto,q_auto/v1776178797/f9zhxf8orfqhkjmu5b8p.jpg";
 
             const existingIndex = campaignsList.findIndex(c => c.id === id);
 
