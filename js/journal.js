@@ -209,9 +209,9 @@ function renderJournal() {
 
     // Identifier les éditeurs actifs pour ne pas les écraser
     const activeEditors = {};
-    if (typeof tinymce !== 'undefined') {
-        tinymce.editors.forEach(ed => {
-            if (ed.id.startsWith('journal-body-')) {
+    if (typeof tinymce !== 'undefined' && typeof tinymce.get === 'function') {
+        tinymce.get().forEach(ed => {
+            if (ed.id && ed.id.startsWith('journal-body-')) {
                 activeEditors[ed.id] = ed.getContent();
             }
         });
