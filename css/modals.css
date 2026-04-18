@@ -253,6 +253,13 @@ body.mobile-editor-active .dice-roller-container {
     align-items: flex-end;
 }
 
+@media (max-width: 768px) {
+    .dice-roller-container {
+        bottom: 15px;
+        right: 15px;
+    }
+}
+
 .dice-choice-menu {
     display: flex;
     flex-direction: column;
@@ -295,6 +302,13 @@ body.mobile-editor-active .dice-roller-container {
     align-items: center;
     cursor: pointer;
     transition: transform 0.2s;
+}
+
+@media (max-width: 768px) {
+    .dice-roller-button {
+        width: 50px;
+        height: 50px;
+    }
 }
 
 .dice-roller-button:hover {
