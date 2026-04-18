@@ -256,13 +256,15 @@ window.updateReadOnlyUI = function () {
         }
     }
 
-    // Masquer les boutons d'ajout et de gestion
-    const addButtons = [
+    // Masquer les boutons d'ajout, de gestion et d'exportation
+    const adminButtons = [
         'add-npc-button', 'add-thread-button', 'add-journal-button',
         'sync-campaigns-btn', 'new-campaign-btn', 'cloud-upload-input',
-        'add-city-panel', 'map-controls-panel', 'add-plot-idea-btn'
+        'add-city-panel', 'map-controls-panel', 'add-plot-idea-btn',
+        'export-character-button', 'export-npcs-button', 'export-threads-button', 'export-journal-button',
+        'copy-share-link-button'
     ];
-    addButtons.forEach(id => {
+    adminButtons.forEach(id => {
         const el = document.getElementById(id);
         if (el) {
             if (id === 'cloud-upload-input') {
@@ -273,6 +275,12 @@ window.updateReadOnlyUI = function () {
             }
         }
     });
+
+    // Masquer l'export global dans la nav
+    const globalExportBtn = document.querySelector('.export-context-btn');
+    if (globalExportBtn) {
+        globalExportBtn.style.display = isReadOnly ? 'none' : 'flex';
+    }
 
     // Masquer tout le gestionnaire de campagnes pour les visiteurs
     const campaignManager = document.querySelector('.campaign-manager');
