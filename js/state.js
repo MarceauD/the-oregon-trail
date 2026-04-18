@@ -205,59 +205,38 @@ async function saveGameData() {
 }
 
 async function loadGameData() {
-    // 1. Synchronisation de la liste GLOBALE des campagnes (Fusion Local + Cloud)
-    try {
-        const campaignsSnapshot = await db.collection('campaigns').get();
-        if (!campaignsSnapshot.empty) {
-            const cloudCampaigns = campaignsSnapshot.docs.map(doc => doc.data());
-
-            // On fusionne pour ne rien perdre du local tout en récupérant le cloud
-            cloudCampaigns.forEach(cloudCamp => {
-                const idx = campaignsList.findIndex(c => c.id === cloudCamp.id);
-                if (idx === -1) {
-                    campaignsList.push(cloudCamp);
-                } else {
-                    // On met à jour avec les infos cloud (plus fraîches normalement)
-                    campaignsList[idx] = { ...campaignsList[idx], ...cloudCamp };
+    // 1. Récupération de la session active de l'utilisateur
+    if (auth.currentUser) {
+        try {
+            const settingsDoc = await db.collection('settings').doc(auth.currentUser.uid).get();
+            if (settingsDoc.exists) {
+                const settings = settingsDoc.data();
+                if (settings.currentSaveId) {
+                    currentSaveId = settings.currentSaveId;
+                    localStorage.setItem('oregon_current_save_id', currentSaveId);
                 }
-            });
-            localStorage.setItem('oregon_campaigns_list', JSON.stringify(campaignsList));
-            console.log(`${campaignsList.length} campagnes au total après fusion.`);
+                lastSavedSettings = JSON.stringify({
+                    currentSaveId: currentSaveId
+                });
+            }
+        } catch (e) {
+            console.warn("Erreur chargement settings user :", e);
+        }
+    }
+
+    // 2. Récupération du document de sauvegarde spécifique
+    try {
+        const doc = await getSaveDocRef().get();
+        if (doc.exists) {
+            console.log(`Donn\u00e9es charg\u00e9es pour [${currentSaveId}] depuis Firebase.`);
+            return doc.data();
         }
     } catch (e) {
-        console.warn("Impossible de récupérer l'index global des campagnes :", e);
+        console.error("Erreur chargement save doc :", e);
     }
 
-    // 2. Récupération de sécurité (si des campagnes manquent encore à l'appel dans l'index global)
-    // On lance une récupération silencieuse des campagnes orphelines présentes dans 'saves'
-    if (typeof recoverOrphanedCampaigns === 'function') {
-        // On le fait sans toast pour ne pas polluer l'UI au chargement
-        await recoverOrphanedCampaigns(true);
-    }
-
-    // 2. Récupération de la session active de l'utilisateur
-    if (auth.currentUser) {
-        const settingsDoc = await db.collection('settings').doc(auth.currentUser.uid).get();
-        if (settingsDoc.exists) {
-            const settings = settingsDoc.data();
-            if (settings.currentSaveId) {
-                currentSaveId = settings.currentSaveId;
-                localStorage.setItem('oregon_current_save_id', currentSaveId);
-            }
-            lastSavedSettings = JSON.stringify({
-                currentSaveId: currentSaveId
-            });
-        }
-    }
-
-    const doc = await getSaveDocRef().get();
-    if (doc.exists) {
-        console.log(`Donn\u00e9es charg\u00e9es pour [${currentSaveId}] depuis Firebase.`);
-        return doc.data();
-    } else {
-        console.log(`Aucune sauvegarde Firebase trouv\u00e9e pour [${currentSaveId}].`);
-        return null;
-    }
+    console.log(`Aucune sauvegarde Firebase trouv\u00e9e pour [${currentSaveId}].`);
+    return null;
 }
 
 window.recoverOrphanedCampaigns = async function (silent = false) {

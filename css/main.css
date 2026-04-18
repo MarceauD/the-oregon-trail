@@ -565,7 +565,8 @@ input[type=number] {
     padding: 0;
     margin: 0;
     color: var(--text-color);
-    font-family: var(--font-serif); /* More readable font */
+    font-family: var(--font-serif);
+    /* More readable font */
     font-size: 1.05em;
     line-height: 1.4;
     resize: none;
@@ -687,4 +688,30 @@ input[type=number] {
 .action-button.secondary:hover {
     background-color: var(--text-muted);
     color: var(--surface-color);
+}
+
+.sync-campaigns-btn {
+    width: 32px;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.sync-campaigns-btn:hover {
+    background: var(--accent-color);
+    color: var(--bg-color);
+    border-color: var(--accent-color);
+}
+
+.sync-campaigns-btn svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
 }

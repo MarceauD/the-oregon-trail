@@ -621,6 +621,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    window.syncCampaigns = function () {
+        if (typeof recoverOrphanedCampaigns === 'function') {
+            recoverOrphanedCampaigns(false);
+        }
+    };
+
     window.toggleNewCampaignPopover = function () {
         if (isReadOnly) return;
         const popover = document.getElementById('new-campaign-popover');
