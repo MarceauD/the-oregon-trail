@@ -19,8 +19,20 @@ const CLOUDINARY_CONFIG = {
 
 let cloudGallery = [];
 
-const ENCODED_CODE = "MTg2OA==";
-let isReadOnly = true;
+const ENCODED_CODE = "MS0tLThfXzYqOA=="; // "1---8__6*8"
+let isReadOnly = (localStorage.getItem('oregon_admin_authorized') !== 'true');
+let isPublicView = false;
+
+// Gestion des paramètres d'URL pour le partage public
+const urlParams = new URLSearchParams(window.location.search);
+const storyId = urlParams.get('story') || urlParams.get('id');
+
+if (storyId) {
+    localStorage.setItem('oregon_current_save_id', storyId);
+    isReadOnly = true;
+    isPublicView = true;
+    console.log("Mode partage public activé pour le thread :", storyId);
+}
 
 async function syncCloudGallery() {
     try {

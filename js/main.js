@@ -171,6 +171,20 @@ window.exportFullCampaignToClipboard = function () {
     });
 };
 
+window.copySharingLink = function () {
+    const url = new URL(window.location.href);
+    // On enlève les paramètres existants pour repartir propre
+    const cleanUrl = url.origin + url.pathname;
+    const shareUrl = `${cleanUrl}?story=${currentSaveId}`;
+
+    navigator.clipboard.writeText(shareUrl).then(() => {
+        showToast("Lien de partage copié dans le presse-papiers !", "success");
+    }).catch(err => {
+        console.error("Erreur copie lien :", err);
+        showToast("L'ID de votre sauvegarde est : " + currentSaveId, "info");
+    });
+};
+
 window.exportSingleItem = function (type, id) {
     let output = '';
     let item;
@@ -197,16 +211,22 @@ let currentJournalEditId = null;
 let autoSaveJournalInterval = null;
 
 window.toggleReadOnlyMode = function () {
+    if (isPublicView) {
+        showToast("Le mode Écriture est désactivé pour les visiteurs.", "warning");
+        return;
+    }
     if (isReadOnly) {
-        const code = prompt("Entrez le code à 4 chiffres pour passer en mode Écriture :");
+        const code = prompt("Entrez le code secret pour passer en mode Écriture :");
         if (code === atob(ENCODED_CODE)) {
             isReadOnly = false;
+            localStorage.setItem('oregon_admin_authorized', 'true');
             showToast("Mode Écriture activé.", "success");
         } else if (code !== null) {
             showToast("Code incorrect.", "error");
         }
     } else {
         isReadOnly = true;
+        localStorage.removeItem('oregon_admin_authorized');
         showToast("Mode Lecture seule activé.", "info");
     }
     updateReadOnlyUI();
@@ -217,31 +237,35 @@ window.updateReadOnlyUI = function () {
     const lockIcon = document.getElementById('lock-icon');
     const readonlyText = document.getElementById('readonly-text');
 
-    if (isReadOnly) {
-        toggleBtn.classList.remove('unlocked');
-        toggleBtn.title = "Mode Lecture Seule (Cliquer pour déverrouiller)";
-        readonlyText.textContent = "Lecture";
-        // Icone Cadenas Fermé
-        lockIcon.innerHTML = '<path d="M144 144v48H304V144c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192V144C80 64.5 144.5 0 224 0s144 64.5 144 144v48h16c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V256c0-35.3 28.7-64 64-64H80z"/>';
-    } else {
-        toggleBtn.classList.add('unlocked');
-        toggleBtn.title = "Mode Écriture (Cliquer pour verrouiller)";
-        readonlyText.textContent = "Écriture";
-        // Icone Cadenas Ouvert
-        lockIcon.innerHTML = '<path d="M352 144c0-44.2-35.8-80-80-80s-80 35.8-80 80v48h160V144zM112 192c-17.7 0-32 14.3-32 32V448c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32H112zM32 144C32 64.5 96.5 0 176 0s144 64.5 144 144v48h16c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V256c0-35.3 28.7-64 64-64H80V144z"/>';
+    if (toggleBtn) {
+        if (isPublicView) {
+            toggleBtn.style.display = 'none'; // Cacher totalement le bouton pour les visiteurs
+        } else {
+            toggleBtn.style.display = 'flex';
+            if (isReadOnly) {
+                toggleBtn.classList.remove('unlocked');
+                toggleBtn.title = "Mode Lecture Seule (Cliquer pour déverrouiller)";
+                readonlyText.textContent = "Lecture";
+                lockIcon.innerHTML = '<path d="M144 144v48H304V144c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192V144C80 64.5 144.5 0 224 0s144 64.5 144 144v48h16c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V256c0-35.3 28.7-64 64-64H80z"/>';
+            } else {
+                toggleBtn.classList.add('unlocked');
+                toggleBtn.title = "Mode Écriture (Cliquer pour verrouiller)";
+                readonlyText.textContent = "Écriture";
+                lockIcon.innerHTML = '<path d="M352 144c0-44.2-35.8-80-80-80s-80 35.8-80 80v48h160V144zM112 192c-17.7 0-32 14.3-32 32V448c0 17.7 14.3 32 32 32H336c17.7 0 32 32 32-32V224c0-17.7-14.3-32-32-32H112zM32 144C32 64.5 96.5 0 176 0s144 64.5 144 144v48h16c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V256c0-35.3 28.7-64 64-64H80V144z"/>';
+            }
+        }
     }
 
-    // Masquer les boutons d'ajout
+    // Masquer les boutons d'ajout et de gestion
     const addButtons = [
         'add-npc-button', 'add-thread-button', 'add-journal-button',
         'sync-campaigns-btn', 'new-campaign-btn', 'cloud-upload-input',
-        'add-city-panel', 'map-controls-panel'
+        'add-city-panel', 'map-controls-panel', 'add-plot-idea-btn'
     ];
     addButtons.forEach(id => {
         const el = document.getElementById(id);
         if (el) {
             if (id === 'cloud-upload-input') {
-                // Pour l'upload cloud, c'est le bouton parent qu'on veut masquer
                 const btn = el.previousElementSibling;
                 if (btn) btn.style.display = isReadOnly ? 'none' : 'inline-block';
             } else {
@@ -250,7 +274,12 @@ window.updateReadOnlyUI = function () {
         }
     });
 
-    // Re-rendre les sections pour appliquer contenteditable et cacher les boutons de suppression
+    // Masquer tout le gestionnaire de campagnes pour les visiteurs
+    const campaignManager = document.querySelector('.campaign-manager');
+    if (campaignManager) {
+        campaignManager.style.display = isPublicView ? 'none' : 'flex';
+    }
+
     renderAll();
 };
 
@@ -460,6 +489,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (exportThreads) exportThreads.addEventListener('click', () => exportSectionToClipboard('threads'));
     const exportJourn = document.getElementById('export-journal-button');
     if (exportJourn) exportJourn.addEventListener('click', () => exportSectionToClipboard('journal'));
+
+    const shareBtn = document.getElementById('copy-share-link-button');
+    if (shareBtn) shareBtn.addEventListener('click', () => copySharingLink());
 
     const modalOverlay = document.getElementById('modal-overlay');
     if (modalOverlay) modalOverlay.addEventListener('click', (e) => { if (e.target === modalOverlay) closeModal(); });
