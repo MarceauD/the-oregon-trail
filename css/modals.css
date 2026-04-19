@@ -508,3 +508,45 @@ body.mobile-editor-active .dice-roller-container {
     background: var(--accent-color) !important;
     color: var(--bg-color) !important;
 }
+
+/* Modale Thread Events Editor */
+.events-editor {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 15px;
+    border-radius: var(--border-radius-sm);
+    border: 1px solid var(--border-color);
+}
+
+.modal-event-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    margin-bottom: 5px;
+    font-size: 0.95em;
+}
+
+.modal-event-item button {
+    background: none;
+    border: none;
+    color: var(--accent-color);
+    font-size: 1.2em;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0 5px;
+}
+
+.add-event-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.add-event-row input {
+    flex: 1;
+}

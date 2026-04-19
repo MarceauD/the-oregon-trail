@@ -55,7 +55,7 @@ window.exportSectionToClipboard = function (type) {
         gameState.npcs.forEach(npc => {
             let statusText = (npc.status || '').replace(/-/g, ' ');
             statusText = statusText.charAt(0).toUpperCase() + statusText.slice(1);
-            output += `Nom: ${npc.name}\nStatut: ${statusText}\n\nDescription:\n${npc.description}\n\n`;
+            output += `ID: ${npc.id}\nNom: ${npc.name}\nStatut: ${statusText}\n\nDescription:\n${npc.description}\n\n`;
             if (npc.faitsMarquants && npc.faitsMarquants.trim() !== '') { output += `Faits marquants:\n${npc.faitsMarquants}\n`; }
             output += separator;
         });
@@ -64,7 +64,7 @@ window.exportSectionToClipboard = function (type) {
         gameState.threads.forEach(thread => {
             let statusText = (thread.status || '').replace(/-/g, ' ');
             statusText = statusText.charAt(0).toUpperCase() + statusText.slice(1);
-            output += `Titre: ${thread.title}\nLieu: ${thread.location}\nStatut: ${statusText}\n\nDescription:\n${thread.description}\n\n`;
+            output += `ID: ${thread.id}\nTitre: ${thread.title}\nLieu: ${thread.location}\nStatut: ${statusText}\n\nDescription:\n${thread.description}\n\n`;
             if (thread.events && thread.events.length > 0) { output += `Événements:\n${thread.events.map(e => `- ${e}`).join('\n')}\n`; }
             output += separator;
         });
@@ -104,30 +104,52 @@ window.exportFullCampaignToClipboard = function () {
     output += `Âge : ${id.age || 'N/A'}\n`;
     output += `Origine : ${id.origin || 'N/A'}\n`;
     output += `Profession : ${id.profession || 'N/A'}\n\n`;
-    output += `--- HISTOIRE ---\n${char.history || ''}\n\n`;
+
+    output += `--- HISTOIRE ---\n${char.history || 'Aucune histoire rédigée.'}\n\n`;
+
     output += `--- ÉCONOMIE ---\nMonnaie : $${(char.money || 0).toFixed(2)}\n\n`;
+
     output += '--- STATISTIQUES ---\n';
-    char.stats.forEach(s => { output += `${s.name}: ${s.value}\n`; });
+    (char.stats || []).forEach(s => { output += `${s.name}: ${s.value}\n`; });
+
     output += '\n--- COMPÉTENCES ---\n';
-    char.skills.forEach(s => { output += `${s.name}: ${s.value}\n`; });
+    (char.skills || []).forEach(s => { output += `${s.name}: ${s.value}\n`; });
+
     output += '\n--- POINTS FORTS ---\n';
-    char.strengths.forEach(s => { output += `- ${s.text}\n`; });
+    (char.strengths || []).forEach(s => { output += `- ${s.text || s.name || 'N/A'}\n`; });
+
     output += '\n--- POINTS FAIBLES ---\n';
-    char.weaknesses.forEach(w => { output += `- ${w.text}\n`; });
+    (char.weaknesses || []).forEach(w => { output += `- ${w.text || w.name || 'N/A'}\n`; });
+
     output += '\n--- INVENTAIRE ---\n';
-    for (const category in char.inventory) {
+    for (const category in (char.inventory || {})) {
         if (char.inventory[category].length > 0) {
             output += `\n> ${category.charAt(0).toUpperCase() + category.slice(1)}\n`;
             char.inventory[category].forEach(item => { output += `- ${item.name || item.text}\n`; });
         }
     }
+
+    output += '\n--- SAVOIRS SPÉCIFIQUES ---\n';
+    (char.specificKnowledge || []).forEach(m => { output += `- ${m.name}${m.description ? ' (' + m.description + ')' : ''}\n`; });
+
+    output += '\n--- ÉTAT PHYSIQUE ---\n';
+    (char.physicalState || []).forEach(s => { output += `- ${s.name || 'Inconnu'} (Depuis: ${s.duration || '?'}, Soins: ${s.care || 'aucun'}, Effets: ${s.effects || 'aucun'})\n`; });
+
+    output += '\n--- SANTÉ MENTALE ---\n';
+    (char.mentalState || []).forEach(s => { output += `- ${s.name || 'Inconnu'} (Depuis: ${s.duration || '?'}, Soins: ${s.care || 'aucun'}, Effets: ${s.effects || 'aucun'})\n`; });
+
+    if (char.plotNotes && char.plotNotes.length > 0) {
+        output += '\n--- NOTES & IDÉES ---\n';
+        char.plotNotes.forEach(n => { output += `[${n.done ? 'x' : ' '}] ${n.text}\n`; });
+    }
+
     output += separator;
 
     // 2. NPCs
     output += '=== PERSONNAGES NON-JOUABLES ===\n\n';
     gameState.npcs.forEach(npc => {
         let statusText = (npc.status || '').replace(/-/g, ' ');
-        output += `Nom: ${npc.name}\nStatut: ${statusText}\nDescription: ${npc.description}\n`;
+        output += `ID: ${npc.id}\nNom: ${npc.name}\nStatut: ${statusText}\nDescription: ${npc.description}\n`;
         if (npc.faitsMarquants) output += `Faits marquants: ${npc.faitsMarquants}\n`;
         output += '---\n';
     });
@@ -137,7 +159,10 @@ window.exportFullCampaignToClipboard = function () {
     output += '=== THREADS (INTRIGUES EN COURS) ===\n\n';
     gameState.threads.forEach(thread => {
         let statusText = (thread.status || '').replace(/-/g, ' ');
-        output += `Titre: ${thread.title}\nLieu: ${thread.location}\nStatut: ${statusText}\nDescription: ${thread.description}\n`;
+        output += `ID: ${thread.id}\nTitre: ${thread.title}\nLieu: ${thread.location}\nStatut: ${statusText}\nDescription: ${thread.description}\n`;
+        if (thread.events && thread.events.length > 0) {
+            output += `Événements:\n${thread.events.map(e => `- ${e}`).join('\n')}\n`;
+        }
         output += '---\n';
     });
     output += separator;
@@ -189,14 +214,14 @@ window.exportSingleItem = function (type, id) {
     let output = '';
     let item;
     if (type === 'npc') {
-        item = gameState.npcs.find(n => n.id === id);
+        item = gameState.npcs.find(n => String(n.id) === String(id));
         if (!item) return;
         let statusText = (item.status || '').replace(/-/g, ' ');
         statusText = statusText.charAt(0).toUpperCase() + statusText.slice(1);
         output += `Nom: ${item.name}\nStatut: ${statusText}\n\nDescription:\n${item.description}\n\n`;
         if (item.faitsMarquants && item.faitsMarquants.trim() !== '') output += `Faits marquants:\n${item.faitsMarquants}\n`;
     } else if (type === 'thread') {
-        item = gameState.threads.find(t => t.id === id);
+        item = gameState.threads.find(t => String(t.id) === String(id));
         if (!item) return;
         let statusText = (item.status || '').replace(/-/g, ' ');
         statusText = statusText.charAt(0).toUpperCase() + statusText.slice(1);
@@ -209,6 +234,33 @@ window.exportSingleItem = function (type, id) {
 
 let currentJournalEditId = null;
 let autoSaveJournalInterval = null;
+let currentModalThreadEvents = [];
+
+window.renderThreadEventsList = function () {
+    const list = document.getElementById('thread-events-list');
+    if (!list) return;
+    list.innerHTML = currentModalThreadEvents.map((event, index) => `
+        <div class="modal-event-item">
+            <span>- ${event}</span>
+            <button type="button" onclick="removeEventFromThreadModal(${index})">&times;</button>
+        </div>
+    `).join('');
+};
+
+window.addEventToThreadModal = function () {
+    const input = document.getElementById('new-thread-event');
+    const text = input.value.trim();
+    if (text) {
+        currentModalThreadEvents.push(text);
+        input.value = '';
+        renderThreadEventsList();
+    }
+};
+
+window.removeEventFromThreadModal = function (index) {
+    currentModalThreadEvents.splice(index, 1);
+    renderThreadEventsList();
+};
 
 window.toggleReadOnlyMode = function () {
     if (isPublicView) {
@@ -317,7 +369,7 @@ window.openModal = function (type, id = null) {
         if (editor) editor.mode.set('readonly');
         if (id) {
             modalTitle.textContent = isReadOnly ? 'Voir le PNJ' : 'Modifier le PNJ';
-            const npc = gameState.npcs.find(n => n.id === id);
+            const npc = gameState.npcs.find(n => String(n.id) === String(id));
             document.getElementById('npc-name').value = npc.name;
             document.getElementById('npc-status').value = npc.status || '';
             document.getElementById('npc-description').value = npc.description || '';
@@ -346,11 +398,12 @@ window.openModal = function (type, id = null) {
         if (editor) editor.mode.set('readonly');
         if (id) {
             modalTitle.textContent = isReadOnly ? 'Voir le Thread' : 'Modifier le Thread';
-            const thread = gameState.threads.find(t => t.id === id);
+            const thread = gameState.threads.find(t => String(t.id) === String(id));
             document.getElementById('thread-title').value = thread.title || '';
             document.getElementById('thread-location').value = thread.location || '';
             document.getElementById('thread-status').value = thread.status || '';
             document.getElementById('thread-description').value = thread.description || '';
+            currentModalThreadEvents = thread.events ? [...thread.events] : [];
 
             const imgField = document.getElementById('thread-img');
             if (imgField) imgField.value = thread.img || '';
@@ -359,16 +412,22 @@ window.openModal = function (type, id = null) {
 
             // Bloquer les champs en lecture seule
             document.querySelectorAll('#thread-fields input, #thread-fields select, #thread-fields textarea').forEach(el => el.disabled = isReadOnly);
+            document.querySelectorAll('#thread-fields button').forEach(el => {
+                if (!el.classList.contains('modal-close-button')) el.disabled = isReadOnly;
+            });
             const libBtn = document.querySelector('#thread-fields .action-button');
             if (libBtn) libBtn.style.display = isReadOnly ? 'none' : 'block';
         } else {
             if (isReadOnly) return;
             modalTitle.textContent = 'Ajouter un Thread';
             editIdInput.value = '';
+            currentModalThreadEvents = [];
             const imgField = document.getElementById('thread-img');
             if (imgField) imgField.value = '';
             document.querySelectorAll('#thread-fields input, #thread-fields select, #thread-fields textarea').forEach(el => el.disabled = false);
+            document.querySelectorAll('#thread-fields button').forEach(el => el.disabled = false);
         }
+        renderThreadEventsList();
     } else if (type === 'campaign') {
         const campaignFields = document.getElementById('campaign-fields');
         if (campaignFields) campaignFields.style.display = 'grid';
@@ -462,16 +521,18 @@ window.deleteItem = async function (type, id) {
     if (isReadOnly) return;
     if (confirm('Êtes-vous sûr de vouloir supprimer cet élément ?')) {
         if (type === 'npc') {
-            gameState.npcs = gameState.npcs.filter(npc => npc.id !== id);
+            gameState.npcs = gameState.npcs.filter(npc => String(npc.id) !== String(id));
             await savePartialData('npcs', gameState.npcs);
+            renderNpcs();
         } else if (type === 'thread') {
-            gameState.threads = gameState.threads.filter(thread => thread.id !== id);
+            gameState.threads = gameState.threads.filter(thread => String(thread.id) !== String(id));
             await savePartialData('threads', gameState.threads);
+            renderThreads();
         } else if (type === 'journal') {
-            gameState.journal = gameState.journal.filter(j => j.id !== id);
+            gameState.journal = gameState.journal.filter(j => String(j.id) !== String(id));
             await savePartialData('journal', gameState.journal);
+            renderJournal();
         }
-        renderAll();
     }
 };
 
@@ -511,7 +572,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (isReadOnly) return;
             const editIdInput = document.getElementById('edit-id');
             const editTypeInput = document.getElementById('edit-type');
-            const id = editIdInput.value ? parseInt(editIdInput.value) : null;
+            const id = editIdInput.value || null;
             const type = editTypeInput.value;
 
             if (type === 'npc') {
@@ -524,7 +585,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 };
 
                 if (id) {
-                    const index = gameState.npcs.findIndex(n => n.id === id);
+                    const index = gameState.npcs.findIndex(n => String(n.id) === String(id));
                     gameState.npcs[index] = { ...gameState.npcs[index], ...npcData };
                 } else {
                     npcData.id = Date.now();
@@ -537,14 +598,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     location: document.getElementById('thread-location').value,
                     status: document.getElementById('thread-status').value,
                     description: document.getElementById('thread-description').value,
-                    img: (document.getElementById('thread-img') ? document.getElementById('thread-img').value : "")
+                    img: (document.getElementById('thread-img') ? document.getElementById('thread-img').value : ""),
+                    events: currentModalThreadEvents
                 };
                 if (id) {
-                    const index = gameState.threads.findIndex(t => t.id === id);
+                    const index = gameState.threads.findIndex(t => String(t.id) === String(id));
                     gameState.threads[index] = { ...gameState.threads[index], ...threadData };
                 } else {
                     threadData.id = Date.now();
-                    threadData.events = [];
                     gameState.threads.unshift(threadData);
                 }
             } else if (type === 'journal') {
@@ -566,11 +627,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (type === 'npc') {
                 await savePartialData('npcs', gameState.npcs);
+                renderNpcs();
             } else if (type === 'thread') {
                 await savePartialData('threads', gameState.threads);
+                renderThreads();
             }
             // journal already saved via saveJournalEntry
-            renderAll();
             closeModal();
         });
     }
@@ -609,17 +671,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    window.handleCharacterPortraitUpload = async function (input) {
-        if (isReadOnly) return;
-        if (!input.files || !input.files[0]) return;
-        const base64 = await handleImageUpload(input, 'character-portrait-display'); // Generic tool
-        if (base64) {
-            gameState.character.portrait = base64;
-            document.getElementById('character-portrait-display').style.backgroundImage = `url('${base64}')`;
-            await savePartialData('character.portrait', base64);
-            initCampaignBubbles(); // Refresh bubbles too
-        }
-    };
+    // L'upload direct est remplacé par la sélection via le picker (Cloudinary)
 
     window.syncCampaigns = function () {
         if (typeof recoverOrphanedCampaigns === 'function') {

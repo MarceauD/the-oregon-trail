@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!gameState.route) gameState.route = [];
         gameState.route.push(newCity);
-        await saveGameData();
+        await savePartialData('route', gameState.route);
 
         renderRoute();
         addCityForm.reset();
@@ -111,7 +111,7 @@ window.changeMapBackground = function () {
         const mapImg = document.getElementById('map-image-background');
         if (mapImg) mapImg.src = newUrl;
 
-        await saveGameData();
+        await savePartialData('routeSettings', gameState.routeSettings);
         showToast("Fond de carte mis à jour !", "success");
     });
 };

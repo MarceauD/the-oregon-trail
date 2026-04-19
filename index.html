@@ -265,8 +265,8 @@
 
             <section id="map" class="content-section no-padding">
                 <div class="map-container">
-                    <img src="images/usa_1866.jpg" alt="Carte des États-Unis, 1866" class="map-image"
-                        id="map-image-background">
+                    <img src="https://res.cloudinary.com/dg64n9fhe/image/upload//v1776178823/sse0boknfubebzp1ddvg.jpg"
+                        alt="Carte des États-Unis, 1866" class="map-image" id="map-image-background">
                     <svg id="route-svg" class="route-overlay" viewBox="0 0 4000 2537"></svg>
                 </div>
                 <div class="map-controls-panel">
@@ -350,8 +350,7 @@
                 <div class="section-header">
                     <h2>Galerie d'images</h2>
                     <button class="action-button secondary" onclick="refreshCloudGallery()" id="refresh-gallery-btn"
-                        title="Actualiser la galerie (Vérifie s'il y a de nouvelles images sur le serveur)">🔄
-                        Actualiser</button>
+                        title="Actualiser la galerie (Vérifie s'il y a de nouvelles images sur le serveur)">Actualiser</button>
                 </div>
                 <div id="gallery-container" class="gallery-grid">
                 </div>
@@ -401,12 +400,14 @@
                         <optgroup label="Positif">
                             <option value="amoureux">Amoureux / Amoureuse</option>
                             <option value="ami-proche">Ami proche</option>
+                            <option value="famille">Famille</option>
                             <option value="ami">Ami</option>
                             <option value="allie">Allié</option>
                             <option value="amical">Amical</option>
                         </optgroup>
                         <optgroup label="Neutre">
                             <option value="connaissance">Connaissance</option>
+                            <option value="neutre">Neutre</option>
                             <option value="suspect">Suspect</option>
                         </optgroup>
                         <optgroup label="Négatif">
@@ -417,6 +418,7 @@
                         </optgroup>
                         <optgroup label="Spécial">
                             <option value="disparu">Disparu</option>
+                            <option value="prisonnier">Prisonnier</option>
                             <option value="mort">Mort</option>
                         </optgroup>
                     </select>
@@ -447,6 +449,16 @@
                     </select>
                     <label for="thread-description">Description :</label>
                     <textarea id="thread-description"></textarea>
+
+                    <label>Événements :</label>
+                    <div id="thread-events-container" class="events-editor">
+                        <div id="thread-events-list"></div>
+                        <div class="add-event-row">
+                            <input type="text" id="new-thread-event" placeholder="Ajouter un fait marquant..."
+                                onkeydown="if(event.key==='Enter') { addEventToThreadModal(); event.preventDefault(); }">
+                            <button type="button" class="action-button" onclick="addEventToThreadModal()">+</button>
+                        </div>
+                    </div>
                 </div>
 
                 <div id="journal-fields" class="form-grid" style="display: none;">

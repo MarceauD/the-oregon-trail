@@ -228,8 +228,8 @@ async function saveGameData() {
 }
 
 async function loadGameData() {
-    // 1. Récupération de la session active de l'utilisateur
-    if (auth.currentUser) {
+    // 1. Récupération de la session active de l'utilisateur (uniquement si on n'est pas en vue publique via URL)
+    if (auth.currentUser && !isPublicView) {
         try {
             const settingsDoc = await db.collection('settings').doc(auth.currentUser.uid).get();
             if (settingsDoc.exists) {

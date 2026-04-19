@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
             language: 'fr_FR',
             menubar: false,
             skin: 'oxide-dark',
-            content_css: 'dark',
+            // content_css: 'dark',
             content_style: `
                 body { 
                     background-color: #191922; 
@@ -37,20 +37,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 .oracle-result { font-weight: bold; }
             `,
             setup: (editor) => {
-                // Placer le curseur à la fin après l'initialisation
                 editor.on('init', () => {
                     editor.focus();
                     editor.selection.select(editor.getBody(), true);
                     editor.selection.collapse(false);
                     editor.selection.scrollIntoView();
                 });
-
                 registerCustomTinyMCEButtons(editor);
             }
         });
     }
 
-    // Gestion de la recherche dans le journal
     const journalSearch = document.getElementById('journal-search');
     if (journalSearch) {
         journalSearch.addEventListener('input', () => {
@@ -59,11 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-/**
- * Registre les boutons personnalisés (Jet, Oracle, Galerie) pour une instance TinyMCE
- */
 function registerCustomTinyMCEButtons(editor) {
-    // Bouton Jet (Stat / Compétence)
     editor.ui.registry.addButton('jet', {
         text: '🎲 Jet',
         onAction: () => {
@@ -72,40 +65,20 @@ function registerCustomTinyMCEButtons(editor) {
                 showToast("Aucun personnage chargé.", 'error');
                 return;
             }
-
             const stats = (char.stats || []).map(s => ({ text: `Stat: ${s.name} (${s.value})`, value: `${s.name}|${s.value}` }));
             const skills = (char.skills || []).map(s => ({ text: `Skill: ${s.name} (${s.value})`, value: `${s.name}|${s.value}` }));
-
             const openDialog = (currentValueList, currentType) => {
                 editor.windowManager.open({
                     title: 'Lancer un dé (1D100)',
                     body: {
                         type: 'panel',
                         items: [
-                            {
-                                type: 'selectbox',
-                                name: 'typeSelection',
-                                label: 'Catégorie',
-                                items: [
-                                    { text: 'Statistiques', value: 'stats' },
-                                    { text: 'Compétences', value: 'skills' }
-                                ]
-                            },
-                            {
-                                type: 'selectbox',
-                                name: 'targetSelection',
-                                label: 'Cible',
-                                items: currentValueList
-                            }
+                            { type: 'selectbox', name: 'typeSelection', label: 'Catégorie', items: [{ text: 'Statistiques', value: 'stats' }, { text: 'Compétences', value: 'skills' }] },
+                            { type: 'selectbox', name: 'targetSelection', label: 'Cible', items: currentValueList }
                         ]
                     },
-                    initialData: {
-                        typeSelection: currentType
-                    },
-                    buttons: [
-                        { type: 'cancel', text: 'Annuler' },
-                        { type: 'submit', text: 'Lancer !', primary: true }
-                    ],
+                    initialData: { typeSelection: currentType },
+                    buttons: [{ type: 'cancel', text: 'Annuler' }, { type: 'submit', text: 'Lancer !', primary: true }],
                     onChange: (api, details) => {
                         if (details.name === 'typeSelection') {
                             const newType = api.getData().typeSelection;
@@ -118,25 +91,17 @@ function registerCustomTinyMCEButtons(editor) {
                         const [name, value] = data.targetSelection.split('|');
                         const targetValue = parseInt(value);
                         const roll = Math.floor(Math.random() * 100) + 1;
-
-                        let resultText = "";
-                        if (roll <= 5) resultText = "Réussite Critique !";
-                        else if (roll >= 95) resultText = "Échec Critique !";
-                        else if (roll <= targetValue) resultText = "Réussite.";
-                        else resultText = "Échec.";
-
+                        let resultText = (roll <= 5) ? "Réussite Critique !" : (roll >= 95) ? "Échec Critique !" : (roll <= targetValue) ? "Réussite." : "Échec.";
                         const output = `<p><span class="jet-result">Jet de ${name} : ${roll}/${targetValue}. ${resultText}</span></p><p>&nbsp;</p>`;
                         editor.insertContent(output);
                         api.close();
                     }
                 });
             };
-
             openDialog(stats, 'stats');
         }
     });
 
-    // Bouton Galerie
     editor.ui.registry.addButton('gallery', {
         icon: 'image',
         tooltip: 'Insérer une image de la bibliothèque',
@@ -149,7 +114,6 @@ function registerCustomTinyMCEButtons(editor) {
         }
     });
 
-    // Bouton Oracle (Mythic GME)
     editor.ui.registry.addButton('oracle', {
         text: '🔮 Oracle',
         tooltip: 'Poser une question au destin (Mythic Oracle)',
@@ -167,48 +131,24 @@ function registerCustomTinyMCEButtons(editor) {
                 { text: 'Sûr (95%)', value: '95|A sure thing' },
                 { text: 'Certain (99%)', value: '99|Has to be' }
             ];
-
             editor.windowManager.open({
                 title: 'Consulter l\'Oracle',
-                body: {
-                    type: 'panel',
-                    items: [{
-                        type: 'selectbox',
-                        name: 'odds',
-                        label: 'Probabilité de "Oui"',
-                        items: oddsList
-                    }]
-                },
+                body: { type: 'panel', items: [{ type: 'selectbox', name: 'odds', label: 'Probabilité de "Oui"', items: oddsList }] },
                 initialData: { odds: '50|50/50' },
-                buttons: [
-                    { type: 'cancel', text: 'Annuler' },
-                    { type: 'submit', text: 'Interroger', primary: true }
-                ],
+                buttons: [{ type: 'cancel', text: 'Annuler' }, { type: 'submit', text: 'Interroger', primary: true }],
                 onSubmit: (api) => {
                     const data = api.getData();
                     const [chance, label] = data.odds.split('|');
                     const yesChance = parseInt(chance);
                     const roll = Math.floor(Math.random() * 100) + 1;
-
                     let result = "";
                     let color = "#F59E0B";
-
                     const exceptionalYesLimit = Math.max(1, Math.floor(yesChance / 5));
                     const exceptionalNoLimit = 100 - Math.max(0, Math.floor((100 - yesChance) / 5)) + 1;
-
-                    if (roll <= exceptionalYesLimit) {
-                        result = "OUI EXCEPTIONNEL !";
-                        color = "#10B981"; // Vert
-                    } else if (roll <= yesChance) {
-                        result = "OUI.";
-                    } else if (roll >= exceptionalNoLimit) {
-                        result = "NON EXCEPTIONNEL !";
-                        color = "#EF4444"; // Rouge
-                    } else {
-                        result = "NON.";
-                        color = "#94A3B8"; // Gris
-                    }
-
+                    if (roll <= exceptionalYesLimit) { result = "OUI EXCEPTIONNEL !"; color = "#10B981"; }
+                    else if (roll <= yesChance) { result = "OUI."; }
+                    else if (roll >= exceptionalNoLimit) { result = "NON EXCEPTIONNEL !"; color = "#EF4444"; }
+                    else { result = "NON."; color = "#94A3B8"; }
                     const output = `<p><span class="oracle-result" style="color: ${color}; font-weight: bold;">[Oracle] ${label} (${roll}%) : ${result}</span></p><p>&nbsp;</p>`;
                     editor.insertContent(output);
                     api.close();
@@ -218,47 +158,29 @@ function registerCustomTinyMCEButtons(editor) {
     });
 }
 
-// Gestion de la recherche dans le journal
-const journalSearch = document.getElementById('journal-search');
-if (journalSearch) {
-    journalSearch.addEventListener('input', () => {
-        renderJournal();
-    });
-}
-
 function renderJournal() {
     const journalContent = document.getElementById('journal-content');
     if (!journalContent) return;
-
     const query = document.getElementById('journal-search')?.value.toLowerCase() || "";
-
     const activeEditors = {};
-    // Nettoyer proprement les éditeurs TinyMCE avant de vider le DOM
     if (typeof tinymce !== 'undefined' && typeof tinymce.get === 'function') {
         const editors = tinymce.get();
         for (let i = editors.length - 1; i >= 0; i--) {
             const ed = editors[i];
             if (ed.id && ed.id.startsWith('journal-body-')) {
-                // Si l'éditeur est actif, on sauvegarde son contenu
                 activeEditors[ed.id] = ed.getContent();
-                ed.remove(); // Détruit l'éditeur et nettoie le DOM/UI
+                ed.remove();
             }
         }
     }
-
     journalContent.innerHTML = '';
-
     const sortedJournal = [...gameState.journal].sort((a, b) => new Date(b.date) - new Date(a.date));
-
     sortedJournal.forEach(item => {
-        // Filtrage par recherche
         const dateText = new Date(item.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }).toLowerCase();
         const contentText = item.entry.toLowerCase();
         if (query && !dateText.includes(query) && !contentText.includes(query)) return;
-
         const bodyId = `journal-body-${item.id}`;
         const footerId = `journal-footer-${item.id}`;
-
         const entryDiv = document.createElement('div');
         entryDiv.className = 'journal-entry';
         entryDiv.innerHTML = `
@@ -266,35 +188,29 @@ function renderJournal() {
                 <p class="journal-date">${new Date(item.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
                 <div class="button-group">
                     ${!isReadOnly ? `
-                    <button class="card-button" onclick="toggleInlineEdit(${item.id})" title="Modifier">
+                    <button class="card-button" onclick="toggleInlineEdit('${item.id}')" title="Modifier">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z"/></svg>
                     </button>
-                    <button class="card-button delete-button" onclick="deleteItem('journal', ${item.id})" title="Supprimer">
+                    <button class="card-button delete-button" onclick="deleteItem('journal', '${item.id}')" title="Supprimer">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg>
                     </button>
                     ` : ''}
                 </div>
             </div>
             <div id="${bodyId}" class="journal-content-display" 
-                 onclick="if(!isReadOnly) toggleInlineEdit(${item.id})" 
+                 onclick="if(!isReadOnly) toggleInlineEdit('${item.id}')" 
                  title="${!isReadOnly ? 'Cliquer pour modifier' : ''}" 
                  style="${!isReadOnly ? 'cursor: pointer;' : ''}">
                 ${item.entry} 
             </div>
             <div id="${footerId}" class="inline-editor-footer" style="display:none;">
-                <button class="action-button small" onclick="saveInlineEdit(${item.id})">Enregistrer</button>
-                <button class="action-button small secondary" onclick="cancelInlineEdit(${item.id})">Annuler</button>
+                <button class="action-button small" onclick="saveInlineEdit('${item.id}')">Enregistrer</button>
+                <button class="action-button small secondary" onclick="cancelInlineEdit('${item.id}')">Annuler</button>
             </div>
         `;
         journalContent.appendChild(entryDiv);
-
-        // Restaurer l'éditeur si nécessaire après l'injection DOM
         if (activeEditors[bodyId]) {
-            setTimeout(() => {
-                if (!tinymce.get(bodyId)) {
-                    toggleInlineEdit(item.id, activeEditors[bodyId]);
-                }
-            }, 0);
+            setTimeout(() => { if (!tinymce.get(bodyId)) toggleInlineEdit(item.id, activeEditors[bodyId]); }, 0);
         }
     });
 }
@@ -303,25 +219,15 @@ let inlineAutoSaveInterval = null;
 
 async function toggleInlineEdit(id, restoreContent = null) {
     if (isReadOnly) return;
-
     const bodyId = `journal-body-${id}`;
     const footerId = `journal-footer-${id}`;
     const entryBody = document.getElementById(bodyId);
     const entryFooter = document.getElementById(footerId);
-
     if (!entryBody) return;
-
     if (restoreContent) entryBody.innerHTML = restoreContent;
-
-    // Si on est déjà en cours d'édition (TinyMCE actif sur cet élément)
-    if (tinymce.get(bodyId)) {
-        tinymce.get(bodyId).focus();
-        return;
-    }
-
-    // Sinon, on initialise TinyMCE en mode inline
+    if (tinymce.get(bodyId)) { tinymce.get(bodyId).focus(); return; }
     tinymce.init({
-        selector: `#${bodyId}`,
+        selector: `div[id="${bodyId}"]`,
         inline: true,
         license_key: 'gpl',
         plugins: 'lists link image table code quickbars',
@@ -330,104 +236,54 @@ async function toggleInlineEdit(id, restoreContent = null) {
         quickbars_insert_toolbar: false,
         menubar: false,
         skin: 'oxide-dark',
-        content_css: 'dark',
+        // content_css: 'dark',
         content_style: `
-            body { 
-                background-color: #191922; 
-                color: #E2E8F0;
-                font-family: 'Lora', serif;
-                font-size: 1.1em; 
-                line-height: 1.7; 
-            }
-            img { 
-                max-width: 90%; 
-                height: auto; 
-                display: block; 
-                margin: 25px auto; 
-                border: 1px solid #3f3f4e; 
-                padding: 6px;
-                background: #1e1e2a;
-                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-                border-radius: 4px;
-            }
+            body { background-color: #191922; color: #E2E8F0; font-family: 'Lora', serif; font-size: 1.1em; line-height: 1.7; }
+            img { max-width: 90%; height: auto; display: block; margin: 25px auto; border: 1px solid #3f3f4e; padding: 6px; background: #1e1e2a; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); border-radius: 4px; }
             p { margin-bottom: 1em; }
             .jet-result { font-weight: bold; color: #F59E0B; }
             .oracle-result { font-weight: bold; }
         `,
         setup: (editor) => {
             registerCustomTinyMCEButtons(editor);
-
             editor.on('init', () => {
                 editor.focus();
-                // Afficher le footer
                 if (entryFooter) entryFooter.style.display = 'flex';
-
-                // Set up auto-save
                 if (inlineAutoSaveInterval) clearInterval(inlineAutoSaveInterval);
                 inlineAutoSaveInterval = setInterval(async () => {
                     const content = editor.getContent();
-                    const index = gameState.journal.findIndex(j => j.id === id);
+                    const index = gameState.journal.findIndex(j => String(j.id) === String(id));
                     if (index > -1 && content !== gameState.journal[index].entry) {
                         gameState.journal[index].entry = content;
                         await savePartialData('journal', gameState.journal);
-                        console.log("Auto-save journal inline ok");
                     }
-                }, 300000); // 5 minutes
+                }, 300000);
             });
-
-            editor.on('remove', () => {
-                if (inlineAutoSaveInterval) {
-                    clearInterval(inlineAutoSaveInterval);
-                    inlineAutoSaveInterval = null;
-                }
-            });
-
-            // Save on blur (click outside)
-            editor.on('blur', () => {
-                // Short delay to allow clicking on "Cancel" or "Save" buttons without double saving or conflicting
-                setTimeout(() => {
-                    const activeEditor = tinymce.get(bodyId);
-                    if (activeEditor && !activeEditor.hasFocus()) {
-                        saveInlineEdit(id);
-                    }
-                }, 200);
-            });
+            editor.on('remove', () => { if (inlineAutoSaveInterval) { clearInterval(inlineAutoSaveInterval); inlineAutoSaveInterval = null; } });
+            editor.on('blur', () => { setTimeout(() => { const activeEditor = tinymce.get(bodyId); if (activeEditor && !activeEditor.hasFocus()) saveInlineEdit(id); }, 200); });
         }
     });
 }
-
 window.toggleInlineEdit = toggleInlineEdit;
 
 window.addInlineJournalEntry = async function () {
     if (isReadOnly) return;
-
-    // Créer une nouvelle ID et une date (lendemain de la plus récente ou aujourd'hui)
     const newId = Date.now();
     let newDate = new Date().toISOString().split('T')[0];
-
     if (gameState.journal.length > 0) {
         const sorted = [...gameState.journal].sort((a, b) => new Date(b.date) - new Date(a.date));
         const latest = new Date(sorted[0].date);
         latest.setDate(latest.getDate() + 1);
         newDate = latest.toISOString().split('T')[0];
     }
-
-    const newEntry = {
-        id: newId,
-        date: newDate,
-        entry: "<p>Nouvelle pensée...</p>"
-    };
-
-    gameState.journal.unshift(newEntry); // Ajouter au début pour visibilité immédiate
+    const newEntry = { id: newId, date: newDate, entry: "<p>Nouvelle pensée...</p>" };
+    gameState.journal.unshift(newEntry);
     await savePartialData('journal', gameState.journal);
     renderJournal();
-
-    // Activer l'édition après un court délai pour l'injection DOM
     setTimeout(() => toggleInlineEdit(newId), 150);
 };
 
 const isSavingInline = new Set();
-
 window.saveInlineEdit = async function (id) {
     if (isSavingInline.has(id)) return;
     const bodyId = `journal-body-${id}`;
@@ -436,44 +292,30 @@ window.saveInlineEdit = async function (id) {
         isSavingInline.add(id);
         try {
             const newContent = editor.getContent();
-            const index = gameState.journal.findIndex(j => j.id === id);
+            const index = gameState.journal.findIndex(j => String(j.id) === String(id));
             if (index > -1) {
                 gameState.journal[index].entry = newContent;
                 await savePartialData('journal', gameState.journal);
             }
-            editor.remove(); // Safer than destroy() for cleaning up UI
+            editor.remove();
             renderJournal();
-        } finally {
-            isSavingInline.delete(id);
-        }
+        } finally { isSavingInline.delete(id); }
     }
 };
 
 window.cancelInlineEdit = function (id) {
     const bodyId = `journal-body-${id}`;
     const editor = tinymce.get(bodyId);
-    if (editor) {
-        editor.destroy();
-        renderJournal();
-    }
+    if (editor) { editor.destroy(); renderJournal(); }
 };
 
 async function saveJournalEntry(newContent) {
-    // Cette fonction est conservée pour la compatibilité avec main.js si nécessaire,
-    // mais on privilégie saveInlineEdit pour le flux fluide.
     const id = currentJournalEditId;
-    const journalData = {
-        date: (id ? gameState.journal.find(j => j.id === id).date : document.getElementById('journal-date').value),
-        entry: newContent
-    };
-
+    const journalData = { date: (id ? gameState.journal.find(j => String(j.id) === String(id)).date : document.getElementById('journal-date').value), entry: newContent };
     if (id) {
-        const index = gameState.journal.findIndex(j => j.id === id);
+        const index = gameState.journal.findIndex(j => String(j.id) === String(id));
         gameState.journal[index] = { ...gameState.journal[index], ...journalData };
-    } else {
-        journalData.id = Date.now();
-        gameState.journal.push(journalData);
-    }
+    } else { journalData.id = Date.now(); gameState.journal.push(journalData); }
     await savePartialData('journal', gameState.journal);
     renderJournal();
 }
@@ -492,12 +334,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentJournalIndex = 0;
     let sortedJournal = [];
+    let isPageAnimating = false;
 
     if (!readingModeOverlay) return;
 
     function displayJournalPage(index, direction = '') {
+        if (isPageAnimating && direction) return;
+        if (direction) isPageAnimating = true;
+
         currentJournalIndex = index;
         const totalPages = sortedJournal.length;
+        if (totalPages === 0) return;
+
         const item = sortedJournal[index];
         const date = new Date(item.date).toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
 
@@ -512,102 +360,89 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         newBookContent.appendChild(article);
 
-        const currentContent = bookContainer.querySelector('.book-content');
-        if (direction && currentContent) {
-            const exitAnimation = direction === 'next' ? 'page-exit-left' : 'page-exit-right';
-            const enterAnimation = direction === 'next' ? 'page-enter-right' : 'page-enter-left';
-            currentContent.classList.add(exitAnimation);
-            newBookContent.classList.add(enterAnimation);
-            setTimeout(() => currentContent.remove(), 300);
-        } else {
-            bookContainer.innerHTML = '';
-        }
-        bookContainer.appendChild(newBookContent);
-
         pageCounterDisplay.textContent = `Page ${index + 1} / ${totalPages}`;
         prevPageBtn.disabled = (index === 0);
         nextPageBtn.disabled = (index === totalPages - 1);
 
-        // Mise à jour de la barre de progression
         const progressBar = document.getElementById('reading-progress-bar');
         if (progressBar) {
             const progress = ((index + 1) / totalPages) * 100;
             progressBar.style.width = `${progress}%`;
         }
 
-        // Sauvegarder la position de lecture (marque-page)
-        if (currentSaveId) {
-            localStorage.setItem(`oregon_journal_bookmark_${currentSaveId}`, index);
+        const currentContent = bookContainer.querySelector('.book-content');
+        if (direction && currentContent) {
+            const exitAnimation = direction === 'next' ? 'page-exit-left' : 'page-exit-right';
+            const enterAnimation = direction === 'next' ? 'page-enter-right' : 'page-enter-left';
+
+            newBookContent.classList.add('animating', enterAnimation);
+            currentContent.classList.add('animating', exitAnimation);
+            bookContainer.appendChild(newBookContent);
+
+            const onAnimationEnd = (e) => {
+                if (e.target === newBookContent) {
+                    if (currentContent.parentNode === bookContainer) {
+                        currentContent.remove();
+                    }
+                    newBookContent.classList.remove('animating', enterAnimation);
+                    newBookContent.removeEventListener('animationend', onAnimationEnd);
+                    isPageAnimating = false;
+                }
+            };
+            newBookContent.addEventListener('animationend', onAnimationEnd);
+
+            setTimeout(() => {
+                if (isPageAnimating) {
+                    if (currentContent.parentNode === bookContainer) currentContent.remove();
+                    newBookContent.classList.remove('animating', enterAnimation);
+                    isPageAnimating = false;
+                }
+            }, 600);
+        } else {
+            bookContainer.innerHTML = '';
+            bookContainer.appendChild(newBookContent);
+            isPageAnimating = false;
         }
 
-        // Suivi Analytics Umami pour la lecture de l'entrée spécifique
+        if (currentSaveId) localStorage.setItem(`oregon_journal_bookmark_${currentSaveId}`, index);
         if (window.umami && typeof umami.track === 'function' && item) {
-            umami.track('Lecture Entrée', {
-                date: item.date,
-                index: index + 1
-            });
+            umami.track('Lecture Entrée', { date: item.date, index: index + 1 });
         }
     }
 
     window.openReadingMode = function () {
         sortedJournal = [...gameState.journal].sort((a, b) => new Date(a.date) - new Date(b.date));
         if (sortedJournal.length > 0) {
-            // Restaurer le marque-page si présent
             let startIndex = 0;
             const bookmark = localStorage.getItem(`oregon_journal_bookmark_${currentSaveId}`);
             if (bookmark !== null) {
                 startIndex = parseInt(bookmark, 10);
                 if (startIndex >= sortedJournal.length) startIndex = 0;
             }
-
             displayJournalPage(startIndex);
             readingModeOverlay.classList.add('active');
-        } else {
-            showToast("Le journal est vide.", 'info');
-        }
+        } else { showToast("Le journal est vide.", 'info'); }
     };
 
     function closeReadingMode() { readingModeOverlay.classList.remove('active'); }
-
     if (openReadingModeBtn) openReadingModeBtn.addEventListener('click', openReadingMode);
     if (closeReadingModeBtn) closeReadingModeBtn.addEventListener('click', closeReadingMode);
-
-    if (nextPageBtn) nextPageBtn.addEventListener('click', () => {
-        if (currentJournalIndex < sortedJournal.length - 1) displayJournalPage(currentJournalIndex + 1, 'next');
-    });
-    if (prevPageBtn) prevPageBtn.addEventListener('click', () => {
-        if (currentJournalIndex > 0) displayJournalPage(currentJournalIndex - 1, 'prev');
-    });
-
-    if (pageJumper) pageJumper.addEventListener('click', () => {
-        pageCounterDisplay.style.display = 'none';
-        pageJumpInput.style.display = 'inline-block';
-        pageJumpInput.value = currentJournalIndex + 1;
-        pageJumpInput.focus();
-        pageJumpInput.select();
-    });
-
+    if (nextPageBtn) nextPageBtn.addEventListener('click', () => { if (currentJournalIndex < sortedJournal.length - 1) displayJournalPage(currentJournalIndex + 1, 'next'); });
+    if (prevPageBtn) prevPageBtn.addEventListener('click', () => { if (currentJournalIndex > 0) displayJournalPage(currentJournalIndex - 1, 'prev'); });
+    if (pageJumper) pageJumper.addEventListener('click', () => { pageCounterDisplay.style.display = 'none'; pageJumpInput.style.display = 'inline-block'; pageJumpInput.value = currentJournalIndex + 1; pageJumpInput.focus(); pageJumpInput.select(); });
     function handlePageJump() {
-        pageCounterDisplay.style.display = 'inline-block';
-        pageJumpInput.style.display = 'none';
+        pageCounterDisplay.style.display = 'inline-block'; pageJumpInput.style.display = 'none';
         let targetPage = parseInt(pageJumpInput.value, 10);
         if (isNaN(targetPage) || targetPage < 1 || targetPage > sortedJournal.length) return;
         const newIndex = targetPage - 1;
-        if (newIndex !== currentJournalIndex) {
-            displayJournalPage(newIndex, newIndex > currentJournalIndex ? 'next' : 'prev');
-        }
+        if (newIndex !== currentJournalIndex) displayJournalPage(newIndex, newIndex > currentJournalIndex ? 'next' : 'prev');
     }
-    if (pageJumpInput) {
-        pageJumpInput.addEventListener('blur', handlePageJump);
-        pageJumpInput.addEventListener('keydown', (event) => { if (event.key === 'Enter') handlePageJump(); });
-    }
+    if (pageJumpInput) { pageJumpInput.addEventListener('blur', handlePageJump); pageJumpInput.addEventListener('keydown', (event) => { if (event.key === 'Enter') handlePageJump(); }); }
 
-    // Quick View Modal
     const quickViewModal = document.getElementById('quick-view-modal');
     const quickViewTitle = document.getElementById('quick-view-title');
     const quickViewContent = document.getElementById('quick-view-content');
     const quickViewCloseBtn = document.getElementById('quick-view-close-button');
-
     window.openQuickView = function (type) {
         quickViewContent.innerHTML = '';
         if (type === 'character') {
@@ -623,11 +458,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         quickViewModal.classList.add('active');
     }
-
-    function closeQuickView() {
-        quickViewModal.classList.remove('active');
-        quickViewContent.innerHTML = '';
-    }
+    function closeQuickView() { quickViewModal.classList.remove('active'); quickViewContent.innerHTML = ''; }
     if (quickViewCloseBtn) quickViewCloseBtn.addEventListener('click', closeQuickView);
     if (quickViewModal) makeDraggable(quickViewModal, document.getElementById('quick-view-header'));
 });

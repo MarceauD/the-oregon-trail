@@ -300,7 +300,7 @@ window.selectImage = async function (path, target) {
         gameState.character.portrait = path;
         const display = document.getElementById('character-portrait-display');
         if (display) display.style.backgroundImage = `url('${path}')`;
-        await saveGameData();
+        await savePartialData('character.portrait', path);
         if (typeof initCampaignBubbles === 'function') initCampaignBubbles();
     } else if (typeof target === 'string') {
         const input = document.getElementById(target);

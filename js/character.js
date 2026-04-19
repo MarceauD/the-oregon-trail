@@ -150,7 +150,7 @@ window.toggleItemAvailability = async function (key, id) {
     const item = list.find(i => i.id === id);
     if (item) {
         item.isAvailable = !(item.isAvailable === true);
-        await saveGameData();
+        await savePartialData(`character.${key}`, list);
         renderCharacterSheet();
     }
 };
@@ -251,7 +251,7 @@ window.handleAddHealth = async (key) => {
     const newItem = { id: Date.now(), name, duration, care, effects };
     if (!gameState.character[key]) gameState.character[key] = [];
     gameState.character[key].push(newItem);
-    await saveGameData();
+    await savePartialData(`character.${key}`, gameState.character[key]);
     renderCharacterSheet();
 };
 
@@ -271,9 +271,15 @@ function renderInventoryCategory(category, placeholder) {
     data.forEach(item => {
         const slot = document.createElement('div');
         slot.className = `inventory-item-slot ${item.isAvailable === false ? 'is-unavailable' : ''}`;
+
+        // Image par défaut selon la catégorie
+        let defaultImg = 'https://res.cloudinary.com/dg64n9fhe/image/upload/w_300,c_scale,f_auto,q_auto/v1776178797/f9zhxf8orfqhkjmu5b8p.jpg';
+        if (category === 'firearms') defaultImg = 'https://res.cloudinary.com/dg64n9fhe/image/upload/w_300,c_scale,f_auto,q_auto/v1776178799/f2liufvjd7sdclmsey70.jpg';
+        if (category === 'clothing') defaultImg = 'https://res.cloudinary.com/dg64n9fhe/image/upload/w_300,c_scale,f_auto,q_auto/v1776178793/p3cwehndo5mhbu6urvwm.jpg';
+
         slot.innerHTML = `
             <div class="image-container">
-                <img src="${item.img || 'https://res.cloudinary.com/dg64n9fhe/image/upload/w_300,c_scale,f_auto,q_auto/v1776178797/f9zhxf8orfqhkjmu5b8p.jpg'}" alt="${item.name}">
+                <img src="${item.img || defaultImg}" alt="${item.name}">
             </div>
             <span class="item-name"
                 spellcheck="false"
@@ -318,7 +324,7 @@ window.changeInventoryItemImage = function (category, id) {
         const item = list.find(i => i.id === id);
         if (item) {
             item.img = newPath;
-            await saveGameData();
+            await savePartialData(`character.inventory.${category}`, list);
             renderCharacterSheet();
         }
     });
@@ -361,7 +367,7 @@ window.showAddItemForm = (key, placeholder, hasDescription, isTextOnly, hasImage
     container.innerHTML = formHTML;
 };
 
-window.handleAddItem = (key, hasDescription, isTextOnly, hasImage) => {
+window.handleAddItem = async (key, hasDescription, isTextOnly, hasImage) => {
     const inputId = `new-item-name-${key.replace('.', '-')}`;
     const nameInput = document.getElementById(inputId);
     const name = nameInput.value.trim();
@@ -377,8 +383,11 @@ window.handleAddItem = (key, hasDescription, isTextOnly, hasImage) => {
         newItem.description = document.getElementById(`new-item-desc-${key.replace('.', '-')}`).value;
     } else if (hasImage) {
         newItem.name = name;
-        newItem.img = document.getElementById(`new-item-img-${key.replace('.', '-')}`).value;
-        if (newItem.img && !newItem.img.startsWith('images/')) { newItem.img = 'images/' + newItem.img; }
+        let imgUrl = document.getElementById(`new-item-img-${key.replace('.', '-')}`).value.trim();
+        if (imgUrl && !imgUrl.startsWith('http') && !imgUrl.startsWith('images/')) {
+            imgUrl = 'images/' + imgUrl;
+        }
+        newItem.img = imgUrl;
         newItem.isAvailable = true;
     } else if (isTextOnly) {
         newItem.text = name;
@@ -395,7 +404,7 @@ window.handleAddItem = (key, hasDescription, isTextOnly, hasImage) => {
     } else list = gameState.character[key];
 
     list.push(newItem);
-    saveGameData();
+    await savePartialData(`character.${key}`, list);
     renderCharacterSheet();
 };
 
@@ -414,7 +423,7 @@ window.deleteCharacterItem = async (key, id) => {
     const index = list.findIndex(i => i.id === id);
     if (index > -1) {
         list.splice(index, 1);
-        await saveGameData();
+        await savePartialData(`character.${key}`, list);
         renderCharacterSheet();
     }
 };
