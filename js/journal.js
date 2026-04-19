@@ -222,14 +222,18 @@ function renderJournal() {
 
     const query = document.getElementById('journal-search')?.value.toLowerCase() || "";
 
-    // Identifier les éditeurs actifs pour ne pas les écraser
     const activeEditors = {};
+    // Nettoyer proprement les éditeurs TinyMCE avant de vider le DOM
     if (typeof tinymce !== 'undefined' && typeof tinymce.get === 'function') {
-        tinymce.get().forEach(ed => {
+        const editors = tinymce.get();
+        for (let i = editors.length - 1; i >= 0; i--) {
+            const ed = editors[i];
             if (ed.id && ed.id.startsWith('journal-body-')) {
+                // Si l'éditeur est actif, on sauvegarde son contenu
                 activeEditors[ed.id] = ed.getContent();
+                ed.remove(); // Détruit l'éditeur et nettoie le DOM/UI
             }
-        });
+        }
     }
 
     journalContent.innerHTML = '';
@@ -389,18 +393,26 @@ window.addInlineJournalEntry = async function () {
     setTimeout(() => toggleInlineEdit(newId), 150);
 };
 
+const isSavingInline = new Set();
+
 window.saveInlineEdit = async function (id) {
+    if (isSavingInline.has(id)) return;
     const bodyId = `journal-body-${id}`;
     const editor = tinymce.get(bodyId);
     if (editor) {
-        const newContent = editor.getContent();
-        const index = gameState.journal.findIndex(j => j.id === id);
-        if (index > -1) {
-            gameState.journal[index].entry = newContent;
-            await savePartialData('journal', gameState.journal);
+        isSavingInline.add(id);
+        try {
+            const newContent = editor.getContent();
+            const index = gameState.journal.findIndex(j => j.id === id);
+            if (index > -1) {
+                gameState.journal[index].entry = newContent;
+                await savePartialData('journal', gameState.journal);
+            }
+            editor.remove(); // Safer than destroy() for cleaning up UI
+            renderJournal();
+        } finally {
+            isSavingInline.delete(id);
         }
-        editor.destroy();
-        renderJournal();
     }
 };
 
