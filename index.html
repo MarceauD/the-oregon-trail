@@ -5,6 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Oregon Trail - Journal de Bord</title>
+
+    <!-- Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EG6ERJGYRY"></script>
+    <script>
+        // ID de mesure réel
+        const GA_MEASUREMENT_ID = 'G-EG6ERJGYRY';
+
+        // On désactive Analytics si on détecte qu'il s'agit du propriétaire (mode admin autorisé)
+        if (localStorage.getItem('oregon_admin_authorized') === 'true') {
+            window['ga-disable-' + GA_MEASUREMENT_ID] = true;
+            console.log("Analytics désactivé (Mode Admin détecté)");
+        }
+
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', GA_MEASUREMENT_ID);
+    </script>
     <link rel="icon" type="image/png" href="images/cowboy_hat.png">
     <script src="tinymce/tinymce.min.js"></script>
     <script src="js/state.js" defer></script>
