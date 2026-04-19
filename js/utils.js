@@ -124,7 +124,9 @@ function showSection(sectionId) {
     if (btn) btn.classList.add('active');
 
     if (sectionId === 'map' && typeof renderRoute === 'function') renderRoute();
-    else if (sectionId === 'gallery' && typeof renderGallery === 'function') renderGallery();
+    else if (sectionId === 'gallery' && typeof renderGallery === 'function') {
+        syncCloudGallery().then(() => renderGallery());
+    }
     else if (sectionId === 'journal' && isReadOnly && typeof openReadingMode === 'function') openReadingMode();
 
     // Suivi Analytics Umami pour les sections (onglets)

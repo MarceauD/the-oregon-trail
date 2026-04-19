@@ -627,6 +627,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    window.refreshCloudGallery = async function () {
+        if (isReadOnly) return;
+        showToast("Synchronisation de la galerie...", 'info');
+        await syncCloudGallery(true);
+        if (typeof renderGallery === 'function') renderGallery();
+        showToast("Galerie synchronisée !", 'success');
+    };
+
     window.toggleNewCampaignPopover = function () {
         if (isReadOnly) return;
         const popover = document.getElementById('new-campaign-popover');
@@ -733,7 +741,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (user) {
             console.log("Connecté avec l'id :", user.uid);
             await initializeApp();
-            await syncCloudGallery();
+            loadGalleryFromCache(); // Just load from local cache initially
         } else {
             console.log("Utilisateur non authentifié.");
         }

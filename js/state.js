@@ -34,13 +34,36 @@ if (storyId) {
     console.log("Mode partage public activé pour le thread :", storyId);
 }
 
-async function syncCloudGallery() {
+async function syncCloudGallery(force = false) {
+    if (!force) {
+        const cached = localStorage.getItem('oregon_cloud_gallery');
+        const lastSync = localStorage.getItem('oregon_gallery_last_sync');
+        const now = Date.now();
+
+        if (cached && lastSync && (now - parseInt(lastSync) < 3600000)) {
+            cloudGallery = JSON.parse(cached);
+            console.log("Galerie chargée depuis le cache (", cloudGallery.length, "images).");
+            return;
+        }
+    }
+
     try {
+        console.log("Synchronisation de la galerie avec Firebase...");
         const snapshot = await db.collection('gallery').orderBy('createdAt', 'desc').get();
         cloudGallery = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        console.log("Galerie Cloud synchronis\u00e9e :", cloudGallery.length, "images.");
+        localStorage.setItem('oregon_cloud_gallery', JSON.stringify(cloudGallery));
+        localStorage.setItem('oregon_gallery_last_sync', Date.now().toString());
+        console.log("Galerie Cloud synchronisée :", cloudGallery.length, "images.");
     } catch (error) {
         console.error("Erreur lors de la synchronisation de la galerie Cloud :", error);
+    }
+}
+
+function loadGalleryFromCache() {
+    const cached = localStorage.getItem('oregon_cloud_gallery');
+    if (cached) {
+        cloudGallery = JSON.parse(cached);
+        console.log("Galerie extraite du cache local.");
     }
 }
 
