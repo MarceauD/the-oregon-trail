@@ -126,6 +126,12 @@ function showSection(sectionId) {
     if (sectionId === 'map' && typeof renderRoute === 'function') renderRoute();
     else if (sectionId === 'gallery' && typeof renderGallery === 'function') renderGallery();
     else if (sectionId === 'journal' && isReadOnly && typeof openReadingMode === 'function') openReadingMode();
+
+    // Suivi Analytics Umami pour les sections (onglets)
+    if (window.umami && typeof umami.track === 'function') {
+        const pageTitle = document.getElementById(sectionId)?.querySelector('h2')?.textContent || sectionId;
+        umami.track(pageTitle, { section: sectionId });
+    }
 }
 
 async function renderGallery() {

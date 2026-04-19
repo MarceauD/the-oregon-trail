@@ -539,6 +539,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentSaveId) {
             localStorage.setItem(`oregon_journal_bookmark_${currentSaveId}`, index);
         }
+
+        // Suivi Analytics Umami pour la lecture de l'entrée spécifique
+        if (window.umami && typeof umami.track === 'function' && item) {
+            umami.track('Lecture Entrée', {
+                date: item.date,
+                index: index + 1
+            });
+        }
     }
 
     window.openReadingMode = function () {
