@@ -164,12 +164,24 @@
     position: static;
 }
 
+.journal-content-display img,
 .book-content .journal-content-display img {
-    max-width: 100%;
+    max-width: 90%;
     height: auto;
-    border-radius: var(--border-radius);
-    border: 1px solid var(--border-color);
-    margin: 1.5em 0;
+    display: block;
+    margin: 25px auto;
+    border: 1px solid #3f3f4e;
+    padding: 6px;
+    background: #1e1e2a;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.journal-content-display img:hover,
+.book-content .journal-content-display img:hover {
+    transform: scale(1.01);
+    border-color: var(--accent-color);
 }
 
 .reading-mode-footer {

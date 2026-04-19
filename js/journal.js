@@ -19,7 +19,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     font-size: 1.1em; 
                     line-height: 1.7; 
                 }
-                img { max-width: 100%; height: auto; display: block; margin: 10px 0; border-radius: 8px; }
+                img { 
+                    max-width: 90%; 
+                    height: auto; 
+                    display: block; 
+                    margin: 25px auto; 
+                    border: 1px solid #3f3f4e; 
+                    padding: 6px;
+                    background: #1e1e2a;
+                    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+                    border-radius: 4px;
+                }
                 p { margin-bottom: 1em; }
                 h1, h2, h3 { color: #E2E8F0; font-family: 'Merriweather', serif; }
                 a { color: #F59E0B; }
@@ -321,6 +331,29 @@ async function toggleInlineEdit(id, restoreContent = null) {
         menubar: false,
         skin: 'oxide-dark',
         content_css: 'dark',
+        content_style: `
+            body { 
+                background-color: #191922; 
+                color: #E2E8F0;
+                font-family: 'Lora', serif;
+                font-size: 1.1em; 
+                line-height: 1.7; 
+            }
+            img { 
+                max-width: 90%; 
+                height: auto; 
+                display: block; 
+                margin: 25px auto; 
+                border: 1px solid #3f3f4e; 
+                padding: 6px;
+                background: #1e1e2a;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+                border-radius: 4px;
+            }
+            p { margin-bottom: 1em; }
+            .jet-result { font-weight: bold; color: #F59E0B; }
+            .oracle-result { font-weight: bold; }
+        `,
         setup: (editor) => {
             registerCustomTinyMCEButtons(editor);
 
