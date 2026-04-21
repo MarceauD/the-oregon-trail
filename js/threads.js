@@ -15,8 +15,10 @@ function renderThreads() {
         card.dataset.id = thread.id;
 
         let eventsHtml = '';
-        if (thread.events) {
-            eventsHtml = `<ul>` + thread.events.map(event => `<li>${event}</li>`).join('') + `</ul>`;
+        if (thread.events && thread.events.length > 0) {
+            eventsHtml = `<div class="timeline">` +
+                thread.events.map(event => `<div class="timeline-item">${event}</div>`).join('') +
+                `</div>`;
         }
 
         let statusText = (thread.status || "").replace(/-/g, ' ');

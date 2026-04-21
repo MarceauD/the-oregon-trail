@@ -19,7 +19,9 @@ window.exportSectionToClipboard = function (type) {
         output += `Nom : ${id.name || 'N/A'}\n`;
         output += `Âge : ${id.age || 'N/A'}\n`;
         output += `Origine : ${id.origin || 'N/A'}\n`;
-        output += `Profession : ${id.profession || 'N/A'}\n\n`;
+        output += `Profession : ${id.profession || 'N/A'}\n`;
+        if (char.portrait) output += `Portrait : ${char.portrait}\n\n`;
+        else output += '\n';
 
         // HISTOIRE
         output += `--- HISTOIRE ---\n`;
@@ -55,7 +57,9 @@ window.exportSectionToClipboard = function (type) {
         gameState.npcs.forEach(npc => {
             let statusText = (npc.status || '').replace(/-/g, ' ');
             statusText = statusText.charAt(0).toUpperCase() + statusText.slice(1);
-            output += `ID: ${npc.id}\nNom: ${npc.name}\nStatut: ${statusText}\n\nDescription:\n${npc.description}\n\n`;
+            output += `ID: ${npc.id}\nNom: ${npc.name}\nStatut: ${statusText}\n`;
+            if (npc.img) output += `Image: ${npc.img}\n`;
+            output += `\nDescription:\n${npc.description}\n\n`;
             if (npc.faitsMarquants && npc.faitsMarquants.trim() !== '') { output += `Faits marquants:\n${npc.faitsMarquants}\n`; }
             output += separator;
         });
@@ -64,7 +68,9 @@ window.exportSectionToClipboard = function (type) {
         gameState.threads.forEach(thread => {
             let statusText = (thread.status || '').replace(/-/g, ' ');
             statusText = statusText.charAt(0).toUpperCase() + statusText.slice(1);
-            output += `ID: ${thread.id}\nTitre: ${thread.title}\nLieu: ${thread.location}\nStatut: ${statusText}\n\nDescription:\n${thread.description}\n\n`;
+            output += `ID: ${thread.id}\nTitre: ${thread.title}\nLieu: ${thread.location}\nStatut: ${statusText}\n`;
+            if (thread.img) output += `Image: ${thread.img}\n`;
+            output += `\nDescription:\n${thread.description}\n\n`;
             if (thread.events && thread.events.length > 0) { output += `Événements:\n${thread.events.map(e => `- ${e}`).join('\n')}\n`; }
             output += separator;
         });
@@ -103,7 +109,9 @@ window.exportFullCampaignToClipboard = function () {
     output += `Nom : ${id.name || 'N/A'}\n`;
     output += `Âge : ${id.age || 'N/A'}\n`;
     output += `Origine : ${id.origin || 'N/A'}\n`;
-    output += `Profession : ${id.profession || 'N/A'}\n\n`;
+    output += `Profession : ${id.profession || 'N/A'}\n`;
+    if (char.portrait) output += `Portrait : ${char.portrait}\n`;
+    output += '\n';
 
     output += `--- HISTOIRE ---\n${char.history || 'Aucune histoire rédigée.'}\n\n`;
 
@@ -150,6 +158,7 @@ window.exportFullCampaignToClipboard = function () {
     gameState.npcs.forEach(npc => {
         let statusText = (npc.status || '').replace(/-/g, ' ');
         output += `ID: ${npc.id}\nNom: ${npc.name}\nStatut: ${statusText}\nDescription: ${npc.description}\n`;
+        if (npc.img) output += `Image: ${npc.img}\n`;
         if (npc.faitsMarquants) output += `Faits marquants: ${npc.faitsMarquants}\n`;
         output += '---\n';
     });
@@ -160,6 +169,7 @@ window.exportFullCampaignToClipboard = function () {
     gameState.threads.forEach(thread => {
         let statusText = (thread.status || '').replace(/-/g, ' ');
         output += `ID: ${thread.id}\nTitre: ${thread.title}\nLieu: ${thread.location}\nStatut: ${statusText}\nDescription: ${thread.description}\n`;
+        if (thread.img) output += `Image: ${thread.img}\n`;
         if (thread.events && thread.events.length > 0) {
             output += `Événements:\n${thread.events.map(e => `- ${e}`).join('\n')}\n`;
         }
@@ -218,14 +228,18 @@ window.exportSingleItem = function (type, id) {
         if (!item) return;
         let statusText = (item.status || '').replace(/-/g, ' ');
         statusText = statusText.charAt(0).toUpperCase() + statusText.slice(1);
-        output += `Nom: ${item.name}\nStatut: ${statusText}\n\nDescription:\n${item.description}\n\n`;
+        output += `Nom: ${item.name}\nStatut: ${statusText}\n`;
+        if (item.img) output += `Image: ${item.img}\n`;
+        output += `\nDescription:\n${item.description}\n\n`;
         if (item.faitsMarquants && item.faitsMarquants.trim() !== '') output += `Faits marquants:\n${item.faitsMarquants}\n`;
     } else if (type === 'thread') {
         item = gameState.threads.find(t => String(t.id) === String(id));
         if (!item) return;
         let statusText = (item.status || '').replace(/-/g, ' ');
         statusText = statusText.charAt(0).toUpperCase() + statusText.slice(1);
-        output += `Titre: ${item.title}\nLieu: ${item.location}\nStatut: ${statusText}\n\nDescription:\n${item.description}\n\n`;
+        output += `Titre: ${item.title}\nLieu: ${item.location}\nStatut: ${statusText}\n`;
+        if (item.img) output += `Image: ${item.img}\n`;
+        output += `\nDescription:\n${item.description}\n\n`;
         if (item.events && item.events.length > 0) output += `Événements:\n${item.events.map(e => `- ${e}`).join('\n')}\n`;
     }
     navigator.clipboard.writeText(output.trim()).then(() => { showToast('Informations copiées dans le presse-papiers !', 'success'); })

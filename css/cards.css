@@ -179,3 +179,38 @@
     filter: grayscale(40%) brightness(0.7);
     border-color: var(--text-muted);
 }
+
+/* --- Timeline UI for Events --- */
+.timeline {
+    position: relative;
+    padding-left: 20px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    border-left: 1px solid var(--border-color);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 12px;
+    font-size: 0.9em;
+    padding-left: 10px;
+    color: var(--text-color);
+    line-height: 1.4;
+    text-align: left;
+}
+
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    left: -26px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    border: 2px solid var(--bg-color);
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}

@@ -13,8 +13,13 @@ function renderNpcs() {
 
         let faitsHtml = '';
         if (npc.faitsMarquants && npc.faitsMarquants.trim() !== '') {
-            const faitsContent = npc.faitsMarquants.replace(/\n/g, '<br>');
-            faitsHtml = `<div class="card-section" style="margin-top: 15px;"><strong>Faits marquants :</strong><p>${faitsContent}</p></div>`;
+            // On sépare par les pipes ou les retours à la ligne pour créer une liste
+            const faitsArray = npc.faitsMarquants.split(/[|\n]/).filter(f => f.trim() !== '');
+            const faitsContent = faitsArray.map(f => `<div class="timeline-item">${f.trim()}</div>`).join('');
+            faitsHtml = `<div class="card-section" style="margin-top: 15px;">
+                            <strong>Faits marquants :</strong>
+                            <div class="timeline" style="margin-top: 10px; margin-bottom: 0;">${faitsContent}</div>
+                         </div>`;
         }
 
         let imgHtml = npc.img ? `<img src="${npc.img}" alt="${npc.name}" class="npc-portrait">` : `<img src="https://res.cloudinary.com/dg64n9fhe/image/upload/w_300,c_scale,f_auto,q_auto/v1776178797/f9zhxf8orfqhkjmu5b8p.jpg" alt="Missing portrait" class="npc-portrait default">`;
