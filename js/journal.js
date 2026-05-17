@@ -176,7 +176,10 @@ function renderJournal() {
     journalContent.innerHTML = '';
     const sortedJournal = [...gameState.journal].sort((a, b) => new Date(b.date) - new Date(a.date));
     sortedJournal.forEach(item => {
-        const dateText = new Date(item.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }).toLowerCase();
+        const dateObj = new Date(item.date);
+        const rawDate = dateObj.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+        const capitalizedDate = rawDate.charAt(0).toUpperCase() + rawDate.slice(1);
+        const dateText = rawDate.toLowerCase();
         const contentText = item.entry.toLowerCase();
         if (query && !dateText.includes(query) && !contentText.includes(query)) return;
         const bodyId = `journal-body-${item.id}`;
@@ -185,7 +188,7 @@ function renderJournal() {
         entryDiv.className = 'journal-entry';
         entryDiv.innerHTML = `
             <div class="journal-header">
-                <p class="journal-date">${new Date(item.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+                <p class="journal-date">${capitalizedDate}</p>
                 <div class="button-group">
                     ${!isReadOnly ? `
                     <button class="card-button" onclick="toggleInlineEdit('${item.id}')" title="Modifier">
@@ -198,14 +201,14 @@ function renderJournal() {
                 </div>
             </div>
             <div id="${bodyId}" class="journal-content-display" 
-                 onclick="if(!isReadOnly) toggleInlineEdit('${item.id}')" 
+                 onclick="if(!isReadOnly) toggleInlineEdit('${item.id}', null, event)" 
                  title="${!isReadOnly ? 'Cliquer pour modifier' : ''}" 
                  style="${!isReadOnly ? 'cursor: pointer;' : ''}">
                 ${item.entry} 
             </div>
             <div id="${footerId}" class="inline-editor-footer" style="display:none;">
-                <button class="action-button small" onclick="saveInlineEdit('${item.id}')">Enregistrer</button>
-                <button class="action-button small secondary" onclick="cancelInlineEdit('${item.id}')">Annuler</button>
+                <span id="word-count-${item.id}" class="inline-word-count" style="font-size: 0.85em; color: var(--text-muted); align-self: center;">0 mot</span>
+                <span id="autosave-status-${item.id}" class="inline-autosave-status" style="margin-left: auto; font-size: 0.82em; color: var(--accent-color); opacity: 0; transition: opacity 0.3s ease; align-self: center; font-style: italic;">Sauvegardé...</span>
             </div>
         `;
         journalContent.appendChild(entryDiv);
@@ -217,7 +220,7 @@ function renderJournal() {
 
 let inlineAutoSaveInterval = null;
 
-async function toggleInlineEdit(id, restoreContent = null) {
+async function toggleInlineEdit(id, restoreContent = null, event = null) {
     if (isReadOnly) return;
     const bodyId = `journal-body-${id}`;
     const footerId = `journal-footer-${id}`;
@@ -237,18 +240,41 @@ async function toggleInlineEdit(id, restoreContent = null) {
         menubar: false,
         skin: 'oxide-dark',
         // content_css: 'dark',
-        content_style: `
-            body { background-color: #191922; color: #E2E8F0; font-family: 'Lora', serif; font-size: 1.1em; line-height: 1.7; }
-            img { max-width: 90%; height: auto; display: block; margin: 25px auto; border: 1px solid #3f3f4e; padding: 6px; background: #1e1e2a; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); border-radius: 4px; }
-            p { margin-bottom: 1em; }
-            .jet-result { font-weight: bold; color: #F59E0B; }
-            .oracle-result { font-weight: bold; }
-        `,
         setup: (editor) => {
             registerCustomTinyMCEButtons(editor);
+
+            // Calcule et affiche le nombre de mots en temps réel
+            const updateWordCount = () => {
+                const text = editor.getContent({ format: 'text' }).trim();
+                const words = text ? text.split(/\s+/).length : 0;
+                const countSpan = document.getElementById(`word-count-${id}`);
+                if (countSpan) {
+                    countSpan.textContent = `${words} mot${words > 1 ? 's' : ''}`;
+                }
+            };
+
             editor.on('init', () => {
                 editor.focus();
+                
+                const isDirectClick = !!event;
+
+                if (!isDirectClick) {
+                    // Si on a cliqué sur le bouton Modifier global (pas sur le texte),
+                    // on place le curseur à la toute fin du texte pour continuer d'écrire
+                    editor.selection.select(editor.getBody(), true);
+                    editor.selection.collapse(false);
+                }
+
                 if (entryFooter) entryFooter.style.display = 'flex';
+                updateWordCount();
+
+                if (!isDirectClick) {
+                    // Défilement automatique fluide uniquement si on n'a pas cliqué directement sur le texte
+                    setTimeout(() => {
+                        entryBody.scrollIntoView({ behavior: 'smooth', block: 'end' });
+                    }, 100);
+                }
+
                 if (inlineAutoSaveInterval) clearInterval(inlineAutoSaveInterval);
                 inlineAutoSaveInterval = setInterval(async () => {
                     const content = editor.getContent();
@@ -256,9 +282,36 @@ async function toggleInlineEdit(id, restoreContent = null) {
                     if (index > -1 && content !== gameState.journal[index].entry) {
                         gameState.journal[index].entry = content;
                         await savePartialData('journal', gameState.journal);
+
+                        // Signal de sauvegarde discret
+                        const statusSpan = document.getElementById(`autosave-status-${id}`);
+                        if (statusSpan) {
+                            statusSpan.style.opacity = '1';
+                            setTimeout(() => { statusSpan.style.opacity = '0'; }, 2000);
+                        }
                     }
-                }, 300000);
+                }, 300000); // Sauvegarde automatique toutes les 5 minutes pour préserver les quotas Firebase
             });
+
+            // Raccourcis clavier (Ctrl+S / Échap)
+            editor.addShortcut('meta+s', 'Save entry', () => {
+                saveInlineEdit(id);
+            });
+            editor.addShortcut('esc', 'Cancel edit', () => {
+                const content = editor.getContent();
+                const index = gameState.journal.findIndex(j => String(j.id) === String(id));
+                if (index > -1 && content !== gameState.journal[index].entry) {
+                    if (confirm("Annuler les modifications en cours ? Toutes vos modifications non enregistrées seront perdues.")) {
+                        cancelInlineEdit(id);
+                    }
+                } else {
+                    cancelInlineEdit(id);
+                }
+            });
+
+            // Écouteur de modifications de texte pour le compteur de mots
+            editor.on('input NodeChange KeyUp', updateWordCount);
+
             editor.on('remove', () => { if (inlineAutoSaveInterval) { clearInterval(inlineAutoSaveInterval); inlineAutoSaveInterval = null; } });
             editor.on('blur', () => { setTimeout(() => { const activeEditor = tinymce.get(bodyId); if (activeEditor && !activeEditor.hasFocus()) saveInlineEdit(id); }, 200); });
         }
@@ -347,7 +400,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (totalPages === 0) return;
 
         const item = sortedJournal[index];
-        const date = new Date(item.date).toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+        const rawDate = new Date(item.date).toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+        const date = rawDate.charAt(0).toUpperCase() + rawDate.slice(1);
 
         const newBookContent = document.createElement('div');
         newBookContent.className = 'book-content';

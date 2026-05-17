@@ -92,15 +92,6 @@ window.exportFullCampaignToClipboard = function () {
     let output = '';
     const separator = '\n' + '='.repeat(40) + '\n\n';
 
-    // PREAMBLE
-    output += `CONTEXTE DE JEU DE RÔLE EN SOLITAIRE\n`;
-    output += `Tu es mon assistant de JDR et mon éditeur littéraire. Voici l'état actuel de ma campagne "The Oregon Trail".\n`;
-    output += `Utilise ces informations pour :\n`;
-    output += `1. Corriger l'orthographe et le style de mes nouveaux écrits.\n`;
-    output += `2. Vérifier la cohérence avec les personnages (PNJs) et les intrigues (Threads).\n`;
-    output += `3. Commenter la pertinence de mes choix et m'aider à brainstormer sur la suite si je te le demande.\n\n`;
-    output += separator;
-
     // 1. CHARACTER
     const char = gameState.character;
     output += '=== FICHE DE PERSONNAGE ===\n\n';
