@@ -1,0 +1,140 @@
+{
+    "project": "The Oregon Trail TTRPG",
+    "description": "Helper de structure Firebase - Source de vérité pour les synchronisations IA.",
+    "save_mappings": {
+        "Eddy": "mainSave",
+        "Max": "save_1776090589446"
+    },
+    "structure": {
+        "character": {
+            "history": "string",
+            "portrait": "string (URL Cloudinary)",
+            "identityFields": {
+                "age": "string",
+                "name": "string",
+                "origin": "string",
+                "profession": "string"
+            },
+            "inventory": {
+                "clothing": [
+                    {
+                        "id": "int64",
+                        "name": "string"
+                    }
+                ],
+                "general": [
+                    {
+                        "id": "int64",
+                        "text": "string"
+                    }
+                ],
+                "firearms": [
+                    {
+                        "id": "int64",
+                        "name": "string"
+                    }
+                ],
+                "companions": [
+                    {
+                        "id": "int64",
+                        "name": "string"
+                    }
+                ]
+            },
+            "money": "double (ex: 0.15)",
+            "physicalState": [
+                {
+                    "id": "int64",
+                    "name": "string",
+                    "duration": "string",
+                    "effects": "string",
+                    "care": "string"
+                }
+            ],
+            "mentalState": [
+                {
+                    "id": "int64",
+                    "name": "string",
+                    "duration": "string",
+                    "effects": "string",
+                    "care": "string"
+                }
+            ],
+            "plotNotes": [
+                {
+                    "id": "int64",
+                    "text": "string",
+                    "done": "boolean"
+                }
+            ],
+            "skills": [
+                {
+                    "id": "int64",
+                    "name": "string",
+                    "value": "int"
+                }
+            ],
+            "stats": [
+                {
+                    "id": "int64",
+                    "name": "string",
+                    "value": "int"
+                }
+            ],
+            "specificKnowledge": [
+                {
+                    "id": "int64",
+                    "name": "string"
+                }
+            ],
+            "strengths": [
+                {
+                    "id": "int64",
+                    "text": "string"
+                }
+            ],
+            "weaknesses": [
+                {
+                    "id": "int64",
+                    "text": "string"
+                }
+            ],
+            "traits": [
+                {
+                    "id": "string",
+                    "name": "string",
+                    "description": "string"
+                }
+            ]
+        },
+        "npcs": [
+            {
+                "id": "string (ex: 'matt-lorentzen')",
+                "name": "string",
+                "status": "Amoureux / Amoureuse | Ami proche | Famille | Ami | Allié | Amical | Connaissance | Neutre | Suspect | Rival | Hostile | Ennemi mineur | Ennemi majeur | Disparu | Prisonnier | Mort",
+                "description": "string",
+                "img": "string (URL Cloudinary)",
+                "faitsMarquants": "string (séparé par le caractère |)"
+            }
+        ],
+        "threads": [
+            {
+                "id": "string (timestamp)",
+                "title": "string",
+                "description": "string",
+                "status": "En cours | Terminé | Raté | Abandonné | En attente",
+                "location": "string",
+                "img": "string (URL Cloudinary)",
+                "events": [
+                    "string"
+                ]
+            }
+        ]
+    },
+    "critical_notes": [
+        "Utiliser 'text' (pas 'name') pour inventory.general, plotNotes, strengths, weaknesses.",
+        "money est un Double.",
+        "mentalState et physicalState partagent la même structure d'objet.",
+        "Les IDs numériques sont en int64."
+    ]
+}
