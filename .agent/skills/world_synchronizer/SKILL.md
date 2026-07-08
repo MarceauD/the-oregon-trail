@@ -27,18 +27,30 @@ When reading a journal entry, produce an **Executive Summary**:
 ### Step 2: NPC Synchronization
 For each NPC mentioned:
 - **Status Change**: Did their relationship with the player evolve?
-- **Facts (Faits Marquants)**: Add a one-sentence record of their interaction.
+- **Facts (Faits Marquants)**: Add a one-sentence record of their interaction (concatenated with `|`).
 - **New NPCs**: Identify and initiate tracking for any new characters.
 
 ### Step 3: Thread Synchronization
 For each active or new plot line:
 - **Progress**: What happened in this specific thread?
-- **Status**: (active, completed, abandoned).
+- **Status**: (En cours, Terminé, Raté, Abandonné, En attente).
 - **New Events**: Add to the `events` array in the Thread data.
+
+### Step 4: Character State Synchronization (CRITICAL)
+For the active character sheet:
+- **Economic Delta**: Extract and compute the exact `money` change (e.g. lost 25c, gained $1.50).
+- **Inventory Updates**: Extract items gained/lost. Classify items into `general` (text description), `firearms`, or `clothing`.
+- **Physical/Mental Health**: Identify injuries, sickness, fatigue, or traumas. Create objects for `physicalState` or `mentalState` (specify `name`, `duration`, `effects`, `care`).
+- **Stats/Skills**: If a roll or event modified a stat value, prepare it for deep merge.
+
+### Step 5: Save Mapping and Command Execution
+- Read `.agent/firebase_schema.json` to map the active character's name to their Firebase Save ID (e.g., "Eddy" -> "mainSave").
+- Construct the `update.json` using the mapped structure.
+- Run the synchronization: `node tools\firebase_updater.js <SAVE_ID> \tmp\update.json`.
 
 ## 3. Interaction with Other Skills
 - **Synergy with World Clock**: Use the summary produced here to feed the World Clock's "off-screen" audit.
-- **Synergy with Narrative Editor**: When the user provides a draft, run the Synchronizer *after* refinement to update the database ONLY *after getting* user approval
+- **Synergy with Narrative Editor**: When the user provides a draft, run the Synchronizer *after* refinement to update the database ONLY *after getting* user approval.
 
 ## 4. Usage Example
 **User**: "Update the world state from the July 9th entry."

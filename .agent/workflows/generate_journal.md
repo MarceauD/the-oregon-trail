@@ -2,31 +2,35 @@
 description: Generates a new roleplay scene for Obadiah Vesper integrating Game Master rules and maintaining local state.
 ---
 
-# Workflow: Generation Journal Obadiah Vesper
+# Workflow: Génération de Scène de Journal
 
-This workflow dictates the exact steps for generating a chunk of the narrative (around 800 - 1500 words at a time).
+Ce workflow décrit les étapes précises pour co-écrire et générer une nouvelle scène narrative (environ 800 à 1500 mots) pour n'importe quel personnage actif.
 
-1. **Read the Context**: 
-   - Parse `e:\Tri Selectif\Programmation\the-oregon-trail\saves\obadiah.txt` using the `view_file` tool to understand the current situation, inventory, recent journal entries, active threads, and stats.
+1. **Lire le Contexte du Personnage Actif** :
+   - Identifier le personnage en cours de jeu (ex: Eddy, Max, etc.).
+   - Ouvrir et analyser son fichier de sauvegarde correspondant dans `saves/` (ex: `saves/eddy.txt` ou `saves/max.txt`) pour comprendre sa situation immédiate, son inventaire, ses caractéristiques et ses blessures/traumatismes en cours.
+   - Consulter le fichier `.agent/firebase_schema.json` pour déterminer la clé Firebase associée (ex: "Eddy" -> "mainSave", "Max" -> "save_1776090589446").
 
-2. **Plan the Scene (Internal thought)**
-   - Determine what the very next immediate moment is for Obadiah Vesper.
-   - Break it down: What is Obadiah trying to do? Who is he meeting? How does the frail constitution and the environment play a role?
+2. **Planifier la Scène (Pensée interne)** :
+   - Déterminer l'instant précis suivant pour le personnage.
+   - Poser les bases dramatiques : Quels sont les besoins immédiats du personnage ? Quel est l'obstacle (physique, économique, social ou métabolique) ? Comment sa personnalité et ses forces/faiblesses influencent la scène ?
 
-3. **Mechanics Resolution**
-   - Identify if an action requires a roll (e.g. Navigation Céleste, Réparation mécanique, Perception, Agilité).
-   - Run `run_command` with `node tools\dice_roller.js <stat>` if Obadiah acts.
-   - Run `run_command` with `node tools\mythic_oracle.js "<odds>"` if the environment or NPCs act.
+3. **Résolution des Mécaniques (Dés & Oracle)** :
+   - Déterminer si l'action entreprise requiert un jet sous une compétence ou une caractéristique.
+   - Exécuter la commande : `node tools\dice_roller.js <valeur_stat>` pour obtenir le résultat.
+   - Si l'environnement ou les PNJs réagissent de manière incertaine, consulter l'Oracle Mythic en lançant : `node tools\mythic_oracle.js "<odds>"` (odds: impossible, unlikely, 50/50, likely, a sure thing).
+   - Intégrer les résultats des jets fidèlement dans le texte narratif sans balise HTML.
 
-4. **Writing Phase**
-   - Draft the scene directly in your output response. Be incredibly sensory, focus on sound, physical difficulty, and the slow passage of time.
-   - Format clearly with the date.
+4. **Phase d'Écriture** :
+   - Rédiger la scène en adoptant strictement le style et la voix du personnage (Max : phrases courtes SVO, descriptions physiques et sensorielles directes ; Eddy : style poétique, synesthésies, musicalité).
+   - Respecter la lenteur narrative (l'agonie locale) et la dureté de l'année 1868.
 
-5. **State Update Phase & Firebase Sync (CRITICAL)**
-   - Did the scene change anything? Did he spend money? Gain an item? Obtain an injury? Meet a new NPC?
-   - Formulate exactly how the game state has evolved. Create a file `/tmp/update.json` using the exact JSON schema defined in your SKILL.md (containing journal_entry, npcs, threads).
-   - Once the scene is finalized, execute `node tools\firebase_updater.js save_obie_vesper \tmp\update.json` to push the update to the Firebase database.
-   - Do NOT edit `saves/obadiah.txt` manually.
+5. **Mise à jour du Statut et Synchronisation Firebase** :
+   - Calculer les deltas de la scène (argent dépensé, nouvel objet dans l'inventaire, blessures, faits marquants de PNJ, évolution d'intrigues).
+   - Préparer un fichier JSON temporaire `update.json` respectant le schéma de `firebase_schema.json`.
+   - Exécuter la commande pour synchroniser Firebase :
+     `node tools\firebase_updater.js <SAVE_ID_MAPPED> update.json`
+   - Si la scène a été écrite ou validée par l'utilisateur, l'ajouter au fichier de sauvegarde local (`saves/[char_name].txt`).
 
-6. **Notify User**
-   - Present a short summary to the user. Ask if they want you to continue to the next scene of the day, using the `notify_user` tool with `BlockedOnUser=true`.
+6. **Notification de l'Utilisateur** :
+   - Présenter un court résumé à l'utilisateur et lui proposer des pistes ou choix narratifs pour la suite de sa journée de voyage.
