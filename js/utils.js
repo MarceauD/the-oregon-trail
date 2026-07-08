@@ -58,6 +58,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (helpOverlay && helpOverlay.classList.contains('active')) {
                 toggleShortcutsHelp();
             }
+            const immersiveOverlay = document.getElementById('immersive-writing-overlay');
+            if (immersiveOverlay && immersiveOverlay.classList.contains('active') && typeof closeImmersiveEdit === 'function') {
+                closeImmersiveEdit();
+            }
         }
         if (e.altKey) {
             e.preventDefault();

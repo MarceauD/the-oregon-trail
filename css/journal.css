@@ -108,13 +108,13 @@
     min-height: 50vh;
 }
 
-/* Fix z-index pour TinyMCE modales */
+/* Fix z-index pour TinyMCE modales et bulles d'aide */
 .tox-menu {
-    z-index: 10002 !important;
+    z-index: 60002 !important; /* Supérieur à l'overlay immersif (50000) */
 }
 
-.tox-tinymce-aux {
-    z-index: 10001 !important;
+.tox-tinymce-aux, .tox-tinymce-inline {
+    z-index: 60001 !important; /* Supérieur à l'overlay immersif (50000) */
 }
 
 /* Modale de Lecture Histoires / Journal */
@@ -416,3 +416,151 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
     border-radius: 8px !important;
 }
+
+/* --- Mode Écriture Immersive --- */
+.immersive-writing-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #0b0b0f;
+    background-image: radial-gradient(circle at center, #181822 0%, #0b0b0f 100%);
+    z-index: 50000;
+    display: none;
+    flex-direction: column;
+    color: var(--text-color);
+    overflow: hidden;
+}
+
+.immersive-writing-overlay.active {
+    display: flex;
+}
+
+.immersive-writing-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 8%;
+    height: 50px;
+    border-bottom: none;
+    flex-shrink: 0;
+}
+
+.immersive-writing-date {
+    font-family: var(--font-interface);
+    font-size: 0.9em;
+    font-weight: normal;
+    color: var(--text-muted);
+    opacity: 0.5;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.immersive-writing-close-button {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    opacity: 0.5;
+    padding: 0;
+    cursor: pointer;
+    font-family: var(--font-interface);
+    font-size: 0.95em;
+    font-weight: normal;
+    transition: all 0.2s ease;
+}
+
+.immersive-writing-close-button:hover {
+    background: none;
+    color: var(--accent-color);
+    opacity: 0.9;
+    box-shadow: none;
+}
+
+.immersive-writing-editor-container {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 10px 8% 0 8%;
+}
+
+.immersive-writing-editor {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    min-height: 80vh;
+    font-family: var(--font-serif);
+    font-size: 1.3em;
+    line-height: 1.8;
+    color: #e2e8f0;
+    outline: none !important;
+    border: none !important;
+    padding: 10px 0 0 0;
+    box-shadow: none !important;
+    background-color: transparent !important;
+}
+
+.immersive-writing-editor::after {
+    content: "";
+    display: block;
+    height: 55vh; /* Espace virtuel garanti pour faire remonter le curseur au milieu */
+    pointer-events: none;
+}
+
+.immersive-writing-editor p {
+    margin-bottom: 1.2em;
+}
+
+/* Hide toolbar/focus outlines and backgrounds in immersive editor */
+.immersive-writing-editor[contenteditable="true"]:focus,
+.immersive-writing-editor.tox-edit-focus {
+    outline: none !important;
+    border: none !important;
+    background-color: transparent !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+.immersive-writing-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 8%;
+    height: 40px;
+    border-top: none;
+    font-size: 0.8em;
+    color: var(--text-muted);
+    opacity: 0.3;
+    background-color: transparent;
+    flex-shrink: 0;
+}
+
+.immersive-word-count {
+    font-family: var(--font-interface);
+}
+
+.immersive-save-status {
+    font-style: italic;
+    font-family: var(--font-interface);
+    transition: opacity 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .immersive-writing-header {
+        padding: 10px 20px;
+    }
+    .immersive-writing-date {
+        font-size: 0.8em;
+    }
+    .immersive-writing-editor-container {
+        padding: 10px 15px 40px 15px;
+    }
+    .immersive-writing-editor {
+        font-size: 1.15em;
+    }
+    .immersive-writing-footer {
+        padding: 10px 20px;
+    }
+}
+
+
