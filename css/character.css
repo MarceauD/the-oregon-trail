@@ -147,6 +147,11 @@
     overflow-wrap: break-word;
 }
 
+#history-container p {
+    text-align: justify;
+    white-space: pre-wrap;
+}
+
 .char-info-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;

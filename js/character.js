@@ -34,8 +34,7 @@ function renderCharacterHistory() {
     const data = gameState.character.history || '';
     container.innerHTML = `
         <p contenteditable="${!isReadOnly}" spellcheck="false"
-        onblur="updateCharacterHistory(this.textContent)"
-        onkeydown="if(event.key==='Enter'){ this.blur(); event.preventDefault(); }">
+        onblur="updateCharacterHistory(this.innerText)">
         ${data}
         </p>
     `;
