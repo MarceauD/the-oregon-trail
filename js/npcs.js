@@ -3,7 +3,13 @@ function renderNpcs() {
     if (!npcContainer) return;
 
     npcContainer.innerHTML = '';
-    gameState.npcs.forEach((npc) => {
+    const sortedNpcs = [...gameState.npcs].sort((a, b) => {
+        const idA = Number(a.id) || 0;
+        const idB = Number(b.id) || 0;
+        return idB - idA;
+    });
+
+    sortedNpcs.forEach((npc) => {
         const card = document.createElement('div');
         card.className = `card full-view-card status-${npc.status || 'vivant'}`; // New dynamic status class
         card.dataset.id = npc.id;

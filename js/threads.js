@@ -9,7 +9,19 @@ function renderThreads() {
         t.location.toLowerCase().includes(searchTerm)
     );
 
-    filteredThreads.forEach((thread) => {
+    const sortedThreads = [...filteredThreads].sort((a, b) => {
+        const statusA = a.status || 'en-cours';
+        const statusB = b.status || 'en-cours';
+
+        if (statusA === 'en-cours' && statusB !== 'en-cours') return -1;
+        if (statusA !== 'en-cours' && statusB === 'en-cours') return 1;
+
+        const idA = Number(a.id) || 0;
+        const idB = Number(b.id) || 0;
+        return idB - idA;
+    });
+
+    sortedThreads.forEach((thread) => {
         const card = document.createElement('div');
         card.className = `card full-view-card status-${thread.status || 'en-cours'}`;
         card.dataset.id = thread.id;
