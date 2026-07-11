@@ -396,6 +396,21 @@
 
 ### 27 juillet 1868
 - **Déplacements & Actions** :
-  - Réveil au lever du soleil dans la pièce principale de la ferme.
+  - Réveil au lever du soleil dans la pièce principale de la ferme McNamera.
+  - Eddy constate l'absence de fièvre et l'état stable de sa blessure au bras (Jet d'Endurance réussi : 24/80).
+  - Aide Elara en cuisine de sa seule main valide pour préparer un petit-déjeuner gigantesque (lard salé, saucisses, Johnnycakes, œufs, pommes de terre, chicorée).
+  - Apprend l'origine du terme « Johnnycakes » (anciennement « Shawnee cakes ») (Jet de Perception échoué : 69/65).
+  - Repas partagé en silence avec Elara et Theodore, qui les rejoint péniblement malgré sa jambe blessée et la fièvre.
+  - Arrivée du docteur Charles Russell, qui ausculte les blessés. Il diagnostique une balle restée dans la cuisse de Theodore (risque d'infection mortelle) et un saignement interne sous la peau pour le bras d'Eddy.
+  - Eddy pousse le docteur à ausculter Finn en priorité à cause de son état délirant.
+  - Eddy sert d'assistant médical de sa main valide (maintien de Finn pendant les soins et versement de l'eau phéniquée sur sa blessure) (Jet de Dextérité réussi : 27/40).
+  - Elara débarrasse la table pour la transformer en table d'opération afin que le docteur y opère Theodore et nettoie le bras d'Eddy.
 - **Rencontres & Interactions** :
-  - Aucune.
+  - **Elara McNamera** : Veille silencieusement sur la ferme, s'occupe des blessés et prépare un repas copieux. Elle assiste ensuite le docteur en cuisine en lui fournissant eau chaude et savon.
+  - **Theodore McNamera** : Rejoint la table malgré la fièvre. Il accepte ensuite de subir l'extraction immédiate de la balle logée dans sa cuisse.
+  - **Finn** : Confiné dans sa chambre, il brûle de fièvre. Le docteur nettoie sa plaie infectée (phlegmon) sous le derme, lui pose un bandage compressif pour sa côte cassée et lui administre de la quinine et du laudanum.
+  - **Dr. Charles Russell** : Médecin de campagne au verbe haut, ancien médecin militaire cynique et pragmatique. Il réquisitionne la cuisine, négocie son paiement (2 dollars + les restes du repas) et choisit Eddy pour l'aider dans ses opérations.
+- **Santé & Ressources** :
+  - **Santé** : La côte brisée de Finn frotte la plèvre sans la percer, mais sa plaie est infectée (phlegmon) causant fièvre (pyrexie) et difficultés respiratoires (dyspnée). Theodore s'apprête à subir une chirurgie d'urgence à la cuisse. Le bras d'Eddy doit être ouvert pour stopper un saignement interne. Eddy ressent des hallucinations de son traumatisme (silhouette noire lui parlant de mort) à l'approche de la chirurgie.
+  - **Ressources** : Consommation de nourriture pour le petit-déjeuner. Theodore règle 2 dollars au docteur en nature et espèce.
+  - **Compétence / Savoir** : Acquisition du savoir spécifique « Recette des Johnnycakes (Shawnee cakes) ».
