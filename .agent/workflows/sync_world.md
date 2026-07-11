@@ -29,5 +29,10 @@ Ce workflow permet d'extraire automatiquement toutes les informations d'une nouv
    - Lancer la commande :
      `node tools\firebase_updater.js <SAVE_ID_MAPPED> update.json`
 
-6. **Rapport de Synchronisation** :
-   - Confirmer la réussite de la mise à jour à l'utilisateur sous la forme d'un résumé structuré (Modifications Personnage, PNJs, Threads).
+6. **Mettre à jour le fichier de résumé cumulatif** :
+   - Ouvrir le fichier de résumé `saves/[char_name]/summary.txt` (ex: `saves/eddy/summary.txt`).
+   - Extraire les faits essentiels de la nouvelle journée sous forme de liste à puces factuelle (Déplacements & Actions, Rencontres & Interactions, Santé & Ressources).
+   - Ajouter cette nouvelle entrée à la fin du fichier.
+
+7. **Rapport de Synchronisation** :
+   - Confirmer la réussite de la mise à jour à l'utilisateur sous la forme d'un résumé structuré (Modifications Personnage, PNJs, Threads) et lui signaler que le fichier de résumé `summary.txt` a été complété.

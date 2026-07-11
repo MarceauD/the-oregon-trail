@@ -45,12 +45,11 @@ Whenever a random event might occur, a yes/no question is asked about the univer
 
 ## 3. Maintaining State & Pushing to Firebase (CRITICAL)
 > [!IMPORTANT]
+> **NO JOURNAL WRITING**: The AI MUST NEVER write, modify, or edit the journal/narrative section of the local save file (`saves/[char_name].txt`), nor push `journal_entry` updates to Firebase. Only the USER is allowed to write and edit the story. The AI's role is strictly limited to parsing the user's narrative and updating character sheets, stats, inventory, NPCs, and threads.
 > **SAFETY PROTOCOL**: NEVER use `rebuild_everything.js` or `restore_full_save.js` for narrative updates. These tools overwrite the entire database and erase images and formatting. 
 > **DEDUPLICATION**: ALWAYS check if the data (stats, traits, NPC facts) already exists in Firebase or the local save before updating.
 > ALWAYS use `firebase_updater.js` with a partial `update.json` to CONCATENATE data.
-> 
-> You DO NOT need to modify the local text file (`saves/[char_name].txt`) directly if you are in generation mode (the system will append the output). Just verify it exists.
-Instead, after generating your narrative scene, you must formulate exactly how the game state has evolved and push it directly to Firebase using the updater script.
+Instead, after parsing the user's narrative scene, you must formulate exactly how the game state has evolved and push it directly to Firebase using the updater script (excluding the `journal_entry` block).
 1. Write a temporary file named `update.json` in the `/tmp/` directory, formatted EXACTLY using this schema:
 ```json
 {
