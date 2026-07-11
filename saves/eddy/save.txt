@@ -34,7 +34,7 @@ Dextérité: 40
 Intelligence: 75
 
 --- COMPÉTENCES ---
-Résilience: 85
+Résilience: 86
 Débrouillardise: 62
 Jeu de banjo: 60
 Attaque sournoise: 70
@@ -60,7 +60,6 @@ Chasse (petit gibier): 26
 - Ignorant
 - Méfiant
 - Regret
-- Regret (Score: 9/10)
 
 --- INVENTAIRE ---
 
@@ -99,13 +98,13 @@ Chasse (petit gibier): 26
 - Recette des Johnnycakes (Shawnee cakes)
 
 --- ÉTAT PHYSIQUE ---
-- Blessure par balle (bras gauche) (Depuis: aujourd'hui, Soins: Bandage à changer 3 fois par jour, voir un médecin pour inspecter ou si fièvre, Effets: Malus de force général)
-- entaille à l'avant bras droit (Depuis: 3 jours, Soins: aucun, Effets: aucun)
-- brûlure au bout des doigts de la main droite (Depuis: 3 jours, Soins: aucun, Effets: aucun)
+- Blessure par balle (bras gauche) (Depuis: hier, Soins: Bandage à changer 3 fois par jour, voir un médecin pour inspecter ou si fièvre, Effets: Malus de force général)
+- entaille à l'avant bras droit (Depuis: 4 j, Soins: aucun, Effets: aucun)
+- brûlure au bout des doigts de la main droite (Depuis: 3 j, Soins: aucun, Effets: aucun)
 
 --- SANTÉ MENTALE ---
-- Mort violente de Eugene Dunbar (Depuis: aujourd'hui, Soins: Trouver quelqu'un à qui en parler et accepter de se livrer, Effets: Risque de sensation de panique à l'odeur de poudre, vue de la mort, bruit d'arme à feu)
-- Séparation avec Benjamin (Depuis: aujourd'hui, Soins: Trouver quelqu'un à qui en parler et accepter de se livrer, Effets: Difficulté à prendre de nouvelles responsabilités auprès des autres)
+- Mort violente de Eugene Dunbar (Depuis: hier, Soins: Trouver quelqu'un à qui en parler et accepter de se livrer, Effets: Risque de sensation de panique à l'odeur de poudre, vue de la mort, bruit d'arme à feu)
+- Séparation avec Benjamin (Depuis: hier, Soins: Trouver quelqu'un à qui en parler et accepter de se livrer, Effets: Difficulté à prendre de nouvelles responsabilités auprès des autres)
 
 --- NOTES & IDÉES ---
 [ ] Intrigue Ruy Blas à Philadelphie, PA qui fait passer par 5 endroits majeurs de la ville.
@@ -345,7 +344,7 @@ A été témoin de ma victoire de négociation contre Meeks, semblant impression
 
 A participé à la célébration générale après ma négociation.
 
-A refusé ma proposition d'attaquer la ferme Dunbar, se moquant de mon idéalisme . | A affronté Morris Diamond et ses hommes à la ferme en l'absence d'Eddy et Theodore. A accepté un duel truqué avec Diamond, s'est fait tirer dans le flanc droit (balle au poumon) après le dysfonctionnement de son arme. Est soigné dans la chambre de Samuel à la ferme. | A écouté la confession complète d'Eddy sur son exil, Benjamin et la mort d'Eugene. A reçu un fil de pêche fabriqué avec une corde en acier de banjo de la part d'Eddy en guise de remerciement. | Brûle de fièvre et refuse d'avaler quoi que ce soit au lendemain des événements tragiques
+A refusé ma proposition d'attaquer la ferme Dunbar, se moquant de mon idéalisme . | A affronté Morris Diamond et ses hommes à la ferme en l'absence d'Eddy et Theodore. A accepté un duel truqué avec Diamond, s'est fait tirer dans le flanc droit (balle au poumon) après le dysfonctionnement de son arme. Est soigné dans la chambre de Samuel à la ferme. | A écouté la confession complète d'Eddy sur son exil, Benjamin et la mort d'Eugene. A reçu un fil de pêche fabriqué avec une corde en acier de banjo de la part d'Eddy en guise de remerciement. | Brûle de fièvre et refuse d'avaler quoi que ce soit au lendemain des événements tragiques | Ausculté par le Dr. Russell qui nettoie sa plaie infectée et lui administre de la quinine et du laudanum pour sa côte cassée et sa fièvre
 ---
 ID: 1759859537696
 Nom: Elara McNamera
@@ -355,7 +354,7 @@ Image: https://res.cloudinary.com/dg64n9fhe/image/upload/v1776178754/pnaevrogio1
 Faits marquants: J'ai partagé un bref moment d'entraide silencieuse avec elle dans la cuisine. Elle semble apprécier ma présence discrète.
 M'a soigné après mon accident. Elle a entendu la conversation entre McNamera et le pisteur et soupçonne maintenant la vérité sur ma situation. Sa réaction est incertaine.
 M'a donné le fusil pour me défendre.
-M'a préparé une sacoche avec des provisions (viande, pain, boussole, couteau) pour mon exil. | A soigné Eddy et Theodore à leur retour de la forêt. A appris la mort d'Eugene Dunbar et l'effondrement psychologique de son mari. | A partagé un repas chaud avec Eddy, exprimant sa gratitude pour la batteuse et le rassurant sur sa responsabilité dans la mort d'Eugene. | A préparé un petit-déjeuner copieux avec Eddy tout en veillant sur Theodore et Finn qui sont tombés fiévreux
+M'a préparé une sacoche avec des provisions (viande, pain, boussole, couteau) pour mon exil. | A soigné Eddy et Theodore à leur retour de la forêt. A appris la mort d'Eugene Dunbar et l'effondrement psychologique de son mari. | A partagé un repas chaud avec Eddy, exprimant sa gratitude pour la batteuse et le rassurant sur sa responsabilité dans la mort d'Eugene. | A préparé un petit-déjeuner copieux avec Eddy tout en veillant sur Theodore et Finn qui sont tombés fiévreux | Assiste le médecin en cuisine en fournissant eau bouillante, bassine et savon pour les chirurgies d'urgence
 ---
 ID: 1759855829459
 Nom: Theodore McNamera
@@ -433,7 +432,7 @@ Nous devons nous retrouver à la cabane dimanche matin
 Alors qu'il est là pour me retrouver dans le bois, il croise le chemin de Eugene Dunbar et son pisteur. 
 Il finit par donner la position de la cabane sous la menace.
 
-Il est libéré quand Artus Flynn tue Eugene Dunbar. | A confessé en pleurs à Elara et Eddy avoir parlé sous la torture après s'être fait tirer dans la cuisse par Eugene Dunbar. A démonté son Colt Army 1860 devant Eddy pour le rendre inoffensif. | A rejoint la table de petit-déjeuner malgré une forte fièvre et une blessure à la jambe gauche qui l'empêche de poser le pied au sol
+Il est libéré quand Artus Flynn tue Eugene Dunbar. | A confessé en pleurs à Elara et Eddy avoir parlé sous la torture après s'être fait tirer dans la cuisse par Eugene Dunbar. A démonté son Colt Army 1860 devant Eddy pour le rendre inoffensif. | A rejoint la table de petit-déjeuner malgré une forte fièvre et une blessure à la jambe gauche qui l'empêche de poser le pied au sol | Rejoint la table de cuisine réquisitionnée par le Dr. Russell pour y subir l'extraction immédiate de la balle logée dans sa cuisse | Rejoint la table de cuisine réquisitionnée par le Dr. Russell pour y subir l'extraction immédiate de la balle logée dans sa cuisse. A subi l'incision et l'extraction sans anesthésie, serrant les dents sur du cuir.
 ---
 ID: 1759859643208
 Nom: Farmhands de la ferme de McNamera
@@ -493,9 +492,10 @@ Image: https://res.cloudinary.com/dg64n9fhe/image/upload/v1776178761/hvuuawztjvq
 ---
 ID: dr-charles-russell
 Nom: Docteur Charles Russell
-Statut: Neutre
+Statut: connaissance
 Description: Médecin et chirurgien de Carlisle, la cinquantaine robuste, au visage tanné, portant des lunettes ovales en fer fin et des favoris gris taillés de près. Ancien chirurgien militaire de l'Union rompu aux amputations de masse, il est pragmatique, sardonique et doté d'un sang-froid absolu (100/100 en Médecine). Il a développé une méthode d'antisepsie empirique et stricte (lavage au savon et au phénol) qui passe pour une manie obsessionnelle. Il est vêtu d'une redingote noire poussiéreuse tachetée d'iode, d'un gilet gris à boutons de nacre, et transporte une lourde sacoche en cuir bouilli contenant scalpels en ébène, aiguilles d'argent, éther et laudanum. Il voyage dans un cabriolet à deux roues tiré par son vieux cheval Barnaby.
-Faits marquants: S'occupe de soigner la blessure aux côtes de Finn à la ferme McNamera | Demande un tarif de 2,00 $ par jour en plus de paiements en nature (nourriture, vêtements, matériel ou autre)
+Image: https://res.cloudinary.com/dg64n9fhe/image/upload/v1783786809/i580b4us0nkmudxqqqew.png
+Faits marquants: S'occupe de soigner la blessure aux côtes de Finn à la ferme McNamera | Demande un tarif de 2,00 $ par jour en plus de paiements en nature (nourriture, vêtements, matériel ou autre) | Arrive à la ferme McNamera pour soigner les blessés | Négocie son paiement contre deux dollars et des restes de nourriture | Diagnostique une infection de la plaie (phlegmon) et une côte cassée chez Finn | Ordonne l'opération immédiate de Theodore pour extraire la balle dans sa cuisse | Réquisitionne Eddy comme assistant improvisé | A extrait la balle de la cuisse de Theodore McNamera sur la table de la cuisine.
 ---
 
 ========================================
@@ -760,11 +760,12 @@ ID: 1776268800001
 Titre: Regret ne doit pas gagner
 Lieu: Ferme McNamera
 Statut: En cours
-Description: Empêcher le score de Regret d'atteindre 10 (actuellement à 9). Les actions décevantes, violentes, ou rappelant la mort d'Eugene ou l'abandon de Benjamin l'augmentent. Il faut trouver un moyen de le faire descendre.
+Description: Empêcher le score de Regret d'atteindre 10 (actuellement à 4). Les actions décevantes, violentes, ou rappelant la mort d'Eugene ou l'abandon de Benjamin l'augmentent. Il faut trouver un moyen de le faire descendre.
 Événements:
 - Ajout du point faible Regret à un score de 7/10 suite aux traumatismes cumulés de la mort d'Eugene, de la blessure de Theodore et du rejet de Benjamin.
 - Jet contre Regret (Seuil : 8/10) raté lors de la tentative de ramasser le Colt Army de Eugene. Edward se fige et renonce à l'arme.
 - Regret s'immisce dans les sens d'Edward sous la forme d'une ombre furtive et d'une voix sous le lit dans la chambre de Samuel. Score : 9/10.
+- L'ombre humanoïde de Regret tente de s'emparer de l'esprit d'Edward pendant son évanouissement. Edward remporte une victoire écrasante lors d'un combat de volonté dans son inconscient (Jet de Résilience : 2/85, Succès Critique). La bête est renvoyée dans l'obscurité, crachant sang et larmes. Le score retombe à 4/10.
 ---
 ID: 1776268800002
 Titre: Se soigner le corps et l'esprit
@@ -773,6 +774,16 @@ Statut: En cours
 Description: Après la violence de la forêt, la mort d'Eugene et la perte de Benjamin, guérir la blessure par balle à l'épaule gauche et apaiser l'esprit. Pour cela, il faut se détendre, vivre des moments de beauté et de grâce, ou trouver une âme charitable attentive pour s'épancher.
 Événements:
 - Retour à la ferme McNamera avec le bras gauche perforé par une balle et l'esprit hanté par les récents événements.
+---
+ID: 1776332000000
+Titre: Un hôpital de campagne dans la cuisine
+Lieu: Ferme McNamera
+Statut: En cours
+Description: Le Dr. Russell a réquisitionné la table de la cuisine pour soigner les blessés par balle. Eddy doit surmonter sa douleur et son dégoût pour lui servir d'assistant médical.
+Événements:
+- Le Dr. Charles Russell arrive à la ferme et décide d'opérer Theodore et de récurer le bras d'Eddy sur place.
+- Eddy est réquisitionné comme assistant et aide à soigner Finn (nettoyage de la plaie surinfectée et bandage de la côte cassée) (Jet de Dextérité réussi : 27/40).
+- Eddy assiste à l'incision de Theodore par le Dr. Russell. Terrassé par la douleur de son propre bras, la chaleur de la lampe et le souvenir du crâne d'Eugene, Eddy perd connaissance. Elara rattrape la lampe au vol. Eddy reprend ses esprits pour être ausculté.
 ---
 
 ========================================
@@ -3279,5 +3290,46 @@ Pour finir, elle dispose sur la table les lourdes assiettes de grès, des tasses
 Nous nous installons à table et commençons à manger en silence. Soudain, le grincement de la porte de la chambre vient rompre le calme. Une silhouette pliée en deux, livide comme un cadavre, s'avance à pas lents dans le couloir, s'appuyant lourdement contre la cloison puis contre le vaisselier. C'est Theodore McNamera. Attiré par l'odeur de la viande frite, il a décidé de nous rejoindre. Elara se précipite aussitôt pour le soutenir, alors qu'il grimace de douleur, incapable de poser son pied gauche au sol sans gémir. Elle tente de le convaincre de retourner s'allonger, lui promettant de lui apporter son assiette au lit, mais l'homme secoue la tête, inflexible. Avec son aide, il parvient à se laisser choir sur sa chaise, sa jambe blessée et bandée s'allongeant sur une seconde chaise disposée à côté.— Merci, Elara, murmure-t-il en reprenant son souffle. C'est une bonne idée, un petit-déjeuner comme ça. Ça faisait bien longtemps.
 Le fermier s'efforce de faire bonne figure, mais sa pâleur le trahit. Des perles de sueur fiévreuse brillent sur son front, et sa chemise froissée porte encore des traces de terre séchée de la fosse d'Eugene. Il saisit son couteau en acier carbone, pique une saucisse et la plonge dans le jaune d'un œuf coulant avant de l'engouffrer d'une bouchée, faisant gicler un peu de graisse sur la table de bois brut. Il ferme les yeux une seconde, savourant le goût salé et gras de la viande chaude. Je l'observe à la dérobée, redoutant qu'il ne s'effondre sous le poids de la fièvre ou des remords de la veille. Mais l'homme tient bon, s'accrochant à ce repas de fête comme à une bouée de sauvetage.
 Sous l'effet de cette normalité retrouvée, les traits d'Elara semblent enfin se détendre. Autour de la table, le cliquetis des fourchettes et la chaleur du café de chicorée finissent par dessiner une trêve fragile. Nous mangeons tous les trois, savourant ce répit bienvenu dans le silence du matin.
- 
+Mais comme d'habitude, ce moment de sérénité ne dure pas. Au loin, le cliquetis régulier d'un essieu et le trot fatigué d'un cheval annoncent de la visite. Par la fenêtre, je vois Elara se redresser, un pli d'anxiété s'effaçant sur son front.— C'est le docteur, murmure-t-elle avant de se précipiter vers la porte.
+Depuis le fauteuil dans lequel je me suis installé pour digérer le festin, j'entends le grincement de sa voiture de médecin. C'est une sorte de boîte en bois suspendue sur deux roues avec une capote en cuir noir tout usée. Elle s'arrête devant le porche. Puis le pas lourd et décidé d'un homme monte les marches. Quand la porte s'ouvre, c'est une odeur bizarre qui entre avec lui : un mélange de poussière de chemin, de tabac froid et cette senteur piquante de goudron chimique et de pharmacie qui me prend immédiatement à la gorge. L'homme retire son chapeau de feutre mou. C'est le docteur. Il dit s'appeler Charles Russell. Il a des cheveux gris coupés ras et des lunettes ovales avec une monture en fer très fine, posées sur un nez pointu. Sous sa redingote noire toute poussiéreuse, ses yeux vifs inspectent la pièce en un clin d'œil. Il s'arrête sur Theodore, pâle comme un linge, la jambe tendue sur sa chaise, puis sur moi, tassé dans mon coin avec mon bras bandé.
+Il pose sa lourde sacoche en cuir noir craquelé sur le coin de la table, poussant sans ménagement ma tasse de chicorée vide. Le fermoir en laiton fait un bruit sec qui me fait sursauter.— Eh bien, Theodore, commence-t-il de sa voix rauque de vieux sergent, sans même nous saluer. Vous me tirez une mine de soldat après la charge de Fredericksburg. Et qui est ce gamin qui essaie de se cacher dans le crin du fauteuil ?— C'est Eddy, répond Theodore d'une voix faible. Il... Il travaille pour moi. Il a pris une balle dans le bras. Et moi dans la cuisse.Le médecin s'approche de la table, mais au lieu d'ouvrir son sac, son regard se bloque sur nos restes. Il observe les johnnycakes dorés, le lard salé qui baignent encore dans leur graisse froide, les saucisses et le pot de mélasse. Un petit sourire étire ses favoris gris.— On s'était mis d'accord sur deux dollars pour le blessé dans la chambre, Theodore. Mais avec deux trous supplémentaires... Vos deux dollars ne suffiront pas à payer le laudanum.D'un geste tranquille, il plonge ses doigts dans le plat, attrape une galette de maïs froide, la passe dans la graisse figée et y mord à pleines dents.— Je prends ça en plus, dit-il la bouche pleine. Et vous me mettrez le reste dans un torchon pour ma route vers New Kingstown. Marché conclu ?Theodore fait un signe de tête fatigué. Elara acquiesce aussitôt. Je sens qu'elle est soulagée de ne pas avoir à vider leur boîte à monnaie.
+Le docteur avale sa bouchée et s'approche de Theodore. Ses mains sont immenses et d'une propreté incroyable qui fait bizarre avec sa veste pleine de poussière de route. Il attrape la cuisse du fermier et appuie tout autour de la plaie. Theodore pousse un grognement, ses doigts serrant le bois de sa chaise jusqu'à en devenir blancs.— Ça chauffe là-dedans, dit Russell. La balle est restée au fond, et elle a dû emporter un morceau de votre pantalon sale en entrant. Si on ne l'extrait pas d'ici ce soir, l'infection va s'installer et vous perdrez la jambe avant la fin de la semaine.Il se tourne vers moi. Ses verres de lunettes brillent sous la lumière du jour.— À ton tour, fresh fish. Fais voir ce bras.Je me laisse faire, le cœur battant, retenant ma respiration pendant qu'il défait mon pansement. Ses doigts pressent ma chair avec une force qui me tire un cri de douleur.— Traversé de part en part. La balle est sortie, mais ça saigne toujours à l'intérieur, sous la peau. Il y a un vaisseau déchiré ou des éclats d'os là-dedans. Si on laisse ça comme ça, ton bras va doubler de volume et commencer à pourrir d'ici deux jours. Il faut aller y fouiller.
+Il se redresse et laisse échapper un petit rire sec, presque joyeux, qui me fait froid dans le dos.— Une cuisse à ouvrir, un bras à récurer, et un poumon à écouter là-haut... C'est un vrai hôpital de campagne dans votre cuisine, Mrs. McNamera !Il déboutonne ses manches et les retrousse lentement jusqu'aux coudes, puis se tourne vers Elara.— Débarrassez-moi cette table. Poussez les assiettes. Il me faut de l'eau bouillante, une bassine propre et du savon. On va dresser nos tréteaux ici même. Ça me rappelle la Virginie.
+Je sens mon estomac se retourner. Dans l'ombre près du vaisselier, j'ai l'impression de voir cette silhouette noire sans visage qui me guette depuis hier, et sa voix de reptile me siffle à l'oreille :« Regarde-les. C'est pour toi qu'il va couper la viande. Si tu n'étais pas revenu des bois, Theodore n'aurait pas à subir la lame de ce boucher. Tu aurais du mourir dans cette cabane ! »Mais le cliquetis métallique des scalpels que le docteur Russell jette sur la table couvre le murmure de la créature.
+En préparant tout son matériel, le médecin semble tellement concentré qu'Elara hésite à lui dire que l'état de Finn n'est pas bon. Plusieurs fois, elle ouvre la bouche, mais elle est interrompue par le docteur, fier et sûr de lui. 
+Puisqu'il ne me demande rien et que je sais que la situation de Finn est très inquiétante à cause de la fièvre, je tente de dire quelque chose : — Dr. Russell, vous pourriez aller voir Finn dans la chambre avant de faire tout le reste ?
+Il se retourne brusquement et me transperce de ses yeux vifs : — Qu'est-ce que tu dis, mon garçon ?— Pardon. Je ne veux pas vous déranger, mais Finn, dans la chambre, ne va vraiment pas bien depuis hier soir. Il a beaucoup de fièvre et refuse de manger.
+Le docteur fronce les sourcils et se tourne vers la fermière :— Hum... C'est bien cela, Mrs. McNamera ? Évidemment, elle acquiesce, soulagée que le problème soit enfin mis en lumière. 
+Russell range un scalpel dans sa trousse et me dévisage :— Garçon ? Eddy, c'est ça ? Tu peux bouger, hein ? Ta blessure ne t'empêche pas de vivre, pour l'instant ! Puisque tu as l'air de vouloir m'apprendre mon métier, viens avec moi.
+Je me lève péniblement et me voici sous les ordres du docteur, un bras dans l'écharpe et l'autre portant l'eau et les bandages.
+Dans la chambre de Samuel, devenue celle de Finn pour un temps, le docteur s'installe rapidement au chevet du malade. Il n'a pas besoin de chercher la blessure : il est déjà venu deux fois depuis que Finn a pris cette balle, et il connaît le trou. Mais aujourd'hui, c'est la surinfection qu'il inspecte. Il défait le pansement qu'il avait posé lors de sa dernière visite, révélant la peau enflée, violacée et chaude comme de la braise tout autour de l'impact. Russell sort de sa poche son petit tube en bois tourné, son stéthoscope, qu'il applique contre la poitrine de Finn. Il colle son oreille à l'autre extrémité, écoutant le sifflement d'air.— Respire, fresh fish, ordonne-t-il, même si Finn est à moitié inconscient.Russell tâte ensuite les côtes avec une pression brutale qui fait sursauter le malade dans un râle de douleur.— Bon, la plèvre n'a pas cédé, la balle est passée à côté du poumon. Mais la côte fêlée frotte et irrite la membrane, et la chair autour est en train de s'infecter sérieusement sous la peau. C'est ce phlegmon qui lui donne cette fièvre de cheval.J'ai l'impression que c'est à moi qu'il s'adresse mais je ne comprends presque pas un mot. Il se tourne vers moi, me désignant du menton un flacon en verre brun et une fiole d'acide à l'odeur de goudron.— Toi, saisis cette bouteille d'eau phéniquée de ta main valide. Quand je te le dirai, tu la verseras doucement sur la plaie pour nettoyer le pus. Et garde la bouteille bien droite, je n'ai pas de liquide à gaspiller.Pendant qu'il nettoie la plaie de ses doigts agiles et précis, il me demande ensuite d'attraper le rouleau de lin propre pour refaire le bandage et bloquer la côte brisée.— Maintiens-le par les épaules, Eddy. S'il se débat pendant que je serre le bandage, il va s'abîmer la plèvre pour de bon.
+Jet de dextérité 27/40. Réussi.
+Malgré ma main tremblante et la douleur lancinante dans mon propre bras gauche, je parviens à accomplir les petites actions, même minimes. Je maintiens fermement Finn contre le matelas. Mes doigts se crispent sur ses épaules brûlantes de fièvre pendant que le docteur enroule la bande de lin de ses mains rapides, serrant le torse avec une force impressionnante pour l'immobiliser. Je verse l'eau javellisée exactement là où il faut, sans faire couler une goutte à côté. Le médecin ne fait pas de remarque particulière, mais je vois à son léger hochement de tête qu'il a apprécié ma discipline. Il fait couler quelques gouttes de laudanum et de quinine dans la bouche de Finn pour le calmer et faire tomber la fièvre, avant de se redresser.
+Nous ressortons dans la pièce principale. Le docteur s'essuie les mains sur un linge propre qu'Elara lui tend en le fixant avec des yeux ronds d'anxiété. Theodore, toujours calé dans son fauteuil la jambe tendue, relève la tête.— Alors ? demande le fermier.Russell pousse un soupir, rangeant sa fiole de laudanum dans sa sacoche.— Il n'y a pas d'emphysème traumatique ni d'hémoptysie indiquant une complication pulmonaire tardive. Cependant, la plèvre pariétale subit une irritation aiguë due à la friction de la côte fêlée, et un phlegmon superficiel est en train de se former sous le derme. C'est ce qui explique la pyrexie et la dyspnée qui ont empiré depuis hier.
+Theodore fronce les sourcils, la bouche à moitié ouverte. Elara me jette un regard perdu, comme si le docteur s'était mis à parler latin. Russell s'arrête, nous toise tous les trois avec un petit rire plein de mépris pour notre ignorance, puis lève les yeux au ciel.— En clair pour les gens de la terre : la balle a glissé sur l'os sans crever le poumon. Mais la côte est pétée, la plaie est en train de s'infecter sérieusement à cause de la crasse, et la douleur l'empêche de respirer. C'est ce qui le brûle et le fait délirer. Il a chaud, il a mal, mais il ne va pas passer l'arme à gauche aujourd'hui. Nettoyez la plaie à l'eau bouillie, forcez-le à boire mon bouillon de quinine et donnez-lui du laudanum s'il se met à cracher ses tripes à force de tousser.
+Il se tourne vers Theodore et tapote le bord de la table.— Maintenant, passons aux choses sérieuses. Theodore, c'est à votre tour sur le billard. Eddy, allume cette lampe et viens tenir la jambe du patron.
+Elara a déjà déblayé la table de cuisine de ses assiettes vides, ne laissant que l'odeur persistante du lard grillé, des œufs et des saucisses qui se mêle à celle, plus lourde, du café. Theodore s'installe péniblement sur le bois brut, le dos calé contre des sacs de farine pour rester redressé. Le vieil homme ne dit rien, mais ses yeux cherchent ceux de sa femme. Elle s'approche, saisit sa main calleuse dans les siennes et s'installe près de sa tête, lui murmurant des paroles inaudibles pour tenter de couvrir le bruit du métal.
+Le docteur Russell n'attend pas. Il débouchonne une bouteille d'eau phéniquée et en verse généreusement sur ses mains et sur la cuisse de Theodore. Je reconnais déjà l'odeur chimique, âcre et suffocante, chassant tout le reste. Il me jette un regard par-dessus ses lunettes en fer fin : — La lampe, Eddy. Plus près. Si je ne vois pas le fond du canal, je vais lui couper l'artère. Tiens-la bien droite.
+Je saisis la lourde lampe à pétrole en cuivre de ma seule main disponible. Mon bras gauche, enserré dans son écharpe de lin, me lance des décharges brûlantes au moindre effort pour stabiliser mon buste. Le verre de la lampe est brûlant, et la chaleur de la flamme me lèche le visage.
+Russell saisit son scalpel à manche d'ébène. Sans un mot d'avertissement, la lame s'enfonce dans la chair de Theodore.
+Un grognement sourd, presque animal, s'échappe de la gorge du fermier. Ses doigts se crispent sur la main d'Elara avec une force terrible, tandis que son autre jambe se détend dans un spasme involontaire. La blessure s'ouvre, révélant un sang sombre et épais qui commence à couler sur le bois de la table. Russell plonge ses doigts propres dans l'entaille, écartant les chairs avec une indifférence de boucher pour chercher le projectile.
+Jet de Dextérité : 79/40. ÉCHEC.
+La vue de ce sang noir qui gicle, l'odeur de la chair coupée mêlée à l'acide carbolique... et soudain, tout bascule. Ce n'est plus la cuisse de Theodore que je vois. C'est la boîte crânienne d'Eugene Dunbar éclatant sous les balles de plomb d'Artus Flynn. Cette bouillie de chair et d'os répandue sur l'humus des bois. La chaleur étouffante de la lampe et la douleur lancinante dans mon propre bras finissent de me submerger. Ma main droite commence à trembler violemment.
+Le faisceau de lumière vacille, projetant des ombres dansantes et chaotiques sur la plaie ouverte. — Reste immobile, bougre de gamin ! grogne Russell sans lever les yeux, ses doigts fouillant toujours plus profondément le muscle. Tu vas me faire faire une connerie !
+Jet d'Endurance : 100/80. ÉCHEC CRITIQUE.
+Je tente de me concentrer, mais le monde s'effondre. Mes yeux se voilent d'un noir d'encre. Mes genoux se dérobent sous mon poids.
+Mes doigts se relâchent. La lampe de cuivre m'échappe. Heureusement, Elara, qui surveillait mon visage blafard du coin de l'œil, réagit avec le réflexe d'une mère. Elle lâche la main de son mari et attrape la lampe au vol avant qu'elle ne s'écrase au sol et n'embrase la pièce.
+Je m'effondre lourdement sur le parquet de la cuisine, sombrant instantanément dans un trou noir et glacé.
+Dans cette obscurité soudaine, Regret prend forme. Ce n'est plus une simple voix ou une ombre rampante : c'est un serpent aux traits d'un humain. Il a la peau écailleuse et blafarde. Il possède un visage, un visage curieux aux traits figés dans une moue de fausse compassion. Il se penche sur moi, ses yeux sans paupières fixés dans les miens, et me siffle à l'oreille : « Regarde-toi, Edward. Tu t'évanouis comme une fille à la première goutte de sang. Tu n'es qu'un fardeau pour eux. Si tu n'étais pas revenu des bois, Theodore n'aurait pas sa chair ouverte sur cette table. Laisse-moi faire à ta place. Je saurai quoi faire. Allons, Eddy, soyons sérieux. Laisse-moi faire... » Le serpent avance en glissant vers mon visage. Il ouvre la bouche en grand pour m'avaler tout entier.
+Jet de Résilience : 2/85. SUCCÈS CRITIQUE.
+Mais dans ce néant, quelque chose en moi refuse de plier. Une colère sourde, une volonté de fer que je ne me connaissais pas, se dresse face au monstre.
+Je ne recule pas. Dans cet endroit, je n'ai plus mal nul part. Mes deux bras réagissent en même temps que ma pensée. Je me jette sur la créature, saisissant son cou écailleux. Je refuse de lui céder ma place, je refuse de porter le chapeau pour la folie d'Eugene Dunbar ou pour le sort du monde. Dans un cri de rage pure, je repousse la bête. Elle est projetée en arrière, s'enfonçant loin, très loin dans les tréfonds obscurs. En reculant, elle crache du sang noir et des larmes acides, poussant un sifflement de haine terrible : « Je reviendrai, Edward ! Je reviendrai toujours ! »
+Mais pour l'instant, elle bat en retraite. Sa force est brisée. Le regret est toujours là, tapi au fond de moi, mais il a perdu ses crocs et sa voix.
+Je rouvre les yeux. Une sensation d'eau glacée me dégouline sur le visage. Elara est penchée sur moi, une tasse vide à la main, son visage marqué par une inquiétude immense. — Eddy ? Eddy, tu m'entends ?
+Je me redresse péniblement sur les coudes, la tête me tournant encore un peu. Sur la table de cuisine, l'opération est terminée. Le docteur Russell est déjà en train de recoudre la cuisse de Theodore avec des gestes rapides et précis, son fil d'argent brillant sous la lumière de la lampe qu'Elara a posée sur un trépied. Dans une bassine en étain, à côté d'un morceau de jean gris souillé de pus et de terre, repose une balle de plomb déformée.
+Theodore respire bruyamment, le visage pâle et couvert de sueur, mais ses yeux sont ouverts et calmes. Le pire est passé.
+Russell jette un coup d'œil indifférent vers le sol où je me trouve, sans interrompre la régularité de sa couture : — Debout, garçon. Les McNamera ne me paient pas pour regarder un jeune homme dormir sur leur plancher. J'ai deux autres visites à faire dans la vallée avant le crépuscule. Assieds-toi sur cette chaise et montre-moi ce bras.
+Je me relève, m'essuyant le visage d'un revers de manche.
+Regret perd en force. 4/10. Plus d'hallucinations visuelles et auditives.
+Gain de statistiques en Résilience +1
 

@@ -1,14 +1,23 @@
 {
   "npcs": [
     {
-      "id": 1759943362290,
-      "name": "Finn",
-      "faitsMarquants": "A écouté la confession complète d'Eddy sur son exil, Benjamin et la mort d'Eugene. A reçu un fil de pêche fabriqué avec une corde en acier de banjo de la part d'Eddy en guise de remerciement."
+      "id": 1759855829459,
+      "name": "Theodore McNamera",
+      "faitsMarquants": "A subi l'extraction de la balle dans sa cuisse droite par le Dr. Russell, allongé sur la table de la cuisine, serrant les dents sur du cuir sans anesthésie."
     },
     {
-      "id": 1759859537696,
-      "name": "Elara McNamera",
-      "faitsMarquants": "A partagé un repas chaud avec Eddy, exprimant sa gratitude pour la batteuse et le rassurant sur sa responsabilité dans la mort d'Eugene."
+      "id": "dr-charles-russell",
+      "name": "Docteur Charles Russell",
+      "faitsMarquants": "A nettoyé et bandé la plaie de Finn dans la chambre de Samuel. A extrait la balle de la cuisse de Theodore McNamera sur la table de la cuisine. Réquisitionne Eddy comme assistant malgré son malaise."
+    }
+  ],
+  "threads": [
+    {
+      "id": 1776332000000,
+      "title": "Un hôpital de campagne dans la cuisine",
+      "events": [
+        "Eddy assiste à l'incision de Theodore par le Dr. Russell. Terrassé par la douleur de son propre bras, la chaleur de la lampe et le souvenir du crâne d'Eugene, Eddy perd connaissance. Elara rattrape la lampe au vol. Eddy reprend ses esprits pour être ausculté."
+      ]
     }
   ]
 }
