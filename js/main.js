@@ -1,3 +1,22 @@
+window.toggleCardDetails = function (btn) {
+    const card = btn.closest('.card');
+    if (card) {
+        card.classList.toggle('is-expanded');
+        const isExpanded = card.classList.contains('is-expanded');
+        btn.setAttribute('title', isExpanded ? 'Masquer les détails' : 'Afficher les détails');
+        const svg = btn.querySelector('svg');
+        if (svg) {
+            if (isExpanded) {
+                // Chevron up
+                svg.innerHTML = '<path d="M201.4 137.4c12.5-12.5 32.8-12.5 45.3 0l160 160c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L224 205.3 83 342.7c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l160-160z"/>';
+            } else {
+                // Chevron down
+                svg.innerHTML = '<path d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 63 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>';
+            }
+        }
+    }
+};
+
 function renderAll() {
     if (typeof renderCharacterSheet === 'function') renderCharacterSheet();
     if (typeof renderNpcs === 'function') renderNpcs();
@@ -595,7 +614,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     npcData.id = Date.now();
                     if (!npcData.faitsMarquants) npcData.faitsMarquants = "";
-                    gameState.npcs.unshift(npcData);
+                    gameState.npcs.push(npcData);
                 }
             } else if (type === 'thread') {
                 const threadData = {
@@ -611,7 +630,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     gameState.threads[index] = { ...gameState.threads[index], ...threadData };
                 } else {
                     threadData.id = Date.now();
-                    gameState.threads.unshift(threadData);
+                    gameState.threads.push(threadData);
                 }
             } else if (type === 'journal') {
                 if (typeof tinymce !== 'undefined') {

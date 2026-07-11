@@ -214,3 +214,19 @@
 .timeline-item:last-child {
     margin-bottom: 0;
 }
+
+/* --- Détails pliables (PNJs & Threads) --- */
+.card-details-wrapper {
+    display: none;
+    flex-direction: column;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.card.is-expanded .card-details-wrapper {
+    display: flex;
+}
+
+.toggle-details-btn {
+    margin-right: auto; /* Aligne le bouton à gauche et repousse les autres boutons à droite */
+}

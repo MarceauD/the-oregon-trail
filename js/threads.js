@@ -16,9 +16,9 @@ function renderThreads() {
         if (statusA === 'en-cours' && statusB !== 'en-cours') return -1;
         if (statusA !== 'en-cours' && statusB === 'en-cours') return 1;
 
-        const idA = Number(a.id) || 0;
-        const idB = Number(b.id) || 0;
-        return idB - idA;
+        const idxA = gameState.threads.indexOf(a);
+        const idxB = gameState.threads.indexOf(b);
+        return idxB - idxA;
     });
 
     sortedThreads.forEach((thread) => {
@@ -45,13 +45,16 @@ function renderThreads() {
                 <h3 style="margin-top:0; margin-bottom:5px;">${thread.title}</h3>
                 <p style="color:var(--accent-color); font-weight:bold; font-size: 0.9em; margin-top:0; margin-bottom: 5px;">${thread.location}</p>
                 <p style="color:var(--text-muted); font-size: 0.85em; font-style: italic; margin-top:0;">Statut: ${statusText}</p>
-                <div style="margin-top: 15px;">
+                <div class="card-details-wrapper">
                     ${eventsHtml ? `<div style="margin-bottom:10px;"><strong>Événements :</strong>${eventsHtml}</div>` : ''}
                     <p>${thread.description}</p>
                 </div>
             </div>
         </div>
         <div class="card-actions-bar">
+            <button class="card-button toggle-details-btn" onclick="toggleCardDetails(this)" title="Afficher les détails">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 63 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
+            </button>
             <div class="button-group">
                 ${!isReadOnly ? `
                 <button class="card-button" onclick="openModal('thread', '${thread.id}')" title="Modifier">

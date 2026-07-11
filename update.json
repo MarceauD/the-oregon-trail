@@ -1,78 +1,14 @@
 {
-  "threads": [
+  "npcs": [
     {
-      "id": 1775916285534,
-      "title": "Retrouvailles douloureuses",
-      "status": "Terminé",
-      "location": "Bois, Harrisburg, PA",
-      "description": "La fuite est terminée. Eugene Dunbar et son funeste pisteur ont capturé Theodore McNamera, le blessant à la jambe, et l'utilisent comme appât pour me forcer à sortir de l'ombre. Armé de mon seul couteau, de ma sacoche, et de ma connaissance récente des bois, je dois faire face à la poudre et au plomb. Je suis face au dilemme ultime : me rendre pour sauver l'homme qui a risqué sa ferme pour moi, ou utiliser la forêt comme une arme pour traquer mes propres traqueurs. Il faut que l'un de nous meure aujourd'hui.",
-      "events": [
-        "J'obtiens l'aide de Artus Flynn qui exige la libération de Benjamin. Il l'obtient mais Eugene me tire dessus me blessant au bras gauche. Flynn abat de deux coups de fusil dans la tête Eugene faisant prendre la fuite à son pisteur."
-      ]
+      "id": 1759943362290,
+      "name": "Finn",
+      "faitsMarquants": "A écouté la confession complète d'Eddy sur son exil, Benjamin et la mort d'Eugene. A reçu un fil de pêche fabriqué avec une corde en acier de banjo de la part d'Eddy en guise de remerciement."
     },
     {
-      "id": 1762695726461,
-      "title": "Exil dans les bois",
-      "status": "Terminé",
-      "location": "Cabane de chasseur, Pennsylvanie",
-      "description": "McNamera m'a exilé pour protéger la ferme des menaces que j'attire (Eugene, Diamond). Je dois trouver la cabane de chasseur secrète en utilisant la boussole et y survivre seul jusqu'à dimanche matin (26 juillet), quand il viendra me chercher.",
-      "events": [
-        "J'ai trouvé la cabane. L'endroit était insalubre, mais j'ai pu le nettoyer un minimum et sécuriser la porte. J'y ai survécu seul, en chassant, avant d'y ramener Benjamin, un orphelin que j'ai sauvé. J'y attends le retour de McNamera prévu ce dimanche matin",
-        "La survie est brutale et l'aléatoire t'a mené la vie dure. Tu as survécu à un orage violent dans une cabane insalubre. Tu as réussi à abattre une dinde sauvage au couteau, sécurisant ainsi cinq œufs, mais un échec critique lors du dépeçage a percé la vésicule biliaire, souillant une grande partie de la viande avec de la bile. Benjamin t'a aidé à plumer l'animal, cimentant votre statut d'équipe."
-      ]
-    },
-    {
-      "id": 1775916411823,
-      "title": "La part d'ombre de Benjamin",
-      "status": "Abandonné",
-      "location": "",
-      "description": "Benjamin semble être un enfant troublé, maniaque, psychorigide et avec une volonté de contrôle couplé à une servitude extrême. Le petit être fragile rêve de se venger de tous ceux qui ont pu le blesser. Il mélange facilement la violence avec le pouvoir et cherche à s'en approprier les codes.",
-      "events": [
-        "La traque par le pisteur et mort violente de Eugene Dunbar risquent de laisser des traces.",
-        "Benjamin a trouvé plus fort en la personne de Artus Flynn. Il décide de rester en sa compagnie plutôt que la mienne."
-      ]
-    },
-    {
-      "id": 1774206763835,
-      "title": "Le Secret du 14 de Trèfle",
-      "status": "Abandonné",
-      "location": "Harrisburg, PA",
-      "description": "En remettant le jeu de cartes à Artus Flynn de la part de son père Silas, le charbonnier a découvert une carte anormale : un 14 de Trèfle. Cela l'a mis en fureur. Il y a un code secret, ou un passif lourd, caché derrière cette carte que je ne saisis pas encore.",
-      "events": [
-        "Artus Flynn a accepté de m'aider contre Eugene. Il a sauvé Benjamin et tué Eugene de deux coups de fusil. Peut être m'en dira-t-il plus sur sa relation à son père.",
-        "Je suis retourné voir Benjamin pour connaitre son avis. En partant, Artus m'a dit de dire à son père qu'il était prêt à revenir à la table."
-      ]
-    },
-    {
-      "id": 1774206740050,
-      "title": "Protéger Benjamin",
-      "status": "Raté",
-      "location": "Cabane de chasseur, Pennsylvanie",
-      "description": "J'ai découvert Benjamin, un orphelin au bras cassé, terrifié dans l'orphelinat. Il avait été \"vendu\" comme apprenti à un tonnelier violent. J'ai menacé ce dernier pour détruire son contrat d'apprentissage et j'ai emmené Benjamin avec moi dans les bois. Je lui ai promis qu'il ne travaillerait plus comme un esclave. Mon but est de convaincre McNamera de l'accueillir à la ferme ce dimanche",
-      "events": [
-        "La relation avec l'enfant se construit doucement. Les moments passés avec lui dans le bois montre qu'il peut s'ouvrir mais on fait émerger une face sordide de sa personnalité avec laquelle il va falloir composer.",
-        "Benjamin a choisi de rester avec Artus Flynn plutôt que de m'accompagner à la ferme. J'ai perdu l'enfant que je devais protéger."
-      ]
-    },
-    {
-      "id": 1776268800001,
-      "title": "Regret ne doit pas gagner",
-      "status": "En cours",
-      "location": "Ferme McNamera",
-      "description": "Empêcher le score de Regret d'atteindre 10 (actuellement à 7). Les actions décevantes, violentes, ou rappelant la mort d'Eugene ou l'abandon de Benjamin l'augmentent. Il faut trouver un moyen de le faire descendre.",
-      "events": [
-        "Ajout du point faible Regret à un score de 7/10 suite aux traumatismes cumulés de la mort d'Eugene, de la blessure de Theodore et du rejet de Benjamin."
-      ]
-    },
-    {
-      "id": 1776268800002,
-      "title": "Se soigner le corps et l'esprit",
-      "status": "En cours",
-      "location": "Ferme McNamera",
-      "description": "Après la violence de la forêt, la mort d'Eugene et la perte de Benjamin, guérir la blessure par balle à l'épaule gauche et apaiser l'esprit. Pour cela, il faut se détendre, vivre des moments de beauté et de grâce, ou trouver une âme charitable attentive pour s'épancher.",
-      "events": [
-        "Retour à la ferme McNamera avec le bras gauche perforé par une balle et l'esprit hanté par les récents événements."
-      ]
+      "id": 1759859537696,
+      "name": "Elara McNamera",
+      "faitsMarquants": "A partagé un repas chaud avec Eddy, exprimant sa gratitude pour la batteuse et le rassurant sur sa responsabilité dans la mort d'Eugene."
     }
   ]
 }

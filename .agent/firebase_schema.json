@@ -129,12 +129,20 @@
                     "string"
                 ]
             }
+        ],
+        "journal": [
+            {
+                "id": "int64 (timestamp de création, identifiant technique pour le client web)",
+                "date": "string (format YYYY-MM-DD, clé de rapprochement pour firebase_updater.js)",
+                "entry": "string (texte narratif HTML de l'aventure)"
+            }
         ]
     },
     "critical_notes": [
         "Utiliser 'text' (pas 'name') pour inventory.general, plotNotes, strengths, weaknesses.",
         "money est un Double.",
         "mentalState et physicalState partagent la même structure d'objet.",
-        "Les IDs numériques sont en int64."
+        "Les IDs numériques sont en int64.",
+        "La clé 'date' (format YYYY-MM-DD) dans journal est l'identifiant fonctionnel. Une synchronisation avec une date existante fusionne le contenu (soudure narrative) sans l'écraser."
     ]
 }

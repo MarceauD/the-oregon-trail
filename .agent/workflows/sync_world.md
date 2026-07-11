@@ -24,6 +24,22 @@ Ce workflow permet d'extraire automatiquement toutes les informations d'une nouv
 
 4. **Préparer la Charge Utile (update.json)** :
    - Créer un fichier temporaire `update.json` respectant strictement le schéma défini dans `firebase_schema.json`.
+   - **Comportements et règles spéciales de synchronisation :**
+     - **Ajout incrémental au Journal** : Si l'objet contient une structure `journal_entry` avec une date déjà présente sur Firebase, le texte sera concaténé à la fin de l'entrée existante (séparé par un double saut de ligne `<br><br>`) sans écraser le contenu précédent. **Important : Le texte narratif fourni dans le champ `entry` doit obligatoirement être formaté en HTML propre (avec des balises `<p>`, des `<br>` pour les sauts de ligne, et tout autre élément de mise en page requis) pour assurer un rendu correct dans l'application.**
+     - **Suppression d'éléments via `_delete` (Uniquement pour le Personnage)** : Pour supprimer un élément d'une liste dynamique de la fiche de personnage (ex: inventaire, états physiques/mentaux, compétences, traits), spécifiez cet objet avec son critère de correspondance unique (`id`, `name`, ou `text`) et ajoutez le drapeau `"_delete": true`.
+       *Exemple : Supprimer un objet d'inventaire*
+       ```json
+       {
+         "character": {
+           "inventory": {
+             "general": [
+               { "text": "Vieil alambic en cuivre", "_delete": true }
+             ]
+           }
+         }
+       }
+       ```
+     - **Règle absolue pour les PNJs et les Threads** : **Ils ne doivent jamais être supprimés de la base de données.** Si un PNJ meurt ou disparaît, ou si un Thread est raté ou abandonné, mettez simplement à jour son champ `status` (ex: `"mort"`, `"disparu"`, `"rate"`, `"abandonne"`).
 
 5. **Exécuter la Synchronisation** :
    - Lancer la commande :

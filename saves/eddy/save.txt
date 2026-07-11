@@ -64,11 +64,6 @@ Chasse (petit gibier): 26
 
 --- INVENTAIRE ---
 
-> Clothing
-- Chapeau de paille
-- Vêtements vieux et sales (chemise déchirée)
-- Bottes de travail en cuir
-
 > General
 - Nourriture (qqs baies sauvages, champignons, sel)
 - Pièce en argent "Seated Liberty Dollar"
@@ -91,10 +86,17 @@ Chasse (petit gibier): 26
 - 5 oeufs de dinde sauvage
 - Plumes de dinde sauvage
 - Gourde 'E.D'
+- Clés de la ferme des Dunbar
 - Dessin de cerf au fusain (grande qualité)
+
+> Clothing
+- Chapeau de paille
+- Vêtements vieux et sales (chemise déchirée)
+- Bottes de travail en cuir
 
 --- SAVOIRS SPÉCIFIQUES ---
 - Hard Times Come Again No More (Triste et lent)
+- Recette des Johnnycakes (Shawnee cakes)
 
 --- ÉTAT PHYSIQUE ---
 - Blessure par balle (bras gauche) (Depuis: aujourd'hui, Soins: Bandage à changer 3 fois par jour, voir un médecin pour inspecter ou si fièvre, Effets: Malus de force général)
@@ -343,7 +345,7 @@ A été témoin de ma victoire de négociation contre Meeks, semblant impression
 
 A participé à la célébration générale après ma négociation.
 
-A refusé ma proposition d'attaquer la ferme Dunbar, se moquant de mon idéalisme . | A affronté Morris Diamond et ses hommes à la ferme en l'absence d'Eddy et Theodore. A accepté un duel truqué avec Diamond, s'est fait tirer dans le flanc droit (balle au poumon) après le dysfonctionnement de son arme. Est soigné dans la chambre de Samuel à la ferme. | A écouté la confession complète d'Eddy sur son exil, Benjamin et la mort d'Eugene. A reçu un fil de pêche fabriqué avec une corde en acier de banjo de la part d'Eddy en guise de remerciement.
+A refusé ma proposition d'attaquer la ferme Dunbar, se moquant de mon idéalisme . | A affronté Morris Diamond et ses hommes à la ferme en l'absence d'Eddy et Theodore. A accepté un duel truqué avec Diamond, s'est fait tirer dans le flanc droit (balle au poumon) après le dysfonctionnement de son arme. Est soigné dans la chambre de Samuel à la ferme. | A écouté la confession complète d'Eddy sur son exil, Benjamin et la mort d'Eugene. A reçu un fil de pêche fabriqué avec une corde en acier de banjo de la part d'Eddy en guise de remerciement. | Brûle de fièvre et refuse d'avaler quoi que ce soit au lendemain des événements tragiques
 ---
 ID: 1759859537696
 Nom: Elara McNamera
@@ -353,7 +355,7 @@ Image: https://res.cloudinary.com/dg64n9fhe/image/upload/v1776178754/pnaevrogio1
 Faits marquants: J'ai partagé un bref moment d'entraide silencieuse avec elle dans la cuisine. Elle semble apprécier ma présence discrète.
 M'a soigné après mon accident. Elle a entendu la conversation entre McNamera et le pisteur et soupçonne maintenant la vérité sur ma situation. Sa réaction est incertaine.
 M'a donné le fusil pour me défendre.
-M'a préparé une sacoche avec des provisions (viande, pain, boussole, couteau) pour mon exil. | A soigné Eddy et Theodore à leur retour de la forêt. A appris la mort d'Eugene Dunbar et l'effondrement psychologique de son mari. | A partagé un repas chaud avec Eddy, exprimant sa gratitude pour la batteuse et le rassurant sur sa responsabilité dans la mort d'Eugene.
+M'a préparé une sacoche avec des provisions (viande, pain, boussole, couteau) pour mon exil. | A soigné Eddy et Theodore à leur retour de la forêt. A appris la mort d'Eugene Dunbar et l'effondrement psychologique de son mari. | A partagé un repas chaud avec Eddy, exprimant sa gratitude pour la batteuse et le rassurant sur sa responsabilité dans la mort d'Eugene. | A préparé un petit-déjeuner copieux avec Eddy tout en veillant sur Theodore et Finn qui sont tombés fiévreux
 ---
 ID: 1759855829459
 Nom: Theodore McNamera
@@ -431,7 +433,7 @@ Nous devons nous retrouver à la cabane dimanche matin
 Alors qu'il est là pour me retrouver dans le bois, il croise le chemin de Eugene Dunbar et son pisteur. 
 Il finit par donner la position de la cabane sous la menace.
 
-Il est libéré quand Artus Flynn tue Eugene Dunbar. | A confessé en pleurs à Elara et Eddy avoir parlé sous la torture après s'être fait tirer dans la cuisse par Eugene Dunbar. A démonté son Colt Army 1860 devant Eddy pour le rendre inoffensif.
+Il est libéré quand Artus Flynn tue Eugene Dunbar. | A confessé en pleurs à Elara et Eddy avoir parlé sous la torture après s'être fait tirer dans la cuisse par Eugene Dunbar. A démonté son Colt Army 1860 devant Eddy pour le rendre inoffensif. | A rejoint la table de petit-déjeuner malgré une forte fièvre et une blessure à la jambe gauche qui l'empêche de poser le pied au sol
 ---
 ID: 1759859643208
 Nom: Farmhands de la ferme de McNamera
@@ -488,6 +490,12 @@ Nom: Jedediah Harper
 Statut: connaissance
 Description: Un freinman du chemin de fer. Loge à Carlisle. Il doit 10$ à Morris Diamond.
 Image: https://res.cloudinary.com/dg64n9fhe/image/upload/v1776178761/hvuuawztjvqranif4vea.png
+---
+ID: dr-charles-russell
+Nom: Docteur Charles Russell
+Statut: Neutre
+Description: Médecin et chirurgien de Carlisle, la cinquantaine robuste, au visage tanné, portant des lunettes ovales en fer fin et des favoris gris taillés de près. Ancien chirurgien militaire de l'Union rompu aux amputations de masse, il est pragmatique, sardonique et doté d'un sang-froid absolu (100/100 en Médecine). Il a développé une méthode d'antisepsie empirique et stricte (lavage au savon et au phénol) qui passe pour une manie obsessionnelle. Il est vêtu d'une redingote noire poussiéreuse tachetée d'iode, d'un gilet gris à boutons de nacre, et transporte une lourde sacoche en cuir bouilli contenant scalpels en ébène, aiguilles d'argent, éther et laudanum. Il voyage dans un cabriolet à deux roues tiré par son vieux cheval Barnaby.
+Faits marquants: S'occupe de soigner la blessure aux côtes de Finn à la ferme McNamera | Demande un tarif de 2,00 $ par jour en plus de paiements en nature (nourriture, vêtements, matériel ou autre)
 ---
 
 ========================================
@@ -582,6 +590,8 @@ Finn : quelque chose en lien avec la guerre ? avec la photo de sa soeur ? une bo
     Silas : Une plaque polie dans le résonateur, gravée d'un as de pique (Réussite).
     Finn : Une ligne de pêche fabriquée avec une corde d'acier (Réussite).
     Theodore & Journaliers : Le bois du talon et du cerclage s'est fendu. La fabrication du bourre-pipe et des dés a échoué à cause de tes blessures et de la fatigue (Échecs)
+Événements:
+- A aidé Elara à préparer un petit-déjeuner gigantesque pour redonner des forces à la maisonnée et affronter la fièvre générale
 ---
 ID: 1758991072887
 Titre: Rejoindre l'Oregon
@@ -2010,7 +2020,7 @@ Il me tend quelque chose. Son propre jeu de cartes, celui de notre partie de Sev
 Je prends le jeu de cartes. Le carton est chaud de sa poche. C'est une mission étrange, presque impossible : trouver un homme que je ne connais pas au milieu d'une forêt immense. Mais je regarde cet homme, qui m'a appris à jouer, qui m'a défendu. Je lui dois bien ça.
 "D'accord, Silas. Je ferai ce que je peux. Je le trouverai."
 "Merci, petit." Un immense soulagement semble le traverser. "Bonne route. Sois prudent." Il recule d'un pas et, dans un geste inattendu, esquisse un salut militaire bref et formel. Je ne sais comment répondre. Je hoche la tête, imite maladroitement son geste, et me tourne vers la pénombre.
-La route vers l'ouest est devant moi. La boussole dans ma poche, la promesse de McNamera dans mon cœur, et maintenant, la quête de Silas dans ma main. Ce voyage n'est plus une simple fuite. C'est devenu une mission. Je pense à tous ceux que je laisse derrière : Theodore, Elara, Silas, Tom... même Finn. Ils m'ont aidé, chacun à leur manière. Dimanche, quand je les reverrai, je ne reviendrai pas les mains vides. Cet exil sera l'occasion de leur prouver ma gratitude. J'ai le temps, seul dans cette cabane, de réfléchir à un moyen de les remercier tous.
+La route vers l'est devant moi. La boussole dans ma poche, la promesse de McNamera dans mon cœur, et maintenant, la quête de Silas dans ma main. Ce voyage n'est plus une simple fuite. C'est devenu une mission. Je pense à tous ceux que je laisse derrière : Theodore, Elara, Silas, Tom... même Finn. Ils m'ont aidé, chacun à leur manière. Dimanche, quand je les reverrai, je ne reviendrai pas les mains vides. Cet exil sera l'occasion de leur prouver ma gratitude. J'ai le temps, seul dans cette cabane, de réfléchir à un moyen de les remercier tous.
 Je quitte la ferme comme un voleur, disparaissant dans l'ombre de la nuit. La douleur dans mon pied est un rappel lancinant à chaque pas. Ne force pas. Ne rouvre pas la plaie. Je m'écarte de la route principale, m'enfonçant dans les champs, la boussole d'Elara dans ma main, les instructions de McNamera tournant en boucle dans ma tête.
 La nuit est un monde nouveau. Elle est vivante. Autour de moi, des bruits que je n'ai jamais entendus à la ferme. Des craquements. Des bruissements. Je m'arrête, le cœur battant. Le silence. Je repars. Les bruits reprennent, me suivant, m'encerclant. Un oiseau de nuit ? Un coyote ? Ou le pas feutré du pisteur au sifflement d'oiseau ? Je me retourne brusquement. Rien. Juste les arbres, sombres et indifférents.
 Jet de Perception : 38/65. Réussi.
@@ -3254,5 +3264,20 @@ Le repas se termine et nous débarrassons lentement la table. C'était un vérit
 Cette nuit, je dormirai pour la première fois à l'intérieur de la ferme, et non dans la grange parmi le foin. Cette nuit, malgré les blessures, le sang versé et les spectres qui rôdent sous le plancher, j'ai enfin l'impression de faire un peu partie de la famille.
 
 Date: 27 juillet 1868
-Aux premiers rayons du soleil, mes yeux s'ouvrent sur la pièce principale de la ferme. Tout est calme, à l'intérieur comme à l'extérieur. Rien ne semble pouvoir briser cette paix. 
+Aux premiers rayons du soleil, mes yeux s'ouvrent sur la pièce principale de la ferme. Tout est calme, à l'intérieur comme à l'extérieur. Rien ne semble pouvoir briser cette paix. Je m'enroule de nouveau dans ma couverture de fortune et décide d'y rester encore un peu.
+Jet d'Endurance : 24/80. Réussite.
+Au-delà de la douleur aiguë qui me lance à chaque mouvement de l'épaule, je me sens mieux. Je pose ma main valide sur mon front ; je ne ressens pas de chaleur inhabituelle. Elara m'avait prévenu hier que le pire danger pour nos blessures à tous était l'infection, et que la fièvre en était le premier signal. 
+Tandis que je tente de tâter ma blessure pour vérifier l'état de la chair, je vois la porte de la chambre des McNamera s'ouvrir lentement. La silhouette fantomatique d'Elara s'avance dans la pénombre, marchant sur la pointe des pieds pour ne réveiller personne. Elle pousse doucement la porte bleue de la chambre de Samuel pour vérifier l'état de Finn, puis revient sur ses pas avec une bassine, y trempant un linge propre dans l'eau fraîche. Elle soupire lourdement à chaque déplacement. Je garde les yeux mi-clos, faisant mine de dormir encore ; je ne veux pas ajouter à sa fatigue déjà immense. Après plusieurs allers-retours silencieux entre les deux chambres, le puits et la cuisine, elle finit par s'asseoir lourdement sur une chaise en bois. De larges cernes sombres marquent son visage sous la lueur laiteuse de l'aube, mais son regard, bien qu'exténué, conserve cette farouche détermination que je lui connais.
+Je finis par me redresser en gémissant malgré moi sous l'effort, et je la salue. Pour la rassurer, je lui dis aussitôt que je me sens bien, puis je m'enquiers de l'état de nos blessés. Le diagnostic tombe, lourd : Finn brûle de fièvre et refuse d'avaler quoi que ce soit, et Theodore est lui aussi pris de frissons fiévreux, condamné à garder le lit. Elle me confie son anxiété, guettant l'arrivée du médecin pour la soulager de ce fardeau.
+Je lui demande comment je peux me rendre utile. Elle insiste pour que je me repose, mais je refuse de rester les bras croisés. Voyant mon entêtement, elle accepte mon aide et me guide vers la cuisine. Elle me glisse alors dans un demi-sourire : « Pour une fois, Eddy, on va préparer un petit-déjeuner digne de ce nom. On en a tous bien besoin pour retrouver des forces. »
+Sous ses directives, je m'active de ma main valide. Nous posons sur le poêle en fonte une lourde poêle noire contenant des tranches de lard salé, épaisses et grasses comme j'en ai rarement vu. Après un instant d'hésitation, Elara murmure : « Soyons fous ! », et sort du garde-manger trois belles saucisses qu'elle jette dans la graisse frémissante. Une fois la viande bien dorée, elle récupère le gras brûlant pour y faire frire de petites galettes de farine de maïs. Elle m'explique que ce sont des Johnnycakes.
+Je n'avais jamais entendu ce mot, et encore moins vu une telle recette. Naïvement, je demande en observant les galettes dorer et gonfler dans la graisse : — C'est un homme nommé Johnny qui a inventé ça ?Elara sourit doucement de mon ignorance :— Non, Eddy. Je crois que ça nous vient des Indiens, les Shawnees. Pour être honnête, je crois bien qu'on leur a volé cette recette, comme beaucoup d'autres choses dans ce pays... De Shawnee cakes, c'est devenu Johnnycakes. Ça fait plus américain, tu ne trouves pas ?
+Jet de Perception : 69/65. Échec.
+Je ne parviens pas à déceler dans son ton s'il s'agit de regret face à cette appropriation ou d'un simple constat cynique. Pour ma part, je n'ai jamais consacré une seule seconde de mon existence à réfléchir à ce genre de questions. Si tant est que ce soit un problème. Je répète silencieusement les mots, Shawnee, Johnny, constatant qu'ils glissent sur la langue avec la même sonorité et comprenant sans mal comment l'un a fini par remplacer l'autre.
+Une fois les galettes dorées posées à l'écart, nous utilisons le reste de graisse pour y jeter des œufs frais et les quelques pommes de terre rescapées du ragoût de la veille. Sur la table de bois brut, une quantité extraordinaire de nourriture commence à s'accumuler. L'odeur réconfortante du lard frit et la chaleur étouffante du poêle à bois envahissent la pièce, parvenant presque à dissiper l'odeur âcre et ferreuse du sang séché, de la sueur et du liniment au vinaigre qui sature la maison. Pour compléter ce festin, Elara prépare une chicorée torréfiée et brûlante dans la cafetière de fer-blanc, sort un pot de mélasse noire et épaisse, et apporte une jatte de lait frais du matin. C'est un repas gigantesque, bien trop copieux pour nous deux, comme si nous essayions de conjurer la mort par l'abondance.
+Pour finir, elle dispose sur la table les lourdes assiettes de grès, des tasses de faïence bosselées et des couteaux en acier carbone, déjà prêts pour le repas.
+Nous nous installons à table et commençons à manger en silence. Soudain, le grincement de la porte de la chambre vient rompre le calme. Une silhouette pliée en deux, livide comme un cadavre, s'avance à pas lents dans le couloir, s'appuyant lourdement contre la cloison puis contre le vaisselier. C'est Theodore McNamera. Attiré par l'odeur de la viande frite, il a décidé de nous rejoindre. Elara se précipite aussitôt pour le soutenir, alors qu'il grimace de douleur, incapable de poser son pied gauche au sol sans gémir. Elle tente de le convaincre de retourner s'allonger, lui promettant de lui apporter son assiette au lit, mais l'homme secoue la tête, inflexible. Avec son aide, il parvient à se laisser choir sur sa chaise, sa jambe blessée et bandée s'allongeant sur une seconde chaise disposée à côté.— Merci, Elara, murmure-t-il en reprenant son souffle. C'est une bonne idée, un petit-déjeuner comme ça. Ça faisait bien longtemps.
+Le fermier s'efforce de faire bonne figure, mais sa pâleur le trahit. Des perles de sueur fiévreuse brillent sur son front, et sa chemise froissée porte encore des traces de terre séchée de la fosse d'Eugene. Il saisit son couteau en acier carbone, pique une saucisse et la plonge dans le jaune d'un œuf coulant avant de l'engouffrer d'une bouchée, faisant gicler un peu de graisse sur la table de bois brut. Il ferme les yeux une seconde, savourant le goût salé et gras de la viande chaude. Je l'observe à la dérobée, redoutant qu'il ne s'effondre sous le poids de la fièvre ou des remords de la veille. Mais l'homme tient bon, s'accrochant à ce repas de fête comme à une bouée de sauvetage.
+Sous l'effet de cette normalité retrouvée, les traits d'Elara semblent enfin se détendre. Autour de la table, le cliquetis des fourchettes et la chaleur du café de chicorée finissent par dessiner une trêve fragile. Nous mangeons tous les trois, savourant ce répit bienvenu dans le silence du matin.
+ 
 
