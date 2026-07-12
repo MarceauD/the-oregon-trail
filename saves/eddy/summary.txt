@@ -404,13 +404,23 @@
   - Arrivée du docteur Charles Russell, qui ausculte les blessés. Il diagnostique une balle restée dans la cuisse de Theodore (risque d'infection mortelle) et un saignement interne sous la peau pour le bras d'Eddy.
   - Eddy pousse le docteur à ausculter Finn en priorité à cause de son état délirant.
   - Eddy sert d'assistant médical de sa main valide (maintien de Finn pendant les soins et versement de l'eau phéniquée sur sa blessure) (Jet de Dextérité réussi : 27/40).
-  - Elara débarrasse la table pour la transformer en table d'opération afin que le docteur y opère Theodore et nettoie le bras d'Eddy.
+  - Elara débarrasse la table de cuisine pour la transformer en table d'opération.
+  - Chirurgie de Theodore : Eddy est réquisitionné comme assistant mais lâche la lampe et s'évanouit sous le coup de la douleur, de la chaleur et du trauma (Dextérité : 79/40 échec, Endurance : 100/80 échec critique). Elara rattrape la lampe au vol.
+  - Pendant son inconscience, Eddy affronte sous forme de combat d'esprit le spectre de Regret (sous la forme d'un serpent humanoïde) et le repousse de force dans les ténèbres (Résilience : 02/85 succès critique).
+  - Réveil et opération d'Eddy : le docteur Russell nettoie sa plaie d'épaule, en extrait deux fragments d'os et recoud la chair.
+  - Eddy paie 0,87 $ à Russell pour lui faire lire l'article de journal sur ses origines (Persuasion : 09/74 réussite). L'article de mai 1850 du *Harrisburg Telegraph* révèle que sa mère, Connie Devlin, s'est pendue de misère après la mort de son époux, le laissant orphelin à trois mois. Cette vérité apporte un immense soulagement à Eddy.
+  - Eddy offre ses cadeaux taillés dans le bois de son banjo : la broche en bois à Elara et le bourre-pipe à Theodore. Elara l'enlace chaleureusement.
+  - Toilette d'Eddy : en voulant retirer son pantalon raide d'une seule main, Eddy perd l'équilibre et renverse sa bassine d'eau chaude (Agilité : 70/50 échec). Elara l'aide, nettoie le plancher à la sciure, le lave, lui coupe les cheveux, le rase et l'habille avec les vêtements de Samuel. Eddy combat la panique de devoir remplacer leur fils décédé.
+  - Discussion en fin de journée avec Theodore dans sa chambre : Theodore lui propose de s'installer définitivement à la ferme. Eddy décline avec honnêteté au nom de son rêve d'Oregon, mais promet de rester pour aider le temps de leur convalescence. Theodore accepte avec tristesse et dignité, puis annonce l'arrivée de Silas Flynn le lendemain pour convoyer les 60 sacs de blé restants vers Carlisle.
+  - Dîner sommaire de pain de seigle au saindoux et chicorée, changement de pansement par Elara, mot bref à Finn dans sa chambre et installation pour la nuit sur le plancher du salon.
 - **Rencontres & Interactions** :
-  - **Elara McNamera** : Veille silencieusement sur la ferme, s'occupe des blessés et prépare un repas copieux. Elle assiste ensuite le docteur en cuisine en lui fournissant eau chaude et savon.
-  - **Theodore McNamera** : Rejoint la table malgré la fièvre. Il accepte ensuite de subir l'extraction immédiate de la balle logée dans sa cuisse.
-  - **Finn** : Confiné dans sa chambre, il brûle de fièvre. Le docteur nettoie sa plaie infectée (phlegmon) sous le derme, lui pose un bandage compressif pour sa côte cassée et lui administre de la quinine et du laudanum.
-  - **Dr. Charles Russell** : Médecin de campagne au verbe haut, ancien médecin militaire cynique et pragmatique. Il réquisitionne la cuisine, négocie son paiement (2 dollars + les restes du repas) et choisit Eddy pour l'aider dans ses opérations.
+  - **Elara McNamera** : Aide à la cuisine, assiste le docteur, soigne et habille Eddy avec les nippes de Samuel avant de changer ses pansements le soir.
+  - **Theodore McNamera** : Subit l'extraction de balle à vif, accepte avec philosophie le refus d'Eddy de s'installer à demeure et le remercie pour son honnêteté. Organise la venue de Silas.
+  - **Dr. Charles Russell** : Opère Theodore et Eddy, soigne Finn, lit le journal d'Eddy pour 0,87 $ et repart en fin de matinée.
+  - **Finn** : Soigné au poumon et à la côte brisée, assommé de quinine et de laudanum, il reprend brièvement conscience le soir.
 - **Santé & Ressources** :
-  - **Santé** : La côte brisée de Finn frotte la plèvre sans la percer, mais sa plaie est infectée (phlegmon) causant fièvre (pyrexie) et difficultés respiratoires (dyspnée). Theodore s'apprête à subir une chirurgie d'urgence à la cuisse. Le bras d'Eddy doit être ouvert pour stopper un saignement interne. Eddy ressent des hallucinations de son traumatisme (silhouette noire lui parlant de mort) à l'approche de la chirurgie.
-  - **Ressources** : Consommation de nourriture pour le petit-déjeuner. Theodore règle 2 dollars au docteur en nature et espèce.
-  - **Compétence / Savoir** : Acquisition du savoir spécifique « Recette des Johnnycakes (Shawnee cakes) ».
+  - **Santé physique** : Bras gauche d'Eddy recousu et immobilisé en écharpe (10 à 15 jours de convalescence).
+  - **Santé mentale** : Résilience augmentée de +1% (passe à 86%). Le traumatisme de Regret retombe de 9/10 à **4/10** (les hallucinations cessent).
+  - **Ressources** : Perte de 0,87 $ (solde à 12,38 $). Perte de la broche en bois sauvage et du bourre-pipe en noyer (offerts).
+  - **Intrigues** : Clôture de l'intrigue « Retrouver les traces de ma famille biologique » (Terminé). Le fil « Un hôpital de campagne dans la cuisine » progresse.
+  - **Savoirs** : Acquisition du savoir « Recette des Johnnycakes ».

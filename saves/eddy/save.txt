@@ -17,7 +17,7 @@ Il fut d'abord contraint de travailler aux champs. Par la suite, ses parents ado
 Son objectif est de rejoindre l'Oregon, bien qu'il soit à pied.Edward nourrit également un profond désir : effacer le nom de famille Dunbar et découvrir son véritable nom de naissance. Il compte profiter de son voyage à travers la Pennsylvanie pour enquêter sur l'histoire de ses parents biologiques.Le point de départ de l'aventure se situe juste à l'extérieur de Harrisburg. Edward, encore à bout de souffle après sa fuite, se dirige vers l'ouest en suivant la ligne de chemin de fer en direction de la ville de Lewistown.
 
 --- ÉCONOMIE ---
-Monnaie : $13.25
+Monnaie : $12.38
 
 --- STATISTIQUES ---
 Force: 60
@@ -63,6 +63,11 @@ Chasse (petit gibier): 26
 
 --- INVENTAIRE ---
 
+> Clothing
+- Chapeau de paille
+- Vêtements vieux et sales (chemise déchirée)
+- Bottes de travail en cuir
+
 > General
 - Nourriture (qqs baies sauvages, champignons, sel)
 - Pièce en argent "Seated Liberty Dollar"
@@ -77,10 +82,8 @@ Chasse (petit gibier): 26
 - Peau de lapin cottontail
 - Allumettes 'Lucifer'
 - Article de journal sur les parents Devlin
-- Petit couteau
-- Broche en bois en forme de fleur sauvage
+- Petit couteau de cuisine
 - Plaque en bois rectangulaire marqué d'un as de pique
-- Bourre-pipe difforme
 - Dés boiteux
 - 5 oeufs de dinde sauvage
 - Plumes de dinde sauvage
@@ -88,19 +91,14 @@ Chasse (petit gibier): 26
 - Clés de la ferme des Dunbar
 - Dessin de cerf au fusain (grande qualité)
 
-> Clothing
-- Chapeau de paille
-- Vêtements vieux et sales (chemise déchirée)
-- Bottes de travail en cuir
-
 --- SAVOIRS SPÉCIFIQUES ---
 - Hard Times Come Again No More (Triste et lent)
 - Recette des Johnnycakes (Shawnee cakes)
 
 --- ÉTAT PHYSIQUE ---
-- Blessure par balle (bras gauche) (Depuis: hier, Soins: Bandage à changer 3 fois par jour, voir un médecin pour inspecter ou si fièvre, Effets: Malus de force général)
-- entaille à l'avant bras droit (Depuis: 4 j, Soins: aucun, Effets: aucun)
-- brûlure au bout des doigts de la main droite (Depuis: 3 j, Soins: aucun, Effets: aucun)
+- Blessure par balle (bras gauche) (Depuis: 10 à 15 j, Soins: Garder le bras en écharpe, désinfection quotidienne et changement de bandage, surveiller la fièvre, Effets: Bras gauche immobilisé dans une écharpe, malus de force général)
+- entaille à l'avant bras droit (Depuis: depuis 4 j, Soins: aucun, Effets: aucun)
+- brûlure au bout des doigts de la main droite (Depuis: depuis 4 j, Soins: aucun, Effets: aucun)
 
 --- SANTÉ MENTALE ---
 - Mort violente de Eugene Dunbar (Depuis: hier, Soins: Trouver quelqu'un à qui en parler et accepter de se livrer, Effets: Risque de sensation de panique à l'odeur de poudre, vue de la mort, bruit d'arme à feu)
@@ -354,7 +352,7 @@ Image: https://res.cloudinary.com/dg64n9fhe/image/upload/v1776178754/pnaevrogio1
 Faits marquants: J'ai partagé un bref moment d'entraide silencieuse avec elle dans la cuisine. Elle semble apprécier ma présence discrète.
 M'a soigné après mon accident. Elle a entendu la conversation entre McNamera et le pisteur et soupçonne maintenant la vérité sur ma situation. Sa réaction est incertaine.
 M'a donné le fusil pour me défendre.
-M'a préparé une sacoche avec des provisions (viande, pain, boussole, couteau) pour mon exil. | A soigné Eddy et Theodore à leur retour de la forêt. A appris la mort d'Eugene Dunbar et l'effondrement psychologique de son mari. | A partagé un repas chaud avec Eddy, exprimant sa gratitude pour la batteuse et le rassurant sur sa responsabilité dans la mort d'Eugene. | A préparé un petit-déjeuner copieux avec Eddy tout en veillant sur Theodore et Finn qui sont tombés fiévreux | Assiste le médecin en cuisine en fournissant eau bouillante, bassine et savon pour les chirurgies d'urgence
+M'a préparé une sacoche avec des provisions (viande, pain, boussole, couteau) pour mon exil. | A soigné Eddy et Theodore à leur retour de la forêt. A appris la mort d'Eugene Dunbar et l'effondrement psychologique de son mari. | A partagé un repas chaud avec Eddy, exprimant sa gratitude pour la batteuse et le rassurant sur sa responsabilité dans la mort d'Eugene. | A préparé un petit-déjeuner copieux avec Eddy tout en veillant sur Theodore et Finn qui sont tombés fiévreux | Assiste le médecin en cuisine en fournissant eau bouillante, bassine et savon pour les chirurgies d'urgence | A enlacé chaleureusement Eddy après avoir reçu une broche sculptée en bois de banjo brisé.
 ---
 ID: 1759855829459
 Nom: Theodore McNamera
@@ -385,7 +383,6 @@ Le Drame : Son fils unique, Samuel, emporté par la ferveur patriotique de l'ép
 L'Humiliation Publique : La coupure de journal que tu as trouvée raconte la mort de Samuel. Mais elle fait plus que ça. Soit elle cite directement Theodore (peut-être lors d'une interview maladroite où sa douleur se mêle à son amertume contre la guerre), soit elle décrit une scène publique (par exemple, lors d'une cérémonie en l'honneur des soldats tombés) où McNamera a été hué, insulté, ou traité de lâche ou de traître par la communauté locale, incapable de comprendre comment un père pouvait ne pas soutenir pleinement la cause pour laquelle son fils avait donné sa vie.
 
 La Conséquence : Depuis ce jour, McNamera s'est retiré du monde. La mort de son fils a brisé son idéalisme ("Despondent Rogue"), et l'humiliation publique a détruit sa confiance en la communauté et en lui-même. Il se cache dans sa ferme, évitant les confrontations, les voyages en ville, et toute situation (comme négocier avec un homme autoritaire comme Meeks) qui pourrait raviver le souvenir de cette honte et de son impuissance. Il préfère envoyer un gamin faire le sale boulot plutôt que de risquer d'être à nouveau jugé ou ridiculisé.
-
 Image: https://res.cloudinary.com/dg64n9fhe/image/upload/v1776178792/sdpv4hbt1uqaxvbhihhn.jpg
 Faits marquants: Je l'ai rencontré dans son champ. Après l'avoir pris pour un simple ouvrier, ma tentative de le convaincre de ma valeur a échoué. Il est méfiant mais m'a mis au défi de prouver mes compétences à la faux avant de décider de m'engager ou non.
 Impressionné par mes compétences de moissonneur, il m'a offert un travail pour un dollar par jour, ainsi que le gîte et le couvert. Il est méfiant, mais respecte le travail bien fait.
@@ -432,7 +429,7 @@ Nous devons nous retrouver à la cabane dimanche matin
 Alors qu'il est là pour me retrouver dans le bois, il croise le chemin de Eugene Dunbar et son pisteur. 
 Il finit par donner la position de la cabane sous la menace.
 
-Il est libéré quand Artus Flynn tue Eugene Dunbar. | A confessé en pleurs à Elara et Eddy avoir parlé sous la torture après s'être fait tirer dans la cuisse par Eugene Dunbar. A démonté son Colt Army 1860 devant Eddy pour le rendre inoffensif. | A rejoint la table de petit-déjeuner malgré une forte fièvre et une blessure à la jambe gauche qui l'empêche de poser le pied au sol | Rejoint la table de cuisine réquisitionnée par le Dr. Russell pour y subir l'extraction immédiate de la balle logée dans sa cuisse | Rejoint la table de cuisine réquisitionnée par le Dr. Russell pour y subir l'extraction immédiate de la balle logée dans sa cuisse. A subi l'incision et l'extraction sans anesthésie, serrant les dents sur du cuir.
+Il est libéré quand Artus Flynn tue Eugene Dunbar. | A confessé en pleurs à Elara et Eddy avoir parlé sous la torture après s'être fait tirer dans la cuisse par Eugene Dunbar. A démonté son Colt Army 1860 devant Eddy pour le rendre inoffensif. | A rejoint la table de petit-déjeuner malgré une forte fièvre et une blessure à la jambe gauche qui l'empêche de poser le pied au sol | Rejoint la table de cuisine réquisitionnée par le Dr. Russell pour y subir l'extraction immédiate de la balle logée dans sa cuisse | Rejoint la table de cuisine réquisitionnée par le Dr. Russell pour y subir l'extraction immédiate de la balle logée dans sa cuisse. A subi l'incision et l'extraction sans anesthésie, serrant les dents sur du cuir. | A reçu d'Eddy un bourre-pipe sculpté en bois de banjo brisé.
 ---
 ID: 1759859643208
 Nom: Farmhands de la ferme de McNamera
@@ -467,7 +464,6 @@ ID: 1758990998278
 Nom: Regina Dunbar
 Statut: ennemi mineur
 Description: Mère adoptive. Femme d'âge moyen, regard fuyant, mains fines et allure discrète. Elle semble dissimuler des choses. Elle encourage insidieusement la colère des autres pour la servir. Nourrie une passion secrète pour la littérature.
-
 Image: https://res.cloudinary.com/dg64n9fhe/image/upload/v1776178789/wkjsimo2ju2syjbaheob.png
 ---
 ID: 1758990984172
@@ -475,7 +471,6 @@ Nom: Eugene Dunbar
 Statut: mort
 Description: Homme massif, alcoolique, colère permanente, puissance brute et violence, posture militaire. Il ne voit que le conflit et la hierarchie, il est obsédé par la force se voyant toujours en commandant militaire.
 La colère n'est acceptée que chez lui, il se met dans une fureur noire si quelqu'un d'autre que lui montre des signes d'agacement ou de rébellion.
-
 Image: https://res.cloudinary.com/dg64n9fhe/image/upload/v1776178757/shmh5pghokkmzqjjcfdu.png
 Faits marquants: La simple pensée de lui suffit à provoquer des flashbacks traumatisants. Il est la menace immédiate et la source de ma terreur.
 A engagé au moins un homme pour me traquer activement dans la région de Harrisburg. La menace n'est plus un simple souvenir traumatisant ; il me recherche activement et a des pisteurs sur le terrain.
@@ -495,7 +490,7 @@ Nom: Docteur Charles Russell
 Statut: connaissance
 Description: Médecin et chirurgien de Carlisle, la cinquantaine robuste, au visage tanné, portant des lunettes ovales en fer fin et des favoris gris taillés de près. Ancien chirurgien militaire de l'Union rompu aux amputations de masse, il est pragmatique, sardonique et doté d'un sang-froid absolu (100/100 en Médecine). Il a développé une méthode d'antisepsie empirique et stricte (lavage au savon et au phénol) qui passe pour une manie obsessionnelle. Il est vêtu d'une redingote noire poussiéreuse tachetée d'iode, d'un gilet gris à boutons de nacre, et transporte une lourde sacoche en cuir bouilli contenant scalpels en ébène, aiguilles d'argent, éther et laudanum. Il voyage dans un cabriolet à deux roues tiré par son vieux cheval Barnaby.
 Image: https://res.cloudinary.com/dg64n9fhe/image/upload/v1783786809/i580b4us0nkmudxqqqew.png
-Faits marquants: S'occupe de soigner la blessure aux côtes de Finn à la ferme McNamera | Demande un tarif de 2,00 $ par jour en plus de paiements en nature (nourriture, vêtements, matériel ou autre) | Arrive à la ferme McNamera pour soigner les blessés | Négocie son paiement contre deux dollars et des restes de nourriture | Diagnostique une infection de la plaie (phlegmon) et une côte cassée chez Finn | Ordonne l'opération immédiate de Theodore pour extraire la balle dans sa cuisse | Réquisitionne Eddy comme assistant improvisé | A extrait la balle de la cuisse de Theodore McNamera sur la table de la cuisine.
+Faits marquants: S'occupe de soigner la blessure aux côtes de Finn à la ferme McNamera | Demande un tarif de 2,00 $ par jour en plus de paiements en nature (nourriture, vêtements, matériel ou autre) | Arrive à la ferme McNamera pour soigner les blessés | Négocie son paiement contre deux dollars et des restes de nourriture | Diagnostique une infection de la plaie (phlegmon) et une côte cassée chez Finn | Ordonne l'opération immédiate de Theodore pour extraire la balle dans sa cuisse | Réquisitionne Eddy comme assistant improvisé | A extrait la balle de la cuisse de Theodore McNamera sur la table de la cuisine. | A lu à Eddy l'article de journal sur sa mère Connie Devlin contre un paiement de 0,87 $, tout en extirpant des éclats d'os de son épaule blessée.
 ---
 
 ========================================
@@ -508,9 +503,6 @@ Lieu:
 Statut: Abandonné
 Description: Benjamin semble être un enfant troublé, maniaque, psychorigide et avec une volonté de contrôle couplé à une servitude extrême. Le petit être fragile rêve de se venger de tous ceux qui ont pu le blesser. Il mélange facilement la violence avec le pouvoir et cherche à s'en approprier les codes.
 Image: https://res.cloudinary.com/dg64n9fhe/image/upload/v1776178818/gaezmcby6zrstz74u6yt.jpg
-Événements:
-- La traque par le pisteur et mort violente de Eugene Dunbar risquent de laisser des traces.
-- Benjamin a trouvé plus fort en la personne de Artus Flynn. Il décide de rester en sa compagnie plutôt que la mienne.
 ---
 ID: 1775916285534
 Titre: Retrouvailles douloureuses
@@ -518,8 +510,6 @@ Lieu: Bois, Harrisburg, PA
 Statut: Terminé
 Description: La fuite est terminée. Eugene Dunbar et son funeste pisteur ont capturé Theodore McNamera, le blessant à la jambe, et l'utilisent comme appât pour me forcer à sortir de l'ombre. Armé de mon seul couteau, de ma sacoche, et de ma connaissance récente des bois, je dois faire face à la poudre et au plomb. Je suis face au dilemme ultime : me rendre pour sauver l'homme qui a risqué sa ferme pour moi, ou utiliser la forêt comme une arme pour traquer mes propres traqueurs. Il faut que l'un de nous meure aujourd'hui.
 Image: https://res.cloudinary.com/dg64n9fhe/image/upload/v1776178821/rgroiso38aqmnfyumrbb.jpg
-Événements:
-- J'obtiens l'aide de Artus Flynn qui exige la libération de Benjamin. Il l'obtient mais Eugene me tire dessus me blessant au bras gauche. Flynn abat de deux coups de fusil dans la tête Eugene faisant prendre la fuite à son pisteur.
 ---
 ID: 1774207107592
 Titre: Enterrer Caleb
@@ -534,18 +524,12 @@ Lieu: Harrisburg, PA
 Statut: Abandonné
 Description: En remettant le jeu de cartes à Artus Flynn de la part de son père Silas, le charbonnier a découvert une carte anormale : un 14 de Trèfle. Cela l'a mis en fureur. Il y a un code secret, ou un passif lourd, caché derrière cette carte que je ne saisis pas encore.
 Image: https://res.cloudinary.com/dg64n9fhe/image/upload/v1776178820/iw3zyjckmhfh1pe8qcha.jpg
-Événements:
-- Artus Flynn a accepté de m'aider contre Eugene. Il a sauvé Benjamin et tué Eugene de deux coups de fusil. Peut être m'en dira-t-il plus sur sa relation à son père.
-- Je suis retourné voir Benjamin pour connaitre son avis. En partant, Artus m'a dit de dire à son père qu'il était prêt à revenir à la table.
 ---
 ID: 1774206740050
 Titre: Protéger Benjamin
 Lieu: Cabane de chasseur, Pennsylvanie
 Statut: Raté
 Description: J'ai découvert Benjamin, un orphelin au bras cassé, terrifié dans l'orphelinat. Il avait été "vendu" comme apprenti à un tonnelier violent. J'ai menacé ce dernier pour détruire son contrat d'apprentissage et j'ai emmené Benjamin avec moi dans les bois. Je lui ai promis qu'il ne travaillerait plus comme un esclave. Mon but est de convaincre McNamera de l'accueillir à la ferme ce dimanche
-Événements:
-- La relation avec l'enfant se construit doucement. Les moments passés avec lui dans le bois montre qu'il peut s'ouvrir mais on fait émerger une face sordide de sa personnalité avec laquelle il va falloir composer.
-- Benjamin a choisi de rester avec Artus Flynn plutôt que de m'accompagner à la ferme. J'ai perdu l'enfant que je devais protéger.
 ---
 ID: 1762695726461
 Titre: Exil dans les bois
@@ -553,9 +537,6 @@ Lieu: Cabane de chasseur, Pennsylvanie
 Statut: Terminé
 Description: McNamera m'a exilé pour protéger la ferme des menaces que j'attire (Eugene, Diamond). Je dois trouver la cabane de chasseur secrète en utilisant la boussole et y survivre seul jusqu'à dimanche matin (26 juillet), quand il viendra me chercher.
 Image: https://res.cloudinary.com/dg64n9fhe/image/upload/v1776178816/vpolsst0hegjdv9sy6e7.jpg
-Événements:
-- J'ai trouvé la cabane. L'endroit était insalubre, mais j'ai pu le nettoyer un minimum et sécuriser la porte. J'y ai survécu seul, en chassant, avant d'y ramener Benjamin, un orphelin que j'ai sauvé. J'y attends le retour de McNamera prévu ce dimanche matin
-- La survie est brutale et l'aléatoire t'a mené la vie dure. Tu as survécu à un orage violent dans une cabane insalubre. Tu as réussi à abattre une dinde sauvage au couteau, sécurisant ainsi cinq œufs, mais un échec critique lors du dépeçage a percé la vésicule biliaire, souillant une grande partie de la viande avec de la bile. Benjamin t'a aidé à plumer l'animal, cimentant votre statut d'équipe.
 ---
 ID: 1762695676476
 Titre: Place à la table
@@ -590,8 +571,6 @@ Finn : quelque chose en lien avec la guerre ? avec la photo de sa soeur ? une bo
     Silas : Une plaque polie dans le résonateur, gravée d'un as de pique (Réussite).
     Finn : Une ligne de pêche fabriquée avec une corde d'acier (Réussite).
     Theodore & Journaliers : Le bois du talon et du cerclage s'est fendu. La fabrication du bourre-pipe et des dés a échoué à cause de tes blessures et de la fatigue (Échecs)
-Événements:
-- A aidé Elara à préparer un petit-déjeuner gigantesque pour redonner des forces à la maisonnée et affronter la fièvre générale
 ---
 ID: 1758991072887
 Titre: Rejoindre l'Oregon
@@ -603,7 +582,7 @@ Mon rêve s'est violemment heurté à la réalité. À la gare d'Union Station �
 ID: 1758991134463
 Titre: Retrouver les traces de ma famille biologique
 Lieu: Pennsylvanie
-Statut: actif
+Statut: Terminé
 Description: Je sais que les traces de ma famille biologique sont quelque part... J'avais entendu dire qu'ils étaient écossais... Par où commencer les recherches ?
 Je dois me rapprocher de Harrisburg. Peut-être que cela est une occasion de retourner à l'orphelinat pour en apprendre davantage.
 Je me suis introduit de nuit dans mon ancien orphelinat. La Matronne a consulté les archives : je m'appelle Edward Devlin, arrivé à 3 mois en avril 1850. J'ai découvert avec horreur que j'avais été "vendu" aux Dunbar pour 15 dollars lors de mon adoption. Elle m'a également remis un article de journal concernant mes parents
@@ -761,29 +740,18 @@ Titre: Regret ne doit pas gagner
 Lieu: Ferme McNamera
 Statut: En cours
 Description: Empêcher le score de Regret d'atteindre 10 (actuellement à 4). Les actions décevantes, violentes, ou rappelant la mort d'Eugene ou l'abandon de Benjamin l'augmentent. Il faut trouver un moyen de le faire descendre.
-Événements:
-- Ajout du point faible Regret à un score de 7/10 suite aux traumatismes cumulés de la mort d'Eugene, de la blessure de Theodore et du rejet de Benjamin.
-- Jet contre Regret (Seuil : 8/10) raté lors de la tentative de ramasser le Colt Army de Eugene. Edward se fige et renonce à l'arme.
-- Regret s'immisce dans les sens d'Edward sous la forme d'une ombre furtive et d'une voix sous le lit dans la chambre de Samuel. Score : 9/10.
-- L'ombre humanoïde de Regret tente de s'emparer de l'esprit d'Edward pendant son évanouissement. Edward remporte une victoire écrasante lors d'un combat de volonté dans son inconscient (Jet de Résilience : 2/85, Succès Critique). La bête est renvoyée dans l'obscurité, crachant sang et larmes. Le score retombe à 4/10.
 ---
 ID: 1776268800002
 Titre: Se soigner le corps et l'esprit
 Lieu: Ferme McNamera
 Statut: En cours
 Description: Après la violence de la forêt, la mort d'Eugene et la perte de Benjamin, guérir la blessure par balle à l'épaule gauche et apaiser l'esprit. Pour cela, il faut se détendre, vivre des moments de beauté et de grâce, ou trouver une âme charitable attentive pour s'épancher.
-Événements:
-- Retour à la ferme McNamera avec le bras gauche perforé par une balle et l'esprit hanté par les récents événements.
 ---
 ID: 1776332000000
 Titre: Un hôpital de campagne dans la cuisine
 Lieu: Ferme McNamera
 Statut: En cours
 Description: Le Dr. Russell a réquisitionné la table de la cuisine pour soigner les blessés par balle. Eddy doit surmonter sa douleur et son dégoût pour lui servir d'assistant médical.
-Événements:
-- Le Dr. Charles Russell arrive à la ferme et décide d'opérer Theodore et de récurer le bras d'Eddy sur place.
-- Eddy est réquisitionné comme assistant et aide à soigner Finn (nettoyage de la plaie surinfectée et bandage de la côte cassée) (Jet de Dextérité réussi : 27/40).
-- Eddy assiste à l'incision de Theodore par le Dr. Russell. Terrassé par la douleur de son propre bras, la chaleur de la lampe et le souvenir du crâne d'Eugene, Eddy perd connaissance. Elara rattrape la lampe au vol. Eddy reprend ses esprits pour être ausculté.
 ---
 
 ========================================
@@ -3332,4 +3300,142 @@ Russell jette un coup d'œil indifférent vers le sol où je me trouve, sans int
 Je me relève, m'essuyant le visage d'un revers de manche.
 Regret perd en force. 4/10. Plus d'hallucinations visuelles et auditives.
 Gain de statistiques en Résilience +1
+Personne ne semble s'inquiéter plus que de raison de mon malaise, comme si ce n'était qu'un détail de cette matinée. De mon côté, je vois les choses différemment. En reprenant mes esprits sur le plancher, je réalise surtout que j'ai autour de moi des gens auxquels je tiens, et que j'ai bien failli tout gâcher.
+— Mr McNamera va survivre ? je demande, craignant la réponse du docteur.Russell ricane doucement et baisse la tête pour me toiser par-dessus ses lunettes de fer.— Tu sors d'où, toi, au juste ?J'ai l'impression que toutes les personnes que je rencontre depuis que j'ai fui la ferme des Dunbar me posent cette même question. Mais cette fois, c'est différent. Dans ma poche, je devrais avoir un papier qui répond à cette question. Je plonge ma main droite pour le sortir, mais il n'y est pas. Il doit être resté dans ma sacoche de cuir. Sans répondre au médecin, je me traîne vers mon paquetage et fouille fébrilement mes maigres affaires avant de le retrouver. J'en sors aussi les petits objets en bois que j'avais taillés pour Theodore et Elara, les serrant contre moi.
+Je m'approche de la table et dis :— Dr. Russell, je crois que la réponse à votre question est dans ce papier.
+Il est visiblement étonné. Ses sourcils se lèvent aussi haut que son visage le permet. La tête penchée sur le côté, il répond d'un ton sec :— Je ne suis pas là pour me mêler d'histoires de familles, petit.— S'il vous plaît, monsieur, ça ne vous prendra qu'une minute à lire. J'essaie d'apprendre, je vous assure que j'ai la plus grande motivation pour y parvenir, mais il me faudra peut-être encore des mois avant de pouvoir déchiffrer ce message tout seul. Je ne veux pas déranger Mr et Ms McNamera qui ont bien d'autres choses en tête en ce moment. Lisez-le-moi... Expliquez-moi ce qui est écrit pendant que vous nettoyez ma plaie.
+Incrédule, le docteur ne répond pas tout de suite. Ses yeux alternent entre le papier froissé et ma mine déterrée. Je me retourne et sors quelques pièces d'argent de ma sacoche.— Je peux vous payer, dis-je en lui tendant les pièces de ma main droite valide.
+Jet de Persuasion : 9/74. Réussite.
+Le médecin ne dit pas grand-chose. Ses yeux se posent sur les pièces d'argent, puis sur mon visage tendu. D'un geste sec, il saisit la monnaie, la glisse dans la poche de son gilet, puis s'empare du papier de journal froissé et jauni.
+Perte de 0.87 $
+Pendant que le médecin déplie le document et commence à le lire, je m'approche d'Elara et de Theodore, encore à demi conscient et blême sur la table de cuisine. De ma main valide, je présente les deux petits objets que j'ai taillés. Je les leur tends en baissant les yeux :— Pour vous remercier de tout ce que vous avez fait... J'ai fabriqué ça avec le bois de mon banjo brisé.Elara prend la broche et en caresse doucement les contours polis. Theodore saisit le bourre-pipe, mais c'est surtout mon visage qu'il fixe de son regard fatigué.— Merci, Eddy, murmure le fermier, un faible sourire étirant ses traits éprouvés.Elara fait un pas vers moi et, sans un mot, m'entoure doucement de ses bras. Je reste figé, les bras ballants, le cœur battant à tout rompre, complètement désarmé par cette étreinte chaleureuse dont je n'ai pas l'habitude. Quand elle se recule, elle me dévisage avec une douceur sincère que je m'efforce de lui renvoyer.
+— Je suis prêt, Eddy. Viens t'installer, dit le docteur.
+Je m'assois sur la chaise qu'il m'indique, tandis qu'il aplatit le papier de journal froissé sur un coin de la table. Il attrape sa pince métallique et sa curette, puis verse une rasade d'eau phéniquée directement sur mon épaule blessée. Le liquide acide et glacial me brûle la chair à vif, me coupant le souffle, tandis qu'il plonge sans attendre ses outils dans le trou de la balle. 
+La douleur est fulgurante, une pointe de feu qui me traverse la poitrine et me cloue sur le siège. Mes doigts se crispent sur le bois de la chaise. Russell fouille méthodiquement, jetant un œil à ma blessure et l'autre aux lignes serrées du journal.— Il y a des éclats là-dedans, fresh fish, marmonne-t-il. Ton os a été effleuré par la balle. Il a éclaté sous le choc.
+Un petit tintement métallique résonne dans la pièce : le premier fragment d'os blanc et sanglant tombe au fond de la bassine d'étain. La douleur me tire des larmes, mais je serre les mâchoires de toutes mes forces. Russell jette un nouveau regard sur le papier jauni, et sa voix rauque se fait soudain plus basse, perdant son détachement habituel. Il semble presque embarrassé par ce qu'il lit.
+— C'est un vieux bout de papier du Harrisburg Telegraph, de mai 1850, dit-il en grattant le fond de la plaie pour déloger un autre éclat. C'est pas grand-chose, gamin. Juste un fait divers de la basse-ville. On y parle d'une immigrée écossaise, Connie Devlin. Elle s'est pendue à une solive dans sa maisonnée d'ouvriers.
+Il s'interrompt pour extraire un deuxième morceau d'os, plus gros, qui tinte lourdement dans l'étain. La sueur me coule dans le cou.— L'article dit que son mari était mort de maladie quelques mois plus tôt, continue Russell. Elle s'est retrouvée seule, sans un sou. Le propriétaire a forcé la porte à cause des loyers impayés et a trouvé son corps. Il y avait un nourrisson de trois mois dans le berceau... qui hurlait au milieu des immondices. C'est tout ce qu'il y a écrit. Juste la misère ordinaire.
+Un dernier flot d'eau javellisée nettoie la plaie, puis Russell saisit son aiguille pour recoudre la chair de points rapides. 
+Je reste assis sans bouger, fixant le journal jauni. Connie Devlin. C'était donc ça, ma mère. Pas de secret de famille, pas d'héritage caché, pas de vengeance mystérieuse. Juste une pauvre femme brisée par la faim qui avait choisi une corde, m'abandonnant au milieu des rats. Le vide dans ma poitrine me paraît d'abord immense.
+Mais finalement, je me sens soulagé. Je sais intimement que si, dans ce papier, il y avait eu la moindre trace, le moindre indice pour trouver autre chose, je l'aurais poursuivi jusqu'au bout du monde. Si j'avais connu un coupable, si j'avais appris le nom d'un membre de ma famille, si j'avais entendu parler d'un héritage quelconque, plus rien d'autre n'aurait compté. Je le sais au plus profond de moi.
+Là, c'est simple. Il n'y a rien. Et puisqu'il n'y a rien, j'ai le droit de rester là. J'ai le droit d'être avec les gens qui veillent sur moi. Quelque part, c'est le plus grand soulagement que je pouvais espérer.
+Cherchant à changer de sujet tandis que je replie tant bien que mal d'une seule main le bout de papier jauni, le docteur Russell grogne à l'adresse d'Elara : — Et trouvez un bain chaud à ce gamin, Mrs. McNamera. Donnez-lui des nippes propres. La guerre est finie, nom d'un chien !
+Sa remarque me surprend. Jusque-là, je ne me rendais pas compte de l'image que je renvoyais. Mais en baissant les yeux, je dois me rendre à l'évidence : ma chemise n'est plus qu'un assemblage de lambeaux crasseux qui ne tiennent ensemble que par miracle. Le calicot est si cartonné par la sueur et le sang séché, pas seulement le mien, qu'on n'en distingue même plus la teinte d'origine. Mon pantalon n'est qu'une loque rigide, encroûtée de terre noire de la forêt et marbrée de taches blanchâtres causées par l'eau phénique de l'opération.
+Seules mes bottes de cuir neuves ont encore de l'allure. Elles m'ont coûté une petite fortune à Harrisburg ; elles ont simplement besoin d'être grattées et graissées avec un peu de suif. Du moins, je crois que c'est ce qu'on fait dans ce cas là.
+Elara acquiesce silencieusement aux consignes du médecin et s'éclipse dans la pénombre du couloir. Elle pousse la porte bleue de la chambre de Samuel et revient quelques minutes plus tard, portant dans ses bras un paquet de vêtements pliés avec un soin maniaque.
+Elle les dépose doucement sur un banc de bois. L'odeur d'amidon qui s'en dégage se mêle à celle de poussière d'un vêtement qui n'a pas été sorti plusieurs années. C'est la garde-robe d'un jeune fermier du début de la décennie, propre et modeste. Mais c'est plus que ce que j'ai jamais eu. Il y a là une chemise de calicot à fins carreaux bleus et blancs, fermée par de petits boutons d'os poli, et un pantalon de drap de jean brun. Cette étoffe solide et rugueuse mêle de la laine et du coton. Les bretelles en toile écrue sont terminées par des pattes de cuir souple destinées à se boutonner sur la taille haute du pantalon, qui s'ajuste à l'arrière par une petite boucle de serrage en fer. Elara y a joint un foulard de coton teint à l'indigo, soigneusement repassé, destiné à être noué autour du cou pour protéger la peau du frottement du col rude.
+— Samuel était un peu plus large d'épaules que toi, murmure-t-elle en lissant le tissu du revers de la main. Mais avec la martingale et les bretelles, ça devrait aller. Va te laver dans l'arrière-cuisine, Eddy. J'ai mis de l'eau à chauffer. Dis moi si tu as besoin d'aide.
+Je saisis le paquet de vêtements propres en remerciant chaleureusement Elara et Theodore d'un signe de tête, puis je me retire dans l'étroite arrière-cuisine. Avant que je ne passe la porte, le docteur Russell me lance ses dernières recommandations d'un ton sans réplique : — Aucun effort avec ce bras, gamin. Garde-le le plus immobile possible dans son écharpe et surveille la fièvre. Si ta plaie se met à cogner ou à couler, tu m'envoies chercher.
+Dans la petite pièce sombre, une bassine de zinc remplie d'eau chaude m'attend, la buée s'élevant doucement dans l'air frais du matin et condensant sur les vitres. Tout en commençant à me déshabiller péniblement, j'écoute à travers la cloison de bois la conversation entre le médecin et Elara, qui se retrouve désormais avec trois blessés à sa charge. Le ton de Russell s'est adouci, dépouillé de son arrogance habituelle : — Je repasserai demain, Mrs. McNamera. J'apporterai une paire de béquilles en bois pour Theodore afin qu'il puisse se traîner un peu dans les semaines à venir. Pour l'instant, la priorité absolue est de forcer Finn à avaler du bouillon et de veiller à ce que sa fièvre ne remonte pas. Si son état empire, envoyez quelqu'un au galop pour m'expédier un télégramme ou à Carlisle directement. Je ferai ce qu'il faut pour revenir au plus vite.
+J'entends le bruissement du papier : Elara lui règle ses honoraires, puis emballe le reste du lard, des saucisses et des Johnnycakes dans un linge propre qu'elle glisse dans sa sacoche de cuir. Elle le remercie à mi-voix, rejointe par un râle de gratitude étouffé provenant de Theodore. — Vous pouvez compter sur moi ! résonne la voix d'assurance du médecin depuis le porche. De mémoire de praticien, je n'ai jamais laissé tomber un patient qui suivait mes ordonnances.
+La modestie ne l'étouffe pas, mais chez un homme qui manie le scalpel, cette certitude a quelque chose de rassurant.
+Il ouvre la porte extérieure, laissant entrer une bouffée d'air chaud et le chant des grillons, puis lance d'une voix de stentor : — À demain, fresh fish !
+— Au revoir, docteur... murmuré-je dans le vide.
+De mon côté, je suis en train de mener une lutte acharnée contre mes propres vêtements. Avec ma seule main droite valide, me débarrasser de mon pantalon rigide comme du carton sous la croûte de boue séchée et de sang coagulé relève du véritable calvaire.
+Jet d'Agilité : 70/50. ÉCHEC.
+Je me mets sur un pied pour essayer de dégager le bas de ma jambe sans trop me plier ni tirer sur mon épaule. Mais la pièce est trop étroite, la douleur à l'épaule est trop vive et mon équilibre est trop précaire. Dans un geste malencontreux pour me rattraper à la cloison, ma main valide s'accroche au bord de la bassine. Le zinc bascule avec un fracas métallique et toute l'eau se déverse sur moi, m'entraînant dans ma chute sur le plancher.
+Je pousse un gémissement de douleur alors que mon flanc heurte le sol. Presque immédiatement, Elara surgit dans l'arrière-cuisine et se fige. Elle me trouve là, à moitié nu, pieds nus sur les planches glissantes, mon pantalon crasseux entortillé autour des genoux, tout mon corps ruisselant d'une eau encore très chaude. La tête relevée vers elle, je la regarde avec l'air piteux et désolé d'un enfant pris en faute après une bêtise.
+— Oh ! Eddy... Tu n'as rien ? Tu aurais dû me demander de t'aider...
+Elle s'approche sans prêter attention à l'eau qui trempe le bas de sa jupe. Elle m'aide à me relever avec des gestes d'une douceur infinie. Ensemble, nous vérifions fébrilement l'état de mon épaule : par chance, les points de suture en fil d'argent du docteur Russell n'ont pas sauté et la plaie ne saigne pas. Je m'écarte d'un pas, terriblement gêné de me retrouver dans une telle posture devant elle. Sans faire de commentaires, Elara s'occupe déjà de plusieurs seaux de sciure de bois sur la flaque d'eau pris à côté du poêle avant de relancer une nouvelle bassine d'eau à chauffer sur le poêle.
+Je regarde les copeaux secs absorber l'eau chaude dans un sifflement étouffé, gonflant rapidement en une pâte odorante. Elle ramasse les serpillières de jute, s'assure que rien n'a traversé les fentes vers le cellier, puis se tourne vers moi.
+— Assieds-toi sur ce tabouret, Eddy. Tu ne pourras pas te laver tout seul avec ce bras.
+Je m'exécute sans protester, trop fatigué pour feindre une fierté inutile. Elara plonge un grand morceau de flanelle dans l'eau propre de la nouvelle bassine chaude et y frotte une miche de savon de lessive au suif.
+Lorsqu'elle applique le tissu mouillé sur mon dos, je tressaille. L'eau est chaude, presque brûlante, et le savon pique les écorchures de mes ronces forestières. Mais c'est son contact qui me paralyse. Ses mains sont fermes, méthodiques. Elle frotte la croûte de suie qui colle à ma nuque, lave la poussière accumulée sur mes épaules, rince le sang séché qui maculait ma peau.
+Je n'ai aucun souvenir d'un tel geste. Chez les Dunbar, les mains maternelles ne se levaient que pour frapper ou repousser ; à l'orphelinat, la toilette était une corvée collective et glaciale. Cette douceur attentive m'effraie. C'est une sensation presque douloureuse, une chaleur qui s'infiltre sous ma peau et menace de dissoudre ma méfiance.
+Puis vient le moment de m'habiller. Elara déplie la chemise de calicot de Samuel. D'un geste patient, elle m'aide à glisser mon bras valide dans la manche droite, puis passe délicatement le tissu propre sur mon épaule gauche bandée. Le calicot est doux, empesé, et dégage un parfum tenace de lavande et de cèdre qui étouffe mes propres odeurs de sueur et de terre.
+Elle s'approche pour fermer les boutons d'os de ma chemise. Ses doigts s'activent juste sous mon menton. Je retiens ma respiration, les yeux fixés sur le mur pour éviter de croiser son regard. Je sens son souffle sur mon cou alors qu'elle noue le foulard indigo autour de ma gorge. Elle recule d'un pas, ses yeux se plissant de cette même tristesse douce. Ce n'est pas moi qu'elle voit. Elle contemple le spectre de son fils, revenu habiter ses vêtements.
+Je glisse mes jambes dans le pantalon de drap de jean brun. Le tissu est lourd, rêche contre mes cuisses nues. Elara passe derrière moi pour boutonner les bretelles de toile et serrer la martingale en fer à l'arrière de ma taille. Le pantalon est un peu trop large, mais la boucle de fer mord dans le tissu pour le maintenir.
+Je baisse les yeux sur mes mains posées sur mes cuisses. Une panique m'enserre la gorge. Tout ici, les repas chauds, le lit sur le plancher, cette mère attentionnée qui me lave le dos, cette chemise de Samuel conspire à me garder. Ils ont besoin d'un fils pour combler le vide immense laissé par la guerre, et je suis le candidat idéal, encore plus que ne pourrait l'être Finn. Je suis l'orphelin reconnaissant qu'on peut façonner à leur image. Je pourrais rester et devenir ce qu'ils attendent de moi. Mais je refuse d'être Samuel.
+Je refuse de finir mes jours dans cette vallée de Pennsylvanie, à labourer cette terre qui ne m'appartient pas. La vraie liberté n'est pas ici, dans le confort illusoire de la campagne. Elle est là-bas, loin vers l'Ouest, là où personne ne connaît le nom de Dunbar ou de Devlin. Elle est en Oregon. Je regarde par la fenêtre les grandes étendues de champs et de forêts à perte de vue. J'essaie d'imaginer à quoi pourrait ressembler cette terre mais je n'en ai pas la moindre idée.
+Dès que mon bras gauche sera capable de porter un sac, je partirai. Je ne serai le remplaçant de personne.
+Elara et moi sommes tous les deux ailleurs. Elle imagine son fils revenu à la vie et je pense déjà à l'Ouest qui m'attend. Elle me regarde et dit sur un ton enjoué : "Tout cela te va à merveille, mon garçon. Que dirais-tu d'une petite coupe de cheveux ?"
+"Merci beaucoup, Mrs McNamera. Avec plaisir."
+Elara s'éloigne un instant et revient munie des instruments de toilette de la maison. Elle drape sur mes épaules un grand morceau de lin brut, sûrement un ancien sac à farine décousu et blanchi pour protéger la chemise propre de Samuel.
+Elle pose sur la table les outils : un peigne à dents fines taillé dans de la corne de bœuf jauni et une paire de grands ciseaux de couture en fer forgé noir, lourds et polis par l'usage.
+— Reste bien droit, Eddy. Ne bouge pas.
+Elle commence par mouiller mes cheveux à l'aide d'une éponge humide, puis passe le peigne en corne dans ma tignasse sauvage. Le peigne bute douloureusement dans les nœuds serrés par trois semaines d'exil : des brindilles de pin, de la résine séchée et de la poussière de charbon s'en détachent et tombent sur le drap de lin. À chaque traction, mon cuir chevelu tire, mais je serre les dents, endurant ce démêlage nécessaire. Le cliquetis régulier du peigne contre mon crâne est le seul bruit dans la pièce.
+Puis, le chant des ciseaux commence.
+Clac-clac. Le bruit du fer lourd qui se croise est sec et métallique. De longues mèches sombres, ternes et poussiéreuses, glissent le long de mes épaules et s'accumulent à mes pieds. Elara travaille avec une patience infinie, soulevant chaque mèche du bout de ses doigts agiles pour l'égaliser. Parfois, le métal froid de la lame effleure la peau sensible de ma nuque ou le contour de mes oreilles, me faisant frissonner.
+Ses mains se posent doucement sur mon menton ou sur le sommet de mon crâne pour orienter ma tête. C'est un contact ferme, dénué de toute violence, qui me met mal à l'aise. Elle me manipule comme on prendrait soin d'une bête de trait après le labeur ou d'un enfant qu'on apprête pour l'église.
+Dans le reflet déformé de la vitre de l'arrière-cuisine, je m'observe à la dérobée. Sous les coups de ciseaux, le visage du fugitif traqué, sauvage et crasseux qui se terrait dans les fourrés s'efface peu à peu. Mes traits se dégagent. Mon front apparaît plus haut, mes tempes sont dégagées, propres. Je ressemble à un jeune homme rangé, à un fils de fermier convenable.
+Je ressemble à ce qu'ils attendent.
+Une fois sa besogne achevée, Elara passe une brosse douce sur mon cou pour éliminer les petits cheveux coupés qui piquent la peau. Elle détache le sac de lin d'un geste sec et va le secouer par la fenêtre ouverte, envoyant mes anciennes mèches s'éparpiller dans le vent chaud de juillet.
+Elle ne s'arrête pas là. Elle décroche de la cloison la bande de cuir de Theodore. C'est elle qui m'explique que ca s'appelle le strop, et y passe à plusieurs reprises la lame d'un rasoir droit à manche de corne noire. Le crissement régulier de l'acier contre le cuir résonne dans la pièce. Elle prépare ensuite une mousse épaisse dans un bol en terre cuite à l'aide d'un vieux blaireau de poils de sanglier et d'un bloc de savon à barbe.
+Je me lève pour saisir le rasoir et commencer à retirer les poils accumulés depuis ma fuite.
+— Tu ne vas tout de même pas essayer de te raser le menton d'une seule main, Eddy. Tu te couperais la gorge. Assieds-toi et laisse-moi faire.
+Sans attendre ma réponse, elle m'applique la mousse tiède sur les joues et le menton. L'odeur grasse et propre du savon m'enveloppe le visage.
+— Relève un peu le menton, Eddy.
+Je m'exécute, le dos droit. Elle pose ses doigts gauches sur ma tempe pour étirer ma peau, et le fil du rasoir entre en contact avec ma joue. Un crissement sourd s'élève à chaque passage de la lame qui emporte la barbe de plusieurs semaines, ce duvet durci par la crasse et le soleil des bois.
+C'est une sensation terrifiante. Sentir l'acier tranchant glisser le long de ma gorge, manipulé par une autre personne, réveille en moi un réflexe de fuite. Mon cœur cogne lourdement contre mes côtes. J'ai passé les derniers jours à guetter le danger avec mon petit couteau en main, et me voilà assis, immobile, livrant ma gorge au rasoir de la femme du fermier. Mais le geste d'Elara est d'une sûreté absolue. Elle essuie régulièrement la lame sur un morceau de vieux journal, en faisant glisser les touffes de mousse.
+Elle termine en me passant un linge humide et frais sur le visage pour rincer le reste de savon.
+Je passe ma main droite sur mes cheveux courts et mon menton lisse. La sensation est étrange, et inédite certainement. Jamais on a pris soin de moi de cette manière.
+Baigné dans une sensation d'apaisement et de confort inattendue, je me laisse glisser dans le fauteuil du fermier. Sans plus songer à la douleur de mon épaule ni aux spectres de la veille, je sombre dans un sommeil lourd et réparateur.
+À mon réveil, le soleil décline déjà sur la Pennsylvanie, étirant de longues ombres orangées à travers les fenêtres. Elara est là, affairée à ses tâches ménagères. La pièce a été entièrement débarrassée de ce qui pouvait rappeler l'hôpital de campagne du matin ; la bassine de zinc et les scalpels ont disparu, et le plancher a été récuré à grande eau. Même Theodore n'est plus dans le salon : il a dû rejoindre sa chambre.
+Soudain, je ressens une oppression au cou, une étreinte serrée qui me coupe presque la respiration. Dans un sursaut de panique, je porte ma main droite à ma gorge. Mes doigts rencontrent le coton propre et rêche : c'est le foulard de Samuel. Je prends soin de le desserrer lentement, chassant le frisson qui m'a traversé l'échine. Je plaque le plat de ma main sur mon front. Pas de fièvre. Ma température est normale.
+Elara me sourit en avisant mon réveil : — Finn a repris connaissance, Eddy. Il a accepté de boire un peu de la tisane de quinine du docteur Russell. Elle s'essuie les mains sur son tablier et ajoute d'une voix plus basse : — Mr. McNamera aimerait te parler. Il t'attend dans notre chambre.
+Je me lève doucement, le cœur serré par une pointe d'appréhension. J'ai le sentiment que l'heure du bilan a sonné, le moment d'affronter mes erreurs et les conséquences du sang versé par ma faute.
+Je traverse le couloir et pousse la porte de leur chambre.
+La pièce est d'une sobriété presque monacale, baignée dans la lumière crépusculaire qui traverse l'unique fenêtre à petits carreaux. L'ameublement est réduit à l'essentiel : un lit de pin lourd au cadre usé, une commode en chêne dont les poignées de laiton ont perdu leur éclat, et une table de toilette supportant un broc d'eau en faïence blanche craquelée. L'air y est frais, empreint d'une odeur de cire d'abeille, de laine propre et du parfum amer du liniment appliqué sur la cuisse de Theodore.
+Sur les murs de plâtre nu, aucune fioriture, aucun cadre doré. Seulement un petit daguerréotype de leur mariage, montrant un couple jeune et souriant vingt ans plus tôt, et, accroché juste au-dessus de la table de chevet, un simple cadre de bois brut contenant une enveloppe de papier bleui. Quelque chose y est écrit avec soin, orné d'un tampon.
+Allongé sur le matelas de paille de maïs recouvert d'un patchwork de laine usée, Theodore me regarde entrer. Sa jambe blessée est surélevée, calée sur un traversin de plumes. Son visage est pâle, creusé par la souffrance, mais ses yeux ont retrouvé leur clarté habituelle.
+— Ah ! Eddy ! Je t'attendais. Entre, mon garçon.
+Je fais un pas hésitant dans la pièce. Ses yeux se plissent alors qu'il me détaille de la tête aux pieds. — Oh... Mais tu es presque méconnaissable. Ah... Tu me rappelles...
+Il s'interrompt, le regard perdu vers le plafond, et laisse échapper un long soupir. — Elara ne devrait pas faire ça...
+Il souffle une seconde fois, baisse les yeux sur ses mains drapées sur le patchwork, puis se reprend d'une voix plus ferme : — Viens, assieds-toi là.
+De sa main valide, il me désigne le bord du lit de pin laissé libre. Je m'y installe avec précaution, craignant de froisser le linge propre. — Alors, c'est toi qui as fabriqué ça ? demande-t-il en faisant tourner entre ses doigts le petit morceau de noyer que je lui ai offert.
+— Oui, monsieur. Je l'ai taillé dans le manche de mon banjo.
+— Alors, comme ça, il est brisé pour de bon ?
+— Je suis tombé avec dans la forêt. Il n'y avait rien à faire.
+— Je vois, gamin. J'espère surtout que tu es meilleur musicien qu'ébéniste, parce que je ne suis pas sûr de pouvoir vraiment tasser mon tabac avec ce truc difforme...
+Il ricane doucement. C'est le premier sourire sincère que je vois éclairer ses traits fatigués depuis mon retour des bois. Puis, son visage redevient sérieux. — Je voulais te parler de ce qui s'est passé hier. Je sais que tu t'en veux... mais sache que je m'en veux tout autant. Je pensais qu'en t'envoyant là-bas, je te mettais en sécurité. En réalité, tu as failli te retrouver seul face à ces monstres.
+L'émotion fait trembler sa voix. Theodore s'arrête, prend une lente inspiration pour chasser ses démons, puis reprend : — Raconte-moi... Quelle est cette histoire avec ce petit garçon, Benjamin ?
+— Dans les bois, j'ai d'abord ressenti une solitude terrible, puis une étrange liberté. J'avais peur que mon père... enfin, qu'Eugene ne s'en prenne à vous à la ferme à cause de moi. Je me sentais impuissant, inutile. Et puis, j'ai trouvé une cachette dans un chêne creux. Il y avait des allumettes et du kérosène. L'idée de me venger était déjà en moi, mais cela n'a fait que la rendre plus réelle. Je suis allé à Harrisburg. Je sais que je ne devais pas quitter le bois, mais je l'ai fait. Je suis allé jusqu'à la ferme des Dunbar. En voyant la misère dans laquelle elle se trouvait, les récoltes pourries sur pied, j'ai voulu brûler le reste de leurs champs, la maison et tout le reste.
+Le visage de Theodore se crispe, une lueur d'inquiétude passant dans ses yeux, comme s'il craignait que j'aie réellement commis l'irréparable.
+— Mais je n'ai pas pu, continué-je doucement. Je suis resté devant cette barrière pendant des heures, à réfléchir. En revenant vers les bois, j'ai retrouvé le chemin de l'orphelinat de mon enfance. À l'intérieur, il y avait Benjamin. Le petit que vous avez vu hier. Il subissait exactement les mêmes tortures que moi à son âge. C'était au-dessus de mes forces de le laisser là. J'ai menacé son tuteur, j'ai récupéré son contrat et j'ai promis de le protéger, pour qu'il évite toute la souffrance que j'ai connue. On est retourné à la cabane. La suite, vous la connaissez... il a préféré rester avec Flynn.
+Theodore écoute en silence, caressant le bois poli du bourre-pipe. Un soupir las soulève sa poitrine. — Tu as voulu sauver cet enfant de ton propre passé, Eddy. C'est tout à ton honneur. Ne t'en veux pas. Tu lui as offert sa liberté, et il en a fait son premier choix d'homme libre.
+Il s'arrête, fronce les sourcils, et le lien se fait soudainement dans son esprit. Ses yeux s'ancrent dans les miens. — Mais attends... Si tu es retourné à l'orphelinat pour arracher ce gamin à sa tutelle... tu as appris des choses, n'est-ce pas ? Dis-moi, Eddy... Qu'est-ce que tu as appris sur ta propre famille là-bas ?
+— Je pensais que vous aviez entendu, tout à l'heure...
+Il ricane doucement, grimace sous le coup de la douleur, puis reprend : — Oh, après mon opération tu veux dire ? Elara m'a dit que j'avais l'air conscient, mais la quinine et le laudanum de ce médecin m'ont embrumé le cerveau. Je ne me souviens de rien.
+— Ah... Alors, oui. À l'orphelinat, j'ai appris que les Dunbar m'avaient acheté pour une quinzaine de dollars. Une sorte de trafic d'enfants sordide. Je sais bien que c'est toujours comme ça dans ces institutions, que la vie humaine n'y vaut pas grand-chose. Sur le coup, j'ai eu envie de tout démonter, d'aller crier au scandale à Harrisburg, mais pour quel effet ?
+Theodore acquiesce en silence, le regard lourd. Tragiquement, il sait bien que nous ne pouvons rien changer à ces injustices à notre petite échelle.
+— Et puis, j'ai récupéré ce papier, continué-je. J'ai essayé de le déchiffrer plusieurs fois dans la cabane, mais je n'ai jamais pu en comprendre le moindre mot.
+Je lui tends le morceau de journal jauni et plié en quatre. Theodore le saisit, le déplie délicatement de ses grands doigts et le lit à haute voix sous la lumière déclinante du crépuscule :
+« Harrisburg Telegraph - 14 mai 1850. Triste dénouement dans le quartier des ouvriers. Hier matin, le sieur Henderson, propriétaire d'un logement situé sur Mulberry Street, a sollicité l'assistance de la police locale afin d'ouvrir la porte d'un appartement loué à la famille Devlin, dont les loyers étaient en souffrance depuis plusieurs mois. À l'intérieur, les officiers ont fait la macabre découverte du corps sans vie de Connie Devlin, immigrée d'origine écossaise, pendue à une solive de la pièce principale. Son époux, un ouvrier, était décédé de maladie en février dernier, laissant sa veuve dans le dénuement le plus complet. Dans un berceau, au milieu des immondices, a été retrouvé un nourrisson âgé d'environ trois mois, affamé mais vivant. L'enfant a été confié à l'hospice des orphelins de la ville. »
+Theodore attend ma réaction, mais je n'en ai pas vraiment.
+— Je suis désolé, Eddy.
+Il ignore que le docteur Russell m'a déjà révélé le contenu du document pendant qu'il me recousait la chair. J'ai déjà eu le temps d'accepter cette absence de passé, de faire le deuil d'une quelconque quête de sens. Il n'y en a pas, c'est tout. Mais je sens qu'en prenant la peine de me lire cet article lui-même, Theodore a le sentiment de m'apprendre une nouvelle fondamentale. Je refuse de le décevoir, alors je m'efforce de feindre la surprise.
+Jet de Persuasion : 90/74. ÉCHEC.
+Je ne sais pas exactement ce qui me trahit, un regard trop calme, ou mes épaules qui ne sursautent pas, mais Theodore fronce les sourcils sous ses tempes grisonnantes. — Tu le savais déjà ?
+Je baisse les yeux, un peu honteux d'avoir cherché à lui mentir : — Oui... Le docteur m'en a fait un résumé pendant les soins. Mais je n'avais pas entendu le texte exact. Merci, Mr McNamera.
+Il marmonne quelque chose d'inaudible, déçu de ne pas avoir été celui qui m'apportait cette vérité. Il replie le papier et le pose sur sa couverture de laine. — Alors, quoi maintenant ? Qu'est-ce qu'il te reste ?
+Je ne réponds pas. Dans mon esprit, il me reste les McNamera, et ce rêve tenace du grand Ouest. — Je veux dire, légalement... qu'est-ce qui se passe pour toi, gamin ?
+— Je ne sais pas, monsieur. Il y a toujours la femme d'Eugene, Regina. C'est une harpie, pire encore que son mari. Mais j'espère pour elle qu'elle profitera de sa mort pour vendre ce qu'il reste de la ferme et disparaître ailleurs, même si j'en doute.
+— Et toi ? Tu te sens libre ?
+— Oui, je crois. Eugene ne sera plus jamais un problème. Le trappeur ne me poursuivra pas sans son patron pour le payer. Quant à Regina, elle ne va pas s'en remettre tout de suite. Il reste Diamond, mais c'est un homme recherché ; j'ai vu son avis de recherche placardé devant la prison d'Harrisburg. Il ne traînera pas dans le comté, surtout après s'être frotté à Finn.
+— Je le sais, Eddy, approuve le fermier. Tu te doutes bien que nous avons avec les voisins immédiatement prévenu le shérif après la fusillade. Diamond a déjà dû franchir la limite du comté.
+— Donc, oui... je pense que je suis libre d'aller où bon me semble.
+— Ou de rester... murmure le fermier.
+Je crains cette tournure depuis le début de la conversation. Theodore veut me proposer de m'installer ici, d'entrer un peu plus dans le rôle du fils qu'il a perdu.
+Devant mon silence, il poursuit pour s'expliquer, sa voix se faisant plus douce : — Je veux dire... tu travailles bien, Eddy. Tu sais t'y prendre avec la terre. Tu as été d'une aide phénoménale pour cette moisson. Je n'avais jamais vu un gamin manier la faux avec autant d'élégance... Tu as réparé la batteuse de Meeks. Je pense même que tu as fait regagner un peu de respect à la ferme McNamera dans la région, et surtout, tu as fermé le clapet de ce vieux grippe-sou. Et puis... Elara et moi, on t'apprécie, gamin.
+Il se racle la gorge, visiblement embarrassé par cet aveu de tendresse, et se repositionne inconfortablement dans son lit de pin. — On voulait te proposer de rester ici un peu. Si tu es d'accord. Au moins le temps de te soigner et de réfléchir à la suite. Qu'est-ce que tu en dis ?
+— Monsieur...
+Je me racle doucement la gorge. Je sais que le poids de chacun de mes mots est immense dans le silence de cette chambre. — D'abord, je vous dois la vie. Vous m'avez accueilli à bras ouverts, vous m'avez fait découvrir la beauté de la poésie, et vous m'avez montré que la lecture me permettrait de comprendre le monde et tout ce qu'il a à m'offrir.
+Theodore esquisse un geste de la main, le regard presque fuyant : — T'embête pas avec ça, gamin. J'ai compris...
+— Non, s'il vous plaît, monsieur McNamera. Laissez-moi finir.
+Il hausse légèrement les sourcils, et je poursuis : — Mrs. McNamera et vous m'avez sauvé, parfois littéralement, de l'enfer dans lequel j'étais plongé. Grâce à vous, je suis enfin libre de décider ce que je veux faire de ma vie. Vous venez de me dire de ne pas nourrir de regrets pour Benjamin... Eh bien, je vous retourne exactement la même remarque. Vous m'avez offert la liberté. Et en tant qu'homme libre, vous me demandez aujourd'hui de faire mon premier vrai choix.
+Je marque une pause, rassemblant mon courage : — Je vous avais parlé de mon souhait de rejoindre l'Oregon. Je suis d'autant plus convaincu aujourd'hui que c'est là-bas, et nulle part ailleurs, que je pourrai être autre chose qu'un Dunbar. C'est dans ces terres nouvelles que je pourrai enfin devenir la personne que je suis réellement.
+Je baisse brièvement les yeux sur mes vêtements d'emprunt, effleurant du bout des doigts le tissu indigo du foulard de Samuel qui me serre toujours le cou. — Je vous remercie pour tout cela... pour ces habits propres, pour ce toit. Mais je pense que vous le voyez bien. Ici, non plus, je ne pourrai jamais être tout à fait moi-même.
+Theodore remplit lentement ses poumons d'air et l'expire vers le plafond en fermant les yeux. Lorsqu'il les rouvre, son regard est différent : toujours empreint d'une profonde tristesse, mais teinté d'une résignation compréhensive.
+— Je vais rester ici pour vous aider autant que je le pourrai, tant que vous en aurez besoin, ajouté-je rapidement pour le rassurer. Je vous dois bien ça. Je vais seconder Mrs McNamera pour toutes les corvées de la maison et de la grange. Je veux aider à ce que Finn se remette sur pied. Mais ensuite... et j'en suis désolé... il faudra que je reprenne ma route.
+— Je comprends, Eddy, murmure le vieux fermier d'une voix basse et fatiguée. Merci pour ton honnêteté. Nous en reparlerons. Continue d'y réfléchir, de ton côté, et j'en ferai de même. Sache en tout cas que tu seras toujours le bienvenu sous notre toit.
+Sur ces mots, il tourne légèrement la tête vers la fenêtre, se refermant sur sa propre peine. Je comprends que l'entretien est terminé et qu'il est temps pour moi de le laisser se reposer.
+Je me lève doucement de mon coin de matelas : — Bonne nuit, monsieur McNamera.
+Au moment où ma main droite saisit la poignée de la porte, sa voix rauque me retient : — Ah ! J'y pense... On a encore un dernier problème à régler pour la récolte. Il reste une soixantaine de sacs de blé à transporter jusqu'au moulin de Carlisle. Il faut le faire rapidement avant que l'humidité ne s'en mêle, et...
+Il jette un regard plein de mépris sur sa cuisse immobile sous les draps. — ... et je ne vais pas aller bien loin ces prochains temps. J'ai fait envoyer un mot à Silas cet après-midi. Tu te souviens de Silas ?
+Évidemment que je me souviens de Silas. Et surtout de son fils, Artus, pensé-je en sentant mon pouls s'accélérer. — C'est un homme de confiance, poursuit Theodore. Il fait la moisson avec moi depuis plus de dix ans. Il sera là demain matin pour s'occuper des derniers allers-retours avec notre chariot.
+— Très bien, monsieur.
+Je sors lentement de la chambre et referme la porte derrière moi dans un clic silencieux, me retrouvant seul dans la pénombre du couloir.
+Le dîner qui suit est d'une grande simplicité. Épuisés par les émotions de la matinée, nous nous contentons de tranches de pain de seigle rassis frottées de saindoux et d'une tasse de chicorée tiède. Elara s'installe ensuite près de moi pour changer mon bandage. Ses doigts agiles défont les bandes de lin ; elle inspecte la suture propre du docteur Russell et tamponne la plaie avec un linge imbibé d'eau vinaigrée pour prévenir l'échauffement. Nous échangeons des banalités sur le temps lourd qui menace d'amener l'orage et sur l'arrivée de Silas le lendemain.
+Avant de me coucher, je glisse un coup d'œil dans la chambre de Samuel. À la lueur d'une bougie moribonde, Finn a les yeux ouverts, le regard vitreux sous l'effet du laudanum. — Silas vient demain pour le blé, murmuré-je à l'encadrement de la porte. Un faible grognement s'échappe de sa poitrine, suivi d'un murmure pâteux : — Tant mieux... qu'on en finisse.
+Je referme doucement et gagne le salon. Je m'allonge sur les draps fins disposés à même le plancher, la tête calée sur les oreillers de plumes. La douleur de mon épaule est une pulsation sourde et régulière, mais dans le silence de la nuit, la bête du Regret reste tapie au loin, silencieuse. Tout autour de moi ressemble à la vie que j'ai rêvé d'avoir pendant tant d'années, et aujourd'hui, j'ai décidé de l'abandonner pour un autre rêve de lointain.
 
