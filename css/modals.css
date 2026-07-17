@@ -258,8 +258,7 @@ body.mobile-editor-active .dice-roller-container {
 
 @media (max-width: 768px) {
     .dice-roller-container {
-        bottom: 15px;
-        right: 15px;
+        display: none !important;
     }
 }
 

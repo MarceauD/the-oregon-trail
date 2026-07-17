@@ -48,6 +48,11 @@
     --glass-bg-light: rgba(25, 25, 34, 0.85);
 }
 
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
 /* --- Structure de base --- */
 body {
     font-family: var(--font-interface);
@@ -56,11 +61,13 @@ body {
     margin: 0;
     padding: 20px;
     background-color: var(--bg-color);
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
 }
 
 @media (max-width: 768px) {
     body {
-        padding: 10px;
+        padding: 0;
     }
 }
 
@@ -74,6 +81,15 @@ body {
     overflow: hidden;
     position: relative;
     z-index: 1;
+}
+
+@media (max-width: 768px) {
+    .main-container {
+        max-width: 100vw;
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
+    }
 }
 
 /* --- Arri\u00e8re-plan anim\u00e9 --- */
@@ -113,14 +129,6 @@ nav {
     border-bottom: 1px solid var(--border-color);
 }
 
-@media (max-width: 768px) {
-    nav {
-        flex-direction: column;
-        gap: 10px;
-        padding: 15px;
-    }
-}
-
 .nav-title {
     font-family: var(--font-heading);
     font-weight: 700;
@@ -135,12 +143,68 @@ nav {
 }
 
 @media (max-width: 768px) {
-    .nav-links {
+    nav {
+        display: grid;
+        grid-template-areas: 
+            "title actions"
+            "links links";
+        grid-template-columns: 1fr auto;
+        gap: 8px;
+        padding: 8px 12px;
+    }
+    .nav-title {
+        grid-area: title;
+        font-size: 1.1em;
+        align-self: center;
+    }
+    .nav-actions {
+        grid-area: actions;
+        align-self: center;
         display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+        gap: 6px;
+    }
+    .nav-actions button {
+        width: 32px !important;
+        height: 32px !important;
+    }
+    .nav-actions .export-context-btn {
+        width: 32px !important;
+        height: 32px !important;
+    }
+    .nav-actions .export-context-btn svg {
+        width: 16px !important;
+        height: 16px !important;
+    }
+    .readonly-btn {
+        padding: 0 10px !important;
+        font-size: 0.8em !important;
+    }
+    .readonly-btn svg {
+        width: 12px !important;
+        height: 12px !important;
+    }
+    .help-btn {
+        display: none !important;
+    }
+    .nav-links {
+        grid-area: links;
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        justify-content: flex-start;
         width: 100%;
-        gap: 5px;
+        gap: 6px;
+        padding: 4px 0;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* Firefox */
+    }
+    .nav-links::-webkit-scrollbar {
+        display: none; /* Chrome/Safari */
+    }
+    .nav-button {
+        flex-shrink: 0;
+        padding: 6px 10px;
+        font-size: 0.85em;
     }
 }
 
