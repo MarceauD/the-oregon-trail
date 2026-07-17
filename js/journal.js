@@ -673,6 +673,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isPageAnimating && direction) return;
         if (direction) isPageAnimating = true;
 
+        // Reset scroll position to top
+        bookContainer.scrollTop = 0;
+
         currentJournalIndex = index;
         const totalPages = sortedJournal.length;
         if (totalPages === 0) return;
@@ -740,6 +743,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (window.umami && typeof umami.track === 'function' && item) {
             umami.track('Lecture Entrée', { date: item.date, index: index + 1 });
         }
+        setTimeout(updateEntryScrollProgress, 50);
     }
 
     window.openReadingMode = function () {
@@ -753,10 +757,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             displayJournalPage(startIndex);
             readingModeOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
         } else { showToast("Le journal est vide.", 'info'); }
     };
 
-    function closeReadingMode() { readingModeOverlay.classList.remove('active'); }
+    function closeReadingMode() {
+        readingModeOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
     if (openReadingModeBtn) openReadingModeBtn.addEventListener('click', openReadingMode);
     if (closeReadingModeBtn) closeReadingModeBtn.addEventListener('click', closeReadingMode);
     if (nextPageBtn) nextPageBtn.addEventListener('click', () => { if (currentJournalIndex < sortedJournal.length - 1) displayJournalPage(currentJournalIndex + 1, 'next'); });
@@ -770,6 +778,59 @@ document.addEventListener('DOMContentLoaded', () => {
         if (newIndex !== currentJournalIndex) displayJournalPage(newIndex, newIndex > currentJournalIndex ? 'next' : 'prev');
     }
     if (pageJumpInput) { pageJumpInput.addEventListener('blur', handlePageJump); pageJumpInput.addEventListener('keydown', (event) => { if (event.key === 'Enter') handlePageJump(); }); }
+
+    // Raccourcis clavier pour le mode lecture
+    document.addEventListener('keydown', (e) => {
+        if (!readingModeOverlay.classList.contains('active')) return;
+
+        // Éviter d'intercepter les touches si l'utilisateur saisit dans un champ de texte
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable) {
+            if (e.key === 'Escape' && e.target === pageJumpInput) {
+                pageCounterDisplay.style.display = 'inline-block';
+                pageJumpInput.style.display = 'none';
+                pageJumpInput.blur();
+                e.preventDefault();
+            }
+            return;
+        }
+
+        if (e.key === 'ArrowLeft') {
+            if (currentJournalIndex > 0) {
+                displayJournalPage(currentJournalIndex - 1, 'prev');
+            }
+        } else if (e.key === 'ArrowRight') {
+            if (currentJournalIndex < sortedJournal.length - 1) {
+                displayJournalPage(currentJournalIndex + 1, 'next');
+            }
+        } else if (e.key === 'Escape') {
+            closeReadingMode();
+            e.preventDefault();
+        }
+    });
+
+    // Support du swipe tactile sur mobile pour changer de page
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    bookContainer.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    bookContainer.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        const threshold = 50; // Distance minimum en pixels pour valider un swipe
+        const diffX = touchEndX - touchStartX;
+        
+        if (Math.abs(diffX) > threshold) {
+            if (diffX > 0) {
+                // Swipe de gauche à droite (vers la gauche) -> Page précédente
+                if (currentJournalIndex > 0) displayJournalPage(currentJournalIndex - 1, 'prev');
+            } else {
+                // Swipe de droite à gauche (vers la droite) -> Page suivante
+                if (currentJournalIndex < sortedJournal.length - 1) displayJournalPage(currentJournalIndex + 1, 'next');
+            }
+        }
+    }, { passive: true });
 
     const quickViewModal = document.getElementById('quick-view-modal');
     const quickViewTitle = document.getElementById('quick-view-title');
@@ -793,4 +854,153 @@ document.addEventListener('DOMContentLoaded', () => {
     function closeQuickView() { quickViewModal.classList.remove('active'); quickViewContent.innerHTML = ''; }
     if (quickViewCloseBtn) quickViewCloseBtn.addEventListener('click', closeQuickView);
     if (quickViewModal) makeDraggable(quickViewModal, document.getElementById('quick-view-header'));
+
+    // --- Progression de lecture dans l'entrée courante ---
+    function updateEntryScrollProgress() {
+        const scrollTop = bookContainer.scrollTop;
+        const scrollHeight = bookContainer.scrollHeight;
+        const clientHeight = bookContainer.clientHeight;
+        
+        const totalScrollable = scrollHeight - clientHeight;
+        let scrollPercent = 100;
+        if (totalScrollable > 0) {
+            scrollPercent = Math.round((scrollTop / totalScrollable) * 100);
+        }
+        
+        const entryProgressBar = document.getElementById('entry-progress-bar');
+        if (entryProgressBar) {
+            entryProgressBar.style.width = `${scrollPercent}%`;
+        }
+        
+        // Mettre à jour l'affichage textuel du compteur de page avec le pourcentage
+        const percentText = totalScrollable > 0 ? ` (${scrollPercent}%)` : '';
+        const totalPages = sortedJournal.length;
+        if (pageCounterDisplay) {
+            pageCounterDisplay.textContent = `Page ${currentJournalIndex + 1} / ${totalPages}${percentText}`;
+        }
+    }
+
+    if (bookContainer) {
+        bookContainer.addEventListener('scroll', updateEntryScrollProgress, { passive: true });
+    }
+
+    // --- Gestion du panneau d'options d'affichage ---
+    const settingsBtn = document.getElementById('reading-mode-settings-button');
+    const settingsPanel = document.getElementById('reader-settings-panel');
+    const fontIncBtn = document.getElementById('reader-font-inc');
+    const fontDecBtn = document.getElementById('reader-font-dec');
+    const fontSizeDisplay = document.getElementById('reader-font-size-display');
+    const fontFamilyContainer = document.querySelector('.font-family-options');
+    const widthContainer = document.querySelector('.width-options');
+
+    // Récupérer les réglages depuis localStorage ou appliquer les défauts
+    let currentFontSize = parseFloat(localStorage.getItem('oregon_reader_font_size')) || 1.15;
+    let currentFontFamily = localStorage.getItem('oregon_reader_font_family') || 'var(--font-serif)';
+    let currentWidth = localStorage.getItem('oregon_reader_width') || '70ch';
+
+    function applyReaderSettings() {
+        if (!bookContainer) return;
+        
+        // Appliquer les propriétés personnalisées CSS
+        bookContainer.style.setProperty('--reader-font-size', `${currentFontSize}em`);
+        bookContainer.style.setProperty('--reader-font-family', currentFontFamily);
+        bookContainer.style.setProperty('--reader-max-width', currentWidth);
+
+        // Mettre à jour l'affichage du pourcentage de taille
+        if (fontSizeDisplay) {
+            fontSizeDisplay.textContent = `${Math.round((currentFontSize / 1.15) * 100)}%`;
+        }
+
+        // Sauvegarder dans localStorage
+        localStorage.setItem('oregon_reader_font_size', currentFontSize);
+        localStorage.setItem('oregon_reader_font_family', currentFontFamily);
+        localStorage.setItem('oregon_reader_width', currentWidth);
+
+        // Mettre à jour la classe active sur les boutons de police
+        if (fontFamilyContainer) {
+            fontFamilyContainer.querySelectorAll('.settings-btn').forEach(btn => {
+                const isMatch = btn.getAttribute('data-font') === currentFontFamily;
+                btn.classList.toggle('active', isMatch);
+            });
+        }
+
+        // Mettre à jour la classe active sur les boutons de largeur
+        if (widthContainer) {
+            widthContainer.querySelectorAll('.settings-btn').forEach(btn => {
+                const isMatch = btn.getAttribute('data-width') === currentWidth;
+                btn.classList.toggle('active', isMatch);
+            });
+        }
+
+        // Recalculer le scroll car le changement de police/largeur modifie la hauteur
+        setTimeout(updateEntryScrollProgress, 50);
+    }
+
+    // Basculer l'affichage du panneau d'options
+    if (settingsBtn && settingsPanel) {
+        settingsBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            settingsPanel.classList.toggle('active');
+        });
+        
+        // Fermer le panneau si on clique en dehors
+        document.addEventListener('click', (e) => {
+            if (settingsPanel.classList.contains('active') && !settingsPanel.contains(e.target) && e.target !== settingsBtn) {
+                settingsPanel.classList.remove('active');
+            }
+        });
+    }
+
+    // Écouteurs pour la taille de police
+    if (fontIncBtn) {
+        fontIncBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (currentFontSize < 2.0) {
+                currentFontSize = parseFloat((currentFontSize + 0.1).toFixed(2));
+                applyReaderSettings();
+            }
+        });
+    }
+    if (fontDecBtn) {
+        fontDecBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (currentFontSize > 0.8) {
+                currentFontSize = parseFloat((currentFontSize - 0.1).toFixed(2));
+                applyReaderSettings();
+            }
+        });
+    }
+
+    // Écouteur pour la famille de police
+    if (fontFamilyContainer) {
+        fontFamilyContainer.addEventListener('click', (e) => {
+            const btn = e.target.closest('.settings-btn');
+            if (btn) {
+                e.stopPropagation();
+                const font = btn.getAttribute('data-font');
+                if (font) {
+                    currentFontFamily = font;
+                    applyReaderSettings();
+                }
+            }
+        });
+    }
+
+    // Écouteur pour la largeur de page
+    if (widthContainer) {
+        widthContainer.addEventListener('click', (e) => {
+            const btn = e.target.closest('.settings-btn');
+            if (btn) {
+                e.stopPropagation();
+                const width = btn.getAttribute('data-width');
+                if (width) {
+                    currentWidth = width;
+                    applyReaderSettings();
+                }
+            }
+        });
+    }
+
+    // Initialiser les réglages de lecture
+    applyReaderSettings();
 });

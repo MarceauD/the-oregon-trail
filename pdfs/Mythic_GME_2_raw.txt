@@ -1,0 +1,4587 @@
+Game Master
+Emulator
+Create dynamic role-playing
+adventures without preparation
+For use as a supplement for your favorite role-playing games
+TM
+WM2
+
+-- 1 of 54 --
+
+ART
+RyK Productions
+To contact RyK, you can send email to info@ryk.nl, or visit
+their webpage at www.ryk.nl
+PLAYTESTERS
+A host of online and real-time gamers whose names are lost
+to me now. Sorry. Thanks, even to that guy who hated this
+game and thought it a waste of time.
+MORAL SUPPORT
+My wife, Jennifer, who believes all things are possible.
+Also, my daughter Ally, just because she’s so darn cute.
+TECHNICAL SUPPORT
+Apple, for making such an insanely great computer.
+OTHER FORMS OF SUPPORT
+Word Mill Publishing, my daytime job.
+Word Mill Publishing
+5005 LaMart Dr. #204 • Riverside, CA 92507
+mythic@wordpr.com • www.mythic.wordpr.com
+Mythic: Game Master Emulator © Copyright 2006 by Tom Pigeon and Word
+Mill Publishing. Published by Word Mill Publishing. All rights reserved.
+Reproduction of this work by any means without written permission from the
+publisher, except short excerpts for the purpose of reviews or pages clearly
+marked for personal use, is expressly prohibited. The mention of or reference
+to any company or product in these pages is not a challenge to the trademark
+or copyright concerned.
+“To help, to continually help
+and share, that is the sum
+of all knowledge;
+that is the meaning of art.”
+Eleonora Duse
+Credits
+W
+W
+The author extends his heartfelt thanks to those friendly souls who helped make this book come true. Without
+contributors, playtesters, friends, helpful advice, guidance and criticism, there would be no Mythic.
+
+-- 2 of 54 --
+
+by Tom Pigeon
+Published by Word Mill Publishing
+Game Master
+Emulator
+Adventure Generator
+TM
+
+-- 3 of 54 --
+
+4
+Introduction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .5
+Chapter 1: Mythic Adventures . . . . . . . . . . . . . . .6
+Chapter 2: The Fate Chart . . . . . . . . . . . . . . . . . . .9
+Chapter 3: Randomness . . . . . . . . . . . . . . . . . . . .13
+Chapter 4: The Adventure 	. . . . . . . . . . . . . . . . . .20
+Chapter 5: GM Emulation . . . . . . . . . . . . . . . . . . .33
+Chapter 6: World Creation . . . . . . . . . . . . . . . . . .38
+Chapter 7: Notes & Suggestions . . . . . . . . . . . . .40
+Chapter 8: Extended Example . . . . . . . . . . . . . . .43
+TM
+Game Master
+Emulator
+
+-- 4 of 54 --
+
+W elcome to Mythic: Game Master Emulator,
+improvisational role-playing using your favorite
+role-playing games. Mythic: GM Emulator is meant for
+use by role-players with a little experience under their
+belts and their favorite game in hand. It is not a stand-
+alone game. For that, we have Mythic (just Mythic),
+which is a fully fledged, universal role-playing game.
+Mythic was published in early 2003 as an attempt to
+produce an rpg that could be played solo or with a group,
+minus the game master. Or, with the Game Master, but
+without preparation.
+Judging from the enthusiastic response from those who
+purchased and played Mythic, the system is a success.
+Mythic is really two products in one. It is a universal
+rpg, and a system for emulating a GM for any role-playing
+game. Some bought Mythic for both portions, while
+others use only the emulation system. Recognizing that
+not everyone wants the universal game sections of
+Mythic, we are publishing this version that contains only
+the emulation rules. The system presented here is slightly
+updated from the original version published in Mythic.
+Now, on to the meat of the matter. What is GM
+emulation? I’m glad you asked ...
+W HAT IS
+THIS THING
+ALL ABOUT ?Most RPGs operate under the principle that there are
+players and there is a Game Master, who is responsible for
+running the show. The GM prepares all the details of an
+adventure, and then “runs” the players through that
+adventure. This usually requires a great deal of
+preparation on the part of the GM and the handling of
+many details.
+Mythic: GME is different in that it requires no
+preparation from the GM. Mythic adventures are meant
+to be played off the cuff, with perhaps a few minutes of
+brainstorming to come up with the opening scene.
+Mythic can also be played entirely without a GM. The
+same mechanics in Mythic that allow a GM to run an
+adventure without preparation also allow a group of
+players to do without the GM.
+You can think of Mythic as an artificial intelligence. It
+is designed to use simple rules of logic to answer any
+yes/no question. So, whether you are playing alone, or
+acting as an unprepared GM, or are a group of players
+without a GM, just ask your questions ... only, instead of
+asking a live GM, you ask Mythic.
+We’ll get into this more in a bit. Just you wait and see.
+A BOUT
+THIS BOOK
+In each chapter you will find shaded boxes and “torn
+paper” boxes. The shaded boxes provide examples and
+clarifications, while the paper boxes offer useful rules. At
+the back of this book you will find a summary of most of
+these rules, and other bits of useful information collected
+for you to find easily.
+Introduction
+5
+
+-- 5 of 54 --
+
+Let’s face it: The life of a Game Master can be a
+bummer. There’s the weight of responsibility,
+hours of preparation, and keeping track of
+everything. And I mean everything!
+It’s no mystery why most gaming groups
+have one poor schmuck who acts as the
+GM every single time. No one else wants
+to do it. And who would? Actually playing
+is so much more fun.
+With Mythic, you can do away with
+the GM entirely, if you wish. Or, if your GM enjoys
+playing God, Mythic can make adventures more fun for
+the GM by eliminating all of that nasty preparation. In a
+Mythic adventure, the GM (or players sans GM) can start
+an evening’s entertainment with about five minutes of
+prep time. As the adventure unfolds, the GM is just as
+surprised by the twists and turns as the players are.
+Fun for everyone.
+No GM? What you
+talkin’ ‘bout Willis!
+Mythic is a gaming system that automates the
+functions of a living, breathing GM. It works through
+interpretation and logical principles. (We’ll get more into
+that later. For now, trust me.) The upshot is, with Mythic
+acting as your GM, that poor schmuck can finally roll up
+a character and get his hands dirty. It also means you can
+play solo if you wish (and who hasn’t wanted to do that,
+just once?)
+How can such a system be used? Let’s see ...
+No GM, multiple players
+Everyone whip out your character! To get an adventure
+going, players either roll up or decide on an opening
+scenario, and perhaps a few details or two, and Mythic:
+GME takes it from there. All action is decided through
+the asking of yes/no questions and the application of
+logical principles. By asking and answering questions, the
+adventure moves along, with the occasional random event
+throwing players a curve ball. The action is broken into
+scenes, just like in a movie, to keep everything straight.
+No GM, one player
+Mythic: GME can be used to go solo. There have been
+various solo systems in the past. But let’s be honest, none
+of them are truly satisfying. How many variations of
+“Choose-Your-Own” can you go through before you start
+longing for something more? Solo play in Mythic works
+the same as in group play. You’re just alone.
+One GM, any
+number of players
+For those who like to be a GM, we have something for
+you, too. The same tools that allow Mythic to
+automatically generate adventures on the fly without a
+GM also work with a GM. This means very little to zero
+preparation, if you don’t want to prepare. Simply create
+an opening scenario (you can come up with that on the
+drive over), or roll one up, and follow Mythic as it guides
+you along. Mythic will throw in its own twists and turns,
+so the GM will be just as shocked as the players as the
+adventure proceeds.
+This is not to say, though, that total control is taken
+out of the hands of the GM. The GM is free to break
+away from the structure that Mythic puts together. If
+nothing else, Mythic will generate an adventure skeleton
+that the GM can work with. At the most, Mythic will
+spin the entire adventure for the GM, whose job will be
+to administer the process.
+Mythic with other RPGs
+Mythic: GME generates dynamic, unfolding adventures
+on the fly. As a GM emulator, Mythic is meant to be
+played with other role-playing games. Mythic takes the
+place of the GM, but the main RPG’s rules still handle
+character creation, combat, task resolution and everything
+it would normally handle. Questions that players would
+ask the GM are now asked to Mythic, instead.
+The write stuff
+Finally, Mythic: GME can be used as a writing tool.
+The architecture that creates dynamic adventures is really
+an automated story-telling system. It will work just as well
+without any games or formalized characters attached. Just
+set the scene, ask some questions, and start writing.
+6
+Chapter 1
+Mythic Adventures
+
+-- 6 of 54 --
+
+T HE IMPORTANCE
+OF 	L OGIC AND
+I NTERPRETATION
+There are two concepts that are central to successfully
+running a Mythic adventure: logic and interpretation. The
+entire mechanic for generating adventures on the fly, running
+without a GM, and making it all work hinge on the proper
+application of logic and interpretation.
+Where logic comes in
+Logic is used in Mythic to get an idea of what happens
+next. This is done by considering what has already occurred,
+applying whatever new twists have popped up, and deciding
+what the most logical outcome will be. This expected
+outcome is usually tested on the Fate Chart to find out which
+direction it actually goes.
+The general rule is,
+whatever is most logical,
+that is what is expected to
+happen. Notice, I say
+“expected.” The story will
+rarely proceed exactly where
+you think it will and unexpected
+events will crop up that will turn
+your logical adventure on its ear.
+However, we need a basis to work
+from and logic provides it.
+This harping on logic will make more
+sense later in the book, but I wanted to
+hook your mind on it now while you’re
+fresh.
+Where interpretation
+comes in
+Just as all things are logical in
+Mythic, all answers to important
+questions are arrived upon through
+interpretation. Most information in
+Mythic comes through the asking
+of simple yes/no questions.
+Mythic provides a framework for
+providing general answers to
+these questions. These answers must be
+interpreted, logically of course.
+This, too, will make more sense later in the
+book.
+Improvisation
+I’m going to throw a bonus concept for you. In
+addition to logic and interpretation, improvisation is
+Mythic’s third linchpin that makes it all work. Think
+about our claims for a moment: you can play without any
+preparation and without a GM. Huh?!
+Logic dictates what happens next, interpretation
+decides what exactly logic is talking about, and
+improvisation is the glue that fills in the holes and keeps
+it all together.
+Improvisation comes from the players usually in the
+form of questions. A player can ask any question, and the
+answer will change the course of the adventure, perhaps
+in ways the player hadn’t even guessed. But it’s the asking
+of questions that moves events along, and those questions
+are derived improvisationally.
+For instance, the players’ characters are standing in
+the foyer of an ancient, abandoned mansion. They know
+only that the place is musty and decayed, but must have
+once been a very spacious and beautiful house. A player
+asks, “Are there stairs going up to the second floor?”
+Using Mythic rules, they receive an answer of “yes.”
+Thus, a new detail about the
+gameworld has been established
+(there are stairs in the foyer leading
+up to the second floor). This detail
+did not exist until the player asked
+the question, and the question was out
+of his imagination, improvised.
+All details in Mythic
+are generated in just this
+way. Questions are
+asked, dice are rolled, the
+results are viewed through a
+lense of logic and interpretation,
+which maintains the world’s
+consistency and gives it the
+same logical solidity as it
+would possess as if there
+were a living GM with
+sheets full of data running
+the operation. The only
+difference is that details of
+the game world do not
+exist until a player
+specifically asks for
+them. The end result,
+however, is the same.
+Mythic Adventures
+7
+
+-- 7 of 54 --
+
+The Fate Chart is the heart of Mythic.
+Everything that happens in a Mythic
+adventure is resolved by forming a yes/no question.
+The logic of that question is then applied to the
+Fate Chart, which gives a percentage probability of a
+“yes” answer. The results are either yes, no, exceptionally yes
+or exceptionally no. The players then interpret the results to
+fit logically into the adventure. All questions are resolved in
+this manner, from determining the contents of a room to
+finding out who the villain really is.
+QUESTIONS,
+QUESTIONS
+All action is moved along in Mythic by asking yes/no
+questions. Are there monsters in the room? Is the door
+locked? Is it raining today?
+Normally, such questions would be asked to a Game
+Master who is keeping track of such details. In a Mythic
+adventure, the GM can be replaced; the rules of Mythic are
+designed to answer all questions put to it and in a logical
+manner, as long as they are phrased as a yes/no question.
+A glance at the next page will show you the Fate Chart.
+Along the left side are probability descriptors (impossible,
+likely, a sure thing, etc.) and along the bottom are “Chaos
+Ranks.” Chaos is tracked throughout the adventure to
+represent how out of control the situation is becoming. The
+higher the chaos, the greater your chances of a yes response to
+a question, which usually means more action. By referencing
+odds on the left with chaos along the bottom, the Fate Chart
+gives you the percentage chance of your question being a
+“yes.”
+When a player asks a question, the next step is to
+determine what you think the odds are of that question being
+a yes. This is a totally subjective value, as you can see from
+the odds listed on the left. Your choices start in the middle at
+50/50. These are good odds to pick if you really think there is
+a 50% chance of getting a yes, or when you have no idea of
+the probability. Additional choices range upward with
+Somewhat likely, Likely, Very likely, Near sure thing, A sure
+thing, and Has to be. Odds range downwards from 50/50 with
+Unlikely, Very unlikely, No way, and Impossible.
+The descriptive nature of the odds makes it simple to
+determine because you can use everyday language. Are the
+odds of the roulette table turning up black 50/50? Is it very
+likely to rain? Is there just no way that a key will be under the
+doormat?
+You may wonder at the Impossible and Has to be odds.
+After all, if it’s impossible, it can’t happen, right? Not
+necessarily. In fictional worlds, even the seemingly impossible
+can occur, and the Fate Chart keeps the door open for that
+possibility. For instance, a character has died. Thus, the odds
+of the man standing at the door being that dead character are
+impossible. This doesn’t mean that it can’t actually happen, as
+the impossible happens all the time in movies and books. As
+far as the characters are concerned, however, it is impossible.
+So, who makes the determination of the odds? If you are
+playing with a GM, he makes this decision. If you are not,
+then the group of players must come to a consensus. If you
+cannot decide, then the group must average their opinions
+and take the closest description.
+A word of caution here, however: don’t take forever.
+Decide quickly, and move on. Go with the odds that seem
+right, but don’t wrack your brain too much.
+For example: The players are leading their characters, a
+trio of old-west cowboys, through a canyon as they search for
+a band of escaping bank robbers. One of the players is nervous
+of an ambush, so he asks the question, “Are there cliffs above
+us where they could ambush us from?” The player who asks
+the question thinks the odds are very likely, while the other
+players think the odds are only likely. They decide,
+democratically, since 2 out of 3 think it’s likely, then likely
+will be the odds.
+You have your question and you have your odds. Now it’s
+time to consult the Fate Chart. Cross reference the odds with
+the current chaos score (we’ll get into the chaos rank a little
+later) for your probability of a “yes” answer to the question.
+Roll 1D100 and compare it to this value. If you roll within
+the value, then the answer is “yes.” If you roll above, then the
+answer is “no.”
+By rolling very low, or very high, you can achieve
+exceptional results. These are the little numbers to the left
+and right of the larger, percentage numbers. Rolling equal to
+or less than the left number is an exceptional yes, rolling
+equal to or higher than the right number is an exceptional no.
+You’ll notice that some numbers are negative, while others
+go above 100. These results are virtually a guaranteed “no” or
+“yes.” However, you still must roll to see if an exceptional
+result occurs.
+8
+Chapter 2
+The Fate Chart
+
+-- 8 of 54 --
+
+The Fate Chart
+9
+More information, please
+Since you are using Mythic with another game system,
+that other system will likely have a mechanic for handling
+such situations as combat and task resolution. Mythic, on
+the other hand, will flesh out the game-world itself. Since
+Mythic adventures can be played without a GM, the only
+source of information about the world around you is through
+yes/no questioning.
+The most common questions, then, will be questions
+seeking more detail about adventure surroundings. Are there
+exits in this room? Are there more than three goons? Do the
+thieves have a getaway car ready? Does the newspaper run a
+story on my character’s successful rescue operation?
+Often, general information about the world around your
+characters is enough. You know that the hall continues
+straight on, but you don’t bother to ask what kind of stone
+you feel underfoot. The players can ask the question, of
+course, if they think it is important. However, the point is,
+the level of detail is up to you.
+Sometimes, of course, details are very important. For
+instance, the character may be a fantasy warrior who has
+rounded a corner in a cavern and encountered an ogre.
+Before the warrior commits himself to combat, he asks a few
+questions. Such as: Is the ogre armed? Is he surprised to see
+me? Do I see friends of his behind him down the hall?
+These are questions that are easily and quickly answered
+using the Fate Chart. The answer is either yes or no, and a
+few quick questions will tell this player all he needs to know
+before he decides to attack or run.
+The influence of Chaos
+on Questions
+You will find out about Chaos, and how it
+effects a Mythic adventure, in the adventure
+chapter. For now, you need to know that you
+will keep track of a chaos factor ranging
+from 1 to 9. The higher the number, the
+more likely a “yes” answer is and more
+unexpected events occur.
+Fate ChartTo use this chart, cross reference the odds of a question resulting in a “yes” answer with the current chaos rank. The result is the percentage chance of the question
+resulting in a “yes” answer. A roll within the range of the number on the left is an “exceptional yes” and equal or more than the number on the right is an “exceptional no.”
+Impossible
+No way
+Very unlikely
+Unlikely
+50/50
+Somewhat likely
+Likely
+Very likely
+Near sure thing
+A sure thing
+Has to be
+Has to be x2
+Odds
+10 50 91
+15 75 96
+16 85 97
+18 90 99
+19 95 100
+19 95 100
+20 100 0
+21 105 0
+23 115 0
+25 125 0
+26 145 0
+29 165 0
+5 25 86
+10 50 91
+13 65 94
+15 75 96
+16 85 97
+18 90 99
+19 95 100
+19 95 100
+20 100 0
+22 110 0
+26 130 0
+30 150 0
+3 15 84
+7 35 88
+10 50 91
+11 55 92
+15 75 96
+16 85 97
+18 90 99
+19 95 100
+19 95 100
+19 95 100
+20 100 0
+24 120 0
+2 10 83
+5 25 86
+9 45 90
+10 50 91
+13 65 94
+16 80 97
+16 85 97
+18 90 99
+19 95 100
+19 95 100
+20 100 0
+24 120 0
+1 5 82
+3 15 84
+5 25 86
+7 35 88
+10 50 91
+13 65 94
+15 75 96
+16 85 97
+18 90 99
+18 90 99
+19 95 100
+1 5 82
+2 10 83
+3 15 84
+4 20 85
+7 35 88
+10 50 91
+11 55 92
+15 75 96
+16 80 97
+16 85 97
+19 95 100
+20 100 0
+0 0 81
+1 5 82
+2 10 83
+3 15 84
+5 25 86
+9 45 90
+10 50 91
+13 65 94
+15 75 96
+16 80 97
+18 90 99
+19 95 100
+0 0 81
+1 5 82
+1 5 82
+2 10 83
+3 15 84
+5 25 86
+7 35 88
+10 50 91
+11 55 92
+13 65 94
+16 85 97
+19 95 100
+0 -20 77
+0 0 81
+1 5 82
+1 5 82
+2 10 83
+4 20 85
+5 25 86
+9 45 90
+10 50 91
+11 55 92
+16 80 97
+18 90 99
+20 for each point over 2
++20 for each point over 2 	9 	8 	7 	6 	5 	4 	3 	2 	1	Exceptional Yes
+The lower 1/5 of the success range.
+Exceptional No
+The upper 1/5 of the failure range. 	Chaos Rank
+
+-- 9 of 54 --
+
+Can’t find the page!
+Another way to use the Fate Chart is to come up with
+quick resolutions to a situation when you are not sure what
+the actual rules are. You may know that the rpg you are using
+has a mechanic to deal with character’s drowning in
+quicksand, but you can’t find it in the rule book no matter
+how many pages you flip.
+To keep things moving, you could simply use the yes/no
+mechanic of the Fate Chart as a fill-in to adjudicate rules on
+the spot.
+Of course, you could take this all the way and play an
+entire role-playing game using nothing but the Fate Chart. It
+would make for a very rules-light way to play, but it would
+work.
+When to roll, when
+to make it up
+Should you use the Fate Chart to answer every question?
+“Is the sun shining today? Does the taxi driver say ‘Hi’? Do I
+have exact change in my wallet?”
+No. Please.
+Don’t use the Fate Chart for every question; your
+characters will never get out the front door. If the question is
+not important to the adventure, then just use good old-
+fashioned logic and don’t bother rolling. If there is confusion
+as to the most logical answer, then go ahead and use the
+chart.
+Much of the color of your adventure will come from the
+logical answers that were fleshed out by prior Fate Chart
+questions. Maybe you did roll to see if the taxi driver says
+“Hi.” He doesn’t. Later, when characters talk to him to get
+news of local happenings, he is less likely to be chatty, as we
+have already established that he is not very friendly. Knowing
+this about him will change the odds of future questions
+concerning his actions.
+In this way, the logical chain of events builds upon itself,
+shaping the entire structure of the adventure. Keeping past
+events and logic in mind also cuts down on the number of
+rolls required on the Fate Chart. The more information you
+already possess, the less you have to ask of the chart.
+On the other hand, sometimes one question on the Fate
+Chart is not enough to clarify a situation. It may take yet
+another question to figure out what the original answer
+meant.
+For instance: “I open the door and enter the room. Is it
+empty?” The answer: No. Well, if it’s not empty, what’s in it?
+At this point, you can either use logic, or ask another
+question to clarify. If your character has been chasing a
+monster through a catacomb, it makes logical sense that the
+monster is in the room, cornered. However, if you’re not sure
+of this, then you could ask a question like, “Is the monster
+I’ve been chasing in here?”
+To keep the frequency of questions down, and encourage
+logical thinking, try and ask a question in such a way that you
+will only need one question on the Fate Chart to answer it.
+Or, at most, two questions. That should be enough
+information for logic to take over from there.
+For instance, a pair of occult investigators creep through a
+graveyard at midnight, searching for the walking dead. They
+The Fate Chart
+10
+Sample Questions and Answers
+“My character parachutes out of the plane. He tries to
+land in an open field. Does he make it safely?”
+Yes: Yep.
+No: He lands in the field, but hurts himself.
+Exceptional Yes: He lands without a problem, and very
+quickly.
+Exceptional No: He misses the field entirely and
+crashes into the forest. He hurts himself, badly.
+“Do I succeed in running into the house and slamming
+the door shut before the vampire pounces on me?”
+Yes: ‘nuff said.
+No: You make it to the door, then he pounces on you.
+Exceptional Yes: You make it to the door in double time,
+shut it, lock it, and have a few seconds to spare.
+Exceptional No: You trip and fall, never making it close
+to the door. Not only does the vampire pounce on you,
+but let’s see if you’re hurt by the fall, too.
+“As I walk through the dark hall, I listen carefully. Do I
+hear any sounds?”
+Yes: You hear something, but you don’t know what yet.
+No: All is silent.
+Exceptional Yes: You hear something very loud,
+perhaps very sudden. It may take another question to
+figure out what it is.
+Exceptional No: All is silent. There is no appropriate
+exceptional result, so this remains the same as a simple
+no.
+“I want to get into the house. Is there a set of keys
+under the door mat, by chance?”
+Yes: Your lucky day.
+No: No.
+Exceptional Yes: No, but when you try the door, it’s
+unlocked.
+Exceptional No: Heck, there’s not even a door mat.
+
+-- 10 of 54 --
+
+inspect a mausoleum, checking to see if the entrance has
+been opened lately. One of the players asks, “Do we hear
+anything?” Yes. “Does it sound like something scrambling
+inside?” No. “Does it sound like someone walking through the
+graveyard?” No. “Is it something flying through the air?” No.
+This player is hitting a run of no answers and apparently
+plans on continuing to ask until he gets a positive answer. He
+could have stopped after the second question, “Does it sound
+like something scrambling inside?” We already know that
+they hear something, and it’s not coming from inside the
+mausoleum. They could simply use logic at this point to say
+they hear something outside, in the graveyard. A shuffling
+sound, perhaps. Or something too faint to identify. Going the
+logic route after two questions yields an answer that the
+players should be able to work with.
+Of course, if you really want to, you can keep asking
+more questions. I find, however, that setting the one to two
+question maximum automatically stops players from asking
+a series of detailed questions; they get to the Big Picture
+much faster.
+The art of
+interpretation
+Using the Fate Chart to find your percentage chance of
+success is only the beginning. Next, someone must roll some
+dice and see if the answer is “yes” or “no.” It is up to the GM,
+or the players if there is no GM, to figure out what the answer
+really means.
+Interpretation is an important part of Mythic. Again, logic
+must prevail. Whatever seems the most logical answer, given
+the circumstances, is the result.
+Sometimes interpretations will come easily. If the question
+was, “I open the desk drawer. Is there a gun inside?” A no
+answer is simple enough, and a yes means there is indeed a
+gun in the desk. It doesn’t say what kind of gun, but a logical
+assumption would be a common handgun.
+After interpreting the Fate Chart result, if the players
+wish, they can try to clarify the answer further with more
+questions. “Is the gun a glock? Is it loaded? Is there extra
+ammunition in the desk?”
+Eventually, players learn to ask the right questions. It is
+best to ask “Big Picture” questions, rather than
+many small, detail questions. The more
+important the situation, the more detailed
+questions you should ask, but don’t get in the
+habit of asking for excruciating detail in every
+circumstance. The point is to gather only as much
+information as needed to make a logical decision.
+Exceptional results
+Sometimes when a roll is made on the Fate
+Chart, the player will roll very high or very low.
+This can create an exceptional result.
+Exceptionals occur when a roll is made in
+the upper or lower 20% (one-fifth) of the
+percentage range given.
+In other words, if the odds of a yes are
+50%, then a roll of 1-10 is an exceptional
+yes, and a 91-100 is an exceptional no. If
+the odds are 80%, then a 1-16 is an
+exceptional yes, and a 97-100 is an
+exceptional no.
+So you don’t have to work out the
+exceptional values for yourself
+every time, the Fate Chart lists
+the lower and upper ranges
+The Fate Chart
+11
+Summary of How to Use the
+Fate Chart
+1: State a question: Form a yes/no question.
+2: Determine odds: Estimate the odds of the
+question coming out “yes.”
+3: Determine probability: Cross reference
+the odds with the current Choas score
+to get your percentage chance
+of a “yes” answer.
+4: Roll: Roll 1D100. If you roll
+within the percentage range,
+the answer is yes. If you roll
+above, the answer is no. If you roll
+in the lower 1/5 of the range,
+then the answer is an
+exceptional yes. If you roll in
+the upper 1/5 of the failure
+range, then the answer is
+an exceptional no.
+5: Interpret the answer:
+Draw the most logical
+conclusion from the
+results. If this is not
+possible, then ask another
+question to clarify,
+returning to step 1.
+
+-- 11 of 54 --
+
+beside each percentage chance for success.
+You’ll notice on the Fate Chart that some values go above
+100 and some below 0. These are cases where success or
+failure is assured. However, you still need to roll to see if an
+exceptional result occurs. For instance, if there is a 120%
+chance of a yes, then a roll of 1-24 is an exceptional yes, and
+the rest is a normal yes.
+What exactly is an exceptional result? Well, just that
+... exceptional. Usually, you can double or halve the
+normal result, or determine that an exceptional no yields
+the opposite of what you wanted. As with all else in
+Mythic, you must use judgement and go with what seems
+most logical, but exceptional results are the ideal yes and no.
+For instance, if the question was, “I open the chest, is there
+treasure inside?” and the result is an exceptional yes, then
+you may decide that the chest contains a huge horde of
+gold, or perhaps a special item your character has been
+searching for. Had the result been an exceptional no,
+then you may decide that not only is the chest empty,
+but it is trapped as well to catch unwary treasure
+hunters.
+Some questions may be so cut and dried that
+exceptional results seem silly. In those cases, ignore
+the exceptional result and just treat it as a plain
+yes or no.
+For instance, a player may ask, “Is the car
+locked?” A yes or a no answer is pretty clear. What
+would an exceptional yes or no mean? If it’s important,
+perhaps it means the car is unlocked and the key’s in the
+ignition. Or, maybe it just means the same as a normal no. If,
+after rolling an exceptional result, the players cannot come up
+with a result right away that makes sense in an exceptional
+way, then just treat it as a normal yes or no.
+12
+The Fate Chart
+Whether players are asking questions to a GM, or they are
+playing without a GM and are handling the questions
+themselves, Mythic relies on the asking and answering of
+questions to move the adventure along. Since any yes/no
+question is allowed, the setting is ripe for abuse.
+Of course, you are free to play any way you wish. But if a
+power-gamer is playing with a group of role-players, they
+may not appreciate the carefully worded questions designed
+to elicit the most desired response from the Fate Chart.
+As a general rule, a question should only be asked if it makes
+logical sense. A party of adventurers prowling down a
+dungeon hall may very well ask, “Do we hear anything?”
+However, it would make little sense to ask, “Do I look down
+and see a Vorpal Blade of Instant Murder at my feet?”
+Also, players should discourage each other from twisting
+their questions to take advantage of system mechanics. For
+instance, when the Chaos Factor is high, there is a greater
+likelihood of odds questions coming out yes. Knowing this,
+they could always ask their question in the negative. For
+instance, “There are no monsters in this hall, right?”
+This could all be turned on its ear if the players decide to
+intentionally play a comedy adventure, trying to get as
+ridiculous as possible. This can be a lot of fun, especially if
+you try to push the system into answering oddball questions.
+But as a general rule you should keep your questions in the
+realm of good sense.
+How (not) to cheat
+
+-- 12 of 54 --
+
+L ogic is poor at one thing: coming up with surprises.
+Taking this into account, Mythic builds random
+events into the adventure so everything doesn’t
+make too much sense. In an adventure that is guided by
+players’ questions and expectations, randomness will add
+extra dimension to the action, spinning plot twists you
+may never have thought of before.
+Random events can occur at two times during a
+Mythic adventure: when a scene is first generated (see
+the next chapter) and when a question is asked on the
+Fate Chart.
+Scene random events
+These are unexpected twists that derail the characters
+assumptions and create new, surprise scenes. As you will
+find in the next chapter, Mythic adventures are broken
+into scenes, just like a movie, and scenes are generated
+from the player’s expectations. After the players express
+what they think the next scene will be, however, they
+must roll to see if that concept is altered. Sometimes the
+scene will begin as expected, sometimes it will be
+changed slightly, and sometimes a random event will
+create an entirely new, unexpected scene.
+This is described more fully in chapter 4.
+Fate Chart random events
+This is the most common type of random event.
+Whenever a question is asked on the Fate Chart there is
+the possibility of a random event occurring. The event
+does not have to be linked to the question in any way. In
+fact, the question should be resolved first, and then the
+random event generated, just to keep everything straight.
+When a fate question is asked, and 1D100 is rolled, if
+a double number is obtained (i.e. 11, 22, 33, 44, etc.),
+then a random event may have occurred. If this number
+(the single digit, 1 for 11, 2 for 22, etc.) is equal to or less
+than the chaos factor (another mechanic covered in the
+next chapter), then something random happens.
+For instance, if the player rolled a 55 to a question,
+and the chaos factor was 8, then a random event takes
+place. If chaos was below 5, however, nothing would
+occur.
+RANDOM EVENTS
+Random events can throw unexpected twists into the
+adventure, keeping the adventure fresh and exciting. Mythic
+adventures are guided by logic, which maintains the
+structure and continuity of events, but random events will
+lead the adventure places that logic cannot. This is where
+surprises pop up and the story can take twists that no one
+would have expected.
+Once it has been determined that a random event has
+occurred, you must figure out what happens. There are three
+components to a random event: context, focus, and
+meaning.
+Event context
+“Context” is everything that has gone on in the
+adventure up to this point. The adventure itself, and all that
+has happened in the adventure, is the context. When
+generating a random event, the focus and meaning of the
+event should be shaped by the context of what has already
+happened. The random event isn’t happening in a vacuum;
+all that has already occurred is the stage on which this new
+event takes place.
+For instance, if the characters are spies sneaking through
+a Russian castle, looking for stolen plans to a military
+satellite, any new random events generated will have some
+relation to this adventure scenario. If they generate a
+random event that implies something negative happens to
+one of the characters, perhaps he is spotted by a guard or he
+drops his gun down a stairwell.
+To say that you must consider the context of the
+adventure before judging a random event may seem like
+common sense, but sometimes even good sense bears
+repeating. Keeping the context of the adventure in mind
+will help you make the logical leap to a satisfying resolution
+of the random event.
+Event focus
+Keeping the context of a random event in mind helps
+frame the possibilities of what can happen. Next, you
+establish where the action of that event is focused. This is
+done by using the event focus table.
+13
+Chapter 3
+R andomness
+
+-- 13 of 54 --
+
+Roll 1D100 on the event focus table. This tells you what
+aspect of the adventure the random event directly impacts.
+For instance, the event may directly effect a player character
+or it might introduce a new, non-player character. Apply the
+result to the events that are currently going on in the
+adventure, the context. This will require interpretation, but
+usually a clear meaning will present itself. The next step,
+event meaning, will provide the final piece you need to
+determine the random event. We’ll get to that in a moment.
+Following are explanations of the various results of the
+event focus table:
+Remote Event
+Something important has happened that bears on the
+adventure, but the player characters were not present when
+the event occurred, they only learn about it remotely. This
+can result in many ways, from a non-player character telling
+them some piece of news, to coming across evidence of this
+other event. For instance, the players may encounter the
+dead body of a NPC previously met in the adventure. The
+remote event here is the murder of this character, which the
+player characters did not directly witness. Or, the characters
+may wander into a tavern and learn by word of mouth that
+the enemy hordes have advanced, destroying the next town
+down the road. Again, they are receiving the news second
+hand.
+A remote event can either by implied or directly stated.
+In the case of the dead body, the characters only know that
+the poor chap was killed somehow. In the tavern example,
+they do not see the advancing hordes, they are only told
+about it. Both cases count as remote events.
+If you are playing your adventure cinematically (see the
+adventure chapter), then your next scene may be a flashback
+to this remote event. This will allow the players to role-play
+the event, adding more tension to the adventure. If you are
+taking a simulation approach to the adventure, then the
+players will have to figure out what happened on their own.
+NPC Action
+An existing non-player
+character makes a surprise
+action. These are characters
+who populate the game world
+other than the player
+characters themselves. If you
+are playing with a GM, some of
+these characters may have been
+placed by him. Or, they may have
+appeared through the normal course of adventuring.
+However they made it onto the scene, one of them
+is now doing something that impacts the player
+characters. The players roll a random character
+from the character list (see the adventure chapter). There
+may be any number of NPCs on the list, so just roll a die
+closest to the total number. For instance, if there are five
+total NPCs in your game, roll a 1d6 (rerolling if a 6 is rolled)
+to find the NPC in question.
+The next step, event meaning, will help determine what
+this character actually does. In many cases, when compared
+to the adventure context, obvious character actions will
+spring to mind. If one of the characters on the list, for
+instance, is an assassin, a random action associated with that
+character may likely involve someone’s attempted murder.
+Or, if the NPC is an ally of the player characters, maybe he
+shows up just in time to save their lives.
+Introduce a New NPC
+A brand new face is involved in the adventure. This may
+be someone the player characters had expected to meet, or a
+surprise. Either way, this new character is important to the
+overall adventure and will be added to the character list
+when the scene is over. The character’s appearance will
+likely be combined with an action of some sort. The nature
+of this action will come clearer after the next step, event
+meaning. Determining the meaning will also help figure out
+just who this NPC is.
+The character does not need to be an individual but can
+be any entity capable of independent action, such as an
+organized group of townspeople or a government agency.
+For example, the characters may be fantasy heroes
+exploring a cavern. The players come up with a random
+event and it turns out to be a new character. They
+determine that the heroes come across a troll wandering the
+cavern. If the characters kill the troll in this encounter, then
+that would be the last of that character. However, if the troll
+escapes, or if they flee from the troll, then the monster may
+appear again later in the adventure. After this first
+encounter the troll is no longer a “new” character and
+Randomness
+14
+Event Focus Table
+1-7 	. . . . . . . . . . . .Remote event
+8-28 	. . . . . . . . . . .NPC action
+29-35 	. . . . . . . . . .Introduce a new NPC
+36-45 	. . . . . . . . . .Move toward a thread
+46-52 . . . . . . . . . . .Move away from a thread
+53-55 	. . . . . . . . . .Close a thread
+56-67 	. . . . . . . . . .PC negative
+68-75 	. . . . . . . . . .PC positive
+76-83 	. . . . . . . . . .Ambiguous event
+84-92 	. . . . . . . . . .NPC negative
+93-100 	. . . . . . . . .NPC positive
+
+-- 14 of 54 --
+
+would be added to the character list at the end of the scene.
+On the other hand, the characters may come across an
+entire colony of goblins. In this case the character is not a
+single creature but an entire population. This “character,”
+perhaps entitled “goblin colony” on the character list, would
+be a persistent character throughout the rest of the
+adventure, capable of popping up at any time.
+Move toward a thread
+Threads are the goals that player characters are going
+after. These are the unresolved missions that the players are
+trying to solve. There could be more than one thread in an
+adventure, some big and important while others of less
+consequence. The next chapter will go more into theads.
+This random event has something to do directly with
+resolving an open thread. If there are more than one, then
+randomly determine which thread it is. Other random
+events from the event focus table can also involve a thread,
+but not necessarily. This random event is directly related to
+the thread, and should offer the characters an opportunity to
+step closer to solving the thread.
+For instance, the characters may be pulp-era treasure
+hunters exploring an Egyptian pyramid. One thread is, “Find
+the ancient tomb of Ank-Tonen.” They roll up a random
+event involving this thread. They determine that they run
+across an inscription on the wall that talks of the tomb, but
+warns that the halls are guarded by deadly traps.
+Whatever the event is, however, it is helpful to the
+characters in their aim of solving the thread.
+Move away from a thread
+Just as the previous random event will help player
+characters solve an open thread, this random event will
+make it harder. Perhaps the thread they are trying to resolve
+is, “Find the escaped criminal.” The characters have been
+tracking him through a jungle, following a trail of footsteps.
+Suddenly, this random event comes up, and the players
+determine that it means the trail has disappeared.
+This event makes resolving the thread a little more
+difficult, but not necessarily impossible. The elimination of a
+thread is handled in the next random event focus and, of
+course, through normal role-play.
+As before, if there are more than one thread, then
+randomly determine which thread it is.
+Close a thread
+The random event is so important it actually closes an
+open thread. If there are multiple threads open, then
+randomly determine which one it is. To close a thread, the
+thread is either resolved or the issue goes away. For instance,
+in the case of our adventurers hunting down the criminal,
+the thread could be resolved by them coming upon him
+while he sleeps at his camp. Or, maybe they encounter his
+mangled dead body. Either way, the thread of “track down
+the escaped criminal” has been resolved.
+Figure out what the most logical way to immediately close
+the thread would be. The next step, event meaning, will help.
+Player Character/NPC
+Negative or Positive
+Something bad, or good, happens to a player character, or
+non-player character, whichever is indicated on the event
+focus table. If there is more than one player character or NPC
+then randomly determine who the subject is. The event
+meaning will help determine what happens although logical
+ideas should begin springing to mind. These can be major, or
+minor, events. Perhaps the slumbering monster in the
+chamber awakens and attacks the poor, chosen character. Or,
+maybe while hiking through the desert the character discovers
+that the only food he has packed is beef jerky. He hates beef
+jerky.
+This can be a very vague event focus, so you will have to
+rely much upon the event context and event meaning. All
+this focus tells you is who is directly effected, and if the effect
+is good or bad.
+Ambiguous event
+All of the random events previously mentioned have a
+direct impact on the adventure and the player characters.
+They are helped, they are hindered, they get closer to their
+goals or further away. Each has a direct story consequence.
+The random event of “ambiguous event,” however, is
+meant to encompass everything else that can happen. This
+is a catchall category for anything that does not directly
+Randomness
+15
+Summary of Resolving
+Random Events
+1) 	Determine event focus.
+2) 	Determine event meaning (the
+action and subject).
+3) 	Interpret the random event
+based on context, focus and
+meaning. Take the most
+logical conclusion.
+
+-- 15 of 54 --
+
+impact characters or NPCs. The event is not necessarily bad
+or good. The event can be important, but often it is more
+atmospheric to the scene. For instance, perhaps a chill wind
+blows and a few dark clouds can be seen in the sky ...
+portents of future rain. Or, while examining a house, the
+characters come across a photograph of several people. Is
+this a clue or just junk? They don’t know.
+A habit can develop while generating random events for
+every event to have Earth-shattering importance. This
+random event focus offers you the opportunity to inject less
+important elements or even comedy elements into your
+adventure.
+The ambiguous event can be the hardest random event to
+interpret because of its ... well, ambiguity. Adventure context
+doesn’t matter so much since the ambiguous event may have
+nothing to do with the course of the adventure.
+Often, the easiest way to interpret this event is to generate
+the event meaning and then take the first thing that springs
+to mind, even if it’s a little odd. For instance, the characters
+may be walking through a cave when an ambiguous event is
+called for. The players determine that there is a strange
+symbol scrawled on the wall in red paint. They have no idea
+what the symbol means, if anything, or if it’s important. It’s
+just there.
+Event meaning
+After the focus of the event has been determined it’s time
+to figure out the general gist of what the event means. This
+step is to help the players interpret the random event, putting
+a spin on the context and focus. By combining the event
+focus with the event meaning, and taking the most logical
+conclusion based on the context, an easy interpretation
+should spring to mind.
+The event meaning is derived by rolling 1d100 on the
+event action table and 1d100 on the event subject table. This
+gives you a simple two word sentance, basically, that should
+tell you something.
+Some of the meanings given may seem to duplicate results
+of the event focus table. That’s fine; just read it all together
+and see what you come up with. For instance, a few of the
+event meanings imply the actions of people. You can take this
+to apply to existing characters, if it seems appropriate, or
+introduce a new character. You can do this even though you
+didn’t roll up “Introduce new NPC” from the event focus
+table.
+The important thing is to let the event meaning lend
+“spin” to the context and focus of the event. Just go with
+whatever makes the most sense.
+For instance, let’s say the characters are spacefarers on a
+futuristic starship. They get a PC positive random event.
+Checking the event meaning tables, they come up with
+“adversity business.” The PC’s current goal, or his “business,”
+is piloting the ship. The players determine that an adversity
+comes up in the course of his flying: they come across a
+massive asteroid field that may be difficult to pass through.
+If combining the two words sounds odd to you, try adding
+the word “of” in between to see if it sounds clearer. For
+instance, if you rolled “failure” and “a plot” as the action and
+subject, you could read that to be “failure of a plot.”
+Interpreting
+the final event
+The result given from the event meaning charts is a brief,
+and vague, description. It is up to the players to interpret
+what it means when combined with the event focus and
+context. Often, a meaning that fits nicely into what is
+currently happening will jump out. If not, then take the most
+logical interpretation that comes to mind.
+If you’re stumped, or several meanings come up, you can
+ask a fate question or two to clarify the meaning.
+For instance: The characters are far-future explorers
+examining the ruins of an alien civilization. That’s the
+context. They roll up a random event, and determine the
+focus is a player character negative. Checking the event
+meaning charts, they get, “violate possessions.” Hmmm,
+they’re not sure what this means and a ready interpretation is
+not jumping to mind. To clarify, one of the players asks, “Do I
+find that something I brought along is missing?” The Fate
+Chart answers yes. Then they ask, “Is my gun missing?”
+Again, yes.
+All of these elements, combined with logic and
+interpretation, give a virtually endless stream of possibilities
+for random events. Do not feel too constrained by the results
+of the focus and meaning tables. These are meant as guides to
+lead you to interpretations. Feel free to bend and twist the
+results until they fit a logical interpretation, although you
+should take the most logical interpretation instead of just
+taking the interpretation that most benefits your characters.
+The ‘I dunno’ rule
+When using Mythic and the randomness rules there will
+come times when you follow the rules, perform each step,
+and are left wondering, “What does all of this mean?” The
+clues offered by the meaning, context and focus should
+suggest an immediate meaning to the random event.
+Generally, whatever occurs to you first, and seems the best
+fit, is what you go with.
+But what if nothing comes to mind? Or, it’s taking too
+long?
+Then forget it.
+Randomness
+16
+
+-- 16 of 54 --
+
+Randomness
+17
+1. Attainment
+2. Starting
+3. Neglect
+4. Fight
+5. Recruit
+6. Triumph
+7. Violate
+8. Oppose
+9. Malice
+10. Communicate
+11. Persecute
+12. Increase
+13. Decrease
+14. Abandon
+15. Gratify
+16. Inquire
+17. Antagonise
+18. Move
+19. Waste
+20. Truce
+21. Release
+22. Befriend
+23. Judge
+24. Desert
+25. Dominate
+26. Procrastinate
+27. Praise
+28. Separate
+29. Take
+30. Break
+31. Heal
+32. Delay
+33. Stop
+34. Lie
+35. Return
+36. Immitate
+37. Struggle
+38. Inform
+39. Bestow
+40. Postpone
+41. Expose
+42. Haggle
+43. Imprison
+44. Release
+45. Celebrate
+46. Develop
+47. Travel
+48. Block
+49. Harm
+50. Debase
+51. Overindulge
+52. Adjourn
+53. Adversity
+54. Kill
+55. Disrupt
+56. Usurp
+57. Create
+58. Betray
+59. Agree
+60. Abuse
+61. Oppress
+62. Inspect
+63. Ambush
+64. Spy
+65. Attach
+66. Carry
+67. Open
+68. Carelessness
+69. Ruin
+70. Extravagance
+71. Trick
+72. Arrive
+73. Propose
+74. Divide
+75. Refuse
+76. Mistrust
+77. Deceive
+78. Cruelty
+79. Intolerance
+80. Trust
+81. Excitement
+82. Activity
+83. Assist
+84. Care
+85. Negligence
+86. Passion
+87. Work hard
+88. Control
+89. Attract
+90. Failure
+91. Pursue
+92. Vengeance
+93. Proceedings
+94. Dispute
+95. Punish
+96. Guide
+97. Transform
+98. Overthrow
+99. Oppress
+100. Change
+Event Meaning: Action
+1. Goals
+2. Dreams
+3. Environment
+4. Outside
+5. Inside
+6. Reality
+7. Allies
+8. Enemies
+9. Evil
+10. Good
+11. Emotions
+12. Opposition
+13. War
+14. Peace
+15. The innocent
+16. Love
+17. The spiritual
+18. The intellectual
+19. New ideas
+20. Joy
+21. Messages
+22. Energy
+23. Balance
+24. Tension
+25. Friendship
+26. The physical
+27. A project
+28. Pleasures
+29. Pain
+30. Possessions
+31. Benefits
+32. Plans
+33. Lies
+34. Expectations
+35. Legal matters
+36. Bureaucracy
+37. Business
+38. A path
+39. News
+40. Exterior factors
+41. Advice
+42. A plot
+43. Competition
+44. Prison
+45. Illness
+46. Food
+47. Attention
+48. Success
+49. Failure
+50. Travel
+51. Jealousy
+52. Dispute
+53. Home
+54. Investment
+55. Suffering
+56. Wishes
+57. Tactics
+58. Stalemate
+59. Randomness
+60. Misfortune
+61. Death
+62. Disruption
+63. Power
+64. A burden
+65. Intrigues
+66. Fears
+67. Ambush
+68. Rumor
+69. Wounds
+70. Extravagance
+71. A representative
+72. Adversities
+73. Opulence
+74. Liberty
+75. Military
+76. The mundane
+77. Trials
+78. Masses
+79. Vehicle
+80. Art
+81. Victory
+82. Dispute
+83. Riches
+84. Status quo
+85. Technology
+86. Hope
+87. Magic
+88. Illusions
+89. Portals
+90. Danger
+91. Weapons
+92. Animals
+93. Weather
+94. Elements
+95. Nature
+96. The public
+97. Leadership
+98. Fame
+99. Anger
+100. Information
+Event Meaning: Subject
+
+-- 17 of 54 --
+
+This is the “I Dunno” rule.
+Simply put, if a meaning does not
+jump right out at you, right
+away, assume that no random
+event occurred in the first place.
+The motivation for this rule is
+purely practical. A difficult to interpret
+random event can stall a game
+indefinitely as the players sit there thinking. The entire
+intent of Mythic is to create fast-paced games from
+nothing. Anything that slows this process down should
+be discarded.
+Don’t abuse the “I Dunno” rule, however. If only one
+meaning suggests itself to you, but you don’t like it,
+beware the temptation to discard it as not good enough.
+If any interpretation readily fits the facts, then go with it.
+A note about logic
+The master sleuth Sherlock Holmes was often credited with astounding skills of
+deduction. However, the type of logic he most often exhibited wasn’t deductive but
+inductive logic, going from the specific to the general.
+Although you don’t need to know this to play Mythic, it’s interesting to note that there
+are different ways to look at logic.
+Inductive logic, generally, is taking specific facts and fitting them into a larger picture.
+For instance, you know facts A, B and C. All three facts are consistent with theories
+1 and 2, but not theory 3. Thus, theory 3 is false,
+while 1 and 2 are both logically possible. If
+you learn another fact, and it’s not consistent
+with theory 1, then theory 2 is the only
+possible final conclusion.
+Deductive logic goes at it from the opposite
+direction, starting with the big picture. In other
+words, assuming that theory 1 is correct, then facts
+A, B, and C should be present. If facts A and C are
+present, but not B, then theory 1 is proven false and
+another theory must be developed to explain the
+facts as they are known.
+In practice, using both forms of logic
+together is very effective for analyzing clues, since each
+has its merits and flaws. For instance, inductive logic is
+like taking pieces of a puzzle and fitting them together.
+However, the pieces may fit in more ways than one, giving
+any number of possible outcomes. Deductive logic begins with the
+puzzle already put together. If the picture is true, then all the pieces of
+the puzzle should be present somewhere. However, you may only have
+available a few of the pieces, so the others are only assumed to exist. This
+presents an opportunity to test the theory, however. If a deductive
+assumption predicts the existence of certain facts, you only have to go find
+these facts, or facts to the contrary, to help prove or disprove your theory.
+Mythic tends more toward the inductive model. Characters are presented
+with facts throughout the adventure. When a new question arises, the current
+set of applicable facts helps determine, in an inductive way, what the big
+picture may be.
+Randomness
+18
+
+-- 18 of 54 --
+
+Randomness
+19
+Context: The player characters are treasure seekers
+digging around in an ancient tomb. They are in a
+room with frightening stone statues and strange
+carvings on the walls.
+Event Focus: Ambiguous Event.
+Event Meaning: “transform reality”
+Interpretation: The characters all experience the same
+vision where the room suddenly becomes shining and
+beautiful, as though new. They see people rustling about,
+as if this were an active temple. As suddenly as it came
+on, the vision goes away. Since this is an “ambiguous
+event,” the vision doesn’t seem to offer any useful
+information, such as where treasure or traps are.
+Context: Captain Stupendous has pursued the evil Dr.
+Nefarious to his lair high atop a New York skyscraper.
+Captain Stupendous hovers over the lair, debating what to
+do next.
+Event Focus: NPC Action. There are 3 NPCs on the
+character list: Dr. Nefarious; Nefarious’ henchmen; the
+Team of Justice. Rolling, we get the second character, the
+henchmen.
+Event Meaning: “fight of home”
+Interpretation: Interpreting the meaning to refer to Dr.
+Nefarious concerned that the Captain has discovered his
+“home,” henchmen suddenly appear on the rooftop and
+begin firing at the Captain, to fight for their home.
+Context: Jim Diamond, a secret agent, has broken into the
+luxury offices of Maxit, a firearms production company
+suspected of providing weapons to terrorists. He has
+hacked into their mainframe computer and is trying to
+access their secret files.
+Event Focus: Player character Negative. Since Jim is the
+only PC in this adventure, this means him.
+Event Meaning: “succeed of evil”
+Interpretation: As Jim works on the computer, the lights
+suddenly turn on. He looks up to see three armed men in
+the room, pointing guns at him. In walks Mr. Maxit himself
+with a sneer. “You thought we didn’t know about your
+snooping, Mr. Diamond. You thought wrong!”
+Context: Their spaceship infested with deadly aliens, the
+characters desperately barricade themselves in the life-
+support room. They plan to close the room off and flood
+the rest of the ship with poison gas through the ventilation
+system, hoping to wipe the aliens out.
+Event Focus: Introduce a new NPC.
+Event Meaning: “failure of a plot”
+Interpretation: A locker suddenly opens and the
+characters nearly pee their pants when Crewman Jenkis
+leaps out. The characters thought everyone else on board
+was dead, but Jenkis has been hiding in the closet.
+Frantic, but glad to see them, he casually informs the
+characters that he had already tried the poison air trick,
+but it didn’t work because the ship’s filters automatically
+clean the poison out of the air as it goes through the
+vents. The characters are still mulling over the fact that he
+tried it with everyone else still out there ...
+Context: Jonathan Stark is a 1920’s occult investigator. It
+is midnight, and he is locked in his study, looking over an
+ancient and curious volume of blasphemous lore.
+Event Focus: Remote event.
+Event Meaning: “waste of goals”
+Interpretation: Jonathan is searching for a mystic
+artifact that has the power to bind demons. He hopes to
+use it to stop the rampages of a monster terrorizing the
+local village. He had expected to discover from the book
+where the relic lies. However, this random event is
+interpreted to mean that the book tells a tale of how the
+device was destroyed in a great battle, centuries before.
+Stark closes the book, determined to find another way
+to stop the beast.
+Context: Sir Trent and his band of adventurers are
+searching a cavernous catacomb for a princess
+kidnapped by an evil mage.
+Event Focus: Move toward a thread.
+Event Meaning: “guide a path”
+Interpretation: The hall branches in two directions, and
+they are not sure which way to go. Sir Trent notices
+something on the ground and picks it up. It’s the
+princess’ shoe. He smiles. “I think I know which hall
+they took her down.”
+Context: A modern day mage in the midnight streets of
+Los Angeles is searching an alley for a secret portal to
+another dimension.
+Event Focus: Player Character Positive.
+Event Meaning: “inform travel”
+Interpretation: “You’ll never find it over there,” a gruff
+voice says in the darkness. The mage sees a homeless
+man rise from the garbage. He rubs his finger across a
+wall and suddenly a glowing door appears. The mage
+stares at the guy, who is obviously more than he seems.
+Random Event Examples
+
+-- 19 of 54 --
+
+T his section provides the structure for running a
+Mythic adventure. You’ve got the basics on how to
+ask Mythic questions and how to answer them
+using the Fate Chart. Now, it’s time to put it all together.
+The structure outlined in this chapter is designed to
+generate a dynamic, and improvised, adventure. These
+rules can be used by a game master to help come up with
+adventures off the cuff, offering as much surprise to the
+GM as to the players. Or, players can do away with the
+GM and use these rules to generate their own adventures.
+Improvised means “free-form,” right? Not necessarily.
+Mythic is designed to move the adventure along based on
+improvised ideas, but it provides a structured framework
+to guide and shape those ideas. This isn’t “making it up
+as you go along” so much as hopping from one idea to the
+next with rules to navigate the way. The current idea is
+the current scene, the action of the moment. You may
+have some clue as to what the next idea is, but you won’t
+know what happens for sure until you get there.
+This may sound confusing right now. But it all makes
+sense in the end.
+To start, let’s take a look at how Mythic views time.
+S CENES
+Mythic gameplay is visualized like a movie with an
+adventure session broken into scenes. Just like in a movie,
+a scene takes place at a certain location, involving certain
+characters, and covers a certain segment of action.
+Usually unimportant stuff is left out of a scene and only
+the good stuff gets shown. When the action is over and
+the characters are ready to move on the scene ends and
+we proceed to the next scene.
+Mythic works the same way. A scene setting is
+envisioned, the characters resolve conflicts within the
+scene then it wraps up and everyone moves on. A scene is
+a discrete unit of time within an adventure, but it can be
+of any length. The scene, in game time, can last a few
+minutes or many years. The important thing is that each
+scene must have a purpose. Perhaps the characters have
+come across a room while exploring a dungeon. They
+pause to check the room out. This is a scene. When they
+are done, and all actions have been resolved, the scene is
+over.
+The simplest way to move from scene to scene is for
+20
+Chapter 4
+The Adventure
+The End is Near ...
+Below are some example scenes emphasizing
+where they begin and where they end. The
+important concept to keep in mind is that a scene
+begins with a setup and ends when action and
+conflict have been resolved.
+Scene 1
+Setup: A band of superheroes is breaking into the
+stronghold of a villain. They discovered an airduct in
+the previous scene. This scene begins with the
+heroes crawling inside, entering the building. The
+scene proceeds with the heroes making their way
+inside and searching.
+Ending: Since the point of this scene is the heroes
+getting into the stronghold, once they’ve
+accomplished this, the scene is over. The players
+may stretch the scene out with some preliminary
+exploration of the stronghold to get some flavor for
+what it’s like (“the halls are made of chrome and
+strips of light glow dimly from the ceiling”), but the
+next scene will likely deal with initial encounters.
+Scene 2
+Setup: Earlier in the adventure of a mecha/military
+game, the players discovered that the alien Battle
+Pods were staging an attack. This new scene begins
+with the characters jumping into their War Mechs
+and charging onto the battlefield. The action for this
+scene is straightforward: combat.
+Ending: The scene ends when the battle ends. Either
+the aliens are beat back or the players stage a
+desperate retreat.
+Bottom line
+There are no hard and fast rules for what constitutes
+the beginning and ending of a scene, there are just
+guidelines. The scene structure is designed to help give
+the adventure shape. The most important rule of thumb
+is simply to end a scene where it seems natural, and
+that usually means when the main activity of the scene
+is concluded.
+
+-- 20 of 54 --
+
+the characters themselves to physically move. However,
+they don’t have to. Time can pass and move characters to
+the next scene while they remain in the same physical
+location. For instance, characters travelling through the
+woods make camp for the night. They rest up, and the
+scene ends. The next scene takes place in the morning as
+they get up and prepare for the day.
+Just like in movies, scenes should be about important
+events. If a scene is nothing more than walking along a
+path maybe you should just skip it and go ahead to the
+next scene which is probably more interesting. You won’t
+be missing out on anything and you won’t shortchange
+your characters the opportunity for an unforeseen
+encounter. Remember that Mythic builds random events
+into adventures and they can happen at just about
+anytime, so you don’t need to pepper your adventure with
+boring scenes just to see if anything happens. Stick to
+what’s important and interesting.
+In Mythic, it is up to the gamemaster to decide what
+the next scene will probably be about. Or, if there is no
+GM, the players decide. However, Mythic will throw a
+wrench in the works on its own to keep the players on
+their toes, changing the scene or diverting the players to
+unexpected scenes.
+The Adventure
+21
+There are two approaches players can take to the
+sequence of their scenes. They should decide before the
+adventure session begins which style suits them best.
+Simulation
+The simulation approach is like most role-playing
+games, where the action happens linearly and players
+only see what their characters see. With this style each
+scene will follow the next in chronological order.
+For example:
+Scene 1: A platoon of space marines land on a
+distant world on a rescue mission to find a lost ship
+and its crew.
+Scene 2: They begin searching the barren landscape for
+signs of the crashed ship. They find evidence of life
+where there shouldn’t have been any.
+Scene 3: Following up on this evidence, the marines
+make their way to a range of rocky mountains where
+they have their first run-in with a race of aliens
+composed of organic metal.
+Scene 4: The marines decide there may be a connection
+between the aliens and the lost ship. They track the
+aliens to a main cave and learn they live underground.
+Scene 5: The marines venture underground, beating
+back marauding aliens along the way.
+Cinematic
+Players may also choose to go cinematic. Here, you
+can play scenes out of linear order, or play scenes
+where the player characters are not even present. In
+cinematic play, the scenes follow in order of interest,
+not time.
+Cinematic play is a fun alternative because the
+adventure will run like a movie or a book, constantly
+focusing on what is most interesting and entertaining.
+Perhaps the next scene is a flashback to a previous
+event. Or, action is taking place somewhere else and
+the players are just curious as to what may be
+happening. The cinematic style makes more demands
+on the players, however. Their characters are not
+aware of events occurring beyond them so they cannot
+act on this information. These “cut scenes” are more
+for the players’ interest to flesh out the adventure.
+Much of the action from these scenes where the
+characters are actually not present will be determined
+by asking fate questions.
+To reprise our previous example:
+Scene 1: This is a setup scene, where we see the crew
+of the soon to be lost ship orbiting an alien world
+when, suddenly, alarms start blaring. Through a series
+of fate questions the players determine that the ship
+inexplicably malfunctions and begins to plummet to the
+rocky surface below.
+Scene 2: Our platoon of player character marines set
+out on a rescue mission and to find out what
+happened.
+Scene 3: They begin their search, and find evidence of
+life on the planet.
+Scene 4: A short scene with a lone, non-player
+character wandering off from the main platoon. He is
+examining a strange flower when a shadow falls over
+him. His blood-curdling scream and death at the hands
+of an alien monster is the first sign to the others that
+they are not alone.
+Scene 5: The marines track the aliens to their cave ...
+Cinematic Play Versus Simulation
+
+-- 21 of 54 --
+
+T HE 	S ETUP
+Your players are assembled, the characters are ready to
+roll and everyone is set to begin a Mythic adventure. The
+first thing to do is to come up with scene number one. As
+with any movie, TV show or book, the very first scene of
+the production is vitally important. It sets the tone for
+everything that will follow. Chances are, the first scene
+will give the characters whatever “mission” that they will
+follow through for the rest of the adventure.
+If you’ve got a GM, then it’s her job to come up with
+the first scene. If there is no GM, then the players need
+to come up with something. You’ve got two options in
+this department: make something up, or roll something
+up.
+If you make it up, keep in mind that the scene does
+not have to be very complex. You don’t need to take all
+week to create a multi-layered plot. Mythic is all about
+improvisational role-playing. Just take a few minutes to
+concoct an interesting concept, or even just a few
+interesting ideas for a starting scene. For instance, a
+group of players are running a space-opera style of game.
+They devise the following initial scene to their
+adventure: “The characters are traveling through an
+asteroid belt to find a rare deposit of Trendite, an ore
+vital to faster-than-light space travel.” In this example,
+the players have a clear idea of what is expected of them,
+while giving just enough information to allow them to
+make the next move.
+If you are truly playing off the cuff, and want to be
+surprised from the get-go, use a random event to set up
+the initial scene. Generate a random event, just as
+discussed in Chapter 3, and use this as the setup for the
+scene. Since you are generating a random event out of
+thin air, without any context or other events to compare
+it with, you will have a wide range of interpretations to
+make. I suggest you aim for the most exciting
+interpretation you can.
+For instance, with our space marines, the players
+decide to roll up a random scene setup. They get the
+following results:
+• Event Context: Since the adventure hasn’t started
+yet, the context is the characters themselves. We know
+they’re marines and they go where they are told to go.
+Semper Fi!
+• Event Focus: PC negative. There are three players in
+the game, so they randomly determine that the character
+named “Tristan” is the focus. Tristan is a buff, macho
+marine who loves his big guns.
+• Event Meaning: Action: “Inspect.” Subject: “Love.”
+The players take all of this together and come up with
+this interpretation: Tristan has a former love interest who
+is an important scientist. They broke up a year ago, but
+he still carries a flame for her. Word gets to Tristan’s team
+that communications with the the colony world she is
+working on have been lost. No one knows why. Tristan
+and the boys decide to suit up and head on out there to
+see what has become of the colony.
+Keep in mind that the setup should establish a goal for
+the characters to attain. The setup shouldn’t be: “Okay,
+we’re just sitting around. What happens next?” It should
+set in motion the central conflict that the players will
+spend the rest of the adventure trying to solve.
+It’s best to keep a scene setup as detail-free as possible.
+Maybe just an interesting idea or two, that’s it. For
+instance, the classic “You wake up in a hotel room and
+have no idea who you are” is about as simple as it gets.
+The less the players know about what’s going on, the
+better, so that you can spend the adventure figuring all of
+that out. Whatever goal the setup generates may not
+even remain the main goal of the adventure. In our first
+space example, the characters may set out to recover the
+ore, and end up sidetracking on a mission to save an
+interstellar princess. The first scene setup got the ball
+rolling, but players will spend the rest of the adventure
+seeing where it leads.
+Lists
+Once you’ve announced the setup, it’s time to get your
+lists in order. Lists catalog important details about the
+adventure that change from scene to scene. Lists include:
+characters, threads, and chaos. By the way, you’ll find at
+the back of this book a handy form to make it easier to
+keep track of adventure details (see sample on page 49).
+List 1: Characters
+Keep track of all of the NPCs who pop up during an
+adventure. At the end of each scene during an adventure,
+you will review this list and add any more NPCs who
+premiered during that scene and remove anyone who has
+exited the adventure (usually, this means they’re dead).
+For instance, from the space marines the list after their
+first scene might include: “NPC marines; crew from the
+lost ship; the marines’ superiors on Earth; non-military
+ship crew.”
+Characters added to the list should include anyone
+who actually makes an appearance in the scene and
+anyone who is mentioned. For instance, we included the
+marine’s superiors in the list above even though they
+were not physically present in the scene. The fact that
+they were mentioned during the scene, because they gave
+the order to go after the ore, is enough to get them on
+the list.
+The Adventure
+22
+
+-- 22 of 54 --
+
+Characters on the list don’t have to be individuals or
+“people.” They can be any entity that is capable of
+independent action. Your character list from a modern
+day crime adventure may include: Police Officer Jeffrey;
+the murderer, identity unknown; Miss Scarlet, the
+witness; tenants in apartment building where the murder
+occured; the City Council, which has taken an interest in
+the murder investigation, etc.
+There will be times when you have to randomly
+choose a character from this list (for random
+events). Just roll a die closest to the number of
+characters on the list, or use whatever fashion
+you are accustomed to. Every character on
+the list has the same odds of being chosen,
+so the method is up to you.
+Special Note:
+PC Character Lists
+There is a special, additional
+character list you should keep.
+Every player character should
+have his own list of
+important NPCs that is
+included on his character
+sheet. These are people and
+entities that play major roles in
+that character’s life. They may
+include family and friends,
+comrades, foes and enemies,
+organizations he is a member of,
+or just about anything. Who
+and what are on this list is up
+to the player, but the list
+should only contain the most
+important characters in his life.
+For instance, a superhero may have a
+personal list composed of: “Cloe Doe, girlfriend;
+Marauder, arch-nemesis; The Daily
+Standard, newspaper where his
+alter ego works.”
+In between adventues, a
+player can change his list,
+adding characters he has met
+from an adventure who may
+stick around and removing any
+who have left.
+Why go to all of this trouble? Easy ... the
+first scene of an adventure. You may have
+already figured this one out, but what happens if
+you use a random event to generate the first
+scene, and you get something like, “NPC
+action”? You have a problem, because you just
+started this adventure and there are no NPC’s
+The Adventure
+23
+
+-- 23 of 54 --
+
+on the character list. So, you use the player character’s
+own personal character lists.
+You will only use them when generating a random
+event for the first scene of an adventure. Future random
+events in later scenes will only use the adventure lists, not
+the characters’ personal lists. If there is more than one
+character playing, first randomly determine which
+character you are going to use the list from, then roll off
+their list.
+One of the advantages to keeping personal lists like
+this is that you will occassionally come up with adventures
+that have great personal meaning to a character. Or,
+maybe that old villain from three adventures ago suddenly
+pops back onto the scene. Personal character lists open
+the door to a few more twists and turns.
+List 2: Chaos Factor
+This isn’t really a list but a single number to keep
+track of. It starts at 5 and is modified at the end of each
+scene. The higher the chaos factor, the greater likelihood
+of a random event occurring and the greater are the odds
+of fate questions coming out yes.
+At the end of each scene, evaluate how out of control
+the scene was. If nothing unexpected happened and the
+scene proceeded smoothly, then lower the chaos factor by
+one point. If the scene was active, however, with the
+unexpected happening and lots of action that the PCs
+could not control, increase the chaos factor by one.
+If you’re not sure how to judge a scene, then evaluate
+it based on how it ended. If it ended well, with the PC’s
+in control, then it was less chaotic. If it ended poorly for
+The Adventure
+24
+The current scene: The characters are a band of
+medieval elves on their way to rescue the fairy queen
+from the evil orcs who have imprisoned her. In the
+current scene, the characters successfully navigated
+their way through the Dim Wood, a dangerous and
+treacherous place.
+List maintenance (Characters): Add fairy queen,
+orcs, woodland monsters.
+List maintenance (Chaos): The experience in the
+Wood was wild, so they add 1 to chaos.
+List maintenance (Threads): No new threads
+develop, the current thread remains unresolved.
+The players decide to...: Since they didn’t make it
+through the wood unscathed, they decide to find a
+nearby town, hole up in an inn, and get some rest and
+supplies.
+The next scene: The scene begins in the streets of
+Anderval. There is no need to role-play the trip from
+the Dim Wood to the small city as that is
+uninteresting. This scene begins with the characters
+arriving at the door of the Hunter Inn.
+The current scene: In a Hong Kong action style of
+campaign, the characters have blasted their way
+through a building full of Yakuza hitmen. They are
+searching for a stolen gem, taken by an underworld
+boss. In the current scene, the characters finished
+dispatching a roomful of thugs as they search the
+building. The battle was drawn out enough that the
+players decide it constituted a scene in itself.
+List maintenance (Characters): Add Yakuza hitmen,
+lesser thugs.
+List maintenance (Chaos): The scene consisted
+mostly of an intense battle, so they add 1 to chaos.
+List maintenance (Threads): No new threads
+develop, the current thread remains unresolved.
+The players decide to...: Continue their search. They
+figure that the fight from the last scene was large
+enough, they probably finished off most of the guards
+in the building. That only leaves the boss and his
+bodyguard.
+The next scene: It’s only a matter of time before the
+characters find the diamond and its new owner. They
+decide that this scene is a showdown. They find the
+kingpin in his private chamber cradling the stolen
+diamond. At his side is the bodyguard, a skilled
+marksman with weapons drawn.
+The current scene: The characters are soldiers
+fighting in a jungle when they run across an ancient
+ruin. Inside they find a portal that bursts to brilliant
+life as they draw near.
+List maintenance (Characters): Friendly soldiers,
+enemy soldiers, jungle animals.
+List maintenance (Chaos): The players decide that
+the ruins represent a safer environment than the
+jungle, where the war rages on. They deduct 1 from
+chaos.
+List maintenance (Threads): The discovery of the
+artifact creates a new thread, “What is the artifact?”
+The players decide to...: The portal, obviously,
+cannot be ignored. The players decide to investigate it
+more closely and see what it does.
+The next scene: The characters step through the
+portal and find themselves transported to another
+world.
+Examples of Setting the Scene & Maintaining Lists
+
+-- 24 of 54 --
+
+the PCs, then it was more chaotic.
+Chaos in an adventure has a way of building like a
+snowball. In the beginning of the adventure there may be
+little chaos and few random events. But as the scenes roll
+on, the chaos factor will likely jump, which will
+encourage more chaotic scenes, increasing the factor
+higher and so on until the adventure comes to its
+climactic end.
+The chaos factor cannot drop below 1 or rise higher
+than 9. Do not lower it or raise it by more than one point
+at a time.
+List 3: Threads
+A thread is a storyline. Usually your adventure will
+start it’s first thread after the first scene. For the space
+opera adventure, they would begin with the thread,
+“Retrieve the trendite.”
+As the adventure continues, more threads may
+develop as subplots grow. A thread is considered “open”
+as long as it remains unresolved. Usually, the adventure is
+over as soon as the main thread is solved, or all of the
+open threads are closed.
+Keep a list of all open threads. At the end of each
+scene, add any new threads that developed out of that
+scene, and rub out any threads that were resolved. What
+constitutes a new thread is up to the players but it will
+always be a quest of some kind. A new thread can relate
+to the main thread but it doesn’t have to. For instance, in
+a time traveling campaign, the main thread might be to
+successfully travel back in time to prevent the
+assassination of an important world leader. En route to
+the past, the characters’ time-warp machine is damaged.
+This creates the new thread of “Fix the time machine,” so
+they can return to the future.
+Players will occasionally fail to recognize a new thread
+and forget to put it on the list. Don’t worry about it. As
+long as you catch the important ones, you’re doing well.
+Keeping a thread list helps in the generation of random
+events but has little function beyond that (other than
+helping the players keep track of adventure details, that
+is). The better your thread list, the more meat you can
+supply to future random events.
+Just as with the character list you will occasionally
+have to roll a random thread. They all have equal weight
+so use whatever method you are accustomed to for rolling
+items randomly.
+Special Note: PC Thread Lists
+Just as player characters will each keep their own
+personal list of important NPCs, they should also keep
+their own list of personal threads. This may include life
+goals, such as “find out who my parents really are,” or
+things they want to accomplish, like “find the ancient
+Spell of Amarka.”
+As with PC character lists, PC thread lists should only
+contain items that are the most important to the PCs,
+items that define who they are. The players maintain
+these lists and can modify them as they wish. These lists
+are only used during an adventure’s first scene, whether
+to randomly determine the scene or to be used during a
+random event in that scene. If the Event Focus indicates
+a thread related event, and there are no threads currently
+in the adventure list, then randomly choose a PC and
+randomly select one of his threads.
+This will give you the opportunity to randomly
+generate an adventure that will personally impact a
+player character and may even resolve a life-long dream
+which could dramatically change that charcter forever.
+R UNNING SCENES
+You’ve got your first scene setup. Now its time to say
+“Action!” An entire Mythic adventure is nothing more
+than a series of scenes which the characters travel
+through one at a time. Each scene leads to the next, until
+you reach the very last scene where the central conflict
+of the adventure is resolved.
+Every scene includes the following steps:
+Step 1: Set
+the scene
+Before a scene can begin, you need to have some idea
+just what you think is going to happen. As with all things
+Mythic, keep this logical. Based on what has already
+happened, what do the players expect this next scene to
+be?
+The scene setup will usually depend on what the
+players decide to do. If your characters are investigating a
+murder, the players may decide to question a witness. The
+next scene then is at the witness’ home. To help set the
+stage you can make all kinds of assumptions about the
+scene based on information you already know. In this
+case, the players can decide what kind of house the
+witness lives in, what kind of neighborhood, etc. to help
+flesh out the scene. Use what you already know and apply
+a little logic.
+When deciding on the scene don’t include too much
+detail. Just give enough color to get the scene started.
+Details will work themselves out as the scene is played.
+The players have a great deal of control regarding the
+25
+The Adventure
+
+-- 25 of 54 --
+
+nature of scenes. Pretty much, whatever they want the
+scene to be, that’s what it will be ... at least, as a starting
+point. If you are playing with a GM, he will decide what
+the setup is.
+This is not the final word on what the scene will be
+about, however; the scene setup decides how the scene
+might open, not how it unfolds.
+Modifying the
+scene setup
+You’ve got your scene setup, but don’t jump into the
+scene just yet. After a scene setup has been floated, it’s
+time to see if that idea is modified. Roll 1D10. If you roll
+chaos factor or less then the scene is modified. If you roll
+higher, then the scene begins just as expected.
+This is the time when an adventure can begin to run
+out of control for the players. Sure, maybe they plan on
+driving to the witness’ house to ask some questions. But,
+what if they are followed on the way? What if someone
+stops them and asks them a few questions instead?
+When you roll to modify a scene, and you get a value
+within the chaos factor, then the scene setup you came
+up with will be changed; it will either be a variation on
+the setup idea you had already come up with, or it will be
+an entirely different scene.
+If you rolled an odd value number (1,3,5,7,9) then the
+scene setup is modified into an altered scene. If you
+rolled an even number (2,4,6,8) then it’s an interrupt
+scene.
+For instance, if the chaos factor is currently 7, then a
+roll of 7 or less on a D10 will modify the scene setup. If
+the players roll a 1, 3, 5 or 7, then the scene is an altered
+scene. If a 2, 4, 6 was rolled, then an interrupt scene
+occurs.
+Altered scenes
+If the scene setup is altered, use logic to figure out
+how. The scene that actually begins is not the one you
+initially came up with in the scene setup, but the next
+most logical scene idea.
+For example: The scene setup is a pair of
+swashbuckling characters swaggering into a crowded bar
+to have a few beers and pry around for information about
+a certain famous pirate who has been seen in the waters
+lately. The players roll and find that this scene setup is
+altered. The most likely alteration, they figure, is that the
+bar is actually quite deserted tonight and there isn’t much
+opportunity to ask questions.
+If, when altering the scene setup, you aren’t quite sure
+The Adventure
+26
+Previous Scene Ending: The character is a detective
+who is trying to catch a group of thieves. He has
+tracked them to their next job, a bank heist, and arrived
+just in time to see them fleeing the bank with the loot.
+Following Scene Setup: The detective hops into his car
+and chases the bad guys. This results in a high-speed
+pursuit through the city.
+Altered: Instead of just a standard chase, it turns into a
+running gun battle as the bank robbers shoot back at
+the pursuing character.
+Interrupt: Something happens instead of the expected
+chase, and we use a random event to find out what.
+Rolling on the event focus chart, we come up with
+“Move toward a thread.” The only open thread at the
+moment is “Catch the thieves.” So, something happens
+to help the detective instead of the chase. Rolling on the
+event meaning tables, we get, “delay” and “attention.”
+Hmmm .... thinking for a moment, we come up with:
+the detective is late to the robbery, but he spots the
+thieves’ car as it is driving away. They didn’t notice him,
+so he is able to casually follow them along the freeway
+to their hideout.
+Previous Scene Ending: While enjoying a tankard of
+mead at a local tavern a fantasy warrior character gets
+in a brawl with a disapproving patron. The fight erupts
+into a tavern-wide fiasco, resulting in the character
+getting his clock cleaned. He winds up unconscious in
+a corner, a bulging bump on his forehead.
+Following Scene Setup: The character wakes up in a
+dungeon cell, arrested by the local magistrate for
+instigating a brawl.
+Altered: The players aren’t sure what to do here, so
+they phrase the altered scene as a Fate Chart question:
+“Does the character wake up in the magistrates office,
+instead of his dungeon?”
+Interrupt: The event focus table gives us “Ambiguous
+event.” The meaning tables give us “excitement” and
+“energy.” The interpretation arrived upon is: The
+character wakes up to the sound of a woman yelling.
+He sees he is still lying on the floor in the tavern. The
+owner is being yelled at by his wife, probably over the
+bar fight. The tavern is empty, except for the arguing
+couple and a few unconscious brawlers such as the
+player character.
+Sample Scene Ideas Modified
+
+-- 26 of 54 --
+
+what the most logical scene
+would be to replace your original setup, then phrase
+it as a fate question and check the Chart. This also
+makes it more random, but still keeps the options
+within the realm of reason. For instance, with the
+swashbuckling example above, perhaps the players
+phrase the alteration as a question, “Is the bar
+deserted?” A yes answer would get the above scenario,
+where their quest to ask questions is stymied. A no
+means the bar is packed, as expected,
+but something else is happening.
+Maybe the place is closed for a
+“private party.” An exceptional yes
+could mean the place has burned down. An
+exceptional no might mean there is a riot going on
+there.
+Interrupt scenes
+This is an entirely different, and unexpected, scene
+than the scene setup. The characters
+were on their way to the scene
+setup, but the interrupt scene
+preempts it. Since the scene is
+unexpected, treat this as a random event (in just the
+same way as you might use random events to generate
+the very first scene in the adventure). Generate a
+random event and consider that the cause of
+the interrupt scene. The rest of the
+scene is logically built around this
+random event.
+The interrupt is very different from
+the altered scene. In an altered scene, you
+are still going with the original scene setup, but with a
+twist. An interrupt scene, however, is an entirely
+different scenario. The scene setup is tossed
+out the window and replaced with this new
+one, based off of a random event.
+For instance, in our swashbuckling
+example above, there are many
+interrupt possibilities. Maybe, on their
+way to the tavern, the characters are
+waylaid by bandits. Or, a stranger
+pulls them aside and promises
+information about the pirate, for a
+price. The possibilities are endless,
+and unexpected.
+Interrupt scenes are where Mythic adventures begin
+throwing big curveballs at players. With the chaos factor
+starting at 5, early scenes in an adventure should play out
+pretty much as expected. However, if chaos increases, the
+adventure will rumble more and more out of control as
+characters veer from one unexpected scene to the next.
+The Adventure
+27
+
+-- 27 of 54 --
+
+Step 2: Play out
+the scene
+This is the heart of the adventure, where all the action
+unfolds. The scene has been determined. Now what
+happens?
+That’s pretty much up to the players. The scene begins
+as dictated by the setup or the modifications. But, that’s
+just the beginning of the scene. Now it’s up to the players
+to begin asking fate questions and resolving conflicts.
+Likely, the first set of questions will involve clarifying
+details about the beginning of the scene itself.
+For instance, in our murder investigation example, the
+players set off to the witness’ house. A player may ask, “Is
+the house nice?” They check the Fate Chart and come
+back with “Yes.” From that, they interpret that the house
+is a nicely kept, two-story home. Then someone asks, “Is
+there a car parked out front?” Consulting the chart: “Yes.”
+After two questions, they have some detail on what
+the scene looks like and what they can expect.
+They then decide to walk up to the front door and
+knock, asking, “Does the witness answer?” The answer
+from the chart is exceptional yes.
+Hmmm, exceptional. They decide that the most
+logical interpretation is that the witness opens the door
+and is very excited to see them, immediately ushering
+them into the house. The characters, a little confused by
+this reaction, go along with the witness.
+The players ask, “Does the witness know who we are?”
+The answer: “No.”
+They interpret this to mean that the witness has
+mistaken them for someone else. The characters decide to
+play along with this, pretending to be whoever the
+witness thinks they are. Using whatever persuasion skills
+they possess, they try to keep the witness talking, then
+they ask, “Does the witness talk as if he were a party to
+the murder?” Answer: “Yes.”
+They interpret that the witness thinks the characters
+are also in on the conspiracy. As the scene plays out, the
+characters might learn that the murder was a mafia hit
+and the witness merely a plant to throw off suspicion.
+The witness thinks that the characters are mafia
+representatives there to pay him for his services. He is
+anxious to get paid so he can leave town.
+Scenes progress in this fashion, by asking fate questions
+and making logical assumptions, until the main action is
+over. In the example above, the scene might end when the
+characters are through with the witness and decide to leave.
+Mythic, using this scene structure and the Fate Chart,
+gives the players all the information they need to realize the
+adventure universe. The actual mechanics of game-play,
+such as conflict resoltuion and combat, would likely be
+handled by a particular rpg game they are using. In the
+above example, this may involve communication skill
+checks, or even combat if the witness realizes his mistake
+and tries to kill the characters. Of course, failing that, they
+can always frame a fate question and consult the chart to
+resolve gaming issues.
+Scene length
+The length of a scene is based on the action of the
+scene, not the passage of time. Whatever the main purpose
+of the scene is, when that business is concluded, then the
+scene is concluded. In the example above, the scene takes
+as much time as the characters are in the house and until
+they are done with the witness. But a scene could last years:
+a princess lies in suspended animation until that magic kiss
+comes; a dragon slumbers on its hoard until disturbed; a
+man searches the world for clues to the identity of the
+criminal who killed his wife.
+A scene doesn’t require success to reach its end. With
+the investigators, they may have arrived at the witnesses
+house, asked a few questions, received little information in
+return, and left empty-handed. The important thing is that
+the purpose of the scene is addressed (meeting the witness)
+and is dealt with.
+The Adventure
+28
+Permission is granted by the publisher to copy this page for personal use only
+Adventure Notes
+Scene Setup 	Lists
+Characters
+Threads
+Chaos Factor
+5
+Scene #
+Scene Setup	Scene # 	Scene Setup	Scene #
+Scene Setup	Scene #
+Scene Setup	Scene # 	Scene Setup	Scene #
+Scene Setup 	Scene Setup	Scene #	Scene #
+Summary of Resolving Scenes
+• Come up with the Scene Setup.
+• Roll 1D10 against Chaos to see if the Setup is modified
+as an Altered Scene (odd) or an Interrupt (even).
+• Play out the Scene.
+• When the main action ends, the Scene ends.
+• Update lists: Characters, Threads, Chaos Factor
+Adventure summary sheet. Find a full page version on page 51.
+
+-- 28 of 54 --
+
+Scene topics
+It’s been stated before, but bears stating again, that a
+scene should be about something interesting. Although a
+scene should be what logically happens next, you can fast
+forward through uninteresting material. For instance,
+explorers in a cavern might come upon a room, kill a
+monster and find some treasure. The next scene doesn’t
+have to be, “Alright, they go out in the hall and walk a
+few feet. Anything happen?”
+What would make more sense would be a scene setup
+like: “They delve deeper into the caverns, wandering
+through dark halls until they come across another room
+that looks interesting.”
+What is important to a scene are interesting bits that
+move the adventure along, in the same way that a movie
+or novel doesn’t bother staging scenes or chapters on
+pointless information. Every scene setup should at least
+contain the potential to advance the story.
+Cinematic scenes
+As stated before, you may want to consider a
+cinematic style to your adventure. Most gamers take the
+simulationist approach, where scenes follow each other
+chronologically and the players know about as much as
+their characters do.
+A cinematic approach uses techniques found in the
+movies: flashback scenes portraying events from the past,
+dream sequences, events in remote locations
+that the characters are not aware of. Any of
+these drama techniques, and more, are
+available to you in a cinematic style of game.
+The caution is that you really have to want to
+play like this and be prepared to limit your
+character. You, as the player, will likely learn
+information that is impossible for the
+character to know or act upon.
+Randomness
+Mythic is based on logic, but not
+everything happens as expected. Random
+events, discussed in the previous chapter, will
+give your scenes the necessary twists to keep
+your characters on their toes. Wherever you
+think the adventure might be heading, a
+single random event could send it spiraling in
+an entirely different direction. Remember,
+whenever a double-digit (11, 22, etc.) is rolled
+on the Fate Chart, and that digit is within the
+range of the chaos factor, then a random
+event occurs.
+Step 3: End the
+scene, update
+the lists
+When the action ends so does the scene. The scene
+should end at a logical break and can cover any amount
+of time. If the characters are involved in a boxing match,
+each scene may last only as long as a round of the fight.
+If the characters were on a long march across the country,
+a scene could last weeks.
+At the end of each scene, run through the three lists
+and update them.
+Characters
+Scratch out any characters who have dropped out of
+the adventure and add any new ones who have appeared
+or were mentioned. Remember, this doesn’t just mean
+individuals. Characters can be any force in the adventure
+with the ability to act on its own. That means crowds,
+organizations, anonymous thugs, etc. This also means
+adding the less important characters, not just the heavy-
+hitters. You never know when that maid you ignored in
+the last scene may show up in the dark ... wielding a
+knife!
+The Adventure
+29
+Summary of Resolving Scenes
+• Come up with the Scene Setup.
+• Roll 1D10 against Chaos to see if the Setup
+is modified as an Altered Scene (odd) or an
+Interrupt (even).
+• Play out the Scene.
+• When the main action ends, the Scene ends.
+• Update lists: 	Characters
+Threads
+Chaos Factor
+
+-- 29 of 54 --
+
+Chaos
+Update the chaos factor based on the level of activity from
+the scene and the players’ success. If the scene was out of
+control, add 1 to the chaos factor. If the scene was controlled
+by the characters, then subtract 1 from the chaos factor.
+Chaos stays in a range of 1-9. The chaos factor must move up
+or down at the end of each scene unless it is already at 1 or 9.
+Threads
+Remove completed threads and add new ones. A thread is
+complete when the goal has been accomplished or it no
+longer matters. If the goal is to rescue the princess, but she
+dies when the dragon you slew falls on her, then that pretty
+much ends that thread.
+Adding new threads is a judgement call for the players.
+New sub-plots have a tendancy to develop on their own,
+growing out of the action of a scene. It’s up to the players if
+this is a plot they wish to pursue.
+For instance, the characters are fantasy adventurers
+searching for the lost Wand of Varza. Along the way they
+spend the night at a peasant’s home. The peasant bemoans
+the fact that his son disappeared in the forest days before and
+has not returned. The characters can search for him if they
+wish, or forget about it and move on. If they decide to find
+the boy, then this forms a new thread.
+New threads do not necessarily need to have anything to
+do with other threads. Multiple threads may all be related, or
+not. The important thing is to identify objectives that the
+characters deem are important.
+SAMPLE SCENE
+The following scene is a “transcript” of two players in a
+Mythic adventure session. They are playing without a GM.
+For the sake of the example, we will assume they are playing
+a standard superhero rpg.
+The adventure
+This adventure teams The Fantasm, a gun-toting anti-
+hero who can phase through solid objects, with Mighty May,
+a spandex-clad superheroine of tremendous strength. The
+pair have teamed up to root out the evil Marzitron, a
+sentient robot bent on the eradication of all things human.
+The scene
+In previous scenes, the two superheroes hunted down
+the robot until they discovered he was hiding in the
+sewers beneath the city. The players propose the
+following scene setup for the next scene: “Fantasm and
+May descend into the sewers through public manholes
+and begin searching around. The sewers are dank and,
+of course, stink.”
+The chaos factor is 8. Rolling 1D10, they get 3,
+within the range of chaos, which means the scene setup
+is modified. They rolled an odd number, so the scene
+setup is altered.
+Fantasm: “How about, we see a track of footprints in
+the sewer, for an altered scene.”
+May’s player agrees. The scene isn’t radically different
+from the one first envisioned, but different enough to
+give the players something additional to work with.
+Fantasm: “Are the footprints all going in one
+direction?” They decide the odds on this are very likely,
+and roll a 22 on the Fate Chart. This results in a yes
+answer, but also gives them a random event since they
+rolled a double number that is within the chaos range of
+8.
+Rolling for the event, they get a focus of “Ambiguous
+event.” They roll “passion” and “friendship” on the
+meaning charts. The two players agree on an
+interpretation.
+May: “As we climb down a manhole and enter the
+sewer, we see there’s a message scrawled on the wall.
+‘Jack loves Susan,’ with a crude heart drawn around it.
+‘Charming,’ May sighs in her southern drawl. ‘Love in
+the sewers.’”
+Fantasm: “‘Come on, let’s move,’ Fantasm says gruffly.
+We follow the prints in the muck, trying to make as
+little noise as possible. I have my twin .45s drawn. We
+just keep following the footprints. I assume they will
+lead to a room or something. Do they?” This possibility
+seems likely. They roll 96, however, above the 95
+needed.
+May: “They lead directly into a solid wall. The
+footprints continue, and then just stop, as if the walker
+disappeared.”
+Fantasm: “I lean over and examine the footprints
+closely. ‘What the hell?’ I muse.”
+May: “May looks up, worried there may be something
+lurking on the ceiling. Is there?” The odds seem
+unlikely, and she rolls an 83. No.
+May: “I have an idea. May says to Fantasm, ‘Poke
+your head underground, maybe there’s a room below.’”
+Fantasm: “I nod and phase out, ducking my head
+through the pavement. Do I see a room below?” They
+give this question a rank of very unlikely, 65%, and roll
+21, a yes.
+Fantasm: “I pull my head back up with a grin. ‘You
+were right. There must be a trap door here or
+something.’ I examine the concrete, looking for secret
+mechanisms. Do I find any?” The players use the
+mechanics in the rpg they are using to determine if he
+The Adventure
+30
+
+-- 30 of 54 --
+
+successfully searches out a secret latch. He fails his skill
+check.
+Fantasm: “I scratch my head in confusion. ‘If there’s a
+door here, I can’t figure it out,” I say, annoyed.”
+May: “‘Stand back,” I instruct to Fantasm. ‘I’ll do it
+the old-fashioned way.’”
+Fantasm: “I step back out of the way.”
+May: “I lean over and give the floor a heavy-duty
+punch, trying to knock through it. ” Again, they use the
+rpg mechanics to resolve this.
+May: “I easily punch through the floor and drop down
+into the room below.”
+Fantasm: “I follow her into the room.”
+May: “I look around quickly. Does this place look
+different from the sewers, all shiny metal like a high-tech
+complex?” Since they really have no idea what the odds
+for this question would be, they go for 50/50 odds and
+roll 55. A yes, but also a random event (chaos is 8).
+May: “‘I think we’ve found his hideout,’ I say.” They
+check for the random event on the event focus table and
+get “Player character Negative.” With two players, they
+randomly determine that the player character in
+question is Fantasm. Rolling on the event meaning
+charts, they get “triumph” and “the phsyical.” They
+interpret this to mean that Fantasm gets attacked.
+Fantasm: “Does Marzitron himself attack?” The odds
+seem very unlikely, since the master robot has used
+minions to do nearly all of his dirty work in the past.
+They roll a 71, for a no.
+The next most logical idea is that they have stumbled
+upon a guard, who attacks Fantasm. Instead of assuming
+what kind of guard it is, they decide to form this as
+another fate question.
+Fantasm: “Is the guard a robot, maybe kind of a
+spidery thing that was lurking near the ceiling, which is
+why we didn’t notice it at first?” Odds are 50/50, and
+they roll 43 for a yes.
+The players enter combat with the guard robot, using
+the rules in their super hero rpg. The combat is fairly
+straightforward, not requiring any additional questions
+from the Fate Chart. After Fantasm squeezes off a few
+shots and May knocks the guard around a bit, they finish
+the robot off.
+May: “I smash it against the wall and it explodes in a
+spray of sparks and metal pieces. ‘Take that, you darn
+spider. I hate spiders!’”
+Fantasm: “‘Well done,’ I say. Is there a door out of
+here?” The odds of this are a near sure thing, and they
+roll 52. Yes.
+Fantasm: “We head for the door, keeping a wary
+lookout for more guards.”
+Since they have successfully searched the sewers and
+found the hideout, this ends the main action of the
+scene. The next scene would involve them looking
+deeper into the headquarters, perhaps finding the evil
+robot, and so on. Ending the scene, they run through
+their lists quickly and make the following changes:
+Characters: Add Robot Guards to the list.
+Threads: No changes here.
+Chaos factor: This scene was chaotic, with the robot
+attack, but the characters remained firmly in control
+throughout. This lowers the factor from 8 to 7.
+A note about asking
+questions
+The scene struture described in this chapter is fairly
+simple and straightforward. The idea is to drive the
+action forward with as little clutter as possible. What
+makes everything work, however, is asking questions of
+the Fate Chart.
+Players will quickly find, however, a tendancy to want
+to ask more and more questions to get more specific
+results. This can lead to bogging down the game when
+you really don’t have to. Very rarely should you have to
+ask more than one question to get a good final answer.
+Keep in mind that when you ask a question, there are
+four possible results from the Fate Chart: yes, no,
+exceptional yes and exceptional no. This alone gives you
+a fairly wide range of potential outcomes with just one
+question. For instance, in a game where the characters
+are FBI agents pursuing terrorists, a character walks into
+a room and encounters one of the men he had been
+chasing. The player asks, “Is the man armed?” Given the
+four possible answers from the Fate Chart, you could
+have the following results:
+• Yes: He is armed with the most likely weapon, a
+handgun.
+• No: He is unarmed, and probably surprised to see
+the agents.
+• Exceptional yes: He is armed with something
+mightier than a handgun, a submachine gun.
+• Exceptional no: Not only is he not armed, he’s
+asleep in his bed.
+To keep the game flowing smoothly, you should limit
+yourself to asking no more than a single question of the
+Fate Chart to answer a question. In the example above,
+all of the potential answers are plenty to satisfy the
+dramatic needs of the scene. Any additional specifics,
+such as exactly what type of handgun is he wielding, is
+there a full clip of bullets in the weapon, etc. can be
+handled through sheer logic. Just make the most
+reasonable assumptions based on the results of that one
+question.
+The Adventure
+31
+
+-- 31 of 54 --
+
+
+
+-- 32 of 54 --
+
+Emuwhat?
+S
+o, you all want to be players, and no one wants to run
+the show. Well, that’s just great. The Mythic
+adventure engine is designed to build games off the
+cuff, making the game master’s life easier. Or, these same
+tools can be used to replace the GM entirely. After all, a
+GM can use the Mythic engine to develop an adventure
+even if he doesn’t know any more about what’s going on
+than the players do. It’s not a far cry to cut out the GM
+entirely.
+If you want to try playing without a GM, this chapter
+offers some suggestions that might make the adventure run
+smoother.
+First ideas
+You can come to the gaming table armed with only your
+character and nothing else. In fact, it’s often best if you
+don’t have any clear ideas for an adventure. You may have a
+first scene setup idea in mind, or you may decide to generate
+it randomly as detailed in the adventures chapter. Whatever
+idea you come up with doesn’t have to make a lot of sense.
+You don’t even have to know what it means. The point is to
+come up with something and see what unfolds from there.
+For instance, some first scene setup ideas:
+• “The players are called in by the FBI to investigate a
+mysterious murder. The body was found with strange
+occult symbols drawn across it and other oddities that
+government investigators cannot explain. They are
+seeking the help of the characters.”
+• “The characters wake up in a hotel room with no
+memory and no possessions besides the clothes on their
+back. There is a set of keys on the dresser, a video store
+rental card with the name ‘Sue’ on it, and a bloody
+knife on the floor.”
+• “The characters are hanging out in a tavern when a
+cloaked figure approaches. He plops a bag of gold on
+the table, sits and explains he wants to hire the group
+to eradicate a nest of goblins that are marauding the
+countryside.”
+As you can see from the examples above, some ideas offer
+more information than others. Regardless of the content,
+each idea is a seed that can lead anywhere. It’s all up to the
+players and the questions they ask.
+Taking a hint from the movies
+The first scene setup should be interesting, whether
+the players understand it or not. Of course, you could
+start with, “We are walking along a dirt road on a
+pleasant afternoon. The sun is shining, the birds are
+singing.” This could still work as a setup, but it is bland
+and doesn’t spark the imagination. Starting from such a
+place is, in a sense, begging the dice to throw in some
+random events to take the adventure in a more intriguing
+direction.
+To get the action started faster come up with
+something that ignites your interest. For inspiration, just
+think about nearly any movie you have ever viewed. The
+opening scene almost always sets the tone for the whole
+movie.
+If you are playing a cinematic Mythic adventure, then
+the first scene doesn’t have to flow sequentially with the
+rest of the adventure, and it doesn’t even have to involve
+the player characters directly. It might even be a
+flashback. For instance, the scene setup might be: “In 469
+BC, King Musdah of the desert city of Kasmar sealed into
+a tomb the Ocular of Anzla, an amulet said to be made
+from the eye of an evil, dead god. The king so feared the
+relic that the tomb was sealed and hidden beneath the
+sands, and all who worked to build it were killed to
+protect the secret.” Boom, there you go. This scene might
+lead into an archaeological dig, involving the characters,
+where the tomb is discovered in modern times.
+Where to go
+from here
+There is really not much difference between playing a
+Mythic game with a GM and without. Whether you use a
+GM or not, you still ask yes/no questions for all
+situations, and they are resolved using the Fate Chart.
+Without a GM, however, the players are responsible for
+interpreting the answers as opposed to a single person
+shouldering the responsibility. Logic is still the prime rule
+when interpreting the yes/no question results.
+Scenes progress the same way, also. Players travel
+through a scene, asking yes/no questions along the way,
+until the scene runs out of steam. The players wrap up
+the scene, adjust the NPC list, the threads list and the
+33
+Chapter 5
+GM Emulation
+
+-- 33 of 54 --
+
+chaos factor. Then they proceed to the next scene,
+deciding what they think it should be, and then rolling
+the dice and seeing if that is actually what happens.
+Playing this way is clearly not the same as playing with
+a well-prepared GM. Nevertheless, the experience can be
+the same, if not better. The adventure still progresses
+along logical lines. The players are still embroiled in a
+mystery that unfolds before their eyes, scene by scene,
+and which will eventually lead to an answer. Just because
+that mystery, and those answers, don’t objectively exist
+yet in the real world does not make them any less real
+when they reveal themselves to the players.
+The gaming
+experience
+Since you, the player, are in near-total control of the
+adventure, there is a degree of responsibility you have to
+toe. If you are a powergamer this may not work out so
+well for you. After all, without a GM, you have free reign
+to manipulate events nearly any way you wish. This
+doesn’t sound like much fun, however.
+Your best gaming experiences will come when you
+approach the adventure with a character you like and an
+open mind to what can happen. It doesn’t matter
+whether you are a cinematic type of player, or a
+simulationist, you both want to know the same thing:
+what happens next? You should ask the types of questions
+that will move the adventure forward, instead of
+questions that manipulate the rules and will help your
+character the most.
+The example
+Enough babble, let’s get down to an example.
+Following is a transcript of two
+players adventuring with Mythic
+and without a GM. For the sake of
+argument, we won’t mention the
+actual role-playing game the players are
+using, we’ll just reference adventure events
+as they unfold. The adventure is set in the
+modern world with a dark, magical twist. The
+character Michael is an FBI agent who
+investigates occult murders. Sara is an occultist
+herself who has teamed up with Michael. She
+possesses a range of mystic talents.
+To create the first scene, the players decide to
+generate it randomly. They come up with: remote event,
+expose, death. They interpret these results to come up
+with the following first scene: “Michael and Sara are
+investigating the murder of a homeless man in New
+York city. His body is found with the heart removed
+and strange runes chalked on the sidewalk around
+him.”
+As you can see, they decided not to take a
+mundane interpretation of the results but a more
+extreme one, adding details such as the runes and
+the grisly method the man was killed. This is a
+smart move for the first scene to get the plot off to
+a good, exciting start, as long as the interpretation
+fits the results that were rolled.
+As the scenes unfold, Michael and Sara
+GM Emulation
+34
+
+-- 34 of 54 --
+
+GM Emulation
+35
+Campaign background: A race of insect-like aliens
+have invaded the Earth, destroying human civilization.
+Those who have not been captured and enslaved live
+in the wastelands, desperate to stay alive.
+First scene setup: The characters are captured by a
+village of humans. The players decide to play the
+game cinematically and set up the scene just before
+they are captured, so they can role play the event.
+Their characters are making their way across a desert
+when they are ambushed. They will put up a good
+fight, but will be outnumbered, so the odds are
+hopeless. However, the ambushers will not kill the
+characters, but take them hostage.
+Where the players may go from here: With their
+capture inevitable in the first scene, the characters
+may still get a little banged up. Subsequent scenes
+may involve them negotiating with the village elders
+on the terms of their release, a period of healing, or
+the characters’ own plans to escape. Perhaps the
+characters escape and are so embittered by the
+experience, they side with the aliens long enough to
+wipe the village out. Or, maybe the characters
+discover the village elders are in league with the
+aliens.
+Campaign background: The characters are
+investigators of the paranormal in a modern setting.
+First scene setup: The characters have been invited
+to dinner at the home of a wealthy friend. The house
+is a mansion deep in a secluded forest. At the dinner,
+which involves ten other people, the host declares that
+he believes one of his friends is an extradimensional
+monster who has been prowling the earth for
+centuries, feeding on the souls of innocents. He
+cannot figure out who it is, since the monster seems
+human in most respects. So, he will let his guests
+figure out who among them is a monster. If no one
+can prove to him by midnight who the creature is, the
+house is rigged to blow up, killing all inside. The
+doors and windows are all locked and barred; there is
+no escape. The players decide on a lengthier scene
+setup and to start the action at the dinner table, after
+the host makes his announcement. This scene will
+mostly involve watching the reactions of all of the
+guests, and learning a little about who they are.
+Where the players may go from here: The players
+will likely either play their hosts game, and try to
+figure out who the monster is, or they will decide their
+friend is insane and try to find a way out of the
+mansion before it blows sky high. Either way, the
+adventure will likely end with the characters learning
+whether their host was correct, or mad.
+Campaign background: The characters are American
+secret agents.
+First scene setup: The characters are suddenly
+arrested by their own agency. It appears they are
+accused of murdering a US Congressman and of
+being double-agents. The first scene can involve the
+characters’ incarceration, and their plans to escape.
+Where the players may go from here: The characters
+know they are being framed, and must escape and
+prove their innocence. A former teammate who
+believes them may help free them so they can prove
+their own innocence. Anyone could have framed the
+characters, from an old enemy to a new one who just
+wanted to pin the murder on someone else, to the
+friend who helps them escape. The characters will
+likely use personal contacts to discover their initial
+clues, and take it from there.
+Campaign background: The character is a normal,
+everyday man in modern America.
+First scene setup: The character has been attacked
+by a wolf in the woods and bitten. The man wanders
+helpless and finds a light through the trees that leads
+to a small house. Their he discovers an old woman
+who, upon seeing his wounds, shuns him, but not
+before informing him of what his fate will become.
+She says he has been bitten by a werewolf! She
+proves it to him by showing him a mirror and pointing
+out his extended canines and his own desire for live
+meat.
+Where the player may go from here: Gleaning a clue
+or two from the old woman, the character may seek
+out myth experts and other sources of werewolf lore
+to learn of a cure. Once he does, the rest of the
+adventure involves his quest to cure himself, perhaps
+running across others like him, or even becoming the
+target of werewolf hunters, who would rather destroy
+him than help cure him.
+Sample adventure openings
+
+-- 35 of 54 --
+
+discover that there have been two other similar murders
+that had gone underreported, each victim with his heart
+removed. Checking some of her resources, Sara identifies
+the runes as Aztec in origin and discovers the treatment
+of the bodies is similar to some ancient, Aztec rights to
+appease cruel gods.
+We pick up
+now at the
+beginning of
+Scene 4, with the
+setup: “Check
+Sara’s theories
+with an expert.
+Seek out an
+expert at a local
+university.”
+Michael’s
+Player: “That
+sounds like a good
+scene setup. Let’s
+check it.” Before
+starting the scene,
+he checks against
+the chaos factor
+to see if the scene
+setup is modified.
+Chaos is 2, he
+rolls a 1D10 and
+gets a 2. This
+means an
+interrupt. They
+have to roll a
+random event to
+see what
+interrupted the
+expected scene.
+He rolls on the
+Event Focus Table
+and gets,
+“Character
+action.” He rolls
+among the four
+characters in the
+list and comes up
+with Agent
+Summers,
+Michael’s contact
+with the FBI who
+helped him
+uncover the
+information on
+the previous
+murders.
+Checking the Event Meaning tables, he gets, “oppress”
+and “the intellectual.”
+Sara’s Player: “Hmm, that’s an interesting one. Sounds
+like he’s gone insane.”
+MP: “Yeah. We get a call from Summers, sounding
+agitated. He’s been working on the case and wants to
+GM Emulation
+36
+Permission is granted by the publisher to copy this page for personal use only
+Scene Setup Lists
+Characters
+Threads
+Chaos Factor
+5
+Scene
+Scene Setup	Scene
+	Scene Setup	Scene
+Scene Setup	Scene
+Scene Setup	Scene 	Scene Setup	Scene
+Scene Setup	Scene 	Scene Setup	Scene
+Summary of Resolving Scenes
+• Come up with the Scene Setup.
+• Roll 1D10 against Chaos to see if the Setup is modified as an
+Altered Scene or an Interrupt.
+• Play out the Scene.
+• When the main action ends, the Scene ends.
+• Update lists: 	characters
+Threads
+Chaos Factor
+• Award Favor Points (0, 10, or 25)
+1
+Michael and Sara investigate
+the murder of a homeless
+man in New York.
+Michael uses police contacts
+to review other murder
+records, looking for similar
+cases.
+Sara reviews her textbooks,
+looking for the meaning of
+the runes.
+Visit an agitated Agent
+Summers, who might have a
+lead.
+2
+3 	4
+Detective Richards, NYPD
+Officer Daniels, NYPD
+Reginald Morrow
+Agent Brian Summers, FBI
+Find the killer.
+2
+Adventure Worksheet
+Summary of Resolving Scenes
+• Come up with the Scene Setup.
+• Roll 1D10 against Chaos to see if the Setup is modified
+as an Altered Scene (odd) or an Interrupt (even).
+• Play out the Scene.
+• When the main action ends, the Scene ends.
+• Update lists: Characters, Threads, Chaos Factor
+Adventure Notes
+
+-- 36 of 54 --
+
+meet us at a hotel. When we get there, the place is a
+mess and he’s acting very strangely.”
+SP: “Sounds good. Sara eyes the hotel room as
+Summers lets them in. Are there papers and files
+anywhere? I figure this is very likely, given the setup.”
+With the chaos factor so low, she rolls on the Fate Chart
+against an odds rank of very likely. She rolls an 84, a no.
+MP: “I guess it just looks messy then, bed unmade,
+coffee cups, but not a total wreck. How does Summers
+look? Is he manic, talking fast?” They figure the odds on
+this are very likely, and roll a 2 for an exceptional yes.
+SP: “Sara is alarmed by Summers, who is wild-eyed
+and barely coherent.”
+MP: “He’s talking so fast, moving about the room
+aimlessly. Michael tries to understand what Summers is
+ranting about. Does any of it make sense?” He uses a
+mechanic from the RPG they are using to determine if
+Michael can understand the raving Summers. He fails his
+roll.
+MP: “Michael shakes his head at Sara, shrugging. He
+approaches Summers and says in his most soothing voice,
+‘Calm down, buddy. Why don’t you sit on the bed and
+start at the top.’ Do I get him to calm down?” Again,
+they use a game mechanic to see if Michael succeeds.
+Michael does succeed in the attempt and calms Summers
+down.
+SP: “Oh, good. He calms down a little, sitting on the
+bed, still chattering away though. While Michael talks to
+him, Sara will casually drift about the room, looking for
+any files or exposed papers. Does she see anything
+interesting?” They decide the odds are likely, and rolls a
+95, an exceptional no.
+MP: “Does that mean the room is exceptionally
+uninteresting?”
+SP: “More likely, I just don’t see anything unusual. I
+can’t think of an exceptional result.”
+MP: “I ask Summers if he called us because he
+discovered the killer.” This seems very unlikely, and they
+roll a 47, for a no.
+SP: “Sara speaks softly to Summers, and asks him if he
+was trying to warn us. Are we getting close to something
+and it’s getting dangerous for us?” They assign this a
+likelihood of somewhat likely and roll a 5, an exceptional
+yes.
+MP: “Exceptional, great. He gets nuts again, jumps up,
+ranting about how all our lives are in danger. We need to
+flee New York immediately.”
+SP: “Danger from whom? Sara asks him. Does he say?”
+They give this 50/50 odds and roll a 27 for a no.
+MP: “He’s too bonkers, and isn’t listening to Sara.”
+SP: “Is Summers afraid?” They assign this odds of very
+likely and roll 68 for a no. Sara’s player interprets this
+result to mean that Summers is acting out of anger, not
+fear.
+MP: “If angry, then he must be angry at us. Summers
+says, ‘You’re messing around with stuff you don’t
+understand. You’re gonna get us all killed!’”
+SP: “Sara tenses up at Summers’ tone. She studies him
+closely. Is he armed?” Summers is an FBI agent, so they
+decide on likely odds and roll a 4, an exceptional yes.
+“Uh-oh. He’s got one gun in a shoulder holster, visible
+with his open coat, and another gun on the nightstand
+near the bed.”
+MP: “Is he behaving threateningly toward us now?”
+Given the previous conclusion about his anger toward
+the characters, and his manic behavior, they decide on
+very likely odds and roll a 67, for a no.
+SP: “The low chaos factor coming to our rescue. OK,
+so he’s ticked off and telling us to back off the case, but
+he’s not threatening. He’s just one freaked out guy.”
+MP: “Michael tells him, ‘We can’t back off this case.
+But if you’re so worried then you’re free to run.’ Does he
+accept this?” Given Summers’ anger and attitude, they
+decide the odds are unlikelly and roll a 66 for a no. They
+rolled a double digit, but since the single number (“6”) is
+greater than the chaos factor, no random event is
+generated.
+SP: “He gets angrier...”
+The above scene would continue playing out until
+Michael and Sara were done with Summers, at which
+point the main action for the scene would be over,
+ending the scene. Since this scene was an interrupt, the
+players are free to make the next scene setup the same
+one they had tried before. Or, if they learned something
+interesting from Summers, they may decide to go off in a
+different direction.
+The players in this scene asked the questions they
+needed answered to move the scene along. When a
+question was answered on the Fate Chart, the first player
+with a ready interpretation threw it out.
+The players didn’t rely on the Fate Chart for every
+detail. This is where logic comes into play. It’s also the
+area where a game master usually does most of his work,
+generating details. Many of the smaller, colorful details
+don’t matter much in the long run, so there is no harm in
+running along with an improvised description if it seems
+fitting. Both players here ad-libbed some, describing
+Summers’ demeanor and the condition of his hotel room.
+However, even though they made up these details, the
+facts they came up with still fit the results of the Fate
+Chart and were consistent with the context of the
+adventure.
+GM Emulation
+37
+
+-- 37 of 54 --
+
+J ust because Mythic adventures are created off the cuff
+is no reason why you have to stop at just one
+scenario. Mythic can be used to create an entire
+campaign, or even the setting itself. Creating the world
+that your characters adventure within can be as simple,
+or complex, as you want it to be. Many players come to
+the table with a highly prepared game master armed with
+complete data on a very realized gaming universe. Others
+come to the table with a few ideas and the desire to have
+fun.
+There is no right way to approach gaming, it is all a
+matter of style. Mythic, however, caters to the other
+players, the underprepared.
+If you are using Mythic Emulator, you are also role-
+playing with another rpg, using those mechanics to
+operate the game world. Whatever game that is, it
+probably came with its own setting.
+However, what if you want to create a brand new
+setting? Or perhaps create a character and then just drop
+them into a gaming universe and see what happens next?
+This chapter offers some advice on how to use Mythic
+Emulator not just to create a single adventure, but how to
+create an entire campaign or game world.
+Where to begin
+You can begin a Mythic Emulator adventure with as
+little detail about the world as you wish. If playing with a
+GM, she will likely have some ideas about the adventure
+universe. On the other hand, she may start without a clue
+about the adventure world, or perhaps the players are
+forging ahead without a GM and the only notion they
+have about the universe is that it is a “light fantasy” one.
+Whether you start detailed or with a blank slate, if you
+are running a Mythic Emulator adventure, the key word
+to keep in mind is “evolution.” Since the Mythic engine
+is guiding the progress of the adventure, there
+is no telling what details about the game
+world this will reveal. Players could
+begin with their characters in a very
+generalized concept of a game world
+and, by the end of their first
+adventure, have a much more
+concrete picture of where it is their
+characters live.
+Evolution of a setting
+All of your setting details can evolve from gaming
+sessions, without having to specifically generate world
+facts outside of the course of adventuring. For instance, if
+a pair of players decide they want to adventure in a
+fantasy world, in the beginning they may only know the
+name of the village their characters come from and the
+fact that the kingdom is at war with a nation of orcs. By
+the end of the adventure they may have learned that a
+secret society of humans is working to help the orcs, that
+magic is difficult to cast and has unpredictable results,
+that the kingdom’s armies are broken into factions each
+loyal to a certain general, and that their village lies on a
+major road that stands in the way of the approaching orc
+army.
+These are all important details that help define the
+adventure world. These facts will have a profound impact
+on future adventures, which will evolve the world even
+more.
+By the end of the first adventure, the players will find
+the world their characters inhabit is a much different
+place than they may have first thought. They will learn
+about it as their characters learn.
+Issues of control
+This is not to say that you have to leave it all up to
+Mythic. If you are playing with a GM, that person ought
+to consider the results of random checks and altered
+scene ideas as suggestions and not hard-and-fast rules. As
+the adventure speeds along, they will find ideas popping
+into their heads that they like better than the ones
+evolving in front of them. Or maybe not. The choice is
+theirs.
+If playing without a GM, the situation is more
+controlled by Mythic. Still, the course of the adventure is
+largely shaped by the questions the players ask and the
+scene ideas they generate.
+38
+Chapter 6
+World Creation
+
+-- 38 of 54 --
+
+Global questions
+Everyone, even the least educated, knows something
+about the society and world they live in. Even if you
+begin an adventure knowing nothing about the campaign
+world, your characters know more than you, the player,
+do. It is fair to ask fate questions that reflect general
+knowledge. For instance, if players are adventuring in a
+generic sci-fi universe, which they know nothing about,
+some questions they might ask right away are: Is faster
+than light travel possible? Are aliens common? Does
+everyone speak the same language?
+These kind of global questions will help shape the
+adventure world fairly quickly. Some you may already
+know, especially if the campaign world was not started
+completely from scratch. But even if you come prepared,
+your characters may stumble into areas where they should
+have knowledge, but you don’t.
+Many of these questions will involve large issues and
+will be easily remembered. If there is any question about
+the fallibility of your memories, however, it may be a
+good idea to keep a notebook handy and write some of
+these findings down.
+E VOLUTION BY
+EXAMPLE
+Following is a sample game world evolved during the
+course of several adventures.
+Welcome to Durnam
+The kingdom of Durnam is a fantasy realm with an
+economic and caste system straight out of the middle
+ages. Mancers, the mages of this world, are fairly common
+although magic is difficult to control. The kingdom is in
+a period of great turmoil as a pestilence, the Withering
+Fever, scours the land. Warlords are beginning to take
+advantage of the unrest, rising up against once strong
+barons.
+This is the adventure world as envisioned by a pair of
+players who want to try their hand at a dark fantasy
+game. Their characters are Turvol, a wandering soldier
+whose lord has been toppled and Abner, a mancer of
+some ability.
+Right at the outset, at the beginning of their first
+adventure, the players decide that social station is very
+important in this world. In areas where civilization still
+stands, he of the highest caste rules.
+For the purposes of this example, we’ll say that the
+players are using a popular fantasy rpg for their game
+mechanics. However, they are tossing out the setting that
+comes with the game and making up their own, using the
+rpg’s mechanics for task resolution, magic, combat, etc.
+The game they are using has a mechanic for dealing
+with social station, so the players make sure to emphasize
+this when they create their characters.
+Turvol is a professional soldier and of about average
+social standing. Abner hails from a small, noble family,
+giving him a slightly elevated position. Early in the first
+adventure, as Abner and Turvol team up, Abner
+establishes himself as their leader in the cities, while
+Turvol takes over in the untamed wilds.
+Through a series of fate questions and completed
+scenes, the characters end up going on an adventure to
+avenge Turvol’s fallen lord. Abner agrees to help kill the
+warlord who usurped command and decimated Turvol’s
+comrades.
+As they journey through the countryside, they come
+across a lieutenant of the offending warlord who refused
+to follow his boss’ evil commands and fled. He knows a
+secret way into the castle where the warlord is residing,
+and agrees to show the two adventurers the way in.
+Unfortunately, he has come down with a case of
+Withering Fever so he isn’t long for this world. Since this
+character is important, the players decide they better
+learn a thing or two about the disease.
+The rpg they are using has mechanics for dealing with
+disease, but they decide the Withering Fever is unique to
+their game world. Through the Fate Chart, they
+determine that the fever is a magical disease that slowly
+dehydrates the victim until they die a dessicated, dried up
+husk. During the course of the adventure, Abner uses his
+magic to keep the guide alive.
+As scenes unfold, the adventurers discover entire
+villages suffering from the disease, and they learn that the
+warlord they seek is spreading the plague in an attempt to
+bring about the end of the world.
+When the characters wrap up this adventure, the
+players can set their notes aside and bring them out again
+for another adventure in the kingdom of Durnam. After
+only one adventure they have learned a lot about the
+place: warlords prey on the weak; the Withering Fever
+threatens all; and social standing is of utmost importance
+in this society.
+The more adventures they have, the more the world of
+Durnam will become fleshed out for them.
+World Building
+39
+
+-- 39 of 54 --
+
+Q&A
+F ollowing is a list of common questions about
+Mythic. If you have questions that are not answered
+in these pages, you can contact me by email at
+mythic@wordpr.com.
+Can this really be played without a
+GM? I don’t see it happening.
+If you’ve read this book, and you don’t believe me,
+you’re just going to have to take my word for it until you
+find out for yourself. Granted, a GM-free game is not for
+everyone. You may prefer a highly prepared game master
+controlling the behind-the-scenes action. However,
+impromptu adventures, such as those created by Mythic,
+can take you to surprising places and are often more
+satisfying than a prepared adventure.
+There isn’t enough detail. Without a
+prepared adventure, how can you tell
+what’s in a particular room, etc.?
+You have to use some common sense and a few logical
+leaps. It all boils down to asking those yes and no
+questions. If your characters have been walking through a
+dungeon full of orcs, a good first question when entering
+a room might be, “Is the room empty?” If a no, then, you
+can either assume there are some orcs in there, or you
+can ask another fate question. If orcs are present, you
+might assume a warband of some 4 since that’s been the
+most common encounter. If you want more detail you
+either ask another question or take the most common
+sense assumption. You can have as much detail as you
+like, framed as questions. If you were playing with a live
+GM, you’d be asking the same questions anyway.
+I like the games I play now. Why
+should I switch to Mythic?
+You don’t have to switch. You can use Mythic as a GM
+“emulator” to help create impromptu adventures for use
+with your other RPGs. There is another version of
+Mythic, which includes a generic, universal system based
+around Mythic concepts.
+What’s the difference between Mythic
+and Mythic Emulator?
+As stated above, Mythic is the original game system
+that includes a universal rpg and the emulator rules.
+Mythic is designed so that you can use the game system
+and the emulator either together, or just take one and
+leave the other. This product, Mythic Emulator, is a
+tweaked and updated version of the original emlator
+rules. This book only contains the emulation rules, and
+not the universal system. The reason for this is, judging
+from the feedback by players, the emulation portion is
+the most popular part of the product. Both of these
+products are available online at rpgnow.com, with Mythic
+Emulator a few bucks cheaper than Mythic.
+What’s with the name?
+Is there a story behind “Mythic”?
+Nope. I just like the way it sounds. Well, actually,
+there is a tad more thought involved. Since Mythic is
+intended to create any kind of story for any situation, I
+thought “Mythic,” as in generating myths and legends,
+was fitting.
+I don’t like to ask questions. Thinking
+makes my head hurt. What can I do?
+I can’t help you.
+You mention at the beginning that
+Mythic can be used as a writing tool,
+but that isn’t addressed in the book.
+What’s up?
+I figured I didn’t have to specifically address this issue,
+but here we are now, doing that. Simply, to use Mythic as
+a writing tool, you just do a solo adventure using only
+Mythic. You sit, you write, and you refer the questions to
+Mythic, just like you would in a game with other players.
+40
+Chapter 7
+Notes and
+Suggestions
+
+-- 40 of 54 --
+
+You can keep track of data, such as threads, characters,
+chaos, and all of that, or not. Mythic is centrally an
+adventure generating tool so it also works great for
+helping craft written stories as well.
+I hate freestyle games.
+Will I hate Mythic?
+I don’t like freestyle games much either, that’s one
+reason I came up with Mythic. The big advantages to
+freestyle games (“freestyle” as in rules-light and more
+story-teller oriented) are that they are simple to learn,
+play fast because they don’t require a lot of rules-
+searching and page flipping, and are able to create a wide
+range of adventures very easily. The big downside to
+freestyle games is that their adventures can come across
+to players as arbitrary, as if things only happen because
+the GM wanted them to happen. In many cases, this is
+quite true of freestyle games. Many players begin to feel
+that their choices are meaningless.
+Mythic is an attempt to draw in the advantages of a
+freestyle game while cutting out the disadvantages. It is
+freestyle in the sense that the action is directed by the
+players (they decide how each scene begins, their
+questions direct the course of the adventure, etc.)
+However, there are random, built-in mechanics that
+modify these decisions. Events rarely always work out the
+way players think they will and adventures have a
+tendency to spin in unexpected directions, just like “real”
+adventures do. The story, then, is not entirely up to the
+whim of the players and the GM as in many freestyle
+games.
+Is there an origin to this game?
+How did it come about?
+Mythic originally developed as an idea to create a solo
+role-playing game. As a teenager who loved role-playing
+games, but was always light on finding players, I dreamt
+of discovering a good, solo game out there. The only
+attempts at solo play were some adventures written in the
+“choose-your-own-adventure” style, where you follow a
+path in the book and are limited to only a few choices at
+each important juncture.
+This was disappointing to say the least.
+I experimented with various ideas, from creating reams
+of random tables that describe just about everything to
+using tarot cards (after all, if a tarot card can tell the
+future, why not use it to tell the present, even a fictional
+present?)
+None of these ideas worked out so well.
+Then, like sunlight breaking through the clouds, a
+concept dawned: why not use a system based on simple
+logic? From that idea came Mythic, where logic and
+interpretation are the foundation. I tried to develop the
+fate question system as a type of artificial intelligence,
+able to answer any question like a real, living game
+master. The choice to make the questions all yes/no is
+simply for the sake of efficiency (an early draft of Mythic
+allowed for any question to be asked and the answers
+were created by interpreting a combination of randomly
+rolled words. This was unwieldy as the list of words was
+over 10,000 strong and produced some wild results.)
+So there you go.
+T IPS FOR
+B ETTER 	P LAY
+This section deals with a few issues and ideas that
+were not covered fully in the preceding chapters.
+This isn’t ‘20 Questions’
+It’s easy once you get knee deep into a Mythic
+adventure to not only get in the habit of asking
+questions, but of asking too many questions. Resolving
+answers is a balance of forming yes/no questions and
+using simple logic. You shouldn’t need to ask more than
+one question before logic can finish the rest.
+It’s best to live with a one question limit to prevent
+the “20 questions” syndrome and only breaking that limit
+to clarify really important situations. When you know a
+few facts and compare them against the larger context of
+the whole adventure then a logical conclusion should be
+easy to come up with.
+Only when logic eludes you should you resort to
+asking more questions until you have enough new
+information to form a conclusion.
+Mythic as the game
+The rules set out in this book describe how to use
+Mythic as a Game Master emulator. However, the same
+rules that are used to answer narrative questions can also
+be used to answer game mechanic questions. In other
+words, Mythic could be used to role-play without any
+other game product.
+Mythic Emulator’s parent product (just “Mythic”)
+contains fully fleshed out rules for using Mythic as a core
+role-playing game. However, you can run a rules-lite
+game using nothing more than this book. Characters
+would be described in everyday language, such as:
+“Randal is a desert barbarian renowned for his strength
+and his ferocity in battle. His favored weapon is the
+Notes & Suggestions
+41
+
+-- 41 of 54 --
+
+scimitar, and he can travel for days without sleep.” Such
+a description gives you a basic idea of the character, and
+will help when assigning odds to answer questions on the
+Fate Chart.
+The fine art of interpretation
+You’ve been warned about the excessive use of
+questions. There is another, similar, trap to avoid:
+excessive interpretation. Commonly you will be faced
+with a handful of facts and some vague references from
+the event meaning charts, and find yourself cooking up
+several possible interpretations. Instead of sitting there all
+day mulling each one over, just take the one that seems
+most logical. If you aren’t sure which one that is, take the
+one that came to mind first.
+This is especially important if you are playing Mythic
+with a group. Everyone will suddenly throw out
+interpretations. Take the first one that seems to fit and
+move on. If someone has an interpretation that seems
+more logical, then quickly consider it as a group.
+This leads me to my (almost) last topic ...
+You are SOOO immature!
+A successful Mythic adventure relies on mature role-
+playing. This means enjoying yourself and respecting the
+other players. An adventure can be ruined by a player
+who attempts to take advantage of the system’s free-form
+nature. For instance, the characters are walking down the
+street when one player suddenly asks, “Do I find a pot of
+gold on the sidewalk?”
+Technically, this is a valid question. But it makes no
+sense to ask. The player could ask the same question every
+time he enters a room, opens a door, or gets out of bed.
+Obviously, this kind of play should be discouraged.
+Such “strategy” is usually self-defeating in Mythic,
+fortunately. If this player shows up in a Mythic group, or
+even a well-meaning player asks the occasionally self-
+serving question, Mythic can discourage the question
+automatically. For instance, the odds of finding a pot of
+gold on the sidewalk are pretty slim, let’s say impossible.
+With a chaos rank of 5, this gives him a 4% chance of a
+simple yes (with a 1% chance of an exceptional yes), a
+76% chance of a no, and a 19% chance of an exceptional
+no. In a question like the “pot of gold” question, an
+exceptional no could mean the opposite, perhaps the
+character gets mugged for his wallet! By asking such a
+question the character may actually put himself at greater
+odds of the opposite happening than gaining a benefit.
+The point is that Mythic should be played by those
+who want to play it for its free-form nature. And, oh
+yeah, be careful what you ask for!
+Any more questions?
+As if you haven’t heard enough about “questions,” I’m
+going to talk about it once again. This time, however, I’m
+talking about YOUR questions. If you have any questions
+about Mythic, you can email them to
+mythic@wordpr.com. Or, go to the Mythic website at
+http://www.mythic.wordpr.com
+Thanks!
+Thanks for giving Mythic a try! I hope you find it a
+valuable new tool in your role-playing arsenal. Like most
+games, this has been a labor of love several years in the
+making. If you’ve enjoyed it half as much as I have, then
+I will consider it a success.
+Notes & Suggestions
+42
+
+-- 42 of 54 --
+
+T his chapter is a great, big extended example of play,
+from beginning to end. The example here is
+essentially a transcript between two players: John is
+the GM and Samantha is the player. Even though they are
+playing with a GM, they will be using Mythic to create
+the adventure. In this example we will assume game
+mechanics are handled by another rpg.
+Keep in mind that, in this example, the two are playing
+with a GM, but he is generating the adventure with
+Mythic. John has no more idea what is going on than Sam
+does. In this example, you will see John ask fate questions.
+He isn’t phrasing these questions out loud, however, so as
+not to tip off Sam to what he’s thinking. Whenever the
+adventure reaches a point where John needs to determine
+the next direction, he checks with the Fate Chart if a
+logical answer isn’t already apparent.
+John and Sam get together without any prepared
+adventure, although Sam has some ideas. She’s been
+reading Michael Moorcock lately and wants a female
+version of Elric. The two chat for a bit and come up with
+the following new campaign world.
+The place is Rantha, a fantasy, medieval world that has
+been wracked by war. The clash between kingdoms has
+been immense and involved powerful magics which have
+devastated the countryside. The final blow in the war
+came when a great dragon arose from his ancient slumber
+to decimate the staggering armies and claim the land for
+itself. In desperation the kingdoms gathered together and
+blasted the beast with unheard of magical might. The
+dragon literally exploded in a fantasy equivalent of a
+nuclear blast.
+The armies and kingdoms had already been devastated
+and fractured. The cataclysmic death of the dragon ended
+what little civilization remained and showered the land
+with evil magic, which mutated plant and animal life into
+horrific forms. With their liege lords dead, and the soldiers
+gone, commoners found themselves at the mercy of
+walking horrors.
+Into this world comes Sam’s character, Gloranna. She
+was once a commander in the army of one of the fallen
+lords. During the wars, she came into possession of a
+magic sword that sapped the life out of those the blade bit
+and converted that energy into magical power. Gloranna
+became adept at manipulating these forces, using the
+ancient blade to devastating effect on the battlefield and
+earning herself a fearsome reputation.
+They construct Sam’s character, making her part
+warrior and part mage, and get ready to play her first
+adventure.
+John decides he’ll let the dice come up with the
+adventure seed, so he rolls a random event to see what
+kicks off the first scene. He comes up with “introduce a
+new NPC” on the event focus table, and “break” and
+“legal matters” on the event meaning charts. After a
+moment of thought, he comes up with the following scene
+setup.
+John: “Gloranna has been living in a valley for months
+now with a ragtag group of refugees, those who survived
+the war and found each other. They have formed a loose
+kind of village, and Gloranna has risen to become their
+leader. One day, however, a band of warriors rides into the
+village lead by a young man wearing a crown. He
+announces himself as Prince Vilmor, the rightful heir to
+the lord who previously ruled these lands, and he is
+looking for men to join his army. He is claiming the land,
+and the people, for himself. Several members of the
+village lead him to Gloranna’s tent, where he introduces
+himself. He extends his hand, expecting Gloranna to
+kneel and kiss it.”
+Sam: “Hmm. Right off, she doesn’t like the look of this.
+She gives the prince a bow, but does not kiss his hand.”
+John: “Alright. He looks at you, surprised and
+somewhat offended.” John decides to check on the Fate
+Chart to see how offended he is. He asks the fate
+question, “does the prince demand fealty?” and gives the
+odds as likely. He rolls an 18, for a yes. “The prince looks
+at you and says, ‘I am your rightful lord, soldier. Kneel and
+pay me homage!’”
+Sam: “Alright, Gloranna’s just not in the mood for this.
+She says, ‘We’ve moved beyond the age of kings, my
+prince. I bow to no man.’”
+John: John has already established that the prince is a
+proud man, so he knows this will probably not go over
+well with him. He asks the fate question, “does the prince
+order his men to force her to kneel?” He considers the
+odds very likely, and rolls a 37 for a yes. “‘Guards! Make
+her kneel!’ the prince cries.” At the start of this
+adventure, John had simply stated that the prince had
+ridden into the village with a band of warriors. He is
+going to assume that there are two nearby who will answer
+his call. “A pair of soldiers draw their swords and come at
+you, with menacing looks in their eyes.”
+Sam: “I’m not going to mess around. Prince or no
+prince, he’s on my territory. Gloranna draws her sword
+43
+Chapter 8
+Extended Example
+
+-- 43 of 54 --
+
+and attacks the guards.
+At this point, a battle ensues between Gloranna and
+the two guards. John adjudicates the combat, which
+Gloranna wins by swiftly dispatching the two men with
+her magic sword.
+John: “You stand above the two bodies, a little smoke
+rising off your sword as it drinks up the last of their life
+force and feeds it into you. The prince stands by shocked
+and horrified.” John is not entirely sure what the prince
+will do next, but decides to ask the following Fate Chart
+question, “Does the prince flee, vowing revenge?” He
+gives the odds as likely and rolls a 26 for a yes. “The
+prince flees from the tent and back to his men. Some of
+the villagers had seen what happened, and they have
+grabbed what makeshift weapons they can, and start
+approaching the prince and his men. Leaping upon his
+horse he cries out, ‘You will regret this, fool! I will destroy
+you all!’ With that, he and his men ride away.”
+John and Sam decide at this point that the main action
+has ended for this scene. John updates his adventure
+sheet. To the character list, he adds the prince, the people
+of the valley, and the prince’s guards. He adds to the
+thread list, protect the village from the prince. This is
+going to be the primary thrust of this adventure, John
+figures. Finally, he decides that, although Gloranna won
+in her battle against the two guards, that the situation was
+not really under control. So, he moves the chaos factor up
+from a 5 to a 6.
+It’s time to move on to scene 2. John asks Sam what
+her next move is so he can figure out what the next scene
+setup will likely be.
+Sam: “I gather a group of villagers, five able-bodied
+men, and we leave in the night to try and scope out the
+prince and his troops. We need to find out how many
+soldiers he has.”
+John rolls a d10 to see if this is how the scene actually
+begins. He rolls a 1, well within the chaos
+factor of 6, and indicates an altered scene.
+John goes with the following setup: “Your
+plan to gather up a scouting party has met
+with a problem. The village has only one
+horse. There is no way that six people could
+make much distance in the dark, so Gloranna
+will likely have to go alone.”
+Sam: “Alright. She works better alone
+anyway. She’ll take the horse and follow the
+prince’s trail as best she can.”
+John: “Gloranna rides from the village as
+the sun begins to set, following the prince’s
+hoofprints.” John uses game mechanics to test
+Gloranna’s skill at tracking during the night.
+He decides that it takes her a few hours, but
+she manages to locate where the prince is
+camping. Before he decides, though, he asks
+the Fate Chart, “Is the prince camping in a
+clearing?” with odds of near sure thing. John
+figures, where else is the prince going to camp
+out in the wild? He rolls a 95. A very high
+roll, but since the chaos factor had moved to
+a 6, the roll still provides a yes answer. “As
+you top a ridge, you see firelight past the trees
+below. You can see that the prince and his
+men have camped in a clearing.” John needs
+to decide just how large the prince’s horde is,
+now that Gloranna can see it. He decides that
+since the prince road into the village with
+only a small band, and since he was looking
+to take the village as his own, he figures the
+prince is only now beginning to gather people
+to him, and so likely has only a very small
+force. He asks the fate question, “Does the
+Extended Example
+44
+Permission is granted by the publisher to copy this page for personal use only.
+Adventure Notes
+Scene Setup Lists
+Characters
+Threads
+Chaos Factor
+5
+1
+Scene
+Scene Setup	Scene
+	Scene Setup	Scene
+Scene Setup	Scene
+Scene Setup	Scene 	Scene Setup	Scene
+Scene Setup 	Scene Setup	Scene	Scene
+Summary of Resolving Scenes
+• Come up with the Scene Setup.
+• Roll 1D10 against Chaos to see if the Setup is modified
+as an Altered Scene (odd) or an Interrupt (even).
+• Play out the Scene.
+• When the main action ends, the Scene ends.
+• Update lists: Characters, Threads, Chaos Factor
+The prince
+People of the Valley
+Prince’s guards
+Prince from nowhere rides
+into the village and
+claims it.
+Protect the village
+from the prince
+6
+
+-- 44 of 54 --
+
+prince only have about twenty men?” with odds of likely.
+He rolls a 65 for a yes. “You can see that the camp is not
+large and there are about twenty men about.”
+Sam: “Hmm, okay. I am going to creep closer and see if
+I can get a better look at them.”
+John: The GM makes some rolls, using their chosen
+rpg mechanics to see if Gloranna can sneak closer without
+being detected. “You succeed, slipping from tree to tree,
+treading silentlly over the wilderness ground until you are
+close enough to hear men talking.” John decides that, if
+the prince is planning on attacking the next day, it’s likely
+the men would be talking about it. He puts this to the
+Fate Chart, and rolls a 35. “A pair of men sit beside a fire,
+cooking something on a stick. They are talking about the
+raid scheduled for dawn. One is laughing about how easy
+it will be to take down a bunch of refugees.” John has an
+idea and takes it a step further. The prince had told
+Gloranna that he was looking for fighting men, but
+perhaps he was only looking for slaves. John
+puts this question to the Fate Chart, with
+odds of somewhat likely. He rolls a 100, for
+an exceptional no! Exceptional no results
+usually mean the exreme opposite of what
+was asked, so John knows they are not
+looking for slaves. He thinks of something
+that fits the results. “One of the men takes a
+bite of his food and sneers at his friend. He
+says, ‘I can’t believe we are going to all of
+this trouble just to find one man.’ His friend
+answers, ‘Yeah, well, the prince seems to
+think Rakhim knows where the vessel lies.
+He’s hiding out here somewhere, and it looks
+like we’re going to take apart every village
+we come across until we find him.’”
+Sam: “Rakhim? Is that a name I recognize?
+And what is the vessel?”
+John: John doesn’t know either, since he
+just made up those details to fit the results of
+the Fate Chart. He puts both of Sam’s
+questions to the Fate Chart. For, “does
+Gloranna know a Rakhim?” he gives odds of
+very unlikely, and rolls a 46 for a no. For the
+fate question, “does Gloranna know what the
+vessel is?” he gives odds of very unlikely as
+well, and rolls a 24 for a yes. “The name
+Rakhim is unfamiliar to you. However, you
+have heard of an artifact called the Vessell. It
+is said to contain some of the living blood of
+the great dragon whose death caused the
+kingdom so much misery. Whoever possesses
+the vessel is said to have access to a vast
+amount of magical energy.”
+Sam: “Well, Gloranna frowns at that.
+She’s only met this prince once, and already she doesn’t
+want him having that much power. If she were to hightail
+it back home, could she round up some of the villagers
+and get them back here before dawn?”
+John: John thought about that, and made it a fate
+question with odds of 50/50, since he really had no idea.
+He rolls a 39 for a yes. “Gloranna seems to think so, if she
+can ride straight through without incident. What do you
+have in mind?”
+Sam: “You’ll see. She’ll try and slip away then.”
+John: John determines that Gloranna slips away from
+the camp without a problem. Since the major action of
+this scene is over, John declares Scene 2 complete and
+prepares for Scene 3. He updates his adventure chart,
+adding a note to the scene summary. To the character list,
+he adds “prince’s men.” He already has “prince’s guards,”
+but he decides to make a distinction between those who
+personally guard the prince and the rest of the men in
+Extended Example
+45
+Permission is granted by the publisher to copy this page for personal use only.
+Adventure Notes
+Scene Summary Lists
+Characters
+Threads
+Chaos Factor
+5
+1
+Scene
+Scene Summary	Scene
+	Scene Summary	Scene
+Scene Summary
+2
+Scene
+Scene Summary	Scene 	Scene Summary	Scene
+Scene Summary 	Scene Summary	Scene	Scene
+Summary of Resolving Scenes
+• Come up with the Scene Setup.
+• Roll 1D10 against Chaos to see if the Setup is modified
+as an Altered Scene (odd) or an Interrupt (even).
+• Play out the Scene.
+• When the main action ends, the Scene ends.
+• Update lists: Characters, Threads, Chaos Factor
+The prince
+People of the Valley
+Prince’s guards
+Prince’s men
+Prince from nowhere rides
+into the village and
+claims it.
+Prince has 20 men
+camped nearby.
+Protect the village
+from the prince
+6 5
+
+-- 45 of 54 --
+
+general. The threads list doesn’t change, since Gloranna’s
+mission is still to protect the village from the prince.
+Gloranna was in control throughout Scene 2, so John
+lowers the chaos factor to 5.
+Sam said she planned to have Gloranna head back to
+the village and gather people together. This is how he
+pictures Scene 3 starting then. He tests this scene setup
+with a roll of a d10, and gets an 8, which means the
+scene begins as envisioned.
+“Gloranna rides back fast, her skill at horsemanship
+allowing her to cover a lot of ground despite the dark.
+She encounters no problems along the way and reaches
+the village in the dead of the night. What’s her plan
+now?”
+Sam: “I go through the village, rousing anyone who is
+able to go with me. I tell them to take ropes, weapons,
+shovels, tarps and cloth, and just about anything they can
+get their hands on.”
+John: “If you’re going to have them go back with you,
+time is of the essence. You’ve got the only horse, so they
+are going to have to gather quickly and move.” John
+decides to make this a fate question, to see if the villagers
+are able to get it together as quickly as Gloranna wants
+them to. He makes a fate question of, “Do they move as
+swiftly as Gloranna wants?” and gives it odds of likely. He
+rolls a 9 for an exceptional yes. “When the villagers hear
+what Gloranna has to tell them about the impending
+attack, they move with amazing speed. In fact, most of
+them were already awake and alert, waiting for your
+return. Faster than you would have believed, they gather
+the materials you want and head off with you in the
+lead.”
+Sam: “Since I know where the camp is, I move as
+quickly as I can with them back to near the spot. With
+twenty men, I am going to figure that the prince will use
+the same road that Gloranna is using when he moves to
+attack the village. So, when we are about a
+mile out from the camp, we stop. I order
+the villagers to begin digging pits in the
+road, and cover them with tarps and leaves.
+We can tie the ropes to trees, and attach
+logs to them so we can swing them down at
+riders.”
+John: “So, basically, you’re going to trap
+this section of the road.”
+Sam: “Yeah.”
+John: “The villagers work for the next
+four hours, following Gloranna’s directions
+and erecting the traps. As the sun begins to
+top the horizon, they have finished with all
+they could get done. Soon, the riders
+should appear.”
+Sam: “Gloranna tells them all to hide,
+grabbing whatever weapons they can. She’ll
+hide as well and wait for the attackers. The
+plan is, when they come, I’m hoping they’ll
+hit the traps and be a bit scattered and
+confused. Gloranna will attack then, and
+any of the villagers who feel game can
+weigh in as well. At least, they can help
+finish off anyone who has been
+incapacitated by a trap.”
+John: “Sounds good.” That seems like a
+good place to cap off Scene 3. John updates
+his adventure sheet.
+No new characters were introduced, and
+no new threads, so John leaves those lists
+alone. Gloranna was in control once again
+this scene, so he lowers the chaos factor to
+4 this time.
+The character is simply waiting now for
+Extended Example
+46
+Permission is granted by the publisher to copy this page for personal use only.
+Adventure Notes
+Scene Summary Lists
+Characters
+Threads
+Chaos Factor
+5
+1
+Scene
+Scene Summary
+3
+Scene
+	Scene Summary	Scene
+Scene Summary
+2
+Scene
+Scene Summary	Scene
+	Scene Summary	Scene
+Scene Summary 	Scene Summary	Scene	Scene
+Summary of Resolving Scenes
+• Come up with the Scene Setup.
+• Roll 1D10 against Chaos to see if the Setup is modified
+as an Altered Scene (odd) or an Interrupt (even).
+• Play out the Scene.
+• When the main action ends, the Scene ends.
+• Update lists: Characters, Threads, Chaos Factor
+The prince
+People of the Valley
+Prince’s guards
+Prince’s men
+Prince from nowhere rides
+into the village and
+claims it.
+Prince has 20 men
+camped nearby.
+Villagers lay a trap for
+the invaders.
+Protect the village
+from the prince
+6 5 4
+
+-- 46 of 54 --
+
+the invaders to come. The setup for scene 4 is to have the
+invaders ride into the trap, and Gloranna attacks them.
+John rolls to see if this is how it pans out, and gets a 2 for
+an interrupt scene. He needs to roll a random event to see
+what causes a different, unanticipated scene. Checking
+the event focus table, he gets a 24 for NPC action.
+Randomly determining an NPC, he rolls up the prince’s
+men. Using the event meaning tables, he gets “transform”
+as the action and “expectations” as the subject. John
+thinks about this for a moment, and comes up with the
+first thing that comes to mind.
+It’s time to start Scene 4 now. “In the distance you
+hear the pounding of hoofbeats. The riders are coming,
+the ground shaking slightly from their approach.
+Gloranna can see that the villagers around her are
+nervous. These are not fighting people. She can only
+hope that their traps will do most of the damage. The
+riders come into view, galloping hard, and Gloranna
+realizes she has made a mistake. At the lead of the riders
+are about four men, two of whom were the ones she heard
+talking the night before. Behind them are about sixteen
+additional riders. However, they are not men. Even from a
+distance, she can see that the remainder of the prince’s
+force are mutants and mishapen humans, their faces
+warped and snarling. These aren’t just fighting men, but
+creatures warped by the land’s evil magic. Each one is far
+tougher than a standard human, and hard to put down.”
+Sam: “Oh, man. Well, there’s nothing else to do at this
+point. Hopefully those traps will work.”
+John: Deciding to make this a fate question, he
+silently asks of the chart, “do the traps take out the first
+10 riders?” He gives this odds of 50/50, since there seems
+to be a fair amount of luck involved. He rolls 42 for a no.
+“The riders charge into your trapped area, and the first
+one hits a pit. He goes down into it, and the other riders
+immediately try and pull up on their reigns. Another one
+tumbles into a pit. The villagers release their ropes,
+swinging the logs down at the invaders. A human and a
+mutant are knocked from their horses and into the
+woods. That’s a total of four taken down. However, the
+others have managed to avoid the traps. The mutants
+snarl as the humans bark orders, preparing for a counter
+attack. The prince is at the rear of the group, screaming
+at them to attack.”
+Sam: “Hmm, that didn’t go so well. Gloranna draws
+her sword and wades into the group, attacking them. She
+will try to use her knowledge of where the remaining pits
+are to keep them from all attacking her at once.”
+John: The adventure has turned into a battle royale,
+with Gloranna at the center of it. John uses the game
+mechanics from the rpg they are using to figure out how
+the battle goes. Occassionally during the fight, he needs
+to answer a fate question. Such as, “does the mutant
+attacking her accidentally step into another pit?” During
+the course of answering questions, John rolls a 22 ... a
+double number, with the single digit within the chaos
+factor range. This means a random event occurs.
+Gloranna is in the midst of a major, pitched battle, so
+John already knows what the context of this event will
+be. That part is easy. For the event focus, he rolls “NPC
+action,” and he randomly determines that the NPC in
+question is “prince’s guards.” For the meaning, he rolls
+“inspect” and “pain.” John comes up with the following
+event. “Gloranna, you notice that one of the villagers
+had gotten through the line and actually attacked the
+prince, who has been standing back the whole time. His
+personal guard killed the villager, but they are huddled
+around the prince now and are pulling him back. This is
+drawing off the guard, and just leaves about five more
+mutants to deal with.” Gloranna continues her battle
+until she is the last one standing, bruised, battered and
+bleeding, but victorious.
+Sam: “Any sign of the prince? I’d like to save him for
+desert.”
+John: Figuring the odds to this question are “no way,”
+since the prince high-tailed it out of there, John rolls
+anyway and gets a 37. “No. He is long gone.”
+With the battle concluded, this scene draws to a close.
+John gives Sam some parting images of the villagers
+cleaning up and gathering their dead before they head
+back home.
+With the prince’s men destroyed, John decides this
+completes the thread and ends the adventure. John
+decides to throw in one more scene as a kind of epilogue.
+His scene setup is, “The people throw Gloranna a party
+in appreciation of her saving their butts.” Since she
+dominated in the last scene, he lowered the chaos factor
+another point, to 3. Rolling d10, he gets a 6. The scene
+setup stands as is.
+“In appreciation for your leadership and bravery in
+battle, the villagers throw a tremendous celebration in
+Gloranna’s honor. Their is feasting, dancing, music, and
+much merriment. As she sits and enjoys the festival, one
+of the village elders comes near and sits beside her. He
+says, ‘You know the prince will return some day. A man
+like him does not take a beating lightly.’”
+Sam: “Gloranna looks at him, but says nothing. What
+can she say, he’s probably right. She smiles at him instead
+and takes a big chug of her drink. ‘Let him come!’ she
+says.”
+John: “Nice. A good end to the adventure.”
+Since John figures the elderly villager is probably
+correct, he adds the prince to Gloranna’s personal NPC
+list of important people, leaving the door open for a
+future adventure involving that character.
+Extended Example
+47
+
+-- 47 of 54 --
+
+
+
+-- 48 of 54 --
+
+49
+Fate ChartTo use this chart, cross reference the odds of a question resulting in a “yes” answer with the current chaos rank. The result is the percentage chance of the question
+resulting in a “yes” answer. A roll within the range of the number on the left is an “exceptional yes” and equal or more than the number on the right is an “exceptional no.”
+Impossible
+No way
+Very unlikely
+Unlikely
+50/50
+Somewhat likely
+Likely
+Very likely
+Near sure thing
+A sure thing
+Has to be
+Has to be x2
+Odds
+10 50 91
+15 75 96
+16 85 97
+18 90 99
+19 95 100
+19 95 100
+20 100 0
+21 105 0
+23 115 0
+25 125 0
+26 145 0
+29 165 0
+5 25 86
+10 50 91
+13 65 94
+15 75 96
+16 85 97
+18 90 99
+19 95 100
+19 95 100
+20 100 0
+22 110 0
+26 130 0
+30 150 0
+3 15 84
+7 35 88
+10 50 91
+11 55 92
+15 75 96
+16 85 97
+18 90 99
+19 95 100
+19 95 100
+19 95 100
+20 100 0
+24 120 0
+2 10 83
+5 25 86
+9 45 90
+10 50 91
+13 65 94
+16 80 97
+16 85 97
+18 90 99
+19 95 100
+19 95 100
+20 100 0
+24 120 0
+1 5 82
+3 15 84
+5 25 86
+7 35 88
+10 50 91
+13 65 94
+15 75 96
+16 85 97
+18 90 99
+18 90 99
+19 95 100
+1 5 82
+2 10 83
+3 15 84
+4 20 85
+7 35 88
+10 50 91
+11 55 92
+15 75 96
+16 80 97
+16 85 97
+19 95 100
+20 100 0
+0 0 81
+1 5 82
+2 10 83
+3 15 84
+5 25 86
+9 45 90
+10 50 91
+13 65 94
+15 75 96
+16 80 97
+18 90 99
+19 95 100
+0 0 81
+1 5 82
+1 5 82
+2 10 83
+3 15 84
+5 25 86
+7 35 88
+10 50 91
+11 55 92
+13 65 94
+16 85 97
+19 95 100
+0 -20 77
+0 0 81
+1 5 82
+1 5 82
+2 10 83
+4 20 85
+5 25 86
+9 45 90
+10 50 91
+11 55 92
+16 80 97
+18 90 99
+20 for each point over 2
++20 for each point over 2 	9 	8 	7 	6 	5 	4 	3 	2 	1	Exceptional Yes
+The lower 1/5 of the success range.
+Exceptional No
+The upper 1/5 of the failure range. 	Chaos Rank
+Summary of How to Use the Fate Chart
+1: State a question: Form a yes/no question.
+2: Determine odds: Estimate the odds of the question
+coming out “yes.”
+3: Determine probability: Cross reference the odds with
+the current Choas score to get your percentage chance
+of a “yes” answer.
+4: Roll: Roll 1D100. If you roll within the percentage
+range, the answer is yes. If you roll above, the answer
+is no. If you roll in the lower 1/5 of the range, then the
+answer is an exceptional yes. If you roll in the upper
+1/5 of the failure range, then the answer is an
+exceptional no.
+5: Interpret the answer: Draw the most logical
+conclusion from the results. If this is not possible, then
+ask another question to clarify, returning to step 1.
+Event Focus Table
+1-7 	. . . . . . . . . . . .Remote event
+8-28 	. . . . . . . . . . .NPC action
+29-35 	. . . . . . . . . .Introduce a new NPC
+36-45 	. . . . . . . . . .Move toward a thread
+46-52 . . . . . . . . . . .Move away from a thread
+53-55 	. . . . . . . . . .Close a thread
+56-67 	. . . . . . . . . .PC negative
+68-75 	. . . . . . . . . .PC positive
+76-83 	. . . . . . . . . .Ambiguous event
+84-92 	. . . . . . . . . .NPC negative
+93-100 	. . . . . . . . .NPC positive
+Summary of Resolving Random Events
+1) 	Determine event focus.
+2) 	Determine event meaning (the action and
+subject).
+3) 	Interpret the random event based on context,
+focus and meaning. Take the most logical
+conclusion.
+
+-- 49 of 54 --
+
+50
+1. Attainment
+2. Starting
+3. Neglect
+4. Fight
+5. Recruit
+6. Triumph
+7. Violate
+8. Oppose
+9. Malice
+10. Communicate
+11. Persecute
+12. Increase
+13. Decrease
+14. Abandon
+15. Gratify
+16. Inquire
+17. Antagonise
+18. Move
+19. Waste
+20. Truce
+21. Release
+22. Befriend
+23. Judge
+24. Desert
+25. Dominate
+26. Procrastinate
+27. Praise
+28. Separate
+29. Take
+30. Break
+31. Heal
+32. Delay
+33. Stop
+34. Lie
+35. Return
+36. Immitate
+37. Struggle
+38. Inform
+39. Bestow
+40. Postpone
+41. Expose
+42. Haggle
+43. Imprison
+44. Release
+45. Celebrate
+46. Develop
+47. Travel
+48. Block
+49. Harm
+50. Debase
+51. Overindulge
+52. Adjourn
+53. Adversity
+54. Kill
+55. Disrupt
+56. Usurp
+57. Create
+58. Betray
+59. Agree
+60. Abuse
+61. Oppress
+62. Inspect
+63. Ambush
+64. Spy
+65. Attach
+66. Carry
+67. Open
+68. Carelessness
+69. Ruin
+70. Extravagance
+71. Trick
+72. Arrive
+73. Propose
+74. Divide
+75. Refuse
+76. Mistrust
+77. Deceive
+78. Cruelty
+79. Intolerance
+80. Trust
+81. Excitement
+82. Activity
+83. Assist
+84. Care
+85. Negligence
+86. Passion
+87. Work hard
+88. Control
+89. Attract
+90. Failure
+91. Pursue
+92. Vengeance
+93. Proceedings
+94. Dispute
+95. Punish
+96. Guide
+97. Transform
+98. Overthrow
+99. Oppress
+100. Change
+Event Meaning: Action
+1. Goals
+2. Dreams
+3. Environment
+4. Outside
+5. Inside
+6. Reality
+7. Allies
+8. Enemies
+9. Evil
+10. Good
+11. Emotions
+12. Opposition
+13. War
+14. Peace
+15. The innocent
+16. Love
+17. The spiritual
+18. The intellectual
+19. New ideas
+20. Joy
+21. Messages
+22. Energy
+23. Balance
+24. Tension
+25. Friendship
+26. The physical
+27. A project
+28. Pleasures
+29. Pain
+30. Possessions
+31. Benefits
+32. Plans
+33. Lies
+34. Expectations
+35. Legal matters
+36. Bureaucracy
+37. Business
+38. A path
+39. News
+40. Exterior factors
+41. Advice
+42. A plot
+43. Competition
+44. Prison
+45. Illness
+46. Food
+47. Attention
+48. Success
+49. Failure
+50. Travel
+51. Jealousy
+52. Dispute
+53. Home
+54. Investment
+55. Suffering
+56. Wishes
+57. Tactics
+58. Stalemate
+59. Randomness
+60. Misfortune
+61. Death
+62. Disruption
+63. Power
+64. A burden
+65. Intrigues
+66. Fears
+67. Ambush
+68. Rumor
+69. Wounds
+70. Extravagance
+71. A representative
+72. Adversities
+73. Opulence
+74. Liberty
+75. Military
+76. The mundane
+77. Trials
+78. Masses
+79. Vehicle
+80. Art
+81. Victory
+82. Dispute
+83. Riches
+84. Status quo
+85. Technology
+86. Hope
+87. Magic
+88. Illusions
+89. Portals
+90. Danger
+91. Weapons
+92. Animals
+93. Weather
+94. Elements
+95. Nature
+96. The public
+97. Leadership
+98. Fame
+99. Anger
+100. Information
+Event Meaning: Subject
+
+-- 50 of 54 --
+
+Permission is granted by the publisher to copy this page for personal use only.
+Adventure Notes
+Scene Setup Lists
+Characters
+Threads
+Chaos Factor
+5
+Scene #
+Scene SetupScene #
+Scene SetupScene #
+Scene SetupScene #
+Scene SetupScene #
+	Scene SetupScene #
+Scene Setup 	Scene SetupScene #	Scene #
+Summary of Resolving Scenes
+• Come up with the Scene Setup.
+• Roll 1D10 against Chaos to see if the Setup is modified
+as an Altered Scene (odd) or an Interrupt (even).
+• Play out the Scene.
+• When the main action ends, the Scene ends.
+• Update lists: Characters, Threads, Chaos Factor
+
+-- 51 of 54 --
+
+
+
+-- 52 of 54 --
+
+Adventure 20
+Adventure setup 33
+Adventures 6
+Altered scenes 26
+Artists 2
+Big Picture 11
+Chaos Factor 24, 30
+Character Action 14
+Characters 22
+Cinematic 21
+Cinematic Play 21
+Cinematic scenes 29
+Common questions 40
+Context 13
+Deductive logic 18
+Event context 13
+Event focus 13
+Event focus table 14
+Event meaning 16
+Event Meaning Table 17, 50
+Exceptional results 11
+Fate chart 8, 11, 49
+Fate chart random events 13
+GM 5, 6
+GM Emulation 33
+I dunno Rule 16
+Improvisation 7
+Inductive logic 18
+Interpretation 6, 7, 11, 42
+Interrupt scenes 27
+Introduce a New Character 14
+Lists 22
+Logic 7, 18
+Modifying the scene setup 26
+Notes 40
+NPC 22
+Open thread 15
+Q&A 40
+Random Event Examples 19
+Random events 13
+Randomness 13
+Remote Event 14
+RyK 2
+Scene length 28
+Scene random events 13
+Scene setup 25
+Scenes 20, 25
+Set the scene 25
+Setup 22
+Sherlock Holmes 18
+Simulation 21
+Solo 6
+Subplots 25
+Suggestions 40
+Summary of Resolving Random
+Events 15, 49
+Summary of Resolving Scenes 29
+Threads 25, 30
+Tips 41
+World Creation 38
+Writing 6
+Index
+53
+
+-- 53 of 54 --
+
+WM2
+
+-- 54 of 54 --
+

@@ -140,23 +140,55 @@
     padding: 10px;
     border-bottom: 1px solid var(--border-color);
     flex-shrink: 0;
+    position: relative;
+}
+
+.reading-mode-settings-button {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    font-size: 1.1em;
+    font-weight: bold;
+    background: none;
+    border: 1px solid var(--border-color);
+    color: var(--accent-color);
+    padding: 4px 10px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: var(--font-interface);
+}
+
+.reading-mode-settings-button:hover {
+    background-color: var(--highlight-color);
+    border-color: var(--accent-color);
 }
 
 /* Barre de progression du marque-page */
 .reading-progress-container {
     width: 100%;
-    height: 4px;
-    min-height: 4px;
+    height: 6px;
+    min-height: 6px;
     background-color: var(--border-color);
     position: relative;
     flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .reading-progress-bar {
-    height: 100%;
+    height: 4px;
     background-color: var(--accent-color);
     width: 0%;
     transition: width 0.3s ease;
+}
+
+.entry-progress-bar {
+    height: 2px;
+    background-color: var(--text-color);
+    opacity: 0.5;
+    width: 0%;
+    transition: width 0.1s ease;
 }
 
 .reading-mode-close-button {
@@ -171,6 +203,95 @@
     color: var(--accent-color);
 }
 
+/* Panneau d'options d'affichage */
+.reader-settings-panel {
+    position: absolute;
+    top: 55px;
+    left: 20px;
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 15px;
+    z-index: 50002;
+    width: 280px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    display: none;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.reader-settings-panel.active {
+    display: flex;
+}
+
+.settings-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.settings-group label {
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    font-family: var(--font-interface);
+}
+
+.settings-options {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.settings-btn {
+    flex: 1;
+    font-family: var(--font-interface);
+    font-size: 0.85em;
+    padding: 6px 10px;
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.settings-btn:hover {
+    border-color: var(--accent-color);
+    background-color: var(--highlight-color);
+}
+
+.settings-btn.active {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: #0b0b0f;
+    font-weight: bold;
+}
+
+#reader-font-size-display {
+    font-family: var(--font-interface);
+    font-size: 0.9em;
+    min-width: 45px;
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    .reading-mode-settings-button {
+        left: 10px;
+        top: 10px;
+        font-size: 0.9em;
+        padding: 3px 8px;
+    }
+    .reader-settings-panel {
+        left: 10px;
+        width: calc(100% - 20px);
+        box-sizing: border-box;
+    }
+}
+
 .book-container {
     flex-grow: 1;
     overflow-y: auto;
@@ -180,16 +301,26 @@
 }
 
 .book-content {
-    max-width: 80ch;
+    max-width: var(--reader-max-width, 70ch);
     margin: 0 auto;
     height: auto;
     width: 90%;
+    font-family: var(--reader-font-family, var(--font-serif));
+    font-size: var(--reader-font-size, 1.15em);
+    transition: font-size 0.15s ease, max-width 0.15s ease;
+}
+
+.book-content .journal-content-display {
+    font-family: inherit;
+    font-size: inherit;
 }
 
 .book-content.animating {
     position: absolute;
     top: 2em;
-    left: 5%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
 }
 
 .journal-content-display img,

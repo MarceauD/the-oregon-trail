@@ -423,4 +423,65 @@
   - **Santé mentale** : Résilience augmentée de +1% (passe à 86%). Le traumatisme de Regret retombe de 9/10 à **4/10** (les hallucinations cessent).
   - **Ressources** : Perte de 0,87 $ (solde à 12,38 $). Perte de la broche en bois sauvage et du bourre-pipe en noyer (offerts).
   - **Intrigues** : Clôture de l'intrigue « Retrouver les traces de ma famille biologique » (Terminé). Le fil « Un hôpital de campagne dans la cuisine » progresse.
-  - **Savoirs** : Acquisition du savoir « Recette des Johnnycakes ».
+- **Savoirs** : Acquisition du savoir « Recette des Johnnycakes ».
+
+### 28 juillet 1868
+- **Déplacements & Actions** :
+  - Réveil sous une atmosphère moite après un orage électrique nocturne.
+  - Nettoyage des bottes neuves en cuir de Harrisburg avec un grattoir, brosse et graisse de suif (Débrouillardise : 10/42 réussite).
+  - Rencontre avec Silas Flynn dans la cour de la ferme. Celui-ci s'agace puis reconnaît Eddy, vêtu proprement des habits de Samuel, et l'interroge sur son fils Artus.
+  - Eddy transmet à Silas le message d'Artus ("prêt à revenir à ta table") et lui confirme lui avoir remis le jeu de cartes dans les bois, ce qui émeut profondément le vieux journalier.
+  - Aide Silas à atteler Bill au chariot pour commencer le chargement des sacs de blé (60 sacs au total). Silas refuse l'aide d'Eddy pour charger les sacs à cause de sa blessure.
+  - Eddy décline l'invitation de Silas à l'accompagner à Carlisle pour cause de vertiges et pour attendre la visite du médecin (Silas part faire son premier voyage seul avec 20 sacs).
+  - Pratique de la lecture : Eddy s'acharne sur son article de journal. Il échoue à le lire couramment (Lecture : 78/17 échec) mais parvient à déduire et visualiser les mots "Connie" et "DEVLIN" (Intelligence : 69/75 réussite).
+  - Eddy donne à Elara ses réserves de nourriture sauvage (baies, champignons, viande séchée) pour la cuisine de la ferme.
+  - Déjeuner de bouillon de bœuf et pain rassi frotté d'ail. Sieste dans le fauteuil en cuir de Theodore.
+  - Eddy s'introduit dans la chambre de Samuel et s'entraîne au dessin en reproduisant de sa seule main valide le dessin de cerf de Samuel (Dextérité : 21/40 réussite). Il acquiert une nouvelle compétence : **Dessin (5/100)**.
+  - Il s'approprie un crayon de graphite et un petit carnet intime appartenant à Samuel (contenant des dessins et écrits).
+  - Deuxième visite du docteur Charles Russell : il apporte des béquilles en frêne à Theodore, inspecte la plaie infectée de Finn aux côtes et pratique une irrigation douloureuse au phénol. Eddy tente d'observer la méthode médicale mais capitule à la vue du sang et du pus (Perception : 72/65 échec). Russell change le pansement propre de l'épaule d'Eddy.
+  - Silas revient de Carlisle en fin d'après-midi. Eddy se dissimule dans le couloir pour écouter sa conversation avec Theodore (Discrétion : 19/67 réussite).
+  - Silas remet $66.00 à Theodore pour les 20 sacs (vendus $1.65 le boisseau au moulin de Bonny Brook en raison de l'humidité). Silas conseille à Theodore de se méfier d'Eddy qui attire la violence. Eddy réprime une impulsion passagère de voler l'argent.
+  - Theodore surprend Eddy à écouter et lui propose de superviser la vente du blé le lendemain avec Silas pour éviter une nouvelle décote du meunier. Il l'autorise à garder tout surplus au-delà de $1.75 le boisseau pour l'aider à financer son voyage vers l'Oregon. Eddy accepte avec joie.
+  - Dîner de prunes sauvages, pain et chicorée partagé en tête-à-tête silencieux avec Elara, qui l'observe avec tendresse en cherchant Samuel en lui. Coucher sur le plancher.
+- **Rencontres & Interactions** :
+  - **Silas Flynn** : Bouleversé par le message d'Artus, il charge 20 sacs de blé et ramène $66.00 de Carlisle. Il met en garde Theodore contre Eddy.
+  - **Theodore McNamera** : Redressé dans son lit avec des béquilles, il reçoit les $66.00 de Silas et propose à Eddy une opportunité de financer son voyage en Oregon en supervisant la transaction du lendemain.
+  - **Dr. Charles Russell** : Soigne Finn, conseille Theodore sur ses béquilles, refait le pansement d'Eddy et repart.
+  - **Elara McNamera** : Veille sur les convalescents, prépare le bouillon et les prunes, et partage un moment silencieux avec Eddy.
+  - **Finn** : Fiévreux et affaibli, il subit l'irrigation du docteur au phénol.
+- **Santé & Ressources** :
+  - **Santé physique** : État stable pour Theodore et Eddy, mais infection préoccupante aux côtes pour Finn.
+  - **Santé mentale** : La créature du Regret reste silencieuse (aucune hallucination). L'angoisse d'avoir attiré la violence sur la ferme est forte mais apaisée par le projet de Theodore.
+  - **Ressources** : Gain de l'inventaire d'Eddy : un carnet et un crayon de graphite ayant appartenu à Samuel McNamera. Perte de ses réserves de nourriture sauvage (baies, viande séchée, champignons) données à Elara.
+  - **Intrigues** : Clôture de l'intrigue « Place à la table » (Terminé). Le fil « Un hôpital de campagne dans la cuisine » continue de progresser.
+  - **Compétences** : Apprentissage de la compétence **Dessin (5/100)**.
+
+### 29 juillet 1868
+- **Déplacements & Actions** :
+  - Theodore McNamera sort de son lit pour la première fois en deux jours, marchant avec assurance à l'aide de béquilles de frêne (il évoque ses souvenirs de la guerre de Sécession dans la Shenandoah).
+  - Petit-déjeuner partagé avec Silas, Theodore et Elara (pain frit au lard, chicorée). Eddy choisit de ne pas remettre le foulard indigo de Samuel pour affirmer sa propre identité.
+  - Leçon de lecture avec Theodore sur un journal local (*Carlisle Herald*). Eddy surmonte ses réticences à étudier (Jet de Résilience réussi : 47/86) et apprend à déchiffrer les cours du blé à Harrisburg ($2.10) et Boiling Springs ($1.95) (Intelligence : 17/75 réussite, Lecture augmente à 19%).
+  - Theodore propose à Eddy une nouvelle mission d'homme libre : chercher un sac de semences de blé Fultz (variété rouge robuste) dans le comté de Mifflin (sur la route d'Eddy vers Lewistown) et l'expédier par train à la ferme. Eddy accepte.
+  - Trajet de 5 heures vers Carlisle sur le chariot Studebaker avec Silas et 20 sacs de blé (plus d'une tonne). Eddy surmonte le malus de son bras gauche en écharpe (Jet d'Agilité réussi : 21/30). Le voyage est rude et chaud. Silas tente d'interroger Eddy sur Artus, mais Eddy évite les confidences.
+  - Sur la route, rencontre avec Charlie Gibson, fermier voisin forcé par contrat d'exclusivité et hypothèque de livrer son grain à Meeks pour un tarif de misère ($1.50 le boisseau). Silas explique la stratégie industrielle d'Isaac Meeks qui utilise des silos à vapeur à Carlisle pour spéculer et ruiner les petits fermiers.
+  - Arrivée au moulin de Bonny Brook. Ils observent Abner, fermier ruiné par la mouche de Hesse, refusé à crédit par le meunier Harvey Kunkel par peur de Meeks, obligé d'aller hypothéquer sa ferme chez ce dernier.
+  - Silas tente de saboter la clavette de roue du chariot de son ancien patron White (qui l'a floué en 1855) mais échoue car le fer est grippé (Sabotage : 55/50 échec).
+  - Négociation agressive au moulin : le meunier Kunkel propose $1.75 le boisseau. Eddy se présente sous son vrai nom ("Edward Devlin") et le valorise dans la foule en rappelant comment Theodore a été blessé pour sauver un enfant (Persuasion : 24/74 réussite).
+  - En privé, Eddy menace Kunkel d'ébruiter le cours officiel de Harrisburg ($2.10) auprès des autres fermiers ou de dénoncer sa fragilité financière à Meeks pour déclencher une guerre des prix (Intelligence : 48/75 réussite, Persuasion : 54/74 réussite, Persuasion avec malus économique : 26/59 réussite).
+  - Kunkel capitule et paie le blé au prix fort de $1.95 le boisseau (total de $78.00). Eddy fait remettre l'argent directement à Silas.
+  - Retour à la ferme. Silas remet fièrement les $78.00 à Theodore et raconte la négociation. Theodore donne sa part de $8.00 à Eddy (qui les ajoute à sa sacoche).
+  - Colère et angoisse de Theodore : il explique à Eddy que Kunkel va courir tout raconter à Meeks par peur. Si Meeks apprend l'extorsion en son nom, il écrasera la ferme McNamera immédiatement. Il ordonne à Eddy de retourner demain au moulin avec Silas pour faire amende honorable et désamorcer la situation. Eddy, rongé par la honte et l'angoisse d'avoir joué avec le feu, accepte.
+- **Rencontres & Interactions** :
+  - **Theodore McNamera** : Remarche en béquilles, instruit Eddy, lui donne les $8.00 de surplus, puis le recadre sévèrement sur la terrible menace que son chantage fait peser sur la ferme.
+  - **Silas Flynn** : Partage le trajet, ému par les questions sur Artus, tente un sabotage raté et exprime une admiration totale pour le culot d'Eddy au moulin.
+  - **Harvey Kunkel (PNJ)** : Miller de Bonny Brook à Carlisle, acculé par Meeks, contraint par le chantage d'Eddy d'acheter le blé à $1.95.
+  - **Charlie Gibson (PNJ)** : Fermier endetté et captif de Meeks ($1.50/boisseau).
+  - **Abner Vance (PNJ)** : Fermier ruiné par la mouche de Hesse et rejeté à crédit.
+  - **Elara McNamera** : Veille sur les malades, déçue de voir Eddy rejeter le foulard de Samuel, change son bandage le soir.
+  - **Docteur Charles Russell** : Est passé en l'absence d'Eddy et s'est montré furieux de ne pas le trouver.
+- **Santé & Ressources** :
+  - **Santé physique** : Theodore progresse en béquilles, Finn commence à voir sa fièvre baisser. Eddy a des lancements à l'épaule dus aux secousses du chariot.
+  - **Santé mentale** : Eddy subit une forte angoisse (comparée au feu échappé à tout contrôle chez les Dunbar) après les révélations de Theodore. Les traits de Droiture et d'Humanité sont renforcés.
+  - **Ressources** : Gain de **8 dollars** (portant son pécule de $12.38 à **$20.38**).
+  - **Intrigues** : L'intrigue « Le transport du blé vers Carlisle » progresse (2e tiers livré). L'intrigue « Le Vautour et la Proie » (menace de Meeks) est réactivée de force. Lancement de la nouvelle intrigue « À la recherche du blé Fultz ».
+  - **Compétences** : Lecture passe à **19%** (+2%).

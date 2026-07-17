@@ -501,11 +501,39 @@
 
     <div id="reading-mode-overlay" class="reading-mode-overlay">
         <div class="reading-mode-header">
+            <button id="reading-mode-settings-button" class="reading-mode-settings-button" title="Options d'affichage">Aa</button>
             <h2 id="reading-mode-title">Journal de Bord</h2>
             <button id="reading-mode-close-button" class="reading-mode-close-button">&times;</button>
         </div>
         <div class="reading-progress-container">
-            <div id="reading-progress-bar" class="reading-progress-bar"></div>
+            <div id="reading-progress-bar" class="reading-progress-bar" title="Progression globale dans le journal"></div>
+            <div id="entry-progress-bar" class="entry-progress-bar" title="Progression dans l'entrée courante"></div>
+        </div>
+        <div id="reader-settings-panel" class="reader-settings-panel">
+            <div class="settings-group">
+                <label>Typographie</label>
+                <div class="settings-options font-family-options">
+                    <button class="settings-btn" data-font="var(--font-serif)">Lora</button>
+                    <button class="settings-btn" data-font="var(--font-interface)">Inter</button>
+                    <button class="settings-btn" data-font="var(--font-handwriting)">Handwriting</button>
+                </div>
+            </div>
+            <div class="settings-group">
+                <label>Taille du texte</label>
+                <div class="settings-options font-size-options">
+                    <button class="settings-btn" id="reader-font-dec">A-</button>
+                    <span id="reader-font-size-display">100%</span>
+                    <button class="settings-btn" id="reader-font-inc">A+</button>
+                </div>
+            </div>
+            <div class="settings-group">
+                <label>Largeur de lecture</label>
+                <div class="settings-options width-options">
+                    <button class="settings-btn" data-width="50ch">Étroit</button>
+                    <button class="settings-btn" data-width="70ch">Moyen</button>
+                    <button class="settings-btn" data-width="90ch">Large</button>
+                </div>
+            </div>
         </div>
         <div id="book-container" class="book-container">
         </div>
