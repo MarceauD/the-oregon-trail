@@ -281,7 +281,7 @@ async function toggleInlineEdit(id, restoreContent = null, event = null) {
                     const index = gameState.journal.findIndex(j => String(j.id) === String(id));
                     if (index > -1 && content !== gameState.journal[index].entry) {
                         gameState.journal[index].entry = content;
-                        await savePartialData('journal', gameState.journal);
+                        await saveSingleJournalEntry(gameState.journal[index]);
 
                         // Signal de sauvegarde discret
                         const statusSpan = document.getElementById(`autosave-status-${id}`);
@@ -331,7 +331,7 @@ window.addInlineJournalEntry = async function () {
     }
     const newEntry = { id: newId, date: newDate, entry: "<p>Écrire la suite de l'aventure...</p>" };
     gameState.journal.unshift(newEntry);
-    await savePartialData('journal', gameState.journal);
+    await saveSingleJournalEntry(newEntry);
     renderJournal();
     setTimeout(() => openImmersiveEdit(newId), 150);
 };
@@ -348,7 +348,7 @@ window.saveInlineEdit = async function (id) {
             const index = gameState.journal.findIndex(j => String(j.id) === String(id));
             if (index > -1) {
                 gameState.journal[index].entry = newContent;
-                await savePartialData('journal', gameState.journal);
+                await saveSingleJournalEntry(gameState.journal[index]);
             }
             editor.remove();
             renderJournal();
@@ -587,7 +587,7 @@ async function saveImmersiveEdit(isManual = false) {
         const index = gameState.journal.findIndex(j => String(j.id) === String(immersiveEditId));
         if (index > -1) {
             gameState.journal[index].entry = content;
-            await savePartialData('journal', gameState.journal);
+            await saveSingleJournalEntry(gameState.journal[index]);
             immersiveLastContent = content;
             if (saveStatusSpan) {
                 const now = new Date();
@@ -646,8 +646,12 @@ async function saveJournalEntry(newContent) {
     if (id) {
         const index = gameState.journal.findIndex(j => String(j.id) === String(id));
         gameState.journal[index] = { ...gameState.journal[index], ...journalData };
-    } else { journalData.id = Date.now(); gameState.journal.push(journalData); }
-    await savePartialData('journal', gameState.journal);
+        journalData.id = gameState.journal[index].id;
+    } else {
+        journalData.id = Date.now();
+        gameState.journal.push(journalData);
+    }
+    await saveSingleJournalEntry(journalData);
     renderJournal();
 }
 

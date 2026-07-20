@@ -485,3 +485,32 @@
   - **Ressources** : Gain de **8 dollars** (portant son pécule de $12.38 à **$20.38**).
   - **Intrigues** : L'intrigue « Le transport du blé vers Carlisle » progresse (2e tiers livré). L'intrigue « Le Vautour et la Proie » (menace de Meeks) est réactivée de force. Lancement de la nouvelle intrigue « À la recherche du blé Fultz ».
   - **Compétences** : Lecture passe à **19%** (+2%).
+
+### 30 juillet 1868
+- **Déplacements & Actions** :
+  - Réveil d'Eddy sur sa paillasse. Il boit l'eau tiède de sa gourde de fer-blanc gravée « E.D. » (prise sur Eugene) et ressent une vive amertume envers Theodore, qu'il juge hypocrite de lui reprocher sa fermeté envers Kunkel après avoir accepté les $78.00.
+  - Finn se lève seul malgré ses graves blessures et vient s'installer dans le fauteuil en cuir de Theodore. Conversation avec Eddy : Finn approuve la fermeté d'Eddy à Carlisle, traite McNamera de « chique molle » et annonce son intention de s'attarder à la ferme en jouant le fils de substitution. Finn s'approprie le foulard indigo de Samuel.
+  - Eddy tente de puiser de l'eau au puits pour le cheval Bill (Force : 68/60 échec avec malus). Elara l'aide et le réprimande.
+  - Préparation du café : Elara enseigne à Eddy la recette du **Café à la chicorée** (brossage, torréfaction, mouture et clarification à la coquille d'œuf). Elara évoque son rêve de goûter au café Arbuckles' Ariosa. Theodore raconte une anecdote sur une escroquerie au « Café Royal de Paris » en 1857.
+  - Visite furieuse du Dr Charles Russell (venu en chariot avec Silas) :
+    - Il surprend les trois convalescents debout et entre dans une colère noire.
+    - Il constate que la jambe de Theodore est violacée (stase sanguine) et lui interdit tout déplacement sous peine de gangrène.
+    - Il recadre Eddy, inspecte son bras et réajuste son bandage.
+    - Finn subit une détérioration brutale (détresse respiratoire) : le docteur pratique une ponction thoracique d'urgence au trocart pour drainer pus et sang noir, puis le sangle solidement sur son lit.
+    - Désinfection atroce de la plaie d'Eddy au phénol. Russell lui inflige une gifle retentissante pour son entêtement et lui ordonne d'immobiliser son bras.
+  - Révélation sur Benjamin : Avant de partir seul pour Carlisle avec les 20 derniers sacs, Silas révèle à Eddy qu'il a croisé Benjamin cette nuit au camp des charbonniers avec Artus Flynn. Benjamin a un bras cassé et a demandé si Eddy était vivant.
+  - Rejet de l'aide financière : Entendant Theodore et Elara se disputer sur les coûts du médecin et des Ladies' Aid Society ($0.50/jour), Eddy propose d'offrir la totalité de ses économies ($20.38). Theodore refuse violemment cette « charité » avec fierté (Persuasion : 80/74 échec) et oblige Eddy à reprendre son argent.
+  - Hallucination au laudanum : Assis dans le fauteuil de cuir sous l'effet de l'opium, Eddy vit un délire surréaliste où son corps se transforme en fauteuil et où les meubles de la cuisine (vaisselier, table, horloge) lui parlent et le rejettent.
+  - Histoire de l'horloge de parquet : À son réveil, Elara lui raconte l'origine de la grand-horloge George Hoff (1820), dot donnée par son père luthérien Jacob Hostetter qui désapprouvait son mariage avec Theodore.
+  - Catastrophe commerciale : Silas revient de Carlisle sans le blé et tout sourire. Devant le refus de Kunkel, Silas a vendu les 20 derniers sacs à **Isaac Meeks** à $1.65 le boisseau, acceptant 3 sacs de semences gratuites et la visite d'un représentant de Meeks le lendemain pour signer un contrat. Silas pense avoir réussi un coup de maître, tandis que Theodore est anéanti par cette reddition forcée.
+- **Rencontres & Interactions** :
+  - **Finn** : Se lève seul, s'approprie le foulard de Samuel, survit de justesse à un drainage thoracique d'urgence au trocart et se retrouve attaché à son lit.
+  - **Dr. Charles Russell** : En colère, opère Finn en urgence, menace Theodore de gangrène et gifle Eddy après lui avoir désinfecté l'épaule au phénol.
+  - **Silas Flynn** : Vend imprudemment le blé à Meeks et livre la ferme à l'usurier, tout en informant Eddy que Benjamin est sain et sauf avec Artus.
+  - **Theodore McNamera** : Aggrave sa blessure, refuse fièrement l'argent d'Eddy et assiste impuissant à la transaction conclue par Silas avec Meeks.
+  - **Elara McNamera** : Enseigne la recette du café à la chicorée, aide le médecin et raconte l'histoire familiale de la grand-horloge.
+- **Santé & Ressources** :
+  - **Santé physique** : Finn est sanglé au lit après sa ponction. Theodore est menacé de gangrène s'il quitte son lit. Eddy souffre d'une plaie ravivée et désinfectée au phénol, avec le bras immobilisé.
+  - **Santé mentale** : Fort sentiment de rejet et de frustration après le refus de Theodore, accentué par des hallucinations sous laudanum.
+  - **Ressources** : Économies intactes à **$20.38** (offre rejetée). Acquisition du savoir culinaire **Café à la chicorée**.
+  - **Intrigues** : Clôture du fil « Le transport du blé vers Carlisle » (60 sacs vendus). Réactivation dramatique de « Le Vautour et la Proie » (Meeks s'invite à la ferme). Création du fil « Goûter au café d'exception ».

@@ -17,7 +17,7 @@ Il fut d'abord contraint de travailler aux champs. Par la suite, ses parents ado
 Son objectif est de rejoindre l'Oregon, bien qu'il soit à pied.Edward nourrit également un profond désir : effacer le nom de famille Dunbar et découvrir son véritable nom de naissance. Il compte profiter de son voyage à travers la Pennsylvanie pour enquêter sur l'histoire de ses parents biologiques.Le point de départ de l'aventure se situe juste à l'extérieur de Harrisburg. Edward, encore à bout de souffle après sa fuite, se dirige vers l'ouest en suivant la ligne de chemin de fer en direction de la ville de Lewistown.
 
 --- ÉCONOMIE ---
-Monnaie : $12.38
+Monnaie : $20.38
 
 --- STATISTIQUES ---
 Force: 60
@@ -39,7 +39,7 @@ Débrouillardise: 62
 Jeu de banjo: 60
 Attaque sournoise: 70
 Fuite: 55
-Lecture: 17
+Lecture: 19
 Ecriture: 5
 Equitation: 10
 Agriculture (blé): 81
@@ -64,14 +64,6 @@ Dessin: 5
 
 --- INVENTAIRE ---
 
-> Clothing
-- Chapeau de paille
-- Bottes de travail en cuir
-- Chemise de calicot à fins carreaux bleus et blancs
-- Pantalon de drap de jean brun
-- Bretelles en toile écrue
-- Foulard de coton teint à l'indigo
-
 > General
 - Pièce en argent "Seated Liberty Dollar"
 - Sacoche en cuir
@@ -87,27 +79,36 @@ Dessin: 5
 - Petit couteau de cuisine
 - Plaque en bois rectangulaire marqué d'un as de pique
 - Dés boiteux
-- 5 oeufs de dinde sauvage
 - Plumes de dinde sauvage
 - Gourde 'E.D'
 - Clés de la ferme des Dunbar
 - Dessin de cerf au fusain (grande qualité)
-- Carnet de Samuel (dessins et écrits)
+- Carnet de Samuel
 - Crayon de graphite
+
+> Clothing
+- Chapeau de paille
+- Bottes de travail en cuir
+- Chemise de calicot à fins carreaux bleus et blancs
+- Pantalon de drap de jean brun
+- Bretelles en toile écrue
+- Foulard de coton teint à l'indigo
 
 --- SAVOIRS SPÉCIFIQUES ---
 - Hard Times Come Again No More (Triste et lent)
 - Recette des Johnnycakes (Shawnee cakes)
+- Café à la chicorée
 
 --- ÉTAT PHYSIQUE ---
-- Blessure par balle (bras gauche) (Depuis: depuis 3 j, Soins: Garder le bras en écharpe, désinfection quotidienne et changement de bandage, surveiller la fièvre, Effets: Bras gauche immobilisé dans une écharpe, malus de force général)
+- Blessure par balle (bras gauche) (Depuis: depuis 5 j, Soins: Garder le bras en écharpe, désinfection quotidienne et changement de bandage, surveiller la fièvre, Effets: Bras gauche immobilisé dans une écharpe, malus de force général)
 
 --- SANTÉ MENTALE ---
-- Mort violente de Eugene Dunbar (Depuis: depuis 3 j, Soins: Trouver quelqu'un à qui en parler et accepter de se livrer, Effets: Risque de sensation de panique à l'odeur de poudre, vue de la mort, bruit d'arme à feu)
-- Séparation avec Benjamin (Depuis: depuis 3 j, Soins: Trouver quelqu'un à qui en parler et accepter de se livrer, Effets: Difficulté à prendre de nouvelles responsabilités auprès des autres)
+- Mort violente de Eugene Dunbar (Depuis: depuis 5 j, Soins: Trouver quelqu'un à qui en parler et accepter de se livrer, Effets: Risque de sensation de panique à l'odeur de poudre, vue de la mort, bruit d'arme à feu)
+- Séparation avec Benjamin (Depuis: depuis 5 j, Soins: Trouver quelqu'un à qui en parler et accepter de se livrer, Effets: Difficulté à prendre de nouvelles responsabilités auprès des autres)
 
 --- NOTES & IDÉES ---
 [ ] Intrigue Ruy Blas à Philadelphie, PA qui fait passer par 5 endroits majeurs de la ville.
+[ ] Ecrire une mélodie, une chanson
 
 ========================================
 
@@ -193,7 +194,7 @@ M'a intercepté juste avant mon départ en exil.
 
 M'a confié une mission : retrouver son fils, Artus Flynn, et lui remettre son jeu de cartes personnel en signe de réconciliation.
 
-A enseigné à Edward comment fabriquer de la colle de peau. A intercepté Edward juste avant son exil pour lui confier son jeu de cartes personnel afin de l'offrir à son fils Artus en signe de réconciliation | Apprend d'Eddy qu'Artus Flynn est prêt à se réconcilier ('revenir à sa table'), ce qui le touche aux larmes. | Charge seul 20 sacs de blé et effectue le transport vers Carlisle, vendant la cargaison $1.65 le boisseau pour un total de $66.00. | Conseille à Theodore de garder ses distances avec Eddy car la violence lui colle à la peau.
+A enseigné à Edward comment fabriquer de la colle de peau. A intercepté Edward juste avant son exil pour lui confier son jeu de cartes personnel afin de l'offrir à son fils Artus en signe de réconciliation | Apprend d'Eddy qu'Artus Flynn est prêt à se réconcilier ('revenir à sa table'), ce qui le touche aux larmes. | Charge seul 20 sacs de blé et effectue le transport vers Carlisle, vendant la cargaison $1.65 le boisseau pour un total de $66.00. | Conseille à Theodore de garder ses distances avec Eddy car la violence lui colle à la peau. | Accompagne Eddy à Carlisle pour le deuxième convoi de blé. Interroge Eddy sur Artus et exprime ses regrets de père. | Tente de saboter l'essieu du chariot de White pour se venger d'un ancien tort, mais échoue. | Assiste à la négociation agressive d'Eddy et exprime une admiration totale. | Vend imprudemment le blé à Isaac Meeks à $1.65 le boisseau et ramène 3 sacs de semences, ignorant le piège tendu à la ferme. | Révèle à Eddy que le petit Benjamin est au camp des charbonniers avec Artus, avec un bras cassé, et qu'il a demandé des nouvelles d'Eddy.
 ---
 ID: 1761055049827
 Nom: Glenn, pisteur d'Eugene
@@ -293,7 +294,7 @@ J'ai contré son chantage en utilisant un argument logique sur son monopole , le
 
 Il m'a cédé avec colère mais respect, me tenant personnellement responsable de la machine.
 
-Alors qu'il tentait d'escroquer McNamera en lui louant la batteuse réparée à 10 cents le boisseau, je l'ai confronté. En lui démontrant que sa cruauté pousserait les autres fermiers à s'allier contre lui pour acheter leur propre batteuse, je l'ai forcé à baisser le prix à 4 cents. Il m'a expulsé de son bureau, furieux, mais impressionné par mon sens des affaires
+Alors qu'il tentait d'escroquer McNamera en lui louant la batteuse réparée à 10 cents le boisseau, je l'ai confronté. En lui démontrant que sa cruauté pousserait les autres fermiers à s'allier contre lui pour acheter leur propre batteuse, je l'ai forcé à baisser le prix à 4 cents. Il m'a expulsé de son bureau, furieux, mais impressionné par mon sens des affaires | Achète le dernier tiers du blé McNamera à $1.65 le boisseau via Silas, lui offrant 3 sacs de semences et prévoyant d'envoyer un émissaire le lendemain pour finaliser un contrat d'exclusivité.
 ---
 ID: 1759943362290
 Nom: Finn
@@ -346,7 +347,7 @@ A été témoin de ma victoire de négociation contre Meeks, semblant impression
 
 A participé à la célébration générale après ma négociation.
 
-A refusé ma proposition d'attaquer la ferme Dunbar, se moquant de mon idéalisme . | A affronté Morris Diamond et ses hommes à la ferme en l'absence d'Eddy et Theodore. A accepté un duel truqué avec Diamond, s'est fait tirer dans le flanc droit (balle au poumon) après le dysfonctionnement de son arme. Est soigné dans la chambre de Samuel à la ferme. | A écouté la confession complète d'Eddy sur son exil, Benjamin et la mort d'Eugene. A reçu un fil de pêche fabriqué avec une corde en acier de banjo de la part d'Eddy en guise de remerciement. | Brûle de fièvre et refuse d'avaler quoi que ce soit au lendemain des événements tragiques | Ausculté par le Dr. Russell qui nettoie sa plaie infectée et lui administre de la quinine et du laudanum pour sa côte cassée et sa fièvre | Brûle de fièvre et refuse d'avaler quoi que ce soit au lendemain des événements tragiques | Ausculté par le Dr. Russell qui nettoie sa plaie infectée et lui administre de la quinine et du laudanum pour sa côte cassée et sa fièvre | Lutte contre la fièvre et subit une irrigation douloureuse de sa blessure infectée par le docteur Russell.
+A refusé ma proposition d'attaquer la ferme Dunbar, se moquant de mon idéalisme . | A affronté Morris Diamond et ses hommes à la ferme en l'absence d'Eddy et Theodore. A accepté un duel truqué avec Diamond, s'est fait tirer dans le flanc droit (balle au poumon) après le dysfonctionnement de son arme. Est soigné dans la chambre de Samuel à la ferme. | A écouté la confession complète d'Eddy sur son exil, Benjamin et la mort d'Eugene. A reçu un fil de pêche fabriqué avec une corde en acier de banjo de la part d'Eddy en guise de remerciement. | Brûle de fièvre et refuse d'avaler quoi que ce soit au lendemain des événements tragiques | Ausculté par le Dr. Russell qui nettoie sa plaie infectée et lui administre de la quinine et du laudanum pour sa côte cassée et sa fièvre | Brûle de fièvre et refuse d'avaler quoi que ce soit au lendemain des événements tragiques | Ausculté par le Dr. Russell qui nettoie sa plaie infectée et lui administre de la quinine et du laudanum pour sa côte cassée et sa fièvre | Lutte contre la fièvre et subit une irrigation douloureuse de sa blessure infectée par le docteur Russell. | Sa fièvre commence à tomber. | Se lève seul malgré sa grave blessure et s'installe dans le fauteuil de Theodore. | Prend le foulard indigo de Samuel avec l'accord d'Eddy. | Subit une ponction thoracique d'urgence au trocart par le Dr Russell et se retrouve sanglé à son sommier pour des semaines.
 ---
 ID: 1759859537696
 Nom: Elara McNamera
@@ -356,7 +357,7 @@ Image: https://res.cloudinary.com/dg64n9fhe/image/upload/v1776178754/pnaevrogio1
 Faits marquants: J'ai partagé un bref moment d'entraide silencieuse avec elle dans la cuisine. Elle semble apprécier ma présence discrète.
 M'a soigné après mon accident. Elle a entendu la conversation entre McNamera et le pisteur et soupçonne maintenant la vérité sur ma situation. Sa réaction est incertaine.
 M'a donné le fusil pour me défendre.
-M'a préparé une sacoche avec des provisions (viande, pain, boussole, couteau) pour mon exil. | A soigné Eddy et Theodore à leur retour de la forêt. A appris la mort d'Eugene Dunbar et l'effondrement psychologique de son mari. | A partagé un repas chaud avec Eddy, exprimant sa gratitude pour la batteuse et le rassurant sur sa responsabilité dans la mort d'Eugene. | A préparé un petit-déjeuner copieux avec Eddy tout en veillant sur Theodore et Finn qui sont tombés fiévreux | Assiste le médecin en cuisine en fournissant eau bouillante, bassine et savon pour les chirurgies d'urgence | A enlacé chaleureusement Eddy après avoir reçu une broche sculptée en bois de banjo brisé. | A partagé la préparation d'un petit-déjeuner copieux avec Eddy tout en veillant sur Theodore et Finn qui sont tombés fiévreux | Assiste le médecin en cuisine en fournissant eau bouillante, bassine et savon pour les chirurgies d'urgence | A enlacé chaleureusement Eddy après avoir reçu une broche sculptée en bois de banjo brisé | Soigne, lave et habille Eddy avec les nippes de son fils décédé Samuel après sa toilette | Accueille Silas avec de la chicorée et l'oriente vers Theodore et Finn. | Reçoit les provisions sauvages d'Eddy pour faire des repas. | Veille sur les convalescents et sert le bouillon à Theodore et Finn. | Partage un dîner silencieux avec Eddy en pensant à Samuel.
+M'a préparé une sacoche avec des provisions (viande, pain, boussole, couteau) pour mon exil. | A soigné Eddy et Theodore à leur retour de la forêt. A appris la mort d'Eugene Dunbar et l'effondrement psychologique de son mari. | A partagé un repas chaud avec Eddy, exprimant sa gratitude pour la batteuse et le rassurant sur sa responsabilité dans la mort d'Eugene. | A préparé un petit-déjeuner copieux avec Eddy tout en veillant sur Theodore et Finn qui sont tombés fiévreux | Assiste le médecin en cuisine en fournissant eau bouillante, bassine et savon pour les chirurgies d'urgence | A enlacé chaleureusement Eddy après avoir reçu une broche sculptée en bois de banjo brisé. | A partagé la préparation d'un petit-déjeuner copieux avec Eddy tout en veillant sur Theodore et Finn qui sont tombés fiévreux | Assiste le médecin en cuisine en fournissant eau bouillante, bassine et savon pour les chirurgies d'urgence | A enlacé chaleureusement Eddy après avoir reçu une broche sculptée en bois de banjo brisé | Soigne, lave et habille Eddy avec les nippes de son fils décédé Samuel après sa toilette | Accueille Silas avec de la chicorée et l'oriente vers Theodore et Finn. | Reçoit les provisions sauvages d'Eddy pour faire des repas. | Veille sur les convalescents et sert le bouillon à Theodore et Finn. | Partage un dîner silencieux avec Eddy en pensant à Samuel. | Prend soin de Theodore et de Finn, dont la fièvre tombe. | Observe silencieusement Eddy refuser de porter le foulard indigo de Samuel. | Prépare des repas de chicorée, lard frit et bouillon. | Change le pansement propre d'Eddy avant la nuit. | Enseigne à Eddy la préparation du café à la chicorée sauvage et lui confie son rêve de goûter au café Arbuckles' Ariosa. | Raconte l'histoire de l'horloge commode George Hoff reçue comme dot de son père Jacob Hostetter. | Assiste le Dr Russell lors de l'opération thoracique d'urgence de Finn.
 ---
 ID: 1759855829459
 Nom: Theodore McNamera
@@ -433,7 +434,7 @@ Nous devons nous retrouver à la cabane dimanche matin
 Alors qu'il est là pour me retrouver dans le bois, il croise le chemin de Eugene Dunbar et son pisteur. 
 Il finit par donner la position de la cabane sous la menace.
 
-Il est libéré quand Artus Flynn tue Eugene Dunbar. | A confessé en pleurs à Elara et Eddy avoir parlé sous la torture après s'être fait tirer dans la cuisse par Eugene Dunbar. A démonté son Colt Army 1860 devant Eddy pour le rendre inoffensif. | A rejoint la table de petit-déjeuner malgré une forte fièvre et une blessure à la jambe gauche qui l'empêche de poser le pied au sol | Rejoint la table de cuisine réquisitionnée par le Dr. Russell pour y subir l'extraction immédiate de la balle logée dans sa cuisse | Rejoint la table de cuisine réquisitionnée par le Dr. Russell pour y subir l'extraction immédiate de la balle logée dans sa cuisse. A subi l'incision et l'extraction sans anesthésie, serrant les dents sur du cuir. | A reçu d'Eddy un bourre-pipe sculpté en bois de banjo brisé. | A rejoint la table de petit-déjeuner malgré une forte fièvre et une blessure à la jambe gauche qui l'empêche de poser le pied au sol | Rejoint la table de cuisine réquisitionnée par le Dr. Russell pour y subir l'extraction immédiate de la balle logée dans sa cuisse. A subi l'incision et l'extraction sans anesthésie, serrant les dents sur du cuir | A reçu d'Eddy un bourre-pipe sculpté en bois de banjo brisé | Propose à Eddy de s'installer définitivement à la ferme et accepte son refus motivé par son rêve d'Oregon avec dignité et tristesse | Organise la venue de Silas Flynn pour convoyer les 60 sacs de blé vers Carlisle | Reçoit les béquilles en frêne du docteur Russell. | Reçoit les $66.00 ramenés par Silas mais déplore la décote imposée par le meunier. | Propose à Eddy de superviser la vente du blé le lendemain avec Silas pour éviter une nouvelle décote du meunier.
+Il est libéré quand Artus Flynn tue Eugene Dunbar. | A confessé en pleurs à Elara et Eddy avoir parlé sous la torture après s'être fait tirer dans la cuisse par Eugene Dunbar. A démonté son Colt Army 1860 devant Eddy pour le rendre inoffensif. | A rejoint la table de petit-déjeuner malgré une forte fièvre et une blessure à la jambe gauche qui l'empêche de poser le pied au sol | Rejoint la table de cuisine réquisitionnée par le Dr. Russell pour y subir l'extraction immédiate de la balle logée dans sa cuisse | Rejoint la table de cuisine réquisitionnée par le Dr. Russell pour y subir l'extraction immédiate de la balle logée dans sa cuisse. A subi l'incision et l'extraction sans anesthésie, serrant les dents sur du cuir. | A reçu d'Eddy un bourre-pipe sculpté en bois de banjo brisé. | A rejoint la table de petit-déjeuner malgré une forte fièvre et une blessure à la jambe gauche qui l'empêche de poser le pied au sol | Rejoint la table de cuisine réquisitionnée par le Dr. Russell pour y subir l'extraction immédiate de la balle logée dans sa cuisse. A subi l'incision et l'extraction sans anesthésie, serrant les dents sur du cuir | A reçu d'Eddy un bourre-pipe sculpté en bois de banjo brisé | Propose à Eddy de s'installer définitivement à la ferme et accepte son refus motivé par son rêve d'Oregon avec dignité et tristesse | Organise la venue de Silas Flynn pour convoyer les 60 sacs de blé vers Carlisle | Reçoit les béquilles en frêne du docteur Russell. | Reçoit les $66.00 ramenés par Silas mais déplore la décote imposée par le meunier. | Propose à Eddy de superviser la vente du blé le lendemain avec Silas pour éviter une nouvelle décote du meunier. | Fait ses premiers pas hors de son lit avec ses béquilles de frêne. | Donne des leçons de lecture à Eddy à l'aide du journal. | S'oppose farouchement au chantage d'Eddy sur Kunkel et lui ordonne de retourner faire amende honorable le lendemain. | Remet à Eddy les $8.00 de surplus négociés comme promis. | Sa cuisse s'enflamme et menace de tourner en gangrène suite à ses efforts, le forçant à un alitement strict. | Raconte l'anecdote de l'escroc au café de 1857. | Refuse catégoriquement de recevoir la charité des $20.38 offerts par Eddy pour payer les soins. | Reçoit avec horreur la nouvelle du contrat passé par Silas avec Isaac Meeks.
 ---
 ID: 1759859643208
 Nom: Farmhands de la ferme de McNamera
@@ -494,7 +495,25 @@ Nom: Docteur Charles Russell
 Statut: Connaissance
 Description: Médecin et chirurgien de Carlisle, la cinquantaine robuste, au visage tanné, portant des lunettes ovales en fer fin et des favoris gris taillés de près. Ancien chirurgien militaire de l'Union rompu aux amputations de masse, il est pragmatique, sardonique et doté d'un sang-froid absolu (100/100 en Médecine). Il a développé une méthode d'antisepsie empirique et stricte (lavage au savon et au phénol) qui passe pour une manie obsessionnelle. Il est vêtu d'une redingote noire poussiéreuse tachetée d'iode, d'un gilet gris à boutons de nacre, et transporte une lourde sacoche en cuir bouilli contenant scalpels en ébène, aiguilles d'argent, éther et laudanum. Il voyage dans un cabriolet à deux roues tiré par son vieux cheval Barnaby.
 Image: https://res.cloudinary.com/dg64n9fhe/image/upload/v1783786809/i580b4us0nkmudxqqqew.png
-Faits marquants: S'occupe de soigner la blessure aux côtes de Finn à la ferme McNamera | Demande un tarif de 2,00 $ par jour en plus de paiements en nature (nourriture, vêtements, matériel ou autre) | Arrive à la ferme McNamera pour soigner les blessés | Négocie son paiement contre deux dollars et des restes de nourriture | Diagnostique une infection de la plaie (phlegmon) et une côte cassée chez Finn | Ordonne l'opération immédiate de Theodore pour extraire la balle dans sa cuisse | Réquisitionne Eddy comme assistant improvisé | A extrait la balle de la cuisse de Theodore McNamera sur la table de la cuisine. | A lu à Eddy l'article de journal sur sa mère Connie Devlin contre un paiement de 0,87 $, tout en extirpant des éclats d'os de son épaule blessée. | A lu à Eddy l'article de journal sur sa mère Connie Devlin contre un paiement de 0,87 $, tout en extirpant des éclats d'os de son épaule blessée | Apporte des béquilles en frêne pour Theodore. | Irrigue la blessure infectée aux côtes de Finn avec du phénol. | Inspecte la suture d'argent d'Eddy et refait son pansement.
+Faits marquants: S'occupe de soigner la blessure aux côtes de Finn à la ferme McNamera | Demande un tarif de 2,00 $ par jour en plus de paiements en nature (nourriture, vêtements, matériel ou autre) | Arrive à la ferme McNamera pour soigner les blessés | Négocie son paiement contre deux dollars et des restes de nourriture | Diagnostique une infection de la plaie (phlegmon) et une côte cassée chez Finn | Ordonne l'opération immédiate de Theodore pour extraire la balle dans sa cuisse | Réquisitionne Eddy comme assistant improvisé | A extrait la balle de la cuisse de Theodore McNamera sur la table de la cuisine. | A lu à Eddy l'article de journal sur sa mère Connie Devlin contre un paiement de 0,87 $, tout en extirpant des éclats d'os de son épaule blessée. | A lu à Eddy l'article de journal sur sa mère Connie Devlin contre un paiement de 0,87 $, tout en extirpant des éclats d'os de son épaule blessée | Apporte des béquilles en frêne pour Theodore. | Irrigue la blessure infectée aux côtes de Finn avec du phénol. | Inspecte la suture d'argent d'Eddy et refait son pansement. | Passe à la ferme McNamera pour ausculter les malades (furieux d'avoir manqué Eddy). | Pique une colère noire devant le non-respect des consignes par ses patients. | Pose un drain d'urgence entre les côtes de Finn et le sangle au lit. | Désinfecte l'épaule d'Eddy au phénol et lui inflige une gifle mémorable. | Ordonne l'alitement strict de Theodore sous peine de gangrène.
+---
+ID: harvey-kunkel
+Nom: Harvey Kunkel
+Statut: hostile
+Description: Propriétaire d'une cinquantaine d'années du moulin de Bonny Brook à Carlisle. D'origine allemande (descendant des Pennsylvania Dutch), robuste, les bras et son tablier de cuir blanchis par la farine. D'un tempérament pragmatique, sévère mais intérieurement très anxieux quant à la survie de son commerce face au géant industriel à vapeur d'Isaac Meeks. Il cherche à éviter toute friction avec Meeks et les accords de transport ferroviaire Cumberland Valley.
+Faits marquants: Gère le moulin de Bonny Brook à Carlisle. | Négocie le blé de McNamera à $1.95 le boisseau sous le chantage d'Eddy d'ébruiter sa situation et d'impliquer Meeks dans une guerre des prix.
+---
+ID: charlie-gibson
+Nom: Charlie Gibson
+Statut: Connaissance
+Description: Fermier de la quarantaine habitant le vallon d'à côté. Visage fatigué et buriné, cerné par la détresse financière. Homme courageux mais accablé par les dettes, il représente le destin tragique des petits propriétaires capturés par Meeks. Il a été contraint d'hypothéquer ses terres et de signer un contrat d'exclusivité d'usure avec Meeks au printemps pour payer ses semences, l'obligeant à lui céder son blé à un prix dérisoire ($1.50 le boisseau).
+Faits marquants: Fermier voisin croisé sur la route de Carlisle. Il est piégé par un prêt d'Isaac Meeks et contraint de lui vendre son blé à un prix de misère ($1.50 le boisseau) sous peine d'hypothèque.
+---
+ID: abner-vance
+Nom: Abner Vance
+Statut: Connaissance
+Description: Petit propriétaire de la Cumberland Valley au visage couperosé et coiffé d'un chapeau de feutre crasseux. Fier mais brisé par les coups du sort, sa récolte entière a été détruite par la mouche de Hesse. Sa motivation immédiate est de nourrir sa famille pour l'hiver, ce qui l'oblige à aller hypothéquer ses terres chez Meeks après avoir essuyé un refus de crédit par Kunkel.
+Faits marquants: Fermier désespéré dont le blé a été détruit par la mouche de Hesse. Refusé à crédit par Kunkel par crainte de Meeks, il part se soumettre à Meeks pour un prêt.
 ---
 
 ========================================
@@ -631,7 +650,7 @@ Image: https://res.cloudinary.com/dg64n9fhe/image/upload/v1776178819/rxsxi3owwnd
 ID: 1760519479500
 Titre: Le Vautour et la Proie
 Lieu: Campagne de Harrisburg, PA
-Statut: termine
+Statut: En cours
 Description: Isaac Meeks, le puissant voisin, voit la faiblesse de la ferme McNamera (symbolisée par la disparition du cheval) comme une opportunité. Il a fait une offre de rachat menaçante. Je suis maintenant au milieu d'une lutte de pouvoir entre deux fermiers, et la survie de la ferme McNamera est en jeu.
 La menace de Meeks est devenue concrète. Il a officiellement refusé l'accès à sa batteuse, mettant en péril toute la récolte de McNamera. Je suis maintenant chargé d'une mission diplomatique désespérée pour le convaincre de changer d'avis. La survie de la ferme repose sur ma capacité à négocier avec cet homme impitoyable.
 La négociation a pris une tournure inattendue. J'ai découvert le secret de Meeks : sa précieuse batteuse à vapeur est en panne. Il m'a mis au défi de la réparer. Si je réussis, je pourrais non seulement sauver la récolte de McNamera, mais aussi gagner un levier de pouvoir immense sur l'homme le plus puissant de la région. Si j'échoue, l'humiliation sera totale.
@@ -640,6 +659,9 @@ La réparation de la batteuse est en cours. La livraison est prévue pour demain
 Avec la batteuse réparée, Meeks accepte de nous louer sa batteuse la semaine suivante.
 (20 juillet) Meeks, sachant que j'étais un fugitif , a tenté de faire chanter McNamera en doublant le prix de location de la batteuse. J'ai réussi à contrer son chantage en utilisant un argument logique sur son monopole commercial . J'ai non seulement obtenu la machine, mais j'ai fait baisser le prix à 4 cents/boisseau. La récolte de McNamera est sauvée.
 Image: https://res.cloudinary.com/dg64n9fhe/image/upload/v1776178821/e3kvybignulsjd1tylf2.jpg
+Événements:
+- La menace d'Isaac Meeks est réactivée : le chantage d'Eddy sur le meunier Kunkel au nom de Meeks risque de s'ébruiter et de pousser l'usurier à écraser la ferme McNamera en représailles.
+- En vendant le dernier tiers du blé à Meeks, Silas offre à l'usurier l'opportunité parfaite d'imposer son emprise sur la ferme McNamera en envoyant un représentant sceller un contrat le lendemain.
 ---
 ID: 1760463559078
 Titre: La guerre de l'ombre
@@ -771,15 +793,41 @@ Description: Le Dr. Russell a réquisitionné la table de la cuisine pour soigne
 - Edward s'évanouit pendant l'opération à vif de Theodore
 - Le docteur Russell opère l'épaule d'Edward
 - Le docteur Russell effectue une visite de contrôle à la ferme, apporte des béquilles à Theodore, panse l'épaule d'Eddy et irrigue la blessure infectée aux côtes de Finn.
+- Theodore McNamera sort de sa chambre pour la première fois en béquilles de frêne, s'efforçant de remarcher.
+- La fièvre de Finn commence enfin à tomber après ses soins.
+- Le docteur Russell intervient en urgence pour drainer le thorax de Finn au trocart et l'attache à son matelas pour plusieurs semaines.
+- L'infection de Theodore s'aggrave à la cuisse en raison de sa stase sanguine, le menaçant de gangrène s'il ne reste pas strictly alité.
+- Le docteur Russell réajuste l'écharpe d'Eddy après avoir désinfecté l'épaule au phénol et giflé le jeune fugitif pour son entêtement.
 ---
 ID: 1776335000000
 Titre: Le transport du blé vers Carlisle
 Lieu: Ferme McNamera et Carlisle, PA
-Statut: En cours
+Statut: Terminé
 Description: Silas et Eddy doivent transporter les 60 sacs de blé de la récolte au moulin de Carlisle en trois voyages pour vendre le grain.
 Événements:
 - Silas Flynn effectue le transport du premier tiers de la récolte (20 sacs) au moulin de Carlisle et ramène $66.00 (prix réduit à $1.65 le boisseau en raison de l'humidité du blé).
 - Theodore McNamera propose à Eddy d'accompagner Silas le lendemain pour superviser la vente du blé et éviter les décotes, en lui permettant de garder le surplus au-delà de $1.75 le boisseau pour financer son voyage.
+- Silas et Eddy effectuent le transport du deuxième tiers du blé (20 sacs) au moulin de Bonny Brook à Carlisle.
+- Eddy négocie farouchement le prix du blé à $1.95 le boisseau (gagnant $8.00 de surplus) en faisant chanter le meunier Harvey Kunkel avec le nom de Meeks et la menace de ruine industrielle.
+- Theodore McNamera s'alarme de ce chantage qui menace de s'ébruiter et d'attirer les foudres d'Isaac Meeks sur la ferme. Il ordonne à Eddy de retourner faire amende honorable auprès de Kunkel le lendemain.
+- Silas Flynn effectue le transport du dernier tiers du blé (20 sacs) à Carlisle.
+- Devant le refus du meunier Kunkel, Silas vend le blé à Isaac Meeks à $1.65 le boisseau et accepte trois sacs de semences gratuites, croyant bien faire mais livrant la ferme au géant de la vallée.
+---
+ID: 1776336000000
+Titre: A la recherche du blé Fultz
+Lieu: Comté de Mifflin, PA
+Statut: En cours
+Description: Theodore McNamera a demandé à Eddy de profiter de son voyage vers l'ouest pour trouver et acheter un sac de blé Fultz (une variété rouge robuste et résistante) dans le comté de Mifflin et de l'expédier par train à la ferme pour sauver la récolte de l'année prochaine.
+Événements:
+- Theodore McNamera propose à Eddy d'acheter un sac de semences de blé Fultz à Lewistown lors de son passage et de le renvoyer par train, lui confiant cette tâche d'homme libre.
+---
+ID: 1776337000000
+Titre: Goûter au café d'exception
+Lieu: Ferme McNamera, PA
+Statut: En cours
+Description: Elara McNamera rêve de goûter un jour au café Ariosa d'Arbuckle (un café d'exception venu de Pittsburgh et emballé avec un bâtonnet de sucre d'orge). Eddy garde ce désir dans un coin de sa tête.
+Événements:
+- Elara explique à Eddy la recette de la chicorée sauvage torréfiée et lui confie son rêve d'essayer un jour le café Ariosa d'Arbuckle.
 ---
 
 ========================================
@@ -6326,4 +6374,514 @@ C'est là que je comprends ma faute. J'ai cru que la parole était un outil grat
 Je repense à mes années de servitude chez les Dunbar. Parfois, pour éliminer une parcelle malade, envahie par le nielle ou les herbes folles, Eugene nous ordonnait d'y bouter le feu. C'était rapide, efficace. Mais le feu est une bête sans maître. Il suffisait d'une brise imprévue, d'un changement de vent d'un quart de degré pour que l'étincelle purificatrice échappe à tout contrôle. Le feu se jetait alors sur les tiges d'or mûr, dévorant le champ voisin, les granges, et menaçant de réduire toute la ferme en cendres sous le regard impuissant des hommes.
 
 Aujourd'hui, pour brûler la décote de Kunkel, j'ai jeté une flammèche sans réfléchir. Et le vent est en train de tourner. Je ressens ce feu en moi, cette pulsation d'angoisse chaude qui me brûle la poitrine. Si je ne retourne pas au moulin demain pour étouffer le foyer, c'est tout le domaine des McNamera qui risque de partir en fumée.
+
+Date: 30 juillet 1868
+À l'aube, la pièce de vie est plongée dans une pénombre bleutée et glaciale. Le silence de la maison est lourd, chargé du ressentiment de la veille. Je me redresse sur ma couche de paille, la gorge sèche et irritée par la poussière de calcaire qui semble ne jamais vouloir me quitter. Je saisis ma gourde de fer-blanc, celle que j'ai ramassée sur le corps d'Eugene dans la forêt, et je bois une longue gorgée d'eau tiède.
+
+L'eau a un goût amer, métallique, teinté d'une pointe de rouille. Les initiales « E.D. » gravées grossièrement sur le flanc de métal gratté font double écho dans mon esprit. Edward Devlin, le nom de mes parents, l'identité propre et libre que je tente de me forger ici. Et Eugene Dunbar, le spectre de la violence et de la ruse que j'ai dû déployer la veille pour plier le meunier à ma volonté. Cette gourde a contenu le whisky frelaté et la bile d'un ivrogne violent ; aujourd'hui, elle ne contient que de l'eau claire, mais le goût y reste attaché.
+
+Une colère sourde me serre la poitrine en repensant à ma discussion avec Theodore. Je me sens piégé par l'hypocrisie de sa vertu de propriétaire. McNamera m'a envoyé là-bas pour veiller au grain, il m'a fait miroiter les huit dollars de surplus pour mon voyage, m'incitant à utiliser mon esprit vif. Et maintenant que j'ai ramené ses soixante-dix-huit dollars, il me traite de loup et me fait la morale parce que mes méthodes étaient trop dures pour ses scrupules de poète. Si j'avais pu, j'aurais vendu son blé à quinze dollars le boisseau pour lui acheter sa maudite batteuse à vapeur neuve et lui clouer le bec. Ils aiment que leur grange soit pleine au matin, mais ils refusent de voir la boue sur les bottes de ceux qui l'ont remplie.
+
+Un grincement de solive me tire de mes pensées. Depuis le couloir sombre, des pas lents et chancelants s'approchent.
+
+C'est Finn. Pour la première fois depuis des jours, le jeune journalier a réussi à se lever seul de son lit. Il est blafard, sa chemise de lin ouverte sur ses bandages tachés de jaune et de vinaigre, mais il tient debout. Il avance en grimaçant, une main pressée contre ses côtes blessées, et vient s'affaler lourdement dans le grand fauteuil en cuir de Theodore, près de la fenêtre. C'est une immense victoire physique sur l'infection qui le rongeait, mais l'effort le laisse pantelant, les yeux mi-clos.
+
+Je me redresse sur mon coude, l'observant dans la pénombre :
+— Tu devrais être au lit, Finn. Le médecin va te passer un savon s'il te trouve là.
+
+Finn laisse échapper un ricanement faible qui se transforme aussitôt en une toux rauque et douloureuse. Il grimace, serrant les dents :
+— Qu'il aille au diable, son acide carbolique me brûle les flancs comme du plomb fondu... Je préférais crever dans ce fauteuil plutôt que de rester allongé à fixer ces maudites solives.
+
+Il s'adosse contre le cuir usé, reprenant péniblement son souffle, avant de me dévisager dans la lueur grise de l'aube :
+— Comment tu te soignes, toi ? Moi, je ne supporte pas d'être là à rien faire. Cette inaction est en train de me bouffer les entrailles. Et toi, avec ton bras ? Qu'est-ce que tu as fabriqué pendant que je dormais sous leur laudanum ?
+
+Je soupire, m'asseyant sur le bord de ma couche de paille, mes doigts traçant machinalement le contour de ma gourde de fer-blanc :
+— Theodore m'a envoyé au moulin de Carlisle avec Silas pour vendre le reste de la moisson. Le vieux journalier s'était fait plumer à un soixante-cinq le boisseau la veille. Alors j'ai surveillé la pesée, et j'ai négocié. J'ai réussi à lui en tirer un dollar quatre-vingt-quinze, le prix fort de Boiling Springs. J'ai menacé le meunier Kunkel d'aller voir Meeks pour lancer une guerre des prix sur sa farine s'il ne s'alignait pas. J'ai huit dollars de commission dans ma poche pour mon voyage vers l'ouest.
+
+Finn hausse un sourcil, visiblement impressionné malgré sa faiblesse :
+— Ah ouais ? J'y connais trop rien à ça, mais ça a l'air d'être du beau boulot. Et le patron a dû sauter de joie, non ?
+— Non, dis-je d'une voix sourde. Le vieux a paniqué dès que Silas lui a raconté la transaction. Il a peur que Kunkel aille voir Meeks et que Meeks nous écrase tous. Il m'a fait la morale hier soir. Il dit que j'ai agi en loup, que la menace n'est pas digne. Il veut que j'y retourne aujourd'hui avec Silas pour faire amende honorable. Pour m'excuser et baisser le prix du blé qu'il reste à livrer.
+
+Finn laisse reposer sa tête contre le dossier de cuir usé, un ricanement méprisant plissant ses traits tirés :
+— Tu t'attendais à quoi ? Les types comme McNamera... ce sont des chiques molles. Il ne s'attendait pas à ce que tu utilises tes propres manières pour obtenir ce qu'il voulait. Alors il se plaît dans sa colère et sa peur. Mais au fond de lui, il est bien content que tu aies ramené ces dollars. S'il le pouvait, il t'enverrait tous les jours à Carlisle, et tous les jours il te ferait la morale sur tes mauvaises manières. Moi, je dis que tu as bien fait !
+
+Je ne sais trop quoi penser. La nuit a été une tempête sous mon crâne. J'ai imaginé, à la frontière du rêve, le meunier effrayé et sans défense se faire avaler par la batteuse à vapeur de Meeks. Je voyais le visage d'Ollie, celui qui m'avait aidé à réparer la machine, qui regardait son patron, le sourire aux lèvres, tandis que le grain s'extrayait du corps du meunier en expulsant des nuages de farine blanche dans l'air. Ollie me regardait en me faisant un signe du pouce : « Merci Edward ! »
+
+La nuit m'a aussi permis de poser les chiffres à plat, d'aligner les faits comme les rouages d'une mécanique froide. Durant mes heures d'insomnie à fixer le plafond, mon esprit a cartographié la vallée de Cumberland. Dans la pénombre, j'ai fait le bilan de mes erreurs et tracé mes perspectives.
+
+Mon premier constat est amer : en frappant Kunkel avec le nom de Meeks, je me suis trompé de cible. C'est ainsi que je vois les choses désormais : j'ai l'impression d'avoir nourri la bête avec le meunier ou Theodore. Kunkel n'est pas l'ennemi. C'est un rouage fragile qui partage sa peine avec la nôtre dans cette lutte inégale contre le monopole de Meeks.
+
+Pour me sortir de ce piège, trois stratégies claires se sont dessinées dans les fissures du bois du plafond :
+
+La première est celle de l'alliance. Retourner à Bonny Brook Mill, présenter des excuses sèches mais sincères à Kunkel, et lui proposer un accord honnête pour le reste du grain. Nous lui laissons le blé restant à un dollar soixante-quinze, un tarif décent pour ses finances, et nous jetons les bases d'une résistance commune contre Meeks. Mais cette option exige que je mette mon orgueil de côté, que je retourne affronter sa colère et que je m'investisse encore plus dans les affaires de la vallée.
+
+La deuxième stratégie est celle de l'offensive directe. Court-circuiter Kunkel et aller négocier directement avec Isaac Meeks pour devancer les plaintes. Utiliser nos conversations passées pour obtenir sa clémence ou un accord de transport préférentiel pour McNamera. C'est la voie du feu, efficace mais dangereuse : s'allier au diable, c'est risquer d'être dévoré par lui à la première faiblesse.
+
+La troisième option est celle du retrait. Ne rien faire. Rester à la ferme. Alors que je pèse ces scénarios, mon bras blessé me lance, une pulsation douloureuse qui me parcourt le corps entier et agit comme un signal d'alarme. Une nouvelle journée sur les chemins cabossés dans le chariot ne ferait qu'accroître le risque de rouvrir ma plaie. Je peux choisir de rester ici, d'aider Elara aux tâches quotidiennes, de prêter main-forte au docteur Russell et de tenir compagnie à Finn.
+
+Cette dernière option est la seule logique. Si mon but est de rejeter le rôle de Samuel qu'on tente de me faire endosser, je ne dois pas entrer dans cette dynamique de l'héritier légitime qui prend des décisions stratégiques et se sacrifie pour sauver les terres. Je dois garder mes distances. Ce n'est pas mon combat, ma route vers l'Oregon m'attend. C'est peut-être cruel pour Theodore et Elara, mais je dois me préserver.
+
+— T'es toujours avec moi ? me lance Finn, visiblement capable de lire le remue-ménage sur mon visage.
+— Oui, oui, je réfléchis à ce que je peux faire.
+— Je ne sais pas ce que tu vas faire, mais moi, je vais te dire ce que je compte faire. Je vais rester là autant que possible. Je suis nourri, blanchi, logé. Je n'avais pas prévu d'aller aussi loin après la moisson. Quand je vois ce qu'ils ont fait de toi...
+Il ricane dans un sifflement douloureux, faisant un geste vague pour désigner mes vêtements propres et mes cheveux coupés :
+— ... je me dis que je pourrais bien jouer le rôle du fiston McNamera pendant un temps, moi aussi. Ce serait calme, ce serait tranquille.
+
+Une sorte de rivalité obscène me parcourt l'échine, comme si je refusais qu'il me vole mes privilèges de favori.
+— Oui, tu serais bien ici, Finn, dis-je en forçant ma voix à rester neutre. Ils ont bien besoin de quelqu'un.
+
+Il m'adresse un sourire en coin et pointe du doigt le foulard indigo posé au sol :
+— Tu ne te sers pas de ça ? Je peux te le prendre ?
+Je hoche lentement la tête. Finn s'empare du foulard et le fourre dans sa poche. Puis, il ferme les yeux sur le fauteuil en se plaignant de ses côtes. C'en était fini de notre conversation.
+
+Elara ouvre la porte de sa propre chambre. Comme à son habitude, elle passe d'abord voir l'état de Finn et j'entends sa stupeur qui résonne dans le couloir. Elle accourt dans la pièce principale, ses épaules s'abaissant dans un grand soupir de soulagement en voyant le jeune vétéran de la guerre devenu journalier agricole, celui qui semble désormais chercher un rôle de fils de substitution au sein de la maisonnée.
+— Finn ! Que fais-tu ici ?
+Il ne répond pas, déjà rendormi sur le cuir usé.
+
+— Il est venu ici de lui-même, Mrs. McNamera, réponds-je à sa place.
+— C'est une bonne nouvelle, j'imagine, murmure-t-elle, émue. Mais le docteur Russell va venir tôt ce matin. Puisqu'il était furieux de ton absence hier, il a dit que nous passerions en premier dans sa tournée. Il ne devrait pas tarder, alors il nous faut nous hâter.
+
+Je me lève alors du plancher et rassemble péniblement mes quelques affaires pour les ranger dans un coin de la pièce : ma sacoche, mes draps, mes quelques papiers, et les objets hétéroclites accumulés depuis que j'ai fui la ferme Dunbar. Maintenant que je connais mieux le rituel de la ferme au lever du jour, j'aide Elara du mieux que je le peux avec mon seul bras valide. Je sors vérifier l'état de Bill. Je lui redonne un peu de foin et vais au puits pour lui chercher de l'eau.
+
+Jet de Force : 68/60 - 20 (blessure bras gauche). ÉCHEC.
+
+Le seau est trop lourd pour ma seule main droite et je suis contraint de le reposer au sol, impuissant. J'appelle Elara depuis la cour, qui vient m'aider. Elle me lance un regard noir en me grondant :
+— Tu ne devrais pas insister pour faire tant d'efforts, Eddy.
+Ensemble, nous finissons de nourrir le pauvre cheval de trait qui, pour le troisième jour consécutif, s'apprête à faire le long aller-retour vers la ville, chargé du blé qui nourrit la Cumberland Valley.
+
+En revenant à l'intérieur, Finn est toujours endormi sur le fauteuil. J'aide comme je peux pour faire bouillir de l'eau. Je suis en charge de la préparation du café. Elara m'a expliqué la méthode en détail. Jusqu'alors, à la ferme Dunbar, j'avais toujours vu le café comme un privilège des adultes. Parfois, j'avais le droit d'en boire quand il fallait accomplir une tâche pénible qui devait être terminée le plus vite possible. Le café âcre et acide de Regina Dunbar m'empêchait de dormir. Mais ici, c'est autre chose : c'est un liquide réconfortant qui glisse dans la gorge et, par tous les temps, donne envie de se lever pour se mettre à l'action. J'ai vite compris qu'à la ferme, comme partout ailleurs, c'est une véritable institution. Alors, être en charge de la préparation du café est une sorte de privilège.
+
+Elara m'explique qu'ici, en ce moment, elle n'a que de la chicorée sauvage, récoltée à l'automne le long de la turnpike. Elle me montre les petites racines pivotantes qu'elle a brossées, coupées en dés et torréfiées dans sa poêle en fonte jusqu'à ce que l'inuline se caramélise en un brun chocolaté odorant. Le vrai café en grains est devenu un luxe inaccessible pour la ferme depuis l'inflation d'après-guerre et les taxes d'accise sur les importations. Je dois moudre les morceaux séchés dans le petit moulin en fonte fixé au montant de la fenêtre, verser deux cuillérées de cette poudre directement dans la cafetière en fer-blanc remplie d'eau froide, puis porter le tout à ébullition sur le poêle en la laissant frémir pendant cinq minutes. Pour retenir le dépôt noir au fond, elle me conseille de jeter une coquille d'œuf propre dans le liquide avant de servir. Elle me confie avec un soupir qu'elle rêve de goûter un jour à l'Arbuckles’ Ariosa, ce café de Pittsburgh vendu dans un sachet jaune étanche marqué d'un ange volant. Elle a entendu dire que les grains y sont glacés avec un mélange breveté de blanc d'œuf et de gélatine pour conserver tout leur arôme, et que chaque paquet contient un bâtonnet de sucre d'orge à la menthe. C'est le café dont tout le pays parle.
+
+Nouveau Thread : Goûter au café d'exception
+
+Apprentissage de la recette Café à la chicorée
+
+Theodore sort à ce moment de sa chambre, marchant assurance sur ses béquilles de frêne. Comme Finn, il a l'air de ne plus supporter de rester confiné dans sa chambre toute la journée. En entendant la cafetière bouillir, ses narines frémissent et un sourire nostalgique plisse son visage fatigué. Il ajoute au sujet du café :
+
+— Ça sent rudement bon, Eddy. Bien meilleur que ce fameux « Café Royal de Paris » qu'un colporteur de Philadelphie vendait sous une tente à la foire agricole de Carlisle, en 57. Il demandait dix cents la tasse, une fortune pour du café, en jurant que c'était le breuvage préféré de l'empereur Napoléon. Les fermiers faisaient la queue. En fin de compte, l'instituteur de Boiling Springs a analysé le marc : ce n'était que de la chicorée sauvage locale mélangée à des glands de chêne grillés et moulus. Le gredin a dû plier bagage en courant avant que les gars du comté ne le jettent dans la Letort avec ses filtres et ses tasses !
+
+L'anecdote a le mérite de tirer un sourire à tout le monde dans la pièce. Nous nous installons brièvement pour manger le repas ordinaire du matin. McNamera reste silencieux la plupart du temps, concentré à manger avec sa jambe tendue sur une chaise, remerciant son épouse quand elle lui sert un morceau de pain ou de lard, mais il évite copieusement mon regard. De mon côté, j'hésite à lui dire que je vais rester là, que ma décision est prise et que le destin de sa ferme n'est pas ma responsabilité, mais je garde le nez dans mon assiette.  A côté de nous, Finn est toujours étalé sur le fauteuil, Theodore en le voyant a bien dit qu'il est complètement inconscient et qu'il faut absolument qu'il reste allongé mais aucun de nous ici n'est en mesure de le porter jusqu'au lit. Depuis cette remarque du fermier, nous regardons tous chacun à tour de rôle, le pauvre corps meurtri de Finn qui sinon pour ses respirations bruyantes pourrait tout aussi bien être mort dans ce fauteuil qu'on n'y verrait pas de différence.
+
+Nous débarrassons la table et, ce matin-là, se produit un phénomène tout à fait inédit : le chariot du Dr. Russell entre dans la cour de la ferme avec à son bord non pas le docteur uniquement, mais aussi le vieux Silas Flynn. C'est Elara qui s'exclame en riant depuis la fenêtre :
+— Le vieux renard a réussi à s'éviter une marche ce matin !
+
+Mais cette tentative de légèreté s'efface immédiatement à l'arrivée du médecin dans la pièce. Il voit, à sa grande stupeur, ses trois convalescents éparpillés dans la pièce principale comme si nous étions en mesure de reprendre nos vies ordinaires. Sans plus de courtoisie auprès de Mrs. McNamera, et sans même un regard pour Silas resté timide sur le pas de la porte, il tonne avec une ardeur de chirurgien militaire au milieu d'un champ de bataille :
+— Mais pour qui diable vous prenez-vous ! Tous autant que vous êtes ! Vous !
+Il pointe un doigt accusateur vers le fermier :
+— Vous avez sous votre responsabilité ces deux gamins, votre propre santé et la vie de votre famille ! Regardez votre jambe, nom d'un chien, elle est bleue comme l'océan ! Vous pensez que c'est la jambe d'un homme en état de gambader dans sa ferme ?
+Theodore baisse les yeux sur sa cuisse surélevée qui, en effet, est d'un violacé inquiétant et anormalement gonflée par la stase sanguine. Il tente de répliquer, mais se tait, vaincu par la fureur du médecin.
+
+— Et toi ! Fresh fish ! poursuit-il en se tournant vers moi. Avec toute ton ignorance, tu te sens capable d'aller passer cinq heures secoué sur les chemins ? Je vais inspecter ton bras. Si les fils se sont déchirés, je te fous une mandale après t'avoir recousu, c'est ma parole de docteur !
+Il fait deux pas menaçants dans ma direction. Je fronce les yeux, contractant les muscles du visage pour me préparer à encaisser le coup, un vieux réflexe ancré par les années de violence chez les Dunbar.
+
+Rien n'arrive. Russell s'arrête net devant le fauteuil de cuir où Finn gît inerte.
+— Et que dire de cet imbécile ! C'est le pire de tous !
+Il lui attrape le poignet d'un geste sec et professionnel.
+— Il est encore en vie, marmonne-t-il en relâchant le membre qui retombe lourdement sur le cuir. Qui l'a traîné ici ?
+— Il est venu tout seul au lever du jour, Mrs. McNamera n'y est pour rien, dis-je à voix basse.
+Le médecin pousse un rugissement de rage :
+— Quelle bande d'imbéciles, doux Jésus ! C'est toujours la même chose avec vous, les culs-terreux ! Une consigne ! Vous n'aviez qu'une consigne ! Attendre que je vienne changer vos bandages ! Aucun de vous ne se rend compte qu'il est en train de se tuer ! Mrs. McNamera, aidez-moi à le remettre dans sa chambre ! Qu'il n'en bouge plus, et attachez-le s'il le faut !
+
+Ils emportent Finn vers la chambre à la porte bleue. Le jeune journalier pousse un gémissement rauque, un râle animal arraché par le frottement de sa côte cassée contre sa plèvre enflammée. Le docteur râle tout le long du couloir.
+
+Le silence retombe sur la pièce. Theodore me lance un mot, du haut d'une colère encore plus grande que celle de la veille au soir. Il chuchote à moitié pour que le médecin ou Elara dans la pièce d'à côté n'entendent pas :
+— Eddy ! Je me fiche de ce que dit ce maudit docteur ! Tu iras au moulin aujourd'hui ! Toute ma goddamn ferme est en jeu !
+
+L'étau se resserre et mon choix est encore plus difficile à assumer.
+
+Elara revient en cuisine pour apporter de l'eau bouillante et du vinaigre. Silas ose enfin entrer dans la pièce. Il a l'air épuisé, les yeux cernés jusqu'à la ceinture. Il s'approche de Theodore d'un pas nonchalant pour détendre l'atmosphère :
+— Bonjour, boss. J'espère que vous vous soignez bien. Je vais aller charger la fin des sacs dans la grange. Je viens chercher Eddy quand j'ai terminé ?
+Theodore acquiesce silencieusement d'un signe de tête et Silas ressort aussitôt dans la cour.
+
+Dans la chambre, l'état de Finn s'effondre brutalement. Des hurlements étouffés mais affreux traversent la cloison, bientôt suivis de la voix de Russell, tendue par l'urgence chirurgicale, ordonnant à Elara d'apporter des bassines de cuivre, du vinaigre purifié et de nouveaux linges. Elara court dans la cuisine, le visage déformé par la panique, cherchant les instruments demandés avant de disparaître à nouveau derrière la porte de la chambre.
+
+Au milieu de cette panique, le Dr. Russell émerge un instant de la chambre de Finn, les manches relevées et les mains souillées de pus et de sang noir. Il se précipite vers Theodore, s'accroupit et examine sa cuisse gonflée. Il appuie sans ménagement sur la plaie congestionnée. Theodore pousse un gémissement étouffé, le front soudain trempé de sueur.
+— L'infection gagne le haut du quadriceps, siffle le médecin d'un ton féroce. Ta stase sanguine a bousillé les sutures internes. Si tu bouges encore d'un pouce de ce lit, McNamera, la gangrène se chargera de ta jambe avant la fin de la semaine. Reste allongé et surélève ce membre immédiatement !
+Il balance un monticule de coussins sous sa jambe violacée, puis fait volte-face et retourne vers la chambre de Finn.
+
+Je suis laissé seul au milieu de la pièce principale, écoutant les bruits de quelqu'un qui lutte désespérément pour sa vie de l'autre côté de la cloison. Le sifflement de la respiration de Finn devient de plus en plus faible, entrecoupé de râles d'asphyxie. Ne tenant plus en place, je m'approche de l'embrasure de la porte ouverte pour proposer mon aide, comme je l'avais fait lors de l'extraction de la balle de Theodore. En m'approchant, ce que je vois à l'intérieur me cloue sur place, me repoussant d'horreur : le corps inerte de Finn, le visage déformé par une agonie indicible, et Russell enfonçant un trocart métallique directement entre ses côtes pour libérer un flot de liquide infectieux sanguinolent.
+En m'apercevant, le médecin explose de fureur :
+— Sors d'ici ! Hors de ma vue ! Elara, ramenez ce gamin loin de tout ça !
+Elara me repousse doucement vers la pièce de vie, refermant la porte bleue sur les derniers cris de Finn.
+
+Quelques minutes plus tard, profitant d'un bref répit après avoir placé un drain de fortune dans le thorax du malade, le Dr. Russell émerge à nouveau dans la cuisine pour nettoyer ses instruments. Il s'approche de moi, m'attrape sans ménagement le bras valide et déchire mon bandage de flanelle. Il inspecte mon épaule avec une colère froide :
+— Les fils d'argent ont cisaillé la chair enflammée... Tes mouvements ont tout bousillé.
+Il me dévisage avec une stupeur incrédule :
+— Et tu n'as pas mal, gamin ? Ça a dû te tirailler la chair !
+Je hausse simplement les épaules d'un geste sec. La douleur fait partie du paysage ; les années de coups et de labeur forcé chez les Dunbar m'ont appris à faire taire mon corps.
+Russell secoue la tête, attrape sa bouteille de phénol et en verse une giclée directement sur les chairs à vif pour désinfecter la plaie. La brûlure est immédiate, atroce, comme une lame de fer rouge plantée dans mon épaule. Je ne bronche pas, fixant le médecin du regard.
+Russell réajuste mon écharpe en triangle en la serrant de force contre ma poitrine, puis, d'énervement et de pure frustration devant l'entêtement de ses patients, il me flanque une mandale retentissante sur la joue saine. La gifle claque dans le silence de la pièce.
+— Trois imbéciles en train de bousiller tout mon travail ! siffle-t-il, les dents serrées. Garde ce bras cloué au corps, ou la gangrène te l'emportera !
+Sans attendre ma réaction, il ramasse ses linges propres et retourne en courant au chevet de Finn.
+
+Je ne peux qu'imaginer ce qu'il se passe dans la pièce d'à côté. Je ferme les yeux, tentant de visualiser Finn, l'implorant de rester en vie.
+
+À l'extérieur, le contraste est saisissant et obscène. À travers la fenêtre ouverte, on entend l'involture tranquille de Silas Flynn qui, indifférent à la tragédie qui se joue à quelques mètres de lui, jure copieusement devant le ciel en chargeant les derniers sacs de blé dans le chariot Studebaker. Les sabots de Bill piétinent la terre sèche de la cour, et le cliquetis métallique des harnais rompt le chahut de la maison des McNamera.
+
+Dans la chambre bleue, le calme revient peu à peu, une chape de silence lourd. On y devine moins de mouvements derrière la cloison. Finn n'est plus qu'une image dans ma tête ; depuis quelque temps, le sifflement d'asphyxie et ses râles de douleur ont cessé. Il s'est probablement évanoui sous la morsure du trocart. Quand Elara ressort de la pièce, elle est livide, ses mains tremblantes essuyant le vinaigre sur son tablier, mais son visage s'est décrispé. Elle se glisse dans sa chambre pour murmurer la nouvelle à Theodore, puis elle revient vers moi pour me faire le même rapport à voix basse : Finn survivra. Mais il ne faut plus qu'il bouge d'un pouce. Le docteur Russell est en train de l'attacher au sommier avec des bandes de toile pour qu'il ne puisse plus se dresser. L'obstination de Finn vient de lui rajouter plusieurs jours, voire des semaines, à sa peine de lit.
+
+Je ne peux m'empêcher de penser que ce maudit Finn a fait exprès de forcer sur ses côtes. Après ce qu'il m'a glissé ce matin, affalé dans le fauteuil en cuir avec mon foulard indigo dans sa poche, ça lui ressemble bien. Il a dû sentir que son rétablissement approchait et que les McNamera allaient bientôt lui demander de reprendre son sac et de retourner sur les chemins. En faisant éclater sa blessure, il s'achète à bon compte quelques semaines de répit supplémentaires, nourri et logé dans de beaux draps blancs.
+
+Au-dehors, Silas siffle deux fois, un coup strident pour indiquer qu'il a fini d'empiler le grain. Ses pas lourds font grincer le porche. Quand il pousse la porte pour m'appeler, son chapeau de paille à la main, le vieux journalier déchante instantanément. L'odeur de pus et de phénol qui flotte dans la cuisine et le silence de mort de la maisonnée le figent sur le seuil. Il jette un regard inquiet en direction d'Elara :
+— Je peux aller voir le boss ?
+Elle acquiesce d'un simple signe de tête las, et Silas se dirige vers la chambre parentale d'un pas feutré, retenant le craquement de ses bottes. De ma place, je n'entends que des chuchotements étouffés à travers le bois. Après la tempête que le docteur Russell vient de déclencher, sa colère qui résonne encore et le souvenir de Finn qui a failli y passer pour de bon, je reste cloué sur place, sans oser bouger d'un pouce.
+
+Silas ressort de la chambre quelques minutes plus tard, la mine penaude, son chapeau chiffonné entre ses doigts.
+— Je vais y aller tout seul à Carlisle, fiston, me dit-il à voix basse. Il faut bien que j'essaie de réparer tes dégâts avec le meunier.
+Ses épaules sont basses, affaissées sous le poids des efforts de ces trois derniers jours de récolte. Il fait mine de tourner les talons, puis, juste sur le pas de la porte, il se ravise et lâche d'un ton presque distrait :
+— C'est dommage... J'ai vu le petit Benjamin cette nuit avec mon fils. Il a voulu savoir si tu étais toujours en vie.
+
+Un coup de sang me monte aux tempes. Mes jambes veulent bondir d'elles-mêmes, j'ai envie de sauter à sa gorge, de l'agripper par sa chemise poussiéreuse et de lui extirper la moindre information, le moindre mot. De quel droit ose-t-il me jeter le nom de Benjamin comme ça, sur le pas de la porte ? Est-ce qu'il a marché dans la nuit pour retrouver son fils Artus Flynn au camp des charbonniers ?
+— Attends ! crié-je, ma voix s'étranglant dans ma gorge.
+Mais Silas est déjà dehors, ses pas rapides martelant la terre sèche de la cour pour rejoindre le chariot et le vieux Bill.
+
+Le docteur Russell sort enfin de la chambre bleue, tirant la porte derrière lui. Il est marqué par l'effort, ses traits tirés, ses yeux cernés de gris. D'un chiffon grisâtre, il essuie son front dégoulinant de sueur. Ses manches retroussées révèlent des avant-bras poissés d'un mélange de sueur, de pus jaune et de filets de sang noir coagulé. Sans me jeter un regard, il fonce vers la chambre de Theodore et fait signe à Elara de le suivre.
+
+Je tends l'oreille, retenant mon souffle pour capter leurs voix à travers la cloison de bois mince :
+— Le petit va s'en sortir, dit Russell d'un ton las, débarrassé de l'agressivité de son arrivée. Il s'en est fallu de très peu. Si j'étais arrivé une heure ou deux plus tard, c'en était fini de votre protégé.
+La voix du médecin baisse d'un ton, puis reprend :
+— Vous avez tous eu une chance pendable. Je l'ai sanglé sur son matelas. Si j'ai bien compris son caractère, c'est le genre de mule qui crèverait juste pour le plaisir de marcher cinq minutes. Veillez à ce que les nœuds ne se desserrent pas. Il ne doit pas bouger !
+
+— Aussi, ça vous coûtera plus cher, poursuit Russell. Je vais faire passer les femmes de la Ladies' Aid Society. Elles viendront une fois par jour, en plus de mes visites. Il faut bien vous rentrer ça dans le crâne : si vous suivez mes consignes, vous serez sur pied dans une dizaine de jours. Si vous n'en faites qu'à votre tête, vos blessures, qui pourraient n'être bientôt qu'un mauvais souvenir, vous enverront sous terre.
+
+Sa voix résonne avec une solennité lourde, comme pour graver la menace dans le bois des murs.
+
+Le médecin ressort de la chambre parentale, récupère à la hâte sa fiole d'acide carbolique et ses instruments éparpillés sur la table de la cuisine. Il jette sa sacoche de cuir sous son bras, crie une dernière fois ses recommandations en direction d'Elara, puis, en franchissant le seuil, me jette un regard menaçant. La lourde porte d'entrée claque derrière lui dans un grand fracas de bois. Par la fenêtre basse, je le regarde grimper sur son chariot, saisir ses guides et lancer son cheval au trot sur la turnpike poussiéreuse, reprenant sa tournée sous le soleil qui commence à cogner.
+
+Le silence retombe sur la maison, épais et immobile. Plus personne n'ose parler, ni même remuer. Nous avons tous conscience, dans l'ombre fraîche de la pièce, d'être passés à un cheveu d'un nouveau drame.
+
+Je scrute l’horloge qui trône dans le coin de la pièce principale. C'est la seule chose que mon corps et mon esprit me permettent de faire. C’est une majestueuse horloge de parquet, une tall-case clock en noyer sombre dont le bois poli attrape la lumière dorée de l'après-midi. Elle détonne ici ; elle semble de bien meilleure valeur que tout le reste de notre mobilier rapiécé, sans doute un héritage de valeur ramené par les ancêtres de Theodore. Son cadran de laiton gravé affiche des phases de lune peintes à la main, un peu écaillées, et son pendule oscille d'un mouvement lourd, régulier, avec un tic-tac métallique et sourd qui bat la mesure de ma culpabilité.
+
+Chaque battement, chaque déplacement des aiguilles noires symbolise le passage des minutes, puis des heures. Je calcule la distance. À cette vitesse, le chariot de Silas doit approcher des abords de Carlisle. Il va bientôt faire face au meunier Kunkel, seul. Vraisemblablement, Kunkel va vouloir se venger du chantage d'hier. Au mieux, il négociera un rabais humiliant pour le reste du grain ; au pire, il refusera tout simplement les sacs. Silas devra alors traîner le blé chez Meeks pour un dollar cinquante le boisseau. Ce sera le premier acte de soumission de Theodore, le premier d'une longue liste qui finira par avaler la ferme entière.
+
+Pourtant, ce n'est pas ce calcul économique qui me serre le plus la poitrine. C’est la phrase de Silas. Benjamin. Silas l'a vu cette nuit au camp des charbonniers. C'est un soulagement immense de savoir que son fils Artus et les autres ne l'ont pas jeté dans les fourrés à la première seconde. C'était une peur qui vivait en moi. Silas dit qu'il a demandé si j'étais toujours en vie. Cette simple question rallume une étincelle, un espoir fou que le petit regrette notre séparation dans la forêt et qu'il veuille me rejoindre ici, à la ferme. Ce serait si bon de le voir franchir le porche. Mais en baissant les yeux sur mon bras gauche cloué contre mon torse sous son Velpeau d'amidon, je me demande si ajouter une bouche rétive et un bras cassé supplémentaire à cette maisonnée serait vraiment un cadeau pour qui que ce soit.
+
+Dans ce silence lourd de la pièce, je ne peux rien faire, ni rien savoir de plus. C'est Elara qui, la première, rompt la léthargie. Ses pas secs résonnent sur le plancher alors qu'elle s'active dans l'arrière-cuisine, rassemblant des draps de lin usés. Elle se dirige ensuite vers la chambre parentale où Theodore est confiné. La porte est restée entrouverte sur le couloir sombre.
+
+Depuis ma paillasse, je tends l'oreille, curieux et attentif. Ils parlent de cette fameuse Ladies' Aid Society dont le docteur a parlé, une chose dont je n'ai jamais entendu parler à Harrisburg.
+
+À travers la fente de la porte, le lit de cordes de Theodore gémit sourdement. J'entends le froissement raide du bandage amidonné de sa jambe contre le matelas de paille.
+— Russell veut que je reste immobile ? Sa voix est rauque, tendue par une impatience inhabituelle chez lui. Il est fou. Qui va aller fermer la trappe du cellier si l'orage reprend ce soir ? Silas ne peut pas continuer tout seul comme ca !
+— Je le ferai ! Et si, Silas fera ce qu'il faut, Theodore. Reste tranquille, répond Elara. Sa voix est basse, mais je devine le bruit rythmique de ses mains qui plient une toile de coton. Le docteur Russell a été très clair. Si tu bouges, la fièvre ne tombera pas.
+— Silas a ses propres ennuis ! Il ne peut pas passer ses journées à faire mes corvées. Et cette histoire de Ladies' Aid Society... De quoi je vais avoir l'air, Elara ? Des matronnes de la paroisse méthodiste qui viennent inspecter ma maison et me faire la charité comme si j'étais un mendiant de la Cumberland Valley ?
+— Ce n'est pas de la charité, Theodore. Elles viennent aider. J'ai deux hommes au lit et un autre avec une seule main. Je ne peux pas diviser mes bras entre les bouillons, l'eau chaude et les pansements.
+— Et comment va-t-on les payer, ces dames ? coupe Theodore, le ton sec et cassant. Russell prend déjà deux dollars par visite. Kunkel va nous décoter notre blé à cause du gâchis d'hier, et Meeks attend la première échéance pour nous prendre la moissonneuse McCormick. Tu crois que la paroisse travaille pour des prunes ?
+Un long silence s'installe. Seul le pendule continue de découper le temps dans la pièce de vie.
+— Elles demandent cinquante cents par jour pour couvrir les frais de transport et le linge propre, murmure enfin Elara. C'est... c'est le tarif.
+— Cinquante cents ! C'est le prix d'un sac de farine de maïs ! Je n'ai pas cet argent à jeter par les fenêtres pour des simagrées de dévotes !
+— On trouvera un moyen, Theodore. On a toujours trouvé. Reste couché.
+— On trouvera ? Comment ? En vendant les champs à Meeks ? En tendant la main devant l'église ?
+J'entends le lit craquer plus fort, comme si Theodore tentait de se redresser malgré ses entraves, suivi d'un juron étouffé et d'une respiration sifflante de douleur.
+— Ne te lève pas ! crie Elara, sa voix perdant son assurance pour laisser transparaître une panique sincère. Theodore, je t'en supplie... reste là.
+Un silence pesant retombe sur le couloir. Le froissement des draps s'arrête. Theodore a dû se rallonger. Je sens l'angoisse me serrer la gorge au sol, réalisant que le moindre dollar que je garde dans ma sacoche pèse désormais sur le pain de cette famille.
+
+Je plonge les doigts de ma main droite dans ma sacoche en cuir posée au sol. De mes seuls doigts valides, je saisis toutes les économies accumulées depuis ma fuite de Harrisburg. Je les étale sur le drap de ma couche pour les compter : les coupures froissées de greenbacks et de shinplasters, et les lourdes pièces. Je scrute aussi la pièce de un dollar. La Liberté assise. C'est le premier dollar que j'ai gagné honnêtement de mon existence. Je le range. Vingt dollars et trente-huit cents. Voilà ce que je possède.
+
+C'est assez pour payer plusieurs jours de soins, de nourriture, et tout le reste. Cela soulagerait leur fardeau, mais pour moi, c'est le prix d'un billet de train pour loin vers l'Ouest qui s'envole. Pourtant, en écoutant leurs voix étouffées, je sens que je n'ai pas le choix.
+
+Je rassemble les billets et les pièces comme je peux, les serrant entre ma paume droite et mon buste, et je me redresse. Mes jambes fléchissent un instant sous mon poids, mes muscles engourdis par le laudanum. Je traverse le couloir d'un pas mal assuré et pousse doucement la porte de la chambre parentale.
+
+J'avance la tête basse sous leurs regards surpris. Sans mot dire, je dépose mon modeste pactole sur le patchwork de laine de leur lit, juste à côté de l'éclisse amidonnée de Theodore. Les pièces tintent faiblement en s'éparpillant sur le tissu.
+— Je pense que ça... ça pourrait payer les visites du médecin, le bouillon et les femmes de la Ladies' Aid pour quelques jours, dis-je d'une voix sourde.
+
+Theodore me fixe, interdit, les lèvres entrouvertes. Elara s'arrête, un drap plié serré contre sa poitrine, les yeux ronds.
+— Mais enfin, Eddy... murmure-t-elle, sa voix se voilant d'émotion. Et ton voyage vers l'Ouest ?
+— Je trouverai un autre moyen d'avancer, dis-je en redressant la tête pour les regarder en face. Je n'irai nulle part de toute façon si on ne se soigne pas tous.
+
+Jet de Persuasion : 80/74. ÉCHEC.
+
+Theodore coupe la parole à sa femme, qui s'apprêtait à répondre, un timide soulagement sur les lèvres. Son regard s'est durci, froid et solennel sous ses sourcils broussailleux :
+— Edward Devlin ! Puisque c'est ainsi que tu te nommes désormais. Apprends que personne ici n'est un mendiant. Cet argent est le tien, tu l'as gagné par ton travail et par tes risques. Nous ne voulons pas de ta charité.
+
+Je cherche le regard d'Elara, espérant qu'elle intervienne, qu'elle dise un mot pour fléchir l'orgueil de son mari. Mais elle baisse les yeux sur le drap de coton plié dans ses bras et garde un silence obstiné, respectant la fierté blessée de l'homme alité.
+
+— Reprends ton argent tout de suite, gamin ! ordonne Theodore, le ton sans appel.
+
+Le rouge me monte aux joues, une brûlure de honte sous ma peau. De ma seule main droite valide, je dois ramasser les billets froissés et récupérer une à une les pièces d'argent qui s'étaient éparpillées sur le patchwork de laine. Le tintement du métal me paraît obscène dans ce silence. Je remets le tout au fond de ma sacoche, serre le cordon de cuir et quitte la chambre sans ajouter un mot.
+
+Je retourne dans la pièce de vie et m'assois lourdement dans le grand fauteuil en cuir usé de Theodore. Je reste là, immobile dans la pénombre, le cœur serré par la frustration et le regret d'avoir vu mon aide ainsi rejetée.
+
+Le jour passe, lourd, chaud et immobile. Sous l'effet cotonneux du laudanum, je m'enfonce peu à peu dans le fauteuil, au rythme métronomique de la tall-case clock. Je sens le vieux cuir rugueux et ciré frotter contre ma nuque. Ma respiration devient de plus en plus lente et mes membres ne m'obéissent plus.
+
+Tic-tac.
+
+Les accoudoirs du fauteuil semblent prendre de plus en plus de place. Ils s'élargissent, m'appuient sur les côtes, m'enserrent la poitrine. L'assise m'englobe le dos, dévore l'arrière de mon crâne.
+
+Tic-tac.
+
+Je déglutis lourdement, une salive amère de pavot sur la langue, quand je m'aperçois que je ne vois plus mon ventre. J'essaie de bouger ma jambe, mais seuls mes yeux peuvent encore remuer. Alors, du regard, j'inspecte les dégâts. Mon corps a disparu. Plus de bras, plus de jambes. La sensation de frottement du cuir s'est évaporée ; je ne sens plus que l'air chaud sur ma peau devenue dure, froide, brune et tannée, cloutée à même le bois.
+
+Tic-tac.
+
+Elara traverse la pièce, inconsciente de ce qui est en train de m'arriver. Je tente de faire un mouvement, mais je suis lourd, d'une lourdeur de chêne et de fonte. Fermer mes paupières me paraît être un effort titanesque. La cuisine me semble gigantesque, vue d'en bas. Je suis devenu deux yeux fixes, condamnés à rester ouverts.
+
+Tic-tac.
+
+Elara repasse tout près de moi sans même me jeter un regard. Je rassemble mes forces et tente de l'interpeller, de lui jeter un appel à l'aide :
+— Elara ! Sors-moi de là !
+
+Elle ne réagit pas. C'est une autre voix, grinçante et poussiéreuse, qui s'élève à mes côtés :
+— T'embête pas, mon gars. Elle n'en a rien à faire de nous !
+
+Mes yeux fixent la source du son. À ma droite, il n'y a que le grand vaisselier qui sent la cire d'abeille et les assiettes froides. Avant même que l'idée d'avoir perdu la tête ne m'effleure, la voix reprend d'un ton sec :
+— Oui, c'est moi qui te parle. Le vaisselier. Fais pas le mariole, tu n'es qu'un fauteuil.
+
+Un fauteuil. Oui, ça me paraît clair maintenant. Ma peau est dure comme du cuir de vachette, mes pieds sont quatre montants de bois brut ancrés dans le plancher. Je parcours la pièce avec un regard neuf, le regard d'un meuble. La table de cuisine me salue d'une voix douce, polie par les repas et le frottement des coudes. Les chaises, les tabourets et la bibliothèque se montrent plutôt accueillants.
+
+Tic-tac.
+
+De tous, c'est l'horloge qui se montre la plus menaçante. Elle se dresse dans son coin, maîtresse absolue des lieux, et son balancier de laiton brille d'une colère froide :
+— Ce fauteuil serait mieux ailleurs, grince-t-elle. Dans le grenier, sous la poussière.
+
+Les autres meubles reprennent alors d'une seule voix, un murmure de bois sec :
+— Oui. Nous avons décidé. Nous ne te voulons plus ici.
+
+Soudain, je sursaute dans un cri étouffé, le cœur battant à tout rompre dans ma poitrine. La respiration courte, je me retrouve assis dans la réalité, fixant le cuir usé du fauteuil avec une sorte de pitié méfiante. De ma main droite valide, je tapote doucement l'accoudoir, jetant des regards circulaires sur le vaisselier, la table et la bibliothèque. De la sueur froide coule le long de mes tempes, l'air de la pièce est plus lourd et humide encore. Je ne sais pas combien de temps j'ai dormi sous l'opium, mais une chose est sûre : je suis de retour dans ma propre chair, et je ne sais trop quoi faire de ce moment partagé avec les meubles de la ferme. L'horloge sonne toujours dans son rythme monotone et interminable.
+
+Elara repasse peu de temps ensuite.
+
+— Ah ! Eddy, tu es réveillé !
+Je marmonne une réponse vague, ma gorge encore sèche et pâteuse de laudanum.
+— Comment va Finn ?
+— Je ne sais plus, soupire-t-elle. Je pensais qu'il allait mieux, mais après ce matin, j'ai l'impression que je ne sais plus rien du tout. Il dort depuis l'opération. Il n'a pas mangé, ni bu une seule goutte d'eau. Tiens, prends ça.
+Elle me tend une assiette en terre cuite avec quelques restes de lard froid. Elle approche un tabouret en bois près du fauteuil de cuir, y pose un morceau de pain et remplit ma gourde avec l'eau fraîche du puits.
+
+Tout en me regardant manger, elle murmure :
+— Silas ne devrait plus tarder à revenir de Carlisle.
+Je ne réponds rien, concentré sur ma pitance. Elle me fixe un instant, ses yeux glissant vers le sol :
+— Tu ne veux plus remettre le foulard ?
+Je garde le silence, m'efforçant d'enfourner une grosse bouchée de pain pour éviter de devoir lui mentir en face. Pour couper court à son attente, je désigne du menton le coin sombre du salon :
+— D'où vient cette horloge ?
+C'est la question qui me brûle les lèvres depuis mon rêve. Je cherche à en savoir plus sur celle qui, dans mon délire, voulait me jeter au grenier.
+
+— Oh ! Ça...
+Elle laisse échapper un petit rire nostalgique, un son rare qui plisse ses yeux doux.
+— C'est la seule chose qui me reste de chez moi. De ma famille, avant que je n'épouse Theodore.
+
+Elle caresse machinalement le tablier de lin noué autour de sa taille, le regard perdu dans les oscillations lentes du pendule de la tall-case clock :
+— Mon père, Jacob Hostetter, l'avait fait fabriquer par un maître horloger de Lancaster, George Hoff, en 1820. C'était l'année de ma naissance. Chez nous, à la frontière du comté d'York, nous avions une grande maison de pierre bleue, des granges peintes en rouge et des vergers de pommiers qui s'étendaient à perte de vue. Nous étions des gens d'ordre, des luthériens stricts de descendance allemande. Le samedi soir, mon père rassemblait toute la maisonnée dans le parlor pour remonter l'horloge avec sa clé de laiton. C'était un rituel sacré. Personne n'avait le droit de parler pendant que les poids remontaient dans un cliquetis de fer.
+
+Elle s'adosse contre le montant du vaisselier, croisant ses bras fatigués :
+— Quand j'ai annoncé à mon père que je partais avec Theodore McNamera, un garçon instruit mais sans terre, un irlandais presbytérien qui préférait lire des poèmes plutôt que de chauler les sillons, il est devenu blanc de colère. Il m'a dit que je jetais ma vie aux orties. Le jour de notre départ pour la Cumberland Valley, mon père n'est pas descendu pour me dire adieu. Il a juste fait charger cette horloge sur notre chariot. C'était ma dot. Ma seule part d'héritage. Je crois qu'il voulait que chaque battement de ce pendule me rappelle la maison prospère que j'abandonnais pour la boue d'ici.
+
+Un faible sourire triste passe sur ses lèvres :
+— Theodore a souvent voulu la vendre pour payer nos traites ou acheter sa moissonneuse. Mais j'ai toujours refusé. C'est tout ce qu'il me reste d'eux.
+
+Elle me regarde et continue :
+— Mais le temps passe et maintenant, je ne sais pas ce qu'elle va devenir. Nous ne sommes pas éternels et la ferme a connu de meilleurs jours. J'ai peur qu'on soit contraint de la vendre... Et quand bien même nous réussirions à la garder, qui écoutera encore son cliquetis quand nous serons partis ?
+
+Certainement pas moi. Le bruit régulier et infini de cette mécanique, jour comme nuit, commence à sérieusement m'agacer. Et, pour tout dire, je n'ai pas du tout apprécié les menaces de l'horloge dans mon rêve.
+
+Quand Silas arrive enfin, le grincement de son attelage rompt la torpeur de l'après-midi. Elara et moi nous précipitons dans la cour poussiéreuse pour l'accueillir. À ma plus grande joie, le caisson en chêne du chariot est vide de ses grands sacs de blé. À la place, trois sacs de jute plus petits, attachés par de la ficelle de chanvre, gisent au fond. Il y a des inscriptions peintes au pochoir noir dessus, de grandes lettres rigides et des chiffres que je ne peux malheureusement pas déchiffrer. Le vieux journalier, bien qu'épuisé par la poussière, les cahots de la turnpike et ses propres activités, affiche un large sourire édenté :
+— C'est bon, gamin ! J'ai tout réglé !
+Il éclate d'un rire franc, réajustant son chapeau de paille :
+— Hah ! Il fallait faire confiance au vieux Silas !
+Sans plus de mots pour nous, il fonce vers la ferme d'un pas assuré, marmonnant pour lui-même en traversant le porche :
+— Quand je vais raconter ça à mon Artus !
+
+Nous lui emboîtons le pas à l'intérieur. Sa voix résonne déjà à travers la porte entrouverte de la chambre parentale, s'adressant à Theodore :
+— ... Et pour prouver leur bonne foi, ils te donnent trois sacs de leurs meilleures semences, boss ! Un blé rouge dont j'ai oublié le nom, mais un truc robuste qui ne craint rien et qui, à ce qu'ils disent, donne encore plus de grains au boisseau !
+— Et tu as vendu pour combien, Silas ? demande Theodore, la voix tendue.
+— Eh bien, ils ont accepté de s'aligner sur le prix de Kunkel de la veille : un dollar soixante-cinq le boisseau. M'est avis qu'on n'aurait pas pu tirer un cent de mieux !
+
+Sur son lit, Theodore fronce les sourcils, ses doigts crispés sur le patchwork. Je n'ai pas encore entendu le nom de l'acheteur, mais à voir sa mine sombre, je crois avoir déjà compris.
+
+— Pour assurer la bonne suite de vos échanges, poursuit fièrement Silas, ils m'ont dit qu'ils feraient venir quelqu'un à la ferme, ici même, dès demain pour finaliser les papiers.
+Theodore se redresse péniblement contre ses oreillers, sa jambe bandée et amidonnée dans son éclisse de Desault pointée vers le plafond :
+— Qu'est-ce qu'ils ont dit exactement, Silas ?
+— Je ne sais plus trop, boss. Je crois qu'ils ont parlé d'un contrat, mais ça aurait très bien pu être un autre mot. Tout ce qui compte, c'est que tu n'as pas perdu un cent dans la transaction. Et je pense même que ces semences gratuites sont un signe du ciel !
+— Qu'est-ce que tu leur as dit sur notre situation ?
+Silas n'hésite pas une seconde, gonflant le torse :
+— Je leur ai parlé de nos soucis pour vendre le blé, pardi ! Je leur ai dit que le petit Eddy nous avait mis en mauvais termes avec le meunier Kunkel et qu'on était acculés avec nos sacs humides.
+
+Theodore récupère la liasse de billets verts sans un mot, le visage livide, et d'un geste las, congédie le vieux journalier. Elara referme la porte de la chambre, coupant court aux soupirs de son mari.
+
+Dans la cuisine, Silas saute presque sur place de joie.
+— Meeks ! Enfin, les hommes de Meeks, pardi ! Qui d'autre ? me répond-il à voix basse quand je lui demande à qui il a vendu la récolte. Le meunier de Bonny Brook ne voulait plus entendre parler de nous... Évidemment. Je n'allais tout de même pas rentrer avec le blé dans le chariot pour le regarder moisir sous la grange !
+Il s'appuie contre le vaisselier, tout sourire :
+— On a tous beaucoup entendu parler de Meeks et de son monopole ces dernières années dans la Cumberland Valley. Mais peut-être qu'il fallait juste que quelqu'un ose aller lui parler, lui demander de l'aide d'homme à homme. Aujourd'hui, je l'ai fait !
+
+Je me gratte la nuque, stupéfait par la naïveté du vieux journalier. Il ne comprend visiblement pas que son cadeau est un nœud coulant et qu'il vient de livrer la ferme McNamera à Meeks sur un plateau d'argent. D'un autre côté, je ne peux pas lui en vouloir : Silas est un homme de la terre, pragmatique. Il ne pouvait effectivement pas ramener le blé humide à la ferme pour le laisser pourrir.
+
+Elara semble partagée entre l'inquiétude et la pitié. Elle n'affiche aucun enthousiasme, mais refuse de briser la joie du « vieux renard », comme elle l'appelle parfois.
+— Maintenant que je suis votre interlocuteur officiel avec le grand Meeks, vous pouvez continuer de faire appel à moi, hein ? lance Silas en se tournant vers elle.
+Elara fait mine de réfléchir, lissant son tablier, et répond avec une diplomatie qui me laisse admiratif :
+— Bien sûr, Silas. Nous penserons à toi dès que ce sera nécessaire.
+
+Le vieux s'apprête enfin à reprendre la route de son vallon. Assis dans le fauteuil de cuir, je l'interpelle à voix basse :
+— Et Benjamin ?
+— Oh, eh bien, rien de particulier, me répond Silas. Il est avec mon Artus. C'est un drôle de gamin. Il a le bras cassé, je ne sais pas si tu savais. Il a demandé si tu étais en vie. Je lui ai dit que oui. Et puis après, il s'est tu et n'a plus soufflé mot. Mon Artus, par contre, c'est une vraie merveille... Je crois qu'il a enfin compris que son vieux père ne lui voulait pas de mal. J'ai mal agi par le passé, mais j'avais mes raisons, et je pense qu'il les a comprises.
+
+Elara apporte une cafetière en fer-blanc fumante et nous sert une tasse de café à la chicorée sauvage. Pendant la demi-heure qui suit, Silas, qui n'est visiblement pas pressé de rentrer chez lui, nous abreuve d'anecdotes sur l'enfance et les exploits d'Artus. Au départ, je tends l'oreille, le cœur serré par l'angoisse, craignant de l'entendre parler de moi, de nos altercations ou de la mort d'Eugene Dunbar dans la forêt. Mais quand je comprends qu'il ne s'agit que de souvenirs et de détails insignifiants, je me contente de faire semblant d'écouter, hochant la tête poliment pour masquer mes pensées et éviter d'attirer l'attention sur mes propres secrets.
+
+Quand Silas repart enfin, la nuit est presque tombée sur le vallon. Elara se charge de changer mon bandage de flanelle comme à l'accoutumée, puis elle passe doucement de chambre en chambre pour vérifier l'état de chacun. Je mange frugalement quelques restes de pain dur trempé dans le bouillon de bœuf, mais le cœur n'y est pas vraiment. J'ai peur pour ce que cette ferme va devenir.
+
+Dans l'obscurité enfin tombée, je m'allonge sur le plancher couvert d'un tapis de chiffons tressés et de mes draps. Le confort y est bien suffisant pour moi qui n'ai jamais rien connu d'autre. Écoutant le tic-tac régulier de la grande horloge et les respirations lourdes de la maison, je finis par fermer les yeux.
+
+Date: 31 juillet 1868
+Cette nuit est une nouvelle fois mouvementée dans mon esprit. J'ai encore rêvé de la batteuse mécanique qui avale le grain sans effort, avec Ollie et d'autres hommes sans visage pour la contrôler. Cette fois, elle ne broie pas le meunier près de Carlisle, mais l'univers tout entier.
+
+D'abord, le blé y est placé par les hommes. Puis, la machine se met à l'aspirer toute seule depuis le sol. La poulie de la batteuse s'accélère, poussée par un vacarme de vapeur et de ferraille, et elle aspire en son sein les mottes d'herbe et la terre noire autour des germes de blé. Le grain commence à s'échapper de façon incontrôlable, une tempête dorée impossible à récupérer dans des sacs. Autour de la machine, les hommes s'écartent, terrifiés par ce qu'ils viennent d'enclencher.
+
+Plus rapidement, plus bruyamment encore, la batteuse mécanique aspire l'air avec une férocité monstrueuse, creusant de véritables gouffres dans le sol pour en dévorer le contenu. Dans la poussière soulevée, je distingue des insectes et même quelques rongeurs se faire aspirer en se débattant. Mais ce n'est que le début. Au rythme régulier et implacable des cliquetis de la grande horloge, la mécanique s'accélère toujours plus. Tic-tac.
+
+Les hommes cherchent désespérément à s'agripper à une barrière, à un mur de grange, ou s'étalent à plat ventre contre le sol pour ne pas être happés par le monstre de fer. Inéluctablement, les semelles de leurs bottes glissent sur le sol crayeux. Un homme, puis un autre, se font avaler bruyamment par le tambour de la batteuse qui vibre nonchalamment, réduisant tout en grains de poussière. Elle aspire la terre, les corps, puis les poteaux et les barrières auxquels ils se cramponnaient. Les arbres de la forêt, les planches de bois des fermes et des granges, tout flotte dans l'air à des miles à la ronde pour finir englouti par la machine diabolique.
+
+Quand il ne reste rien d'autre que les montagnes dénudées, la roche et la mer, la machine s'arrête net, comme pour reprendre sa respiration dans le silence. Puis, dans un gonflement d'air final, une aspiration titanesque, elle reprend son vacarme de plus belle pour dévorer ce qu'il reste : la lumière.
+
+Alors, il n'y a plus rien du tout. Et dans le vide absolu, je me demande comment je suis encore là pour le voir.
+
+Je me tords péniblement sur ma paillasse et accepte enfin que la nuit est terminée. Pour chasser le souvenir de ce cauchemar, je me lève dans la douleur et pars au-dehors regarder le soleil se lever. À l'est, on distingue un mélange de forêts, de champs et de légères fumées à l'horizon. Le soleil les dépasse tous petit à petit pour monter dans le ciel ; l’air est frais et la nuée encore rosée. Aujourd'hui encore s'annonce être une journée chargée. Je guette sur le chemin la venue des invités du jour : le docteur Russell qui passe quotidiennement, les hommes d'Isaac Meeks censés venir sceller un contrat, et la dame de la Ladies' Aid Society, là pour aider Elara dans la gestion de nos trois corps brisés.
+
+Mais pour l'heure, personne n'est sur la route, hormis quelques âmes perdues au loin. Un train passe sur la ligne de chemin de fer. Le monde bouge et je suis immobile. Alors que, face à ce soleil levant, se tient une autre route caillouteuse qui, elle, mène vers l'Ouest. Je fais les cent pas dans la cour, repensant au chemin parcouru jusque-là et cherchant un moyen de me remettre en mouvement.
+
+C'est un bruit à l'intérieur de la ferme qui me fait rebrousser chemin.
+
+Jet de Perception : 94/65. ÉCHEC.
+
+J'entre par la porte et tombe nez à nez avec Elara, affalée sur la table de la cuisine, la tête enfouie dans ses mains. Ses épaules sont secouées par des spasmes de tristesse, à tel point qu'elle ne perçoit même pas ma présence.
+
+Sur la pointe des pieds pour ne pas la surprendre, je m'avance vers la table pour m'asseoir en face d'elle.
+
+Jet de Discrétion : 73/67. ÉCHEC.
+
+La semelle de ma botte frotte un peu trop fort contre le plancher de pin. Elle relève immédiatement la tête dans un sursaut. Elle se frotte vivement les yeux, essuie son visage d'un revers de manche et se lève d'un bond.
+— Eddy... Je ne savais pas que tu étais là... murmure-t-elle.
+Elle se tourne aussitôt vers le poêle pour me tourner le dos et dissimuler ses yeux rougis.
+
+Je m'assois lourdement sur le banc de bois et dis d'une voix douce :
+— C'est normal, Mrs. McNamera. Ce qui arrive est difficile, et vous ne le méritez pas. Il faut savoir que c'est lourd pour tout le monde. Chacun l'exprime à sa manière et chacun en a le droit. Si vous ressentez le besoin de pleurer ou de parler, alors faites-le. C'est encore le meilleur moyen de se délester de son poids.
+
+Jet de Persuasion : 67/74. RÉUSSITE.
+
+Elle vient me rejoindre sur le banc de bois. Elle s'assoit prudemment, gardant ses yeux baissés sur ses mains nouées.
+— Tu as peut-être raison, Eddy... murmure-t-elle d'une voix si basse que la grande horloge manque de la couvrir.
+
+J'attends. Je tends l'oreille, m'attendant à une confidence, une bordée de larmes ou un aveu. Mais rien ne vient. La lumière du matin gagne le plancher, faisant monter une chaleur moite dans la pièce, et nous restons là, côte à côte, pendant de longues minutes immobiles à fixer le mur en face de nous.
+
+Pour rompre ce silence pesant qui me serre la gorge, je demande du bout des lèvres :
+— Du café ?
+— Volontiers, murmure-t-elle sans lever les yeux.
+
+Je me lève et répète les gestes appris ces derniers jours : moudre la chicorée dans le petit moulin de fer, faire frémir l'eau sur le poêle, y jeter la coquille d'œuf pour clarifier le marc. Je verse le liquide noir et fumant dans deux tasses de fer-blanc. En repassant près d'elle, je lui en tends une.
+— Merci, Eddy.
+
+Nous nous rasseyons. Les tasses fument entre nos mains. Le silence revient, lourd, rythmé par le tic-tac du pendule. Mes yeux se fixent sur le mur où la peinture blanche s'écaille en de longues lèpres grises.
+
+Elara souffle doucement sur sa chicorée pour en chasser la vapeur, en buvant une petite gorgée qui lui fait plisser les yeux.
+— Je pensais tenir le coup... dit-elle enfin, le regard vide.
+— Tenir le coup ?
+— À tout. À vous soigner, à garder cette maison propre, à ne pas penser au reste... Mais la maison s'effondre, Eddy. Theodore ne peut plus poser le pied à terre, la récolte nous échappe, et quand je te regarde... quand je regarde Finn couché dans l'autre chambre...
+
+Elle s'arrête net, la tasse suspendue à demi-chemin de ses lèvres. Sa voix s'étrangle. Elle n'a pas besoin de prononcer le nom de Samuel.
+
+Je bois une gorgée de chicorée brûlante qui me racle le gosier. Je n'ai pas de grands mots à lui offrir. Alors je dis simplement :
+— Nous sommes toujours là, Mrs. McNamera. Finn et moi, on respire encore. Et la ferme est toujours à vous.
+
+Elara laisse échapper un soupir rauque, fixant le bord de sa tasse :
+— Et cette femme de la Ladies' Aid Society qui va débarquer... Qu'est-ce qu'elle va raconter en ville en voyant deux gamins blessés par balle sous mon toit ? Deux étrangers qui ne sont ni de ma sang, ni de mon nom...
+— Elle dira que vous avez pris soin de gars qui ont fauché votre blé, dis-je d'un ton sec. C'est tout ce qu'il y a à dire.
+
+Un court silence s'installe. Je tourne ma tasse entre mes doigts, hésitant, puis je lâche la question qui me brûle les lèvres depuis la veille :
+— Mr. McNamera... il m'en veut pour ce qui s'est passé au moulin ? Il pense que c'est ma faute si Meeks nous menace ?
+
+Contre toute attente, Elara laisse échapper un petit rire court, sec, sans aucune gaieté, mais qui détend ses épaules.
+— Theodore ? En vouloir à toi ?
+Elle secoue la tête, amère :
+— Theodore s'en veut d'exister, Eddy. Il s'en veut de ne pas avoir été sur ce chariot à ta place. Il s'en veut d'être cloué au lit pendant que d'autres mènent ses affaires. S'il crie, ce n'est pas après toi. C'est après lui-même.
+
+Elle boit une dernière gorgée, repose sa tasse sur la table dans un petit choc métallique, et se redresse. La matinée peut enfin commencer.
+
+Je m'active comme je le peux pour lui venir en aide, mais en gardant bien en tête les ordres du docteur Russell : je veille à ce que mon bras gauche reste cloué contre ma poitrine sous son étui d'amidon. Objectivement, j'en fais beaucoup moins qu'à l'accoutumée, mais ma propre oisiveté semble me déranger bien plus qu'Elara, trop occupée à ranger la cuisine.
+
+La matinée suit le rythme attendu. Juste après que huit coups ont sonné à la grande horloge, le cabriolet du docteur Russell pénètre dans la cour à la hâte. Il gare son attelage, emmène son cheval vers l'étable pour lui donner du foin, puis entre dans la ferme, sa sacoche de cuir sous le bras. Il suit sa routine habituelle selon l'ordre des urgences. Finn d'abord, dans la chambre à la porte bleue : il l'examine en long et en large, s'assure que le drain ne fuit pas et estime que le gamin survivra si la fièvre ne reprend pas. Ensuite, il s'enfonce dans la chambre de Theodore et d'Elara.
+— Que quelqu'un ouvre ces maudits volets ! gronde sa voix depuis le couloir. On n'y voit goutte là-dedans !
+
+J'entends le bruit des fermetures de bois qui s'ouvrent, puis la voix du médecin, d'abord satisfaite de voir que Theodore est resté immobile dans son éclisse. Mais soudain, un éclat de voix retentit :
+— Theodore McNamera ! Rien de bon ne viendra de ça ! Ce n'est pas un médicament, c'est du poison !
+
+Russell sort de la chambre à grandes enjambées. Il tient à la main une bouteille d'Old Crow que Theodore gardait probablement cachée près de son chevet pour engourdir sa cuisse et mieux accepter les circonstances. Sans hésiter, le docteur gagne le porche, débouche la bouteille d'un coup de dent et vide le bourbon ambré directement dans la poussière de la cour. Une odeur forte et sucrée de maïs fermenté et d'alcool de seigle s'élève aussitôt sous le soleil matinal.
+— Voyez ça comme un cadeau de ma part ! lance-t-il à Elara qui le contemple sur le seuil, la bouche entrouverte.
+Outre le liquide roux qui s'étale en une flaque sombre sur les cailloux secs, elle voit sûrement quelques précieux dollars s'évaporer dans la terre.
+
+Puis, c'est mon tour. Russell m'attrape le bras valide, m'aide à retirer ma chemise et délie avec précaution l'écharpe et le tissu qui recouvrent mon épaule. Il inspecte les sutures de soie et la chair cautérisée au phénol. Il a l'air satisfait de son travail et du mien par extension.
+— Bien, dit-il simplement en remettant son flacon dans sa sacoche.
+
+Je tente alors une question, en prévision de ma route future vers l'Ouest :
+— Vous pourriez me dire ce qu'il faut faire face à une blessure par balle comme la mienne ?
+
+Il balance ma question d'un revers de main négligent :
+— Le mieux, fresh fish, c'est de rester hors de portée d'un fusil, d'un revolver ou d'un pistolet.
+
+En l'entendant, je me rappelle que dans cette ferme, il y a toujours ce vieux fusil à percussion avec lequel j'avais tenté de tirer sans succès lors de l'arrivée du pisteur de Dunbar, sans compter les pièces démontées du Colt d'Eugene que Theodore a confisquées et rangées quelque part.
+— Dans ce monde, ça me paraît difficile de rester hors de portée d'une arme, sir, dis-je calmement. Rien qu'ici, je sais qu'il y en a au moins deux, et pourtant les McNamera sont de loin les gens les plus pacifistes que je connaisse.
+
+Russell laisse échapper un court rire rauque. Il connaît sûrement, lui aussi, la réputation de poète inadapté de Theodore dans la vallée, même si, en tant que chirurgien, il traite tous ses patients avec la même rigueur militaire.
+
+Jet de Persuasion : 34/74. RÉUSSITE.
+
+Il se frotte la barbe, me dévisageant avec un regain d'intérêt :
+— Tu as du jugé, petit. On vit une époque où la poudre parle plus vite que la raison. Je ne vais pas te faire un cours de faculté, mais retiens bien ça : face à une balle de plomb molle, la priorité est toujours double.
+
+Il s'assoit sur le rebord de la table, rajustant ses petites lunettes :
+— D'abord, il faut fouiller la chair avec les doigts propres ou une sonde pour savoir si le plomb est encore dedans. Pour le patron dans la chambre, la balle y était : il faut impérativement l'extirper avec des pinces, sinon la viande pourrit autour du plomb. Pour toi, la balle traversante a filé, mais elle a fait sauter des esquilles d'os. S'il reste un éclat d'os ou un morceau de drap de laine poussé par le choc dans le trou, c'est la gangrène assurée dans les quarante-huit heures. Il faut curer la plaie jusqu'à la chair saine. Ensuite, il faut stopper l'hémorragie : presser l'artère au-dessus du trou ou ligaturer le vaisseau qui pisse avec du fil de soie bien serré.
+
+Il pointe un doigt sévère vers mon épaule :
+— Et surtout, la propreté. Il y a un chirurgien écossais nommé Lister qui a publié ses travaux l'an dernier, en s'appuyant sur les découvertes d'un savant français, Pasteur. Ils n'ont fait que confirmer ce que je pensais déjà. La pourriture des plaies ne vient pas d'un mauvais sang, mais de minuscules germes invisibles qui flottent dans l'air et la saleté. Pour tuer ces saloperies avant qu'elles ne te bouffent, il faut laver la plaie à l'eau bouillie salée et la rincer au phénol, cet acide carbolique qui brûle la viande, utiliser des linges propres et ne jamais occlure une plaie souillée.
+
+— Merci, Dr. Russell, dis-je en hochant la tête, gravant chaque étape dans ma mémoire.
+
+— T'embête pas avec ça, fresh fish, marmonne-t-il en refermant sa sacoche d'un coup sec. Espère juste ne jamais avoir à t'en servir.
+
+Apprentissage de la compétence : Premiers soins (10/100)
+
+Avant de partir, il prévient Elara que la bénévole de la Ladies' Aid Society devrait arriver en fin de matinée. Il ignore de qui il s'agit, mais il donne une petite tape sur l'épaule de la fermière :
+— Ça vous fera le plus grand bien d'avoir un peu d'aide, Mrs. McNamera. Gardez ces trois gaillards en forme !
+
+Il salue d'un signe de tête et franchit le seuil, nous laissant seuls dans la cuisine alors que le soleil commence à monter au-dessus de la grange.
+
+Le temps s'étire lentement. La grange est débarrassée de ses grands sacs de blé, mais j'imagine à travers la porte fermée les trois sacs de semences de Meeks posés sur la paille, symbole de ce qui doit se produire aujourd'hui. Elara semble inquiète elle aussi, guettant la fenêtre toutes les deux minutes.
+
+Pour l'aider à penser à autre chose et chasser son angoisse, je m'adresse à elle :
+— Mrs. McNamera, que diriez-vous de repeindre la porte de la chambre de Samuel ? Ce bleu commence à s'écailler serieusement.
+
+Elle jette un coup d'œil vers la porte du couloir. Avec les années et l'humidité des saisons, le pigment s'est craquelé en petites pellicules sèches sur le chêne.
+— C'est une bonne idée, Eddy, murmure-t-elle.
+Puisqu'elle ne dit rien d'autre, je continue :
+— Il vous reste de quoi faire ? Du pigment ou de l'huile ?
+— Il faudrait aller voir au grenier ou sur l'étagère du cellier. Je ne suis pas sûre qu'il reste du bleu dans les pots en terre.
+
+Elle quitte la pièce principale pour monter le petit escalier de bois menant au grenier de la ferme. J'écoute ses pas légers au-dessus de ma tête, me demandant ce qui peut bien se trouver sous les pannes du toit : des coffres d'habits, des outils hors d'usage, les souvenirs accumulés d'une vie entière.
+
+J'attends, avec pour seule compagnie le cliquetis de l'horloge de Lancaster qui me paraît de plus en plus hostile. Par la vitre basse, la flaque de bourbon Old Crow à l'extérieur est toujours visible, absorbée lentement par la terre sèche. Elle me rappelle que Theodore est lui aussi habité par ses propres démons. Les siens ne prennent sans doute pas la forme d'un serpent rampant dans son esprit comme mon Regret, mais qui sait quelle ombre le pousse à chercher le repos dans l'alcool.
+
+Elara redescend prudemment les marches de bois, les mains vides et légèrement couvertes de poussière :
+— Non... Nous n'avons plus de pigment bleu de Prusse, ni d'huile de lin préparée. Juste un fond de badigeon à la chaux blanche pour les murs.
+
+— Vous pourriez vous rendre en ville, à Carlisle, et acheter un pot de pigment au General Store, dis-je. Je m'engage à le payer moi-même avec ma paie.
+
+Elle s'arrête sur le dernier barreau, hésitante :
+— Et qui veillera sur vous ? Non, c'est impossible. Je ne peux pas vous laisser seuls.
+
+Je laisse échapper un léger rire :
+— Vous voyez bien que nous n'avons pas besoin d'être gardés comme des enfants. Le docteur Russell le dit lui-même : nous n'avons qu'à rester immobiles sur nos lits. Vous ne nous manquerez pas pendant deux ou trois heures. Et puis, la dame de la Ladies' Aid Society doit venir. Vous pourriez profiter de sa présence au chevet de Finn pour prendre l'air et faire cette course.
+
+Un timide sourire plisse enfin ses lèvres :
+— Nous verrons, Eddy. Nous verrons.
+
+Nouveau Thread : Repeindre la porte bleue
+
+Plus tard, on entend du bruit sur le chemin. Elara se jette à la fenêtre. Je suis toujours assis dans le fauteuil, fixant les meubles de la pièce. L'air est moite, chaud et rend plus aisée notre tâche de rester immobile. D'après le son du chariot qui s'approche, on croirait que Dr. Russell revient nous voir. En effet, c'est un chariot quasi semblable qui est tiré par un cheval marron, plus vieux. Du petit cabriolet en sort en réalité, une femme grande et agé, qui tout de suite, sort de l'arrière un panier en osier tressé avec un tas d'affaires à l'intérieur. Elle porte une longue robe grise couvert d'un apron en lin blanc. Son visage est surmonté par un bonnet de paille noué sous le menton et qui couvre la totalité de sa chevelure. Son regard va de gauche à droite dans un rythme frénétique comme si elle inspectait tout.
+
+Elle se présente à la porte en prenant soin de retirer la poussière accumulée sur ses vêtements après son trajet. Elle est droite, immobile. Nous la regardons se tenir droite comme un soldat et frappant poliment à la porte. Elara s'approche, à petits pas, de sa propre porte d'entrée et l'ouvre en grand après avoir pris une grande inspiration. "Bonjour." dit-elle.
+"Enchantée, je suis Mrs. Martha Graham. Je fais partie de la Ladies' Aid Company. Je viens ici sur ordre du Dr. Russell."
+
+Elle déballe toute sa présentation d'une traite. Et pendant qu'elle parle son regard se jette à l'intérieur de la ferme pour en analyser tout le contenu. Je sens son regard gris et perçant me traverser sur mon fauteuil de cuir.
+
+"Enchantée, Mrs Graham. Je suis Elara McNamera. Je suis l'épouse de Theodore McNamera qui fait partie des blessés."
+
+Elle passe un pied dans la porte et force Elara à se déplacer pour lui céder le passage en mettant son panier devant elle. Ce même panier est posé bruyamment sur la table de la pièce principale et pendant qu'elle en sort le contenu, elle demande : "Je n'ai pas eu beaucoup d'informations. Il y a 3 blessés ici, n'est ce pas ?" Elara acquiesce. "J'en vois un ici. Où sont les deux autres ?" Elara montre les deux chambres face à face dans le petit couloir. "Bien. Vous savez pourquoi je suis ici ?"
+
+Elara hésite un peu "Pour m'aider, je suppose." "Oui, c'est tout à fait ca. Pour être précise, je vais aider à soigner les blessés, changer les bandages, nettoyer les plaies, veiller à ce qu'ils se n
 

@@ -29,16 +29,22 @@ To achieve the requested level of multi-sensory and slow-paced realism, the Stor
 - **Geographical Chronicler**: To describe the terrain, geology, and atmospheric conditions with absolute precision.
 - **Historical Auditor**: To verify facts, prices, and material culture of the era.
 - Utilisez au besoin les PDFs à votre disposition (`pdfs/generateur_noms_western.pdf`, `pdfs/UNE NPC Generator.pdf`, `pdfs/random_tables_far_west.pdf`) ou bien vos profondes connaissances sur ces systèmes pour générer des PNJs complexes, des noms de saloon, ou des objets.
+- **Random Tables & Anti-Stereotypes**: Pour casser les stéréotypes, introduire de la diversité historique et surprendre le joueur, vous devez utiliser des tirages de tables réelles via la commande `node tools/roll_table.js <table_name>`.
+  *   **Noms d'époque** : `anglo-saxon`, `germanic`, `irish`, `scandinavian`, `spanish_mexican`, `french`, `italian_mediterranean`, `central_eastern_european`, `chinese`.
+  *   **Émulation de PNJ (UNE)** : `une_modifier` (caractère), `une_noun` (profession), `une_motivation_verb` / `une_motivation_noun` (ses objectifs), `une_focus` (sujet de discussion).
+  *   **Détails du Far West** : `items_behind_a_saloon_bar`, `guns`, `books`, `wanted_posters`, `items_in_a_bandit_hideout`, `items_in_a_doctor_s_office`, `items_in_a_general_store`, `saloon_names_1` / `saloon_names_2`, `rumors_and_jobs`.
+  Intégrez fidèlement les résultats tirés dans vos descriptions, dialogues et profils de PNJs.
+
 
 ## 2. Using Game Mechanics (CRITICAL)
 Whenever the character attempts an action with an uncertain outcome, YOU MUST USE YOUR TOOLS to roll dice. NEVER decide the outcome yourself.
-- Run `node tools\dice_roller.js <stat_percentage>` using `run_command` in the `e:\Tri Selectif\Programmation\the-oregon-trail\` directory. Find the character's stats in `saves/[char_name].txt`.
+- Run `node tools/dice_roller.js <stat_percentage>` using `run_command` in the project root directory. Find the character's stats in `saves/[char_name].txt`.
 - Apply the result faithfully in the narration.
 - **VISIBILITY**: You MUST explicitly embed the result in your generated journal entry HTML exactly like this:
   `<p><span class="jet-result">Jet de [Stat Name] : [Roll]/[Target]. [SUCCÈS CRITIQUE / RÉUSSITE / ÉCHEC / ÉCHEC CRITIQUE]</span></p>`
 
 Whenever a random event might occur, a yes/no question is asked about the universe, or an NPC takes an action outside his control, YOU MUST use the Oracle:
-- Run `node tools\mythic_oracle.js "<odds>"` (odds: impossible, unlikely, 50/50, likely, a sure thing).
+- Run `node tools/mythic_oracle.js "<odds>"` (odds: impossible, unlikely, 50/50, likely, a sure thing).
 - Incorporate the result (OUI/NON/EXCEPTIONNEL/ALÉATOIRE) into the narrative.
 - **VISIBILITY**: Include the oracle result directly in the HTML exactly like this:
   `<p><span class="oracle-result" style="color: #F59E0B; font-weight: bold;">[Oracle] [Odds] : [Jet] - [Answer]</span></p>`

@@ -553,8 +553,7 @@ window.deleteItem = async function (type, id) {
             await savePartialData('threads', gameState.threads);
             renderThreads();
         } else if (type === 'journal') {
-            gameState.journal = gameState.journal.filter(j => String(j.id) !== String(id));
-            await savePartialData('journal', gameState.journal);
+            await deleteSingleJournalEntry(id);
             renderJournal();
         }
     }

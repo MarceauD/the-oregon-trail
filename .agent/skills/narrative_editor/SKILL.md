@@ -25,6 +25,11 @@ You must utilize your knowledge of the following systems (documented in `pdfs/`)
 - **Event Meaning Tables**: Use (Action + Descriptor) to interpret unexpected events or NPC behaviors.
 - **Chaos Factor**: Increase it when scenes get out of control, decrease it when the active protagonist gains control. High Chaos = more "Extreme" results.
 
+### B. UNE (Universal NPC Emulator) & Random Tables
+- **UNE Emulator**: To create detailed and non-stereotypical NPCs, use the tables `une_modifier`, `une_noun`, `une_motivation_verb`, `une_motivation_noun`, and `une_focus` through the script `node tools/roll_table.js <table_name>`.
+- **Far West Tables**: Use local tables (like `items_behind_a_saloon_bar`, `guns`, `wanted_posters`, `rumors_and_jobs`, etc.) to fill details, inventory, and scenery. Do not invent standard assets, draw them from the tables when appropriate.
+
+
 ### B. The Adventure Crafter
 - **Plot Points**: Use to generate structural changes in the narrative (e.g., "A Character Steals Something", "A New Antagonist Appears").
 - **Turning Points**: Integrate these into long-term threads to keep the campaign dynamic.
@@ -89,6 +94,7 @@ To avoid generic AI writing, the following structures and tropes are **FORMALLY 
 6.  **Repetitive Sentence Flow**: Variation is key. Avoid starting three sentences in a row with the same pronoun or noun.
 
 ## 9. Source of Truth (Database Schema)
-- All structural and naming decisions MUST be based on the official schema: [.agent/firebase_schema.json](file:///e:/Tri%20Selectif/Programmation/the-oregon-trail/.agent/firebase_schema.json).
+- All structural and naming decisions MUST be based on the official schema: [.agent/firebase_schema.json](file:///.agent/firebase_schema.json).
 - Consult this file before any write operation to Firebase or any file modification involving character stats, NPCs, or threads.
+
 

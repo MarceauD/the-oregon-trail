@@ -74,6 +74,61 @@ function getSaveDocRef() {
     return db.collection('saves').doc(currentSaveId);
 }
 
+function getJournalEntriesCollectionRef(saveId = currentSaveId) {
+    return db.collection('saves').doc(saveId).collection('journal_entries');
+}
+
+/**
+ * Sauvegarde d'une seule entrée de journal dans la sous-collection Firestore pour éviter la limite de 1 MB
+ */
+window.saveSingleJournalEntry = async function (entryData) {
+    if (isReadOnly || !entryData || !entryData.id) return;
+
+    // 1. Mise à jour locale dans gameState.journal
+    const idx = gameState.journal.findIndex(j => String(j.id) === String(entryData.id));
+    if (idx > -1) {
+        gameState.journal[idx] = { ...gameState.journal[idx], ...entryData };
+    } else {
+        gameState.journal.unshift(entryData);
+    }
+
+    // 2. Diffusion aux autres onglets ouverts
+    syncChannel.postMessage({
+        type: 'JOURNAL_ENTRY_UPDATE',
+        entry: entryData,
+        campaignId: currentSaveId
+    });
+
+    // 3. Sauvegarde directe dans la sous-collection Firestore (quelques ko par entrée)
+    try {
+        await getJournalEntriesCollectionRef().doc(String(entryData.id)).set(entryData, { merge: true });
+    } catch (error) {
+        console.error(`Erreur lors de la sauvegarde de l'entrée journal ${entryData.id}:`, error);
+        throw error;
+    }
+};
+
+/**
+ * Suppression d'une entrée de journal dans la sous-collection Firestore
+ */
+window.deleteSingleJournalEntry = async function (entryId) {
+    if (isReadOnly || !entryId) return;
+
+    gameState.journal = gameState.journal.filter(j => String(j.id) !== String(entryId));
+
+    syncChannel.postMessage({
+        type: 'JOURNAL_ENTRY_DELETE',
+        entryId,
+        campaignId: currentSaveId
+    });
+
+    try {
+        await getJournalEntriesCollectionRef().doc(String(entryId)).delete();
+    } catch (error) {
+        console.error(`Erreur lors de la suppression de l'entrée journal ${entryId}:`, error);
+    }
+};
+
 /**
  * Mise à jour locale d'un objet imbriqué via un chemin en notation pointée (ex: "character.money")
  */
@@ -91,12 +146,25 @@ function setDeepValue(obj, path, value) {
 const syncChannel = new BroadcastChannel('oregon_trail_sync');
 
 syncChannel.onmessage = (event) => {
-    const { type, path, value, campaignId } = event.data;
+    const { type, path, value, entry, entryId, campaignId } = event.data;
     // On ne traite le message que si c'est la même campagne que l'onglet actuel
-    if (type === 'STATE_UPDATE' && campaignId === currentSaveId) {
-        console.log(`[Sync] Mise à jour reçue d'un autre onglet : ${path} =`, value);
-        setDeepValue(gameState, path, value);
-        if (typeof renderAll === 'function') renderAll();
+    if (campaignId === currentSaveId) {
+        if (type === 'STATE_UPDATE') {
+            console.log(`[Sync] Mise à jour reçue d'un autre onglet : ${path} =`, value);
+            setDeepValue(gameState, path, value);
+            if (typeof renderAll === 'function') renderAll();
+        } else if (type === 'JOURNAL_ENTRY_UPDATE' && entry) {
+            const idx = gameState.journal.findIndex(j => String(j.id) === String(entry.id));
+            if (idx > -1) {
+                gameState.journal[idx] = { ...gameState.journal[idx], ...entry };
+            } else {
+                gameState.journal.unshift(entry);
+            }
+            if (typeof renderJournal === 'function') renderJournal();
+        } else if (type === 'JOURNAL_ENTRY_DELETE' && entryId) {
+            gameState.journal = gameState.journal.filter(j => String(j.id) !== String(entryId));
+            if (typeof renderJournal === 'function') renderJournal();
+        }
     }
 };
 
@@ -107,6 +175,18 @@ syncChannel.onmessage = (event) => {
  */
 window.savePartialData = async function (path, value) {
     if (isReadOnly) return;
+
+    if (path === 'journal') {
+        gameState.journal = value;
+        if (Array.isArray(value)) {
+            for (const item of value) {
+                if (item && item.id) {
+                    await saveSingleJournalEntry(item);
+                }
+            }
+        }
+        return;
+    }
 
     // 1. Mise à jour locale immédiate
     setDeepValue(gameState, path, value);
@@ -122,11 +202,12 @@ window.savePartialData = async function (path, value) {
     // 3. Sauvegarde sur Firebase via .update() (notation pointée gérée nativement)
     try {
         await getSaveDocRef().update({ [path]: value });
-        // console.log(`[Firebase] Champ mis à jour : ${path}`);
     } catch (error) {
         console.error(`Erreur lors de la mise à jour partielle (${path}):`, error);
         // Fallback sur set merge si le document n'accepte pas l'update (ex: inexistant)
-        await getSaveDocRef().set(gameState, { merge: true });
+        const stateCopy = { ...gameState };
+        delete stateCopy.journal;
+        await getSaveDocRef().set(stateCopy, { merge: true });
     }
 };
 
@@ -198,8 +279,29 @@ async function saveGameData() {
         return;
     }
 
-    // Sauvegarde de l'état avec fusion (merge) pour éviter d'écraser les changements concurrents sur d'autres champs
-    await getSaveDocRef().set(gameState, { merge: true });
+    // 1. Sauvegarde des entrées de journal dans la sous-collection journal_entries
+    if (gameState.journal && Array.isArray(gameState.journal) && gameState.journal.length > 0) {
+        const journalCollRef = getJournalEntriesCollectionRef();
+        for (const item of gameState.journal) {
+            if (item && item.id) {
+                await journalCollRef.doc(String(item.id)).set(item, { merge: true });
+            }
+        }
+    }
+
+    // 2. Sauvegarde du document principal sans le tableau journal lourd
+    const stateToSave = { ...gameState };
+    delete stateToSave.journal;
+
+    await getSaveDocRef().set(stateToSave, { merge: true });
+
+    // Purger aussi l'ancien champ 'journal' s'il existait sur le document principal
+    try {
+        await getSaveDocRef().update({ journal: firebase.firestore.FieldValue.delete() });
+    } catch (e) {
+        // Ignorer si le champ n'existait pas
+    }
+
     console.log(`Partie [${currentSaveId}] sauvegardée sur Firebase !`);
 
     // Mise à jour de l'index global des campagnes (nom, portrait, date)
@@ -251,14 +353,56 @@ async function loadGameData() {
     try {
         const doc = await getSaveDocRef().get();
         if (doc.exists) {
-            console.log(`Donn\u00e9es charg\u00e9es pour [${currentSaveId}] depuis Firebase.`);
-            return doc.data();
+            console.log(`Données chargées pour [${currentSaveId}] depuis Firebase.`);
+            const stateData = doc.data();
+
+            // Récupérer les entrées de journal depuis la sous-collection
+            const journalSnapshot = await getJournalEntriesCollectionRef().get();
+            let journalEntries = [];
+
+            if (!journalSnapshot.empty) {
+                journalSnapshot.forEach(jDoc => {
+                    journalEntries.push(jDoc.data());
+                });
+            }
+
+            // MIGRATION AUTOMATIQUE : si la sous-collection est vide mais que le doc principal contient un journal (ancien format)
+            if (journalEntries.length === 0 && stateData.journal && Array.isArray(stateData.journal) && stateData.journal.length > 0) {
+                console.log("Migration automatique des entrées du journal vers la sous-collection 'journal_entries'...");
+                const journalCollRef = getJournalEntriesCollectionRef();
+                for (const item of stateData.journal) {
+                    if (item && item.id) {
+                        await journalCollRef.doc(String(item.id)).set(item);
+                    }
+                }
+                journalEntries = stateData.journal;
+
+                // Nettoyer l'ancien champ 'journal' du document principal pour repasser sous les 1 Mo
+                try {
+                    await getSaveDocRef().update({ journal: firebase.firestore.FieldValue.delete() });
+                    console.log("Ancien journal supprimé avec succès du document principal.");
+                } catch (e) {
+                    console.warn("Mise à jour du document principal lors de la migration :", e);
+                }
+            } else if (stateData.journal && Array.isArray(stateData.journal) && stateData.journal.length > 0) {
+                // Si la sous-collection existe déjà ET que le doc principal a toujours l'ancien champ 'journal' lourd
+                try {
+                    await getSaveDocRef().update({ journal: firebase.firestore.FieldValue.delete() });
+                    console.log("Purger l'ancien champ journal du document principal.");
+                } catch (e) { }
+            }
+
+            // Trier les entrées par date descendante
+            journalEntries.sort((a, b) => new Date(b.date) - new Date(a.date));
+            stateData.journal = journalEntries;
+
+            return stateData;
         }
     } catch (e) {
         console.error("Erreur chargement save doc :", e);
     }
 
-    console.log(`Aucune sauvegarde Firebase trouv\u00e9e pour [${currentSaveId}].`);
+    console.log(`Aucune sauvegarde Firebase trouvée pour [${currentSaveId}].`);
     return null;
 }
 
@@ -358,7 +502,7 @@ window.deleteCampaign = async function (id) {
         showToast("Impossible de supprimer la seule campagne restante.", 'warning');
         return;
     }
-    if (!confirm("Voulez-vous vraiment supprimer cette campagne ? Cette action est irr\u00e9versible.")) return;
+    if (!confirm("Voulez-vous vraiment supprimer cette campagne ? Cette action est irréversible.")) return;
 
     campaignsList = campaignsList.filter(c => c.id !== id);
     if (currentSaveId === id) {
@@ -366,6 +510,16 @@ window.deleteCampaign = async function (id) {
         localStorage.setItem('oregon_current_save_id', currentSaveId);
     }
     localStorage.setItem('oregon_campaigns_list', JSON.stringify(campaignsList));
+
+    // Suppression de la sous-collection journal_entries
+    try {
+        const snapshot = await db.collection('saves').doc(id).collection('journal_entries').get();
+        const batch = db.batch();
+        snapshot.docs.forEach(doc => batch.delete(doc.ref));
+        await batch.commit();
+    } catch (e) {
+        console.warn("Erreur suppression sous-collection journal_entries :", e);
+    }
 
     // Deleting from Firebase
     await db.collection('saves').doc(id).delete();
