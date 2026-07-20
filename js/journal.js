@@ -93,6 +93,7 @@ function registerCustomTinyMCEButtons(editor) {
                         const roll = Math.floor(Math.random() * 100) + 1;
                         let resultText = (roll <= 5) ? "Réussite Critique !" : (roll >= 95) ? "Échec Critique !" : (roll <= targetValue) ? "Réussite." : "Échec.";
                         const output = `<p><span class="jet-result">Jet de ${name} : ${roll}/${targetValue}. ${resultText}</span></p><p>&nbsp;</p>`;
+                        editor.focus();
                         editor.insertContent(output);
                         api.close();
                     }
@@ -108,6 +109,7 @@ function registerCustomTinyMCEButtons(editor) {
         onAction: () => {
             if (typeof openImagePicker === 'function') {
                 openImagePicker((path) => {
+                    editor.focus();
                     editor.insertContent(`<img src="${path}" alt="Image RPG">`);
                 });
             }
@@ -150,6 +152,7 @@ function registerCustomTinyMCEButtons(editor) {
                     else if (roll >= exceptionalNoLimit) { result = "NON EXCEPTIONNEL !"; color = "#EF4444"; }
                     else { result = "NON."; color = "#94A3B8"; }
                     const output = `<p><span class="oracle-result" style="color: ${color}; font-weight: bold;">[Oracle] ${label} (${roll}%) : ${result}</span></p><p>&nbsp;</p>`;
+                    editor.focus();
                     editor.insertContent(output);
                     api.close();
                 }
@@ -466,11 +469,13 @@ async function openImmersiveEdit(id) {
                     const rects = range.getClientRects();
                     if (rects && rects.length > 0) {
                         rect = rects[0];
-                    } else {
-                        const marker = editor.dom.create('span', { id: 'typewriter-marker' }, '&#x200b;');
-                        range.insertNode(marker);
-                        rect = marker.getBoundingClientRect();
-                        editor.dom.remove(marker);
+                    } else if (range.startContainer) {
+                        const node = range.startContainer.nodeType === 1 
+                            ? range.startContainer 
+                            : range.startContainer.parentElement;
+                        if (node && typeof node.getBoundingClientRect === 'function') {
+                            rect = node.getBoundingClientRect();
+                        }
                     }
 
                     if (rect && rect.top > 0) {
