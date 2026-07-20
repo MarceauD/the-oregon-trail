@@ -518,19 +518,7 @@ async function openImmersiveEdit(id) {
                 alignCursorTypewriter(false);
             });
 
-            // Diagnostic de sélection et d'affichage de la quickbar
-            editor.on('selectionchange', () => {
-                const selectionText = editor.selection.getContent({ format: 'text' }).trim();
-                console.log("[Diagnostic Immersif] selectionchange. Texte sélectionné : '" + selectionText + "'");
-                
-                // Inspecter les conteneurs flottants de TinyMCE
-                const floaters = document.querySelectorAll('.tox-tinymce-inline');
-                console.log("[Diagnostic Immersif] Nombre de conteneurs flottants TinyMCE (.tox-tinymce-inline) dans le DOM :", floaters.length);
-                floaters.forEach((el, index) => {
-                    const styles = window.getComputedStyle(el);
-                    console.log(`  - Conteneur #${index}: display="${styles.display}", visibility="${styles.visibility}", opacity="${styles.opacity}", z-index="${styles.zIndex}", classList="${[...el.classList].join(' ')}", innerHTML_has_quickbar=${el.querySelector('.tox-quickbar') !== null}`);
-                });
-            });
+
 
             // Raccourcis clavier TinyMCE
             editor.addShortcut('meta+s', 'Save entry', () => {
