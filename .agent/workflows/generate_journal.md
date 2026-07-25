@@ -27,9 +27,9 @@ Ce workflow décrit les étapes précises pour co-écrire et générer une nouve
 
 5. **Mise à jour du Statut et Synchronisation Firebase** :
    - Calculer les deltas de la scène (argent dépensé, nouvel objet dans l'inventaire, blessures, faits marquants de PNJ, évolution d'intrigues).
-   - Préparer un fichier JSON temporaire `update.json` respectant le schéma de `firebase_schema.json`.
+   - Préparer un fichier JSON temporaire `tmp/update.json` respectant le schéma de `firebase_schema.json`.
    - Exécuter la commande pour synchroniser Firebase :
-     `node tools\firebase_updater.js <SAVE_ID_MAPPED> update.json`
+     `node tools/firebase_updater.js <SAVE_ID_MAPPED> tmp/update.json`
    - Si la scène a été écrite ou validée par l'utilisateur, l'ajouter au fichier de sauvegarde local (`saves/[char_name].txt`).
 
 6. **Notification de l'Utilisateur** :

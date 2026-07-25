@@ -22,8 +22,8 @@ Ce workflow permet d'extraire automatiquement toutes les informations d'une nouv
      - **PNJs** : Nouveaux personnages rencontrés, évolution des relations, faits marquants.
      - **Threads** : Création de sous-quêtes, avancement des intrigues, résolution d'objectifs.
 
-4. **Préparer la Charge Utile (update.json)** :
-   - Créer un fichier temporaire `update.json` respectant strictement le schéma défini dans `firebase_schema.json`.
+4. **Préparer la Charge Utile (tmp/update.json)** :
+   - Créer un fichier temporaire `tmp/update.json` respectant strictly le schéma défini dans `firebase_schema.json`.
    - **Comportements et règles spéciales de synchronisation :**
      - **Ajout incrémental au Journal** : Si l'objet contient une structure `journal_entry` avec une date déjà présente sur Firebase, le texte sera concaténé à la fin de l'entrée existante (séparé par un double saut de ligne `<br><br>`) sans écraser le contenu précédent. **Important : Le texte narratif fourni dans le champ `entry` doit obligatoirement être formaté en HTML propre (avec des balises `<p>`, des `<br>` pour les sauts de ligne, et tout autre élément de mise en page requis) pour assurer un rendu correct dans l'application.**
      - **Suppression d'éléments via `_delete` (Uniquement pour le Personnage)** : Pour supprimer un élément d'une liste dynamique de la fiche de personnage (ex: inventaire, états physiques/mentaux, compétences, traits), spécifiez cet objet avec son critère de correspondance unique (`id`, `name`, ou `text`) et ajoutez le drapeau `"_delete": true`.
@@ -43,7 +43,7 @@ Ce workflow permet d'extraire automatiquement toutes les informations d'une nouv
 
 5. **Exécuter la Synchronisation** :
    - Lancer la commande :
-     `node tools\firebase_updater.js <SAVE_ID_MAPPED> update.json`
+     `node tools/firebase_updater.js <SAVE_ID_MAPPED> tmp/update.json`
 
 6. **Mettre à jour le fichier de résumé cumulatif** :
    - Ouvrir le fichier de résumé `saves/[char_name]/summary.txt` (ex: `saves/eddy/summary.txt`).

@@ -514,3 +514,41 @@
   - **Santé mentale** : Fort sentiment de rejet et de frustration après le refus de Theodore, accentué par des hallucinations sous laudanum.
   - **Ressources** : Économies intactes à **$20.38** (offre rejetée). Acquisition du savoir culinaire **Café à la chicorée**.
   - **Intrigues** : Clôture du fil « Le transport du blé vers Carlisle » (60 sacs vendus). Réactivation dramatique de « Le Vautour et la Proie » (Meeks s'invite à la ferme). Création du fil « Goûter au café d'exception ».
+
+### 31 juillet 1868
+- **Déplacements & Actions** :
+  - Cauchemar nocturne : Eddy rêve de la batteuse mécanique à vapeur d'Isaac Meeks aspirant et dévorant la terre, les animaux, les hommes, les arbres, et finalement la lumière elle-même.
+  - Discussion au réveil avec Elara : Eddy surmonte l'échec de discrétion et réconforte Elara en larmes à la cuisine (Persuasion : 67/74 réussite). Elara lui confie son sentiment d'impuissance et lui explique que Theodore ne lui en veut pas personnellement pour Kunkel mais culpabilise de sa propre impuissance.
+  - Visite du Dr Charles Russell :
+    - Il examine Finn (en voie de stabilisation) et Theodore.
+    - Il découvre une bouteille d'Old Crow cachée sous le lit de Theodore et la vide furieusement dans la cour.
+    - Il inspecte l'épaule d'Eddy et, impressionné par son intérêt, lui enseigne les règles de base du soin des blessures par balle (Persuasion : 34/74 réussite). Eddy apprend la compétence **Premiers soins (10/100)**.
+  - Idée de repeindre la porte de Samuel : Eddy propose à Elara de repeindre la porte bleue qui s'écaillait. Faute de pigment à la ferme, l'idée d'en acheter à Carlisle est retenue (Lancement de l'intrigue « Repeindre la porte bleue »).
+  - Arrivée de Mrs. Martha Graham (Ladies' Aid Society) :
+    - Veuve austère et méthodique de Carlisle venant prêter main-forte pour 50 cents/jour.
+    - Elle recadre Eddy sur la politesse citadine (« un gentleman ne tend pas la main le premier à une dame »). Eddy apprend la leçon.
+    - Elle organise les soins et le ménage, fait la cuisine (soupe de chou et porc salé) et interroge Elara sur la présence de deux jeunes blessés par balle sous son toit.
+  - Première lecture réussie en autonomie : Mrs. Graham donne son livre de devotion à Eddy et lui demande de lire la page 25 (Verset 2). Eddy réussit son jet de Lecture (18/19 réussite) et déchiffre couramment un paragraphe entier.
+  - Réaction violente de Theodore : Fier de sa réussite, Eddy court l'annoncer à Theodore, mais ce dernier le douche avec sévérité, lui reprochant de lire sans comprendre le sens des mots et d'utiliser la lecture comme un jeu.
+  - Crise d'angoisse et tentative de fuite : Dévasté par le rejet de Theodore, Eddy se réfugie dans l'étable auprès du cheval Bill, pleure, et tente de fuir la ferme en abandonnant le chapeau de paille de Samuel (Résilience : 87/86 échec).
+  - Arrivée des émissaires d'Isaac Meeks :
+    - L'avocat Cornelius Cook (en redingote, melon et canne) et son clerc débarquent avec leurs registres.
+    - Elara tente de retenir Eddy. Cook entend le nom d'Edward Devlin et invite Eddy dans la chambre de Theodore.
+  - Le Pacte Faustien et le Chantage :
+    - Cook félicite Eddy pour sa mécanique et son cynisme commercial à Carlisle, et lui propose de devenir l'assistant stratégique personnel de Meeks (loge, couvert haut de gamme, vêtements) en échange de laisser la ferme McNamera en paix.
+    - Cook révèle que Meeks est au courant de la mort d'Eugene Dunbar et de Morris Diamond : si Eddy refuse l'offre et si Theodore refuse de signer le contrat d'exclusivité, Meeks dénoncera Eddy pour le meurtre d'Eugene et le fera pendre.
+    - Montée du Regret à 6/10.
+    - Theodore refuse héroïquement de « vendre » Eddy (« Edward n'est pas à vendre ! ») et attrape la plume pour signer lui-même le contrat d'exclusivité d'usure à $1.50 le boisseau, sacrifiant l'avenir financier de sa ferme pour sauver Eddy de la potence.
+  - Cook et son clerc repartent satisfaits. Eddy, effondré de culpabilité, renonce à fuir et s'assoit dans le fauteuil en silence, la ferme étant désormais sous la coupe de Meeks.
+- **Rencontres & Interactions** :
+  - **Elara McNamera** : Confie sa détresse à Eddy, l'encourage dans sa lecture et tente d'empêcher son départ de la ferme.
+  - **Dr. Charles Russell** : Jette l'alcool de Theodore, inspecte les plaies et enseigne la médecine de guerre à Eddy (**Premiers soins : 10/100**).
+  - **Mrs. Martha Graham (PNJ)** : Veuve de la Ladies' Aid Society de Carlisle. Reprend les manières d'Eddy, prend en charge la maison, s'enquiert des blessures et lui fait déchiffrer un verset religieux.
+  - **Mr. Cornelius Cook (PNJ)** : Avocat cynique d'Isaac Meeks. Il propose un marché d'assistant à Eddy et fait chanter la ferme avec le meurtre d'Eugene Dunbar pour forcer Theodore à signer le contrat d'exclusivité.
+  - **Theodore McNamera** : Sévère sur la leçon de lecture d'Eddy, il refuse fièrement de livrer Eddy à Meeks et sacrifie sa propre ferme en signant le contrat d'usure.
+- **Santé & Ressources** :
+  - **Santé physique** : Pansements d'Eddy en bonne voie de cicatrisation. Theodore et Finn immobiles.
+  - **Santé mentale** : Fort sentiment de culpabilité, de honte et d'échec chez Eddy. **Regret augmente à 6/10**.
+  - **Ressources** : Économies de $20.38 conservées.
+  - **Intrigues** : Progression dramatique de « Le Vautour et la Proie » (Theodore signe le contrat d'usure de Meeks pour sauver Eddy). Lancement du fil « Repeindre la porte bleue ».
+  - **Compétences** : Apprentissage de la compétence **Premiers soins (10/100)**.

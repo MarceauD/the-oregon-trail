@@ -46,8 +46,8 @@ For the active character sheet:
 
 ### Step 5: Save Mapping and Command Execution
 - Read `.agent/firebase_schema.json` to map the active character's name to their Firebase Save ID (e.g., "Eddy" -> "mainSave").
-- Construct the `update.json` using the mapped structure.
-- Run the synchronization: `node tools\firebase_updater.js <SAVE_ID> \tmp\update.json`.
+- Construct `tmp/update.json` using the mapped structure.
+- Run the synchronization: `node tools/firebase_updater.js <SAVE_ID> tmp/update.json`.
 
 ### Step 6: Summary File Synchronization (CRITICAL)
 - Locate the summary file at `saves/[char_name]/summary.txt` (where `[char_name]` is the active character, e.g., `saves/eddy/summary.txt`).
@@ -68,7 +68,7 @@ For the active character sheet:
 **User**: "Update the world state from the July 9th entry."
 **Action**: 
 1. Call **World Synchronizer** to extract facts.
-2. Create a `/tmp/update.json` with the delta.
+2. Create `tmp/update.json` with the delta.
 3. Update `npcs` and `threads` via `firebase_updater.js`. NEVER use rebuild tools.
 4. Provide the user with a "Sync Report".
 ## 5. Source of Truth (Database Schema)

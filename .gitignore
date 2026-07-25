@@ -1,2 +1,15 @@
+# Fichiers et dossiers temporaires
+tmp/
 .tmp.*/
-tools/*
+*.tmp
+web_draft.txt
+
+# Outils : Dépendances et secrets
+tools/node_modules/
+tools/serviceAccountKey.json
+
+# Données brutes d'extractions PDF
+pdfs/*_raw.txt
+
+# Sauvegardes brutes de campagnes
+saves/**/save.txt

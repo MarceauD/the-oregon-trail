@@ -56,7 +56,7 @@ Whenever a random event might occur, a yes/no question is asked about the univer
 > **DEDUPLICATION**: ALWAYS check if the data (stats, traits, NPC facts) already exists in Firebase or the local save before updating.
 > ALWAYS use `firebase_updater.js` with a partial `update.json` to CONCATENATE data.
 Instead, after parsing the user's narrative scene, you must formulate exactly how the game state has evolved and push it directly to Firebase using the updater script (excluding the `journal_entry` block).
-1. Write a temporary file named `update.json` in the `/tmp/` directory, formatted EXACTLY using this schema:
+1. Write a temporary file named `update.json` in the `tmp/` directory (`tmp/update.json`), formatted EXACTLY using this schema:
 ```json
 {
   "journal_entry": {
@@ -110,7 +110,7 @@ Instead, after parsing the user's narrative scene, you must formulate exactly ho
 }
 ```
 2. Execute the script to push this structure to Firebase:
-`node tools\firebase_updater.js save_obie_vesper \tmp\update.json`
+`node tools/firebase_updater.js save_obie_vesper tmp/update.json`
 
 ## 4. Firebase Schema Documentation (V2)
 All updates must follow this precise structure to ensure compatibility with the UI:
