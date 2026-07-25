@@ -367,7 +367,192 @@ window.cancelInlineEdit = function (id) {
 let immersiveEditId = null;
 let immersiveAutoSaveInterval = null;
 let immersiveLastContent = "";
-const isSavingImmersive = { value: false };
+let immersiveTheme = localStorage.getItem('immersiveTheme') || 'dark';
+let immersiveFontFamily = localStorage.getItem('immersiveFontFamily') || 'serif';
+let immersiveFontScale = parseFloat(localStorage.getItem('immersiveFontScale')) || 1.0;
+
+const IMMERSIVE_THEMES = ['dark', 'sepia', 'light', 'midnight'];
+const IMMERSIVE_FONTS = ['serif', 'merriweather', 'sans', 'mono'];
+
+const THEME_NAMES = {
+    dark: 'Sombre',
+    sepia: 'Parchemin',
+    light: 'Clair',
+    midnight: 'Noir OLED'
+};
+
+const FONT_NAMES = {
+    serif: 'Lora (Serif)',
+    merriweather: 'Merriweather',
+    sans: 'Inter (Sans)',
+    mono: 'Machine à écrire'
+};
+
+// Détection du survol du haut de l'écran (70px) pour afficher/masquer le header immersif
+document.addEventListener('mousemove', (e) => {
+    const overlay = document.getElementById('immersive-writing-overlay');
+    if (!overlay || !overlay.classList.contains('active')) return;
+
+    if (e.clientY <= 70) {
+        overlay.classList.add('show-header');
+    } else {
+        const activeElem = document.activeElement;
+        const header = overlay.querySelector('.immersive-writing-header');
+        if (header && !header.contains(activeElem)) {
+            overlay.classList.remove('show-header');
+        }
+    }
+});
+
+function applyImmersiveTheme(theme) {
+    if (!IMMERSIVE_THEMES.includes(theme)) theme = 'dark';
+    immersiveTheme = theme;
+    localStorage.setItem('immersiveTheme', theme);
+
+    const overlay = document.getElementById('immersive-writing-overlay');
+    if (overlay) {
+        IMMERSIVE_THEMES.forEach(t => overlay.classList.remove(`theme-${t}`));
+        overlay.classList.add(`theme-${theme}`);
+    }
+
+    const select = document.getElementById('immersive-theme-select');
+    if (select) {
+        select.value = theme;
+    }
+}
+
+function changeImmersiveTheme(theme) {
+    applyImmersiveTheme(theme);
+    showTempImmersiveStatus(`Thème : ${THEME_NAMES[theme] || theme}`);
+}
+window.changeImmersiveTheme = changeImmersiveTheme;
+
+function cycleImmersiveTheme() {
+    const currentIndex = IMMERSIVE_THEMES.indexOf(immersiveTheme);
+    const nextIndex = (currentIndex + 1) % IMMERSIVE_THEMES.length;
+    changeImmersiveTheme(IMMERSIVE_THEMES[nextIndex]);
+}
+
+function applyImmersiveFontFamily(font) {
+    if (!IMMERSIVE_FONTS.includes(font)) font = 'serif';
+    immersiveFontFamily = font;
+    localStorage.setItem('immersiveFontFamily', font);
+
+    const overlay = document.getElementById('immersive-writing-overlay');
+    if (overlay) {
+        IMMERSIVE_FONTS.forEach(f => overlay.classList.remove(`font-${f}`));
+        overlay.classList.add(`font-${font}`);
+    }
+
+    const select = document.getElementById('immersive-font-family-select');
+    if (select) {
+        select.value = font;
+    }
+}
+
+function changeImmersiveFontFamily(font) {
+    applyImmersiveFontFamily(font);
+    showTempImmersiveStatus(`Police : ${FONT_NAMES[font] || font}`);
+}
+window.changeImmersiveFontFamily = changeImmersiveFontFamily;
+
+function cycleImmersiveFontFamily() {
+    const currentIndex = IMMERSIVE_FONTS.indexOf(immersiveFontFamily);
+    const nextIndex = (currentIndex + 1) % IMMERSIVE_FONTS.length;
+    changeImmersiveFontFamily(IMMERSIVE_FONTS[nextIndex]);
+}
+
+function applyImmersiveFontScale(scale) {
+    scale = Math.max(0.7, Math.min(2.0, Math.round(scale * 10) / 10));
+    immersiveFontScale = scale;
+    localStorage.setItem('immersiveFontScale', scale.toString());
+
+    const overlay = document.getElementById('immersive-writing-overlay');
+    if (overlay) {
+        overlay.style.setProperty('--immersive-font-scale', scale);
+    }
+
+    const label = document.getElementById('immersive-font-size-label');
+    if (label) {
+        label.textContent = `${Math.round(scale * 100)}%`;
+    }
+}
+
+function showTempImmersiveStatus(msg) {
+    const saveStatusSpan = document.getElementById('immersive-writing-save-status');
+    if (saveStatusSpan) {
+        const oldText = saveStatusSpan.textContent;
+        saveStatusSpan.textContent = msg;
+        if (window.immersiveStatusTimeout) clearTimeout(window.immersiveStatusTimeout);
+        window.immersiveStatusTimeout = setTimeout(() => {
+            if (saveStatusSpan && saveStatusSpan.textContent === msg) {
+                saveStatusSpan.textContent = oldText || "Tous les changements enregistrés";
+            }
+        }, 2000);
+    }
+}
+
+function changeImmersiveFontSize(delta) {
+    const newScale = immersiveFontScale + delta;
+    applyImmersiveFontScale(newScale);
+    showTempImmersiveStatus(`Taille du texte : ${Math.round(immersiveFontScale * 100)}%`);
+}
+window.changeImmersiveFontSize = changeImmersiveFontSize;
+
+function resetImmersiveFontSize() {
+    applyImmersiveFontScale(1.0);
+    showTempImmersiveStatus("Taille du texte réinitialisée (100%)");
+}
+window.resetImmersiveFontSize = resetImmersiveFontSize;
+
+function handleImmersiveFontKeydown(e) {
+    const isCtrlOrCmd = e.ctrlKey || e.metaKey;
+    const isAlt = e.altKey;
+
+    if (isCtrlOrCmd) {
+        if (e.key === '+' || e.key === '=' || e.code === 'NumpadAdd' || (e.shiftKey && e.code === 'Equal')) {
+            e.preventDefault();
+            changeImmersiveFontSize(0.1);
+            return true;
+        }
+        if (e.key === '-' || e.code === 'NumpadSubtract' || e.code === 'Minus') {
+            e.preventDefault();
+            changeImmersiveFontSize(-0.1);
+            return true;
+        }
+        if (e.key === '0' || e.code === 'Numpad0' || e.code === 'Digit0') {
+            e.preventDefault();
+            resetImmersiveFontSize();
+            return true;
+        }
+    }
+
+    if (isAlt) {
+        if (e.key === '+' || e.key === '=' || e.code === 'Equal') {
+            e.preventDefault();
+            changeImmersiveFontSize(0.1);
+            return true;
+        }
+        if (e.key === '-' || e.code === 'Minus') {
+            e.preventDefault();
+            changeImmersiveFontSize(-0.1);
+            return true;
+        }
+        if (e.key === 't' || e.key === 'T' || e.code === 'KeyT') {
+            e.preventDefault();
+            cycleImmersiveTheme();
+            return true;
+        }
+        if (e.key === 'f' || e.key === 'F' || e.code === 'KeyF') {
+            e.preventDefault();
+            cycleImmersiveFontFamily();
+            return true;
+        }
+    }
+
+    return false;
+}
+window.handleImmersiveFontKeydown = handleImmersiveFontKeydown;
 
 async function openImmersiveEdit(id) {
     if (isReadOnly) return;
@@ -386,6 +571,11 @@ async function openImmersiveEdit(id) {
 
     if (!overlay || !editorDiv) return;
 
+    // Appliquer les préférences utilisateur (thème, taille, police)
+    applyImmersiveTheme(immersiveTheme);
+    applyImmersiveFontScale(immersiveFontScale);
+    applyImmersiveFontFamily(immersiveFontFamily);
+
     // Formater la date en français
     const dateObj = new Date(entry.date);
     const rawDate = dateObj.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
@@ -398,6 +588,22 @@ async function openImmersiveEdit(id) {
     // Afficher l'overlay et désactiver le défilement du body principal
     overlay.classList.add('active');
     document.body.style.overflow = 'hidden';
+
+    // Attacher le zoom à la molette (Ctrl + Molette)
+    const scrollContainer = document.querySelector('.immersive-writing-editor-container');
+    if (scrollContainer && !scrollContainer.dataset.wheelBound) {
+        scrollContainer.dataset.wheelBound = "true";
+        scrollContainer.addEventListener('wheel', (e) => {
+            if (e.ctrlKey || e.metaKey) {
+                e.preventDefault();
+                if (e.deltaY < 0) {
+                    changeImmersiveFontSize(0.1);
+                } else if (e.deltaY > 0) {
+                    changeImmersiveFontSize(-0.1);
+                }
+            }
+        }, { passive: false });
+    }
 
     // Helper pour compter les mots
     const getWordsCount = (text) => {
@@ -531,6 +737,7 @@ async function openImmersiveEdit(id) {
             });
 
             editor.on('keydown', (e) => {
+                if (handleImmersiveFontKeydown(e)) return;
                 if (e.key === 'Escape') {
                     e.preventDefault();
                     closeImmersiveEdit();

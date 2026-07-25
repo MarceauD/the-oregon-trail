@@ -550,24 +550,90 @@
 
 /* --- Mode Écriture Immersive --- */
 .immersive-writing-overlay {
+    --immersive-font-scale: 1;
+    --immersive-bg: #0b0b0f;
+    --immersive-bg-image: radial-gradient(circle at center, #181822 0%, #0b0b0f 100%);
+    --immersive-text: #e2e8f0;
+    --immersive-text-muted: #94A3B8;
+    --immersive-border: rgba(255, 255, 255, 0.1);
+    --immersive-control-bg: rgba(255, 255, 255, 0.05);
+    --immersive-select-bg: #181822;
+
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: #0b0b0f;
-    background-image: radial-gradient(circle at center, #181822 0%, #0b0b0f 100%);
+    background-color: var(--immersive-bg);
+    background-image: var(--immersive-bg-image);
     z-index: 50000;
     display: none;
     flex-direction: column;
-    color: var(--text-color);
+    color: var(--immersive-text);
     overflow: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .immersive-writing-overlay.active {
     display: flex;
 }
 
+/* Thèmes d'ambiance d'écriture */
+.immersive-writing-overlay.theme-dark {
+    --immersive-bg: #0b0b0f;
+    --immersive-bg-image: radial-gradient(circle at center, #181822 0%, #0b0b0f 100%);
+    --immersive-text: #e2e8f0;
+    --immersive-text-muted: #94A3B8;
+    --immersive-border: rgba(255, 255, 255, 0.15);
+    --immersive-control-bg: rgba(255, 255, 255, 0.08);
+    --immersive-select-bg: #181822;
+}
+
+.immersive-writing-overlay.theme-sepia {
+    --immersive-bg: #f5eedc;
+    --immersive-bg-image: radial-gradient(circle at center, #fbf7ed 0%, #eee3cb 100%);
+    --immersive-text: #34281d;
+    --immersive-text-muted: #7c6853;
+    --immersive-border: rgba(52, 40, 29, 0.2);
+    --immersive-control-bg: rgba(52, 40, 29, 0.08);
+    --immersive-select-bg: #f5eedc;
+}
+
+.immersive-writing-overlay.theme-light {
+    --immersive-bg: #f8f9fa;
+    --immersive-bg-image: radial-gradient(circle at center, #ffffff 0%, #f1f3f5 100%);
+    --immersive-text: #1e293b;
+    --immersive-text-muted: #64748b;
+    --immersive-border: rgba(30, 41, 59, 0.2);
+    --immersive-control-bg: rgba(30, 41, 59, 0.06);
+    --immersive-select-bg: #ffffff;
+}
+
+.immersive-writing-overlay.theme-midnight {
+    --immersive-bg: #000000;
+    --immersive-bg-image: none;
+    --immersive-text: #d1d5db;
+    --immersive-text-muted: #6b7280;
+    --immersive-border: rgba(255, 255, 255, 0.2);
+    --immersive-control-bg: rgba(255, 255, 255, 0.1);
+    --immersive-select-bg: #111111;
+}
+
+/* Polices d'écriture */
+.immersive-writing-overlay.font-serif {
+    --immersive-font-family: 'Lora', serif;
+}
+.immersive-writing-overlay.font-merriweather {
+    --immersive-font-family: 'Merriweather', serif;
+}
+.immersive-writing-overlay.font-sans {
+    --immersive-font-family: 'Inter', sans-serif;
+}
+.immersive-writing-overlay.font-mono {
+    --immersive-font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+}
+
+/* Header escamotable au survol du haut de l'écran */
 .immersive-writing-header {
     display: flex;
     justify-content: space-between;
@@ -576,24 +642,124 @@
     height: 50px;
     border-bottom: none;
     flex-shrink: 0;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-8px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 100;
+}
+
+.immersive-writing-overlay.show-header .immersive-writing-header,
+.immersive-writing-header:hover,
+.immersive-writing-header:focus-within {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
 }
 
 .immersive-writing-date {
     font-family: var(--font-interface);
     font-size: 0.9em;
     font-weight: normal;
-    color: var(--text-muted);
-    opacity: 0.5;
+    color: var(--immersive-text-muted);
+    opacity: 0.7;
     letter-spacing: 1.5px;
     text-transform: uppercase;
     margin: 0;
 }
 
+.immersive-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.immersive-control-group {
+    display: flex;
+    align-items: center;
+    background: var(--immersive-control-bg);
+    padding: 2px 10px;
+    border-radius: 20px;
+    border: 1px solid var(--immersive-border);
+    opacity: 0.75;
+    transition: opacity 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.immersive-control-group:hover {
+    opacity: 1;
+    border-color: var(--immersive-text);
+}
+
+.immersive-select {
+    background: transparent;
+    border: none;
+    color: var(--immersive-text);
+    font-family: var(--font-interface);
+    font-size: 0.82em;
+    cursor: pointer;
+    outline: none;
+    padding: 2px 4px;
+}
+
+.immersive-select option {
+    background-color: var(--immersive-select-bg, #181822);
+    color: var(--immersive-text, #e2e8f0);
+}
+
+.immersive-font-controls {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--immersive-control-bg);
+    padding: 2px 8px;
+    border-radius: 20px;
+    border: 1px solid var(--immersive-border);
+    opacity: 0.75;
+    transition: opacity 0.2s ease, border-color 0.2s ease;
+}
+
+.immersive-font-controls:hover {
+    opacity: 1;
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.immersive-font-btn {
+    background: none;
+    border: none;
+    color: var(--immersive-text);
+    font-family: var(--font-interface);
+    font-size: 0.8em;
+    font-weight: bold;
+    padding: 2px 6px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.immersive-font-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--accent-color);
+}
+
+.immersive-font-size-label {
+    font-family: var(--font-interface);
+    font-size: 0.75em;
+    color: var(--immersive-text-muted);
+    min-width: 36px;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.immersive-font-size-label:hover {
+    color: var(--accent-color);
+}
+
 .immersive-writing-close-button {
     background: none;
     border: none;
-    color: var(--text-muted);
-    opacity: 0.5;
+    color: var(--immersive-text-muted);
+    opacity: 0.7;
     padding: 0;
     cursor: pointer;
     font-family: var(--font-interface);
@@ -605,7 +771,7 @@
 .immersive-writing-close-button:hover {
     background: none;
     color: var(--accent-color);
-    opacity: 0.9;
+    opacity: 1;
     box-shadow: none;
 }
 
@@ -620,10 +786,10 @@
     max-width: 100%;
     margin: 0 auto;
     min-height: 80vh;
-    font-family: var(--font-serif);
-    font-size: 1.3em;
+    font-family: var(--immersive-font-family, 'Lora', serif);
+    font-size: calc(1.3em * var(--immersive-font-scale, 1));
     line-height: 1.8;
-    color: #e2e8f0;
+    color: var(--immersive-text) !important;
     outline: none !important;
     border: none !important;
     padding: 10px 0 0 0;
@@ -678,19 +844,29 @@
 
 @media (max-width: 768px) {
     .immersive-writing-header {
-        padding: 10px 20px;
+        padding: 8px 15px;
+        flex-wrap: wrap;
+        gap: 8px;
+        height: auto;
+    }
+    .immersive-header-actions {
+        gap: 8px;
+    }
+    .immersive-control-group,
+    .immersive-font-controls {
+        padding: 1px 6px;
     }
     .immersive-writing-date {
-        font-size: 0.8em;
+        font-size: 0.75em;
     }
     .immersive-writing-editor-container {
         padding: 10px 15px 40px 15px;
     }
     .immersive-writing-editor {
-        font-size: 1.15em;
+        font-size: calc(1.15em * var(--immersive-font-scale, 1));
     }
     .immersive-writing-footer {
-        padding: 10px 20px;
+        padding: 10px 15px;
     }
 }
 

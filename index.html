@@ -551,7 +551,32 @@
     <div id="immersive-writing-overlay" class="immersive-writing-overlay">
         <div class="immersive-writing-header">
             <span id="immersive-writing-date" class="immersive-writing-date"></span>
-            <button id="immersive-writing-close-button" class="immersive-writing-close-button" onclick="closeImmersiveEdit()">&larr; Retour</button>
+            <div class="immersive-header-actions">
+                <div class="immersive-control-group" title="Police d'écriture (Alt + F pour faire défiler)">
+                    <select id="immersive-font-family-select" class="immersive-select" onchange="changeImmersiveFontFamily(this.value)">
+                        <option value="serif">Lora (Serif)</option>
+                        <option value="merriweather">Merriweather</option>
+                        <option value="sans">Inter (Sans)</option>
+                        <option value="mono">Machine à écrire</option>
+                    </select>
+                </div>
+
+                <div class="immersive-control-group" title="Thème d'écriture (Alt + T pour faire défiler)">
+                    <select id="immersive-theme-select" class="immersive-select" onchange="changeImmersiveTheme(this.value)">
+                        <option value="dark">Sombre</option>
+                        <option value="sepia">Parchemin</option>
+                        <option value="light">Clair</option>
+                        <option value="midnight">Noir OLED</option>
+                    </select>
+                </div>
+
+                <div class="immersive-font-controls" title="Taille du texte (Ctrl + / Ctrl - ou Ctrl + Molette)">
+                    <button type="button" id="immersive-font-decrease" class="immersive-font-btn" onclick="changeImmersiveFontSize(-0.1)" title="Réduire la taille (Ctrl + -)">A-</button>
+                    <span id="immersive-font-size-label" class="immersive-font-size-label" onclick="resetImmersiveFontSize()" title="Réinitialiser à 100% (Ctrl + 0)">100%</span>
+                    <button type="button" id="immersive-font-increase" class="immersive-font-btn" onclick="changeImmersiveFontSize(0.1)" title="Augmenter la taille (Ctrl + +)">A+</button>
+                </div>
+                <button id="immersive-writing-close-button" class="immersive-writing-close-button" onclick="closeImmersiveEdit()">&larr; Retour</button>
+            </div>
         </div>
         <div class="immersive-writing-editor-container">
             <div id="immersive-writing-editor" class="immersive-writing-editor"></div>
@@ -603,6 +628,23 @@
                 <div class="shortcut-row">
                     <span class="shortcut-keys"><kbd>Alt</kbd> + <kbd>7</kbd></span>
                     <span class="shortcut-label">Galerie d'Images</span>
+                </div>
+                <div class="shortcut-separator"></div>
+                <div class="shortcut-row">
+                    <span class="shortcut-keys"><kbd>Ctrl</kbd> + <kbd>+</kbd> / <kbd>-</kbd></span>
+                    <span class="shortcut-label">Taille de la police (Mode Immersif)</span>
+                </div>
+                <div class="shortcut-row">
+                    <span class="shortcut-keys"><kbd>Ctrl</kbd> + <kbd>Molette</kbd></span>
+                    <span class="shortcut-label">Zoomer / Dézoomer le texte (Mode Immersif)</span>
+                </div>
+                <div class="shortcut-row">
+                    <span class="shortcut-keys"><kbd>Alt</kbd> + <kbd>T</kbd></span>
+                    <span class="shortcut-label">Changer de thème d'ambiance (Mode Immersif)</span>
+                </div>
+                <div class="shortcut-row">
+                    <span class="shortcut-keys"><kbd>Alt</kbd> + <kbd>F</kbd></span>
+                    <span class="shortcut-label">Changer de police d'écriture (Mode Immersif)</span>
                 </div>
                 <div class="shortcut-separator"></div>
                 <div class="shortcut-row">
