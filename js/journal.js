@@ -367,6 +367,7 @@ window.cancelInlineEdit = function (id) {
 let immersiveEditId = null;
 let immersiveAutoSaveInterval = null;
 let immersiveLastContent = "";
+const isSavingImmersive = { value: false };
 let immersiveTheme = localStorage.getItem('immersiveTheme') || 'dark';
 let immersiveFontFamily = localStorage.getItem('immersiveFontFamily') || 'serif';
 let immersiveFontScale = parseFloat(localStorage.getItem('immersiveFontScale')) || 1.0;
