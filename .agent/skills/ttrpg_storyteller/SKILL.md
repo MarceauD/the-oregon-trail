@@ -29,14 +29,27 @@ To achieve the requested level of multi-sensory and slow-paced realism, the Stor
 - **Geographical Chronicler**: To describe the terrain, geology, and atmospheric conditions with absolute precision.
 - **Historical Auditor**: To verify facts, prices, and material culture of the era.
 - Utilisez au besoin les PDFs à votre disposition (`pdfs/generateur_noms_western.pdf`, `pdfs/UNE NPC Generator.pdf`, `pdfs/random_tables_far_west.pdf`) ou bien vos profondes connaissances sur ces systèmes pour générer des PNJs complexes, des noms de saloon, ou des objets.
-- **Random Tables & Anti-Stereotypes**: Pour casser les stéréotypes, introduire de la diversité historique et surprendre le joueur, vous devez utiliser des tirages de tables réelles via la commande `node tools/roll_table.js <table_name>`.
-  *   **Noms d'époque** : `anglo-saxon`, `germanic`, `irish`, `scandinavian`, `spanish_mexican`, `french`, `italian_mediterranean`, `central_eastern_european`, `chinese`.
-  *   **Émulation de PNJ (UNE)** : `une_modifier` (caractère), `une_noun` (profession), `une_motivation_verb` / `une_motivation_noun` (ses objectifs), `une_focus` (sujet de discussion).
-  *   **Détails du Far West** : `items_behind_a_saloon_bar`, `guns`, `books`, `wanted_posters`, `items_in_a_bandit_hideout`, `items_in_a_doctor_s_office`, `items_in_a_general_store`, `saloon_names_1` / `saloon_names_2`, `rumors_and_jobs`.
-  Intégrez fidèlement les résultats tirés dans vos descriptions, dialogues et profils de PNJs.
+- **Random Tables & Solo Oracles**: Pour casser les stéréotypes, introduire de la diversité historique et piloter l'aventure en solo, vous devez utiliser le script unifié **`node tools/solo_oracle.js <mode>`** ou tirer sur des tables spécifiques via **`node tools/roll_table.js <table_name>`**.
 
+### Modes du Super-Oracle Unifié (`node tools/solo_oracle.js`) :
+1. **Fate Chart & Événement Automatique** : `node tools/solo_oracle.js fate <odds> [chaos]` (ex: `likely 5`)
+   - Pose une question de probabilité (impossible, unlikely, 50/50, likely, sure thing).
+   - En cas d'événement aléatoire (jet double <= chaos*11), **tire automatiquement** le Focus Mythic, l'Action, le Sujet et l'Atmosphère !
+2. **Génération d'Événement Complet** : `node tools/solo_oracle.js event` (Focus + Action + Sujet + Atmosphère)
+3. **Profil PNJ 19e Complet** : `node tools/solo_oracle.js npc` (Identité + Descripteur + Disposition + Secret + Trait + Vêtements + Chapeau)
+4. **Péripétie de Voyage** : `node tools/solo_oracle.js hazard` (Météo + Danger de la piste + Avarie de chariot)
+5. **Conflit Dramatique** : `node tools/solo_oracle.js dilemma` (Dilemme moral + Complication sociale)
+6. **Fouille & Butin** : `node tools/solo_oracle.js loot` (Malle de pionnier + Objets personnels + État des vivres)
 
-## 2. Using Game Mechanics (CRITICAL)
+### Tirages Indépendants par Catégorie (`node tools/roll_table.js <table_name>`) :
+- **Oracles & PNJ (`oracles/`)** : `oracle_adventure_crafter_identity`, `oracle_adventure_crafter_descriptors`, `oracle_mythic_event_focus`, `oracle_mythic_event_action`, `oracle_mythic_event_subject`, `oracle_npc_disposition`, `oracle_npc_secrets`, `oracle_moral_dilemmas`, `oracle_social_complications`, `oracle_npc_personality_traits`, `oracle_une_focus`, `oracle_une_modifier`, `oracle_une_noun`, `oracle_une_motivation_verb`, `oracle_une_motivation_noun`.
+- **Événements & Voyage (`events/`)** : `events_weather_frontier`, `events_trail_hazards`, `events_saloon_brawls`, `events_npc_occupations_19th`, `events_frontier_rumors`, `events_wagon_breakdowns`, `events_gunfight_complications`, `events_medical_19th`, `events_injuries_19th`, `events_hunting_fauna`, `events_landmarks_19th`, `events_rumors_and_jobs`, `events_wanted_posters`.
+- **Objets & Équipement (`items/`)** : `items_clothing_19th`, `items_hats_19th`, `items_wagon_cargo`, `items_pioneer_trunk`, `items_personal_effects`, `items_camp_meals`, `items_food_condition`, `items_medical_treatments`, `items_hunting_yield`, `items_guns`, `items_doctor_office`, `items_general_store`, `items_saloon_bar`.
+- **Noms (`names/`) & Villes (`towns/`)** : `names_female_1`, `names_male_1`, `names_surnames_1`, `names_french`, `names_chinese`, `towns_texas`, `towns_california`...
+
+Intégrez fidèlement les résultats tirés dans vos descriptions, dialogues et profils de PNJs.
+
+## 3. Using Game Mechanics (CRITICAL)
 Whenever the character attempts an action with an uncertain outcome, YOU MUST USE YOUR TOOLS to roll dice. NEVER decide the outcome yourself.
 - Run `node tools/dice_roller.js <stat_percentage>` using `run_command` in the project root directory. Find the character's stats in `saves/[char_name].txt`.
 - Apply the result faithfully in the narration.
@@ -44,7 +57,7 @@ Whenever the character attempts an action with an uncertain outcome, YOU MUST US
   `<p><span class="jet-result">Jet de [Stat Name] : [Roll]/[Target]. [SUCCÈS CRITIQUE / RÉUSSITE / ÉCHEC / ÉCHEC CRITIQUE]</span></p>`
 
 Whenever a random event might occur, a yes/no question is asked about the universe, or an NPC takes an action outside his control, YOU MUST use the Oracle:
-- Run `node tools/mythic_oracle.js "<odds>"` (odds: impossible, unlikely, 50/50, likely, a sure thing).
+- Run `node tools/solo_oracle.js fate "<odds>" <chaos_factor>` (odds: impossible, unlikely, 50/50, likely, a sure thing).
 - Incorporate the result (OUI/NON/EXCEPTIONNEL/ALÉATOIRE) into the narrative.
 - **VISIBILITY**: Include the oracle result directly in the HTML exactly like this:
   `<p><span class="oracle-result" style="color: #F59E0B; font-weight: bold;">[Oracle] [Odds] : [Jet] - [Answer]</span></p>`

@@ -15,11 +15,15 @@ Ce workflow décrit les étapes précises pour co-écrire et générer une nouve
    - Déterminer l'instant précis suivant pour le personnage.
    - Poser les bases dramatiques : Quels sont les besoins immédiats du personnage ? Quel est l'obstacle (physique, économique, social ou métabolique) ? Comment sa personnalité et ses forces/faiblesses influencent la scène ?
 
-3. **Résolution des Mécaniques (Dés & Oracle)** :
-   - Déterminer si l'action entreprise requiert un jet sous une compétence ou une caractéristique.
-   - Exécuter la commande : `node tools\dice_roller.js <valeur_stat>` pour obtenir le résultat.
-   - Si l'environnement ou les PNJs réagissent de manière incertaine, consulter l'Oracle Mythic en lançant : `node tools\mythic_oracle.js "<odds>"` (odds: impossible, unlikely, 50/50, likely, a sure thing).
-   - Intégrer les résultats des jets fidèlement dans le texte narratif sans balise HTML.
+3. **Résolution des Mécaniques & Consultation des Oracles (`tools/solo_oracle.js`)** :
+   - Déterminer si l'action entreprise requiert un jet sous une compétence ou une caractéristique : `node tools/dice_roller.js <valeur_stat>`.
+   - Si une question de probabilité se pose ou qu'un événement survient : `node tools/solo_oracle.js fate <odds> [chaos]` (ex: `likely 5`). En cas d'événement aléatoire, le script tire **automatiquement** l'événement Mythic et l'atmosphère !
+   - Pour introduire un PNJ 19e, une péripétie de voyage ou un conflit moral, exécuter :
+     - `node tools/solo_oracle.js npc` (PNJ 19e complet)
+     - `node tools/solo_oracle.js hazard` (Météo, danger de la piste, avarie chariot)
+     - `node tools/solo_oracle.js dilemma` (Dilemme moral, complication sociale)
+     - `node tools/solo_oracle.js event` (Événement Mythic complet)
+   - Intégrer les résultats des jets fidèlement dans le texte narratif.
 
 4. **Phase d'Écriture** :
    - Rédiger la scène en adoptant strictement le style et la voix du personnage (Max : phrases courtes SVO, descriptions physiques et sensorielles directes ; Eddy : style poétique, synesthésies, musicalité).

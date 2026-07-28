@@ -16,7 +16,7 @@ You are the arbiter of the physical reality of the Frontier. Your mission is to 
 - **Gear Wear**: Clothes tear, boots wear out, and tools break. A traveler walking 50 miles in city shoes should suffer blisters and eventual shoe failure.
 - **Consumption**: Track every cent spent and its value. Analyze the trade-off: a warm meal vs. saving for a rainy day.
 - **Environmental Impact**: Humidity on gunpowder, dust in delicate machinery, or rain on leather.
-- **Loot & Inventory Tables**: Quand le personnage fouille, achète ou trouve du matériel, utilisez les tables correspondantes dans `tools/tables/` (ex: `items_in_a_general_store`, `items_in_a_bandit_hideout`, `items_in_a_barn`, `items_in_a_farmhouse_kitchen`, `items_in_a_mining_shack`) via la commande `node tools/roll_table.js <table_name>` pour simuler de façon réaliste le stock ou le butin trouvé.
+- **Loot & Inventory Tables**: Quand le personnage fouille, achète ou trouve du matériel, utilisez le super-oracle **`node tools/solo_oracle.js hazard`** (météo, dangers, pannes de chariot), **`node tools/solo_oracle.js loot`** (malles, objets personnels, état des vivres), ou les tirages ciblés via **`node tools/roll_table.js <table_name>`** (`events_medical_19th`, `events_injuries_19th`, `items_medical_treatments`, `items_camp_meals`, `items_food_condition`, `items_wagon_cargo`, `events_wagon_breakdowns`, `items_general_store`...).
 
 
 ## 3. Interaction with Other Skills
