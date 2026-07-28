@@ -1,0 +1,15 @@
+# Oracle - Disposition et Réaction Initiale des PNJ (19e siècle)
+*Table système-agnostique pour déterminer l'attitude immédiate d'un PNJ*
+
+1-5: Très chaleureux et accueillant (Offre spontanément un verre, une poignée de main ferme ou un abri)
+6-12: Amical et coopératif (Disposé à discuter et à partager des informations sans contrepartie majeure)
+13-20: Poli mais réservé (Courtois mais garde ses distances, observe le PJ attentivement)
+21-30: Indifférent ou très occupé (Ne prête guère attention au PJ à moins d'être sollicité directement)
+31-40: Méfiant et sur ses gardes (Main sur la garde d'une arme ou garde un œil sur ses affaires)
+41-50: Curieux mais hésitant (Pose des questions sur l'origine du PJ avant d'accorder sa confiance)
+51-60: Distant et laconique (Répond par oui ou par non, refuse de s'épancher)
+61-70: Énervé ou sous pression (Irritable, aboie ses réponses, au bord de la crise de nerfs)
+71-80: Paniqué ou en fuite (Cherche à éviter tout contact, craint une menace imminente)
+81-90: Hostile et provocateur (Cherche l'affrontement verbal, cherche la bagarre ou exige le départ du PJ)
+91-95: Ouvertement menaçant (Sommation de ne pas s'approcher sous peine de tir)
+96-100: Trompeur et manipulateur (Simule une amitié exagérée pour mieux piéger ou exploiter le PJ)

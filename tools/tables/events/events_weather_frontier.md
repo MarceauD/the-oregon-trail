@@ -1,0 +1,16 @@
+# Météo et Événements Atmosphériques de la Frontière (19e siècle)
+*Table système-agnostique pour les voyages et l'exploration de la piste*
+
+1-10: Ciel dégagé et soleil radieux (Temps idéal, visibilité excellente)
+11-20: Vent chaud et poussiéreux (Gêne les yeux, assèche les gourdes)
+21-30: Nuages bas et brume matinale (Humidité ambiante, visibilité réduite en début de journée)
+31-40: Légère brise fraîche (Climat agréable, bon rythme de marche)
+41-45: Brouillard épais de vallée (Visibilité inférieure à 20 pas, risque de désorientation)
+46-50: Vague de chaleur écrasante (Risque d'insolation et déshydratation rapide des bêtes)
+51-60: Vent violent de prairie (Soulève des bourrasques de poussière, risque de perdre du matériel)
+61-70: Pluie fine continue (Sol glissant, vêtements trempés, ralentissement de la caravane)
+71-80: Orage soudain et violent (Éclairs fréquents, tonnerre assourdissant, abri requis)
+81-85: Tempête de poussière ou blizzard (Toute progression devient impossible, vision nulle)
+86-90: Averse de grêle soutenue (Dégâts sur les bâches de chariot, affolement des bêtes)
+91-95: Crue éclair d'un cours d'eau proche (Rivières devenues dangereuses ou infranchissables)
+96-100: Tempête électrique exceptionnelle (Électricité statique intense, panique chez les animaux)

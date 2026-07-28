@@ -1,0 +1,23 @@
+# Vêtements, Costumes et Habits du 19e siècle
+*Table système-agnostique pour déterminer la tenue vestimentaire d'un PNJ ou d'une trouve*
+
+1-5: Redingote en drap de laine sombre avec boutonnière en laiton (Tenue d'homme de loi ou notable)
+6-10: Manteau antipoussière (Duster) en toile cirée beige avec doublure rapiécée (Voyageur de la piste)
+11-15: Chemise en flanelle à carreaux rouges et noirs avec col ouvert (Pionnier ou trappeur)
+16-20: Gilet en brocart ou soie brodée avec chaîne de montre à gousset (Joueur de poker ou dandy)
+21-25: Robe d'indienne à calicot imprimé de petites fleurs avec tablier blanc (Femme de pionnier)
+26-30: Pantalon de coutil robuste ou moleskine retenu par des bretelles en cuir (Ouvrier ou fermier)
+31-35: Poncho traditionnel en laine tissée aux motifs géométriques (Cavalier du Sud-Ouest ou Vaquero)
+36-40: Manteau de fourrure de bison massif avec col montant (Trappeur des montagnes)
+41-45: Tablier de cuir épais taché de suie et d'huile (Forgeron ou maréchal-ferrant)
+46-50: Veste de cavalerie bleue de l'Union avec boutons dorés armoriés (Ancien soldat ou vétéran)
+51-55: Costume deux pièces en toile de lin écru (Commerçant des villes d'été)
+56-60: Chemise de calicot blanc à col cassé et cravate lavallière noire (Pasteur ou médecin)
+61-65: Veste de cuir de daim à franges cousues le long des manches (Éclaireur de la frontière)
+66-70: Robe de soirée en taffetas de soie avec baleines de corset (Dame de la haute société)
+71-75: Blouse de travail en coton bleu et pantalon usé aux genoux (Mineur ou prospecteur)
+76-80: Manteau d'officier gris confédéré débarrassé de ses galons (Vétéran du Sud)
+81-85: Jupe longue en serge de laine et chuchote de laine tricotée (Enseignante ou gouvernante)
+86-90: Veste courte de cowboy en cuir de cerf ajustée (Garçon d'écurie ou cowboy)
+91-95: Habit de deuil en crêpe noir rigide avec voile assorti (Veuve de la ville)
+96-100: Tenue d'apparat en peau tannée avec broderies de perles et de porc-épic (Chef ou notable autochtone)
