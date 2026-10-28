@@ -129,6 +129,8 @@
     /* AU-DESSUS DU LANCEUR DE DES (30001) */
     display: none;
     flex-direction: column;
+    contain: paint;
+    isolation: isolate;
 }
 
 .reading-mode-overlay.active {
@@ -572,6 +574,14 @@
     color: var(--immersive-text);
     overflow: hidden;
     transition: background-color 0.3s ease, color 0.3s ease;
+    contain: paint;
+    isolation: isolate;
+}
+
+/* Désactivation de l'arrière-plan animé sous-jacent pendant les modes plein écran pour libérer le GPU */
+body.immersive-mode-open #particles-bg,
+body.reading-mode-open #particles-bg {
+    display: none !important;
 }
 
 .immersive-writing-overlay.active {

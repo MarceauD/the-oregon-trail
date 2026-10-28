@@ -389,21 +389,31 @@ const FONT_NAMES = {
     mono: 'Machine à écrire'
 };
 
-// Détection du survol du haut de l'écran (70px) pour afficher/masquer le header immersif
+// Détection du survol du haut de l'écran (70px) pour afficher/masquer le header immersif (throttlé via rAF)
+let mouseMoveRAF = null;
+let isImmersiveHeaderShown = false;
 document.addEventListener('mousemove', (e) => {
-    const overlay = document.getElementById('immersive-writing-overlay');
-    if (!overlay || !overlay.classList.contains('active')) return;
+    if (mouseMoveRAF) return;
+    const clientY = e.clientY;
+    mouseMoveRAF = requestAnimationFrame(() => {
+        mouseMoveRAF = null;
+        const overlay = document.getElementById('immersive-writing-overlay');
+        if (!overlay || !overlay.classList.contains('active')) return;
 
-    if (e.clientY <= 70) {
-        overlay.classList.add('show-header');
-    } else {
-        const activeElem = document.activeElement;
-        const header = overlay.querySelector('.immersive-writing-header');
-        if (header && !header.contains(activeElem)) {
-            overlay.classList.remove('show-header');
+        const shouldShow = clientY <= 70;
+        if (shouldShow && !isImmersiveHeaderShown) {
+            overlay.classList.add('show-header');
+            isImmersiveHeaderShown = true;
+        } else if (!shouldShow && isImmersiveHeaderShown) {
+            const activeElem = document.activeElement;
+            const header = overlay.querySelector('.immersive-writing-header');
+            if (!header || !header.contains(activeElem)) {
+                overlay.classList.remove('show-header');
+                isImmersiveHeaderShown = false;
+            }
         }
-    }
-});
+    });
+}, { passive: true });
 
 function applyImmersiveTheme(theme) {
     if (!IMMERSIVE_THEMES.includes(theme)) theme = 'dark';
@@ -583,11 +593,18 @@ async function openImmersiveEdit(id) {
     const capitalizedDate = rawDate.charAt(0).toUpperCase() + rawDate.slice(1);
     if (dateSpan) dateSpan.textContent = capitalizedDate;
 
+    // Nettoyer toute instance précédente de TinyMCE pour éviter les fuites mémoire et doublons
+    const existingEditor = tinymce.get('immersive-writing-editor');
+    if (existingEditor) {
+        existingEditor.remove();
+    }
+
     // Charger le contenu existant
     editorDiv.innerHTML = entry.entry;
 
-    // Afficher l'overlay et désactiver le défilement du body principal
+    // Afficher l'overlay, masquer l'arrière-plan lourd pour le GPU, et désactiver le défilement du body principal
     overlay.classList.add('active');
+    document.body.classList.add('immersive-mode-open');
     document.body.style.overflow = 'hidden';
 
     // Attacher le zoom à la molette (Ctrl + Molette)
@@ -606,17 +623,28 @@ async function openImmersiveEdit(id) {
         }, { passive: false });
     }
 
-    // Helper pour compter les mots
-    const getWordsCount = (text) => {
-        const words = text.trim().split(/\s+/);
-        return words[0] === "" ? 0 : words.length;
-    };
-
-    const updateWordCount = (editor) => {
-        const text = editor.getContent({ format: 'text' });
-        const count = getWordsCount(text);
-        if (wordCountSpan) {
+    // Helper pour compter les mots ultra-léger et débouncé (évite getContent({format: 'text'}) bloquant)
+    let wordCountDebounceTimeout = null;
+    const updateWordCount = (editor, immediate = false) => {
+        if (!wordCountSpan) return;
+        const doCount = () => {
+            let count = 0;
+            if (editor.plugins && editor.plugins.wordcount && typeof editor.plugins.wordcount.body?.getWordCount === 'function') {
+                count = editor.plugins.wordcount.body.getWordCount();
+            } else {
+                const text = editor.getBody() ? (editor.getBody().innerText || editor.getBody().textContent || "") : "";
+                const words = text.trim().split(/\s+/);
+                count = words[0] === "" ? 0 : words.length;
+            }
             wordCountSpan.textContent = `${count} mot${count > 1 ? 's' : ''}`;
+        };
+
+        if (immediate) {
+            if (wordCountDebounceTimeout) clearTimeout(wordCountDebounceTimeout);
+            doCount();
+        } else {
+            if (wordCountDebounceTimeout) clearTimeout(wordCountDebounceTimeout);
+            wordCountDebounceTimeout = setTimeout(doCount, 250);
         }
     };
 
@@ -647,7 +675,7 @@ async function openImmersiveEdit(id) {
                     scrollContainer.scrollTop = scrollContainer.scrollHeight;
                 }
                 
-                updateWordCount(editor);
+                updateWordCount(editor, true);
                 if (saveStatusSpan) {
                     saveStatusSpan.textContent = "Tous les changements enregistrés";
                 }
@@ -658,57 +686,62 @@ async function openImmersiveEdit(id) {
                 }, 50);
             });
 
-            // Mettre à jour le compteur de mots à chaque frappe
-            editor.on('input NodeChange KeyUp', () => {
-                updateWordCount(editor);
+            // Mettre à jour le compteur de mots avec débounce (soulage 100% du CPU lors de la frappe)
+            editor.on('input', () => {
+                updateWordCount(editor, false);
             });
 
-            // Logique de défilement Typewriter (Machine à écrire)
+            // Logique de défilement Typewriter (Machine à écrire) throttlée via requestAnimationFrame
+            let typewriterRAF = null;
             const alignCursorTypewriter = (forceInstant = false) => {
                 const scrollContainer = document.querySelector('.immersive-writing-editor-container');
                 if (!scrollContainer) return;
 
-                try {
-                    const range = editor.selection.getRng();
-                    if (!range) return;
+                if (typewriterRAF) cancelAnimationFrame(typewriterRAF);
+                typewriterRAF = requestAnimationFrame(() => {
+                    typewriterRAF = null;
+                    try {
+                        const range = editor.selection.getRng();
+                        if (!range) return;
 
-                    let rect = null;
-                    const rects = range.getClientRects();
-                    if (rects && rects.length > 0) {
-                        rect = rects[0];
-                    } else if (range.startContainer) {
-                        const node = range.startContainer.nodeType === 1 
-                            ? range.startContainer 
-                            : range.startContainer.parentElement;
-                        if (node && typeof node.getBoundingClientRect === 'function') {
-                            rect = node.getBoundingClientRect();
-                        }
-                    }
-
-                    if (rect && rect.top > 0) {
-                        const viewportHeight = window.innerHeight;
-                        const targetY = viewportHeight / 2;
-                        const diff = rect.top - targetY;
-
-                        // Zone de confort : entre 25% et 75% de la hauteur de l'écran
-                        const isOutsideComfortZone = rect.top < (viewportHeight * 0.25) || rect.top > (viewportHeight * 0.75);
-
-                        if (forceInstant) {
-                            // Défilement instantané pendant la frappe active pour éviter les latences
-                            if (Math.abs(diff) > 5) {
-                                scrollContainer.scrollTop += diff;
+                        let rect = null;
+                        const rects = range.getClientRects();
+                        if (rects && rects.length > 0) {
+                            rect = rects[0];
+                        } else if (range.startContainer) {
+                            const node = range.startContainer.nodeType === 1 
+                                ? range.startContainer 
+                                : range.startContainer.parentElement;
+                            if (node && typeof node.getBoundingClientRect === 'function') {
+                                rect = node.getBoundingClientRect();
                             }
-                        } else if (isOutsideComfortZone) {
-                            // Défilement fluide lors des déplacements de curseur / clics en dehors de la zone confortable
-                            scrollContainer.scrollBy({
-                                top: diff,
-                                behavior: 'smooth'
-                            });
                         }
+
+                        if (rect && rect.top > 0) {
+                            const viewportHeight = window.innerHeight;
+                            const targetY = viewportHeight / 2;
+                            const diff = rect.top - targetY;
+
+                            // Zone de confort : entre 25% et 75% de la hauteur de l'écran
+                            const isOutsideComfortZone = rect.top < (viewportHeight * 0.25) || rect.top > (viewportHeight * 0.75);
+
+                            if (forceInstant) {
+                                // Défilement instantané uniquement si décalage notable (> 8px) pour éviter le Layout Thrashing
+                                if (Math.abs(diff) > 8) {
+                                    scrollContainer.scrollTop += diff;
+                                }
+                            } else if (isOutsideComfortZone) {
+                                // Défilement fluide lors des déplacements de curseur / clics en dehors de la zone confortable
+                                scrollContainer.scrollBy({
+                                    top: diff,
+                                    behavior: 'smooth'
+                                });
+                            }
+                        }
+                    } catch (e) {
+                        console.error("Typewriter scrolling error:", e);
                     }
-                } catch (e) {
-                    console.error("Typewriter scrolling error:", e);
-                }
+                });
             };
 
             // Recentrer sur écriture active
@@ -825,11 +858,14 @@ async function closeImmersiveEdit() {
         editor.remove();
     }
 
-    // Cacher l'overlay et réactiver le scroll
+    // Cacher l'overlay, réactiver l'arrière-plan et réactiver le scroll
     const overlay = document.getElementById('immersive-writing-overlay');
     if (overlay) {
         overlay.classList.remove('active');
+        overlay.classList.remove('show-header');
     }
+    isImmersiveHeaderShown = false;
+    document.body.classList.remove('immersive-mode-open');
     document.body.style.overflow = '';
 
     // Nettoyer les états
@@ -962,12 +998,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             displayJournalPage(startIndex);
             readingModeOverlay.classList.add('active');
+            document.body.classList.add('reading-mode-open');
             document.body.style.overflow = 'hidden';
         } else { showToast("Le journal est vide.", 'info'); }
     };
 
     function closeReadingMode() {
         readingModeOverlay.classList.remove('active');
+        document.body.classList.remove('reading-mode-open');
         document.body.style.overflow = '';
     }
     if (openReadingModeBtn) openReadingModeBtn.addEventListener('click', openReadingMode);
@@ -1060,8 +1098,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (quickViewCloseBtn) quickViewCloseBtn.addEventListener('click', closeQuickView);
     if (quickViewModal) makeDraggable(quickViewModal, document.getElementById('quick-view-header'));
 
-    // --- Progression de lecture dans l'entrée courante ---
+    // --- Progression de lecture dans l'entrée courante (throttlée via rAF) ---
+    let scrollProgressRAF = null;
+    let lastScrollPercent = -1;
     function updateEntryScrollProgress() {
+        if (!bookContainer) return;
         const scrollTop = bookContainer.scrollTop;
         const scrollHeight = bookContainer.scrollHeight;
         const clientHeight = bookContainer.clientHeight;
@@ -1072,6 +1113,9 @@ document.addEventListener('DOMContentLoaded', () => {
             scrollPercent = Math.round((scrollTop / totalScrollable) * 100);
         }
         
+        if (scrollPercent === lastScrollPercent) return;
+        lastScrollPercent = scrollPercent;
+
         const entryProgressBar = document.getElementById('entry-progress-bar');
         if (entryProgressBar) {
             entryProgressBar.style.width = `${scrollPercent}%`;
@@ -1086,7 +1130,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (bookContainer) {
-        bookContainer.addEventListener('scroll', updateEntryScrollProgress, { passive: true });
+        bookContainer.addEventListener('scroll', () => {
+            if (scrollProgressRAF) return;
+            scrollProgressRAF = requestAnimationFrame(() => {
+                scrollProgressRAF = null;
+                updateEntryScrollProgress();
+            });
+        }, { passive: true });
     }
 
     // --- Gestion du panneau d'options d'affichage ---
